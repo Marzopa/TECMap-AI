@@ -19,7 +19,7 @@ public class Json {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.writeValue(new File(filename), objectToSerialize);
     }
-
+    // Just checking github works
     public static <T> T fromJsonFile(String filename, Class<? extends T> classToBeCreated) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
