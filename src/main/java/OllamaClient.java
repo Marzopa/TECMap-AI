@@ -37,14 +37,15 @@ public class OllamaClient {
 
     public static int solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
         String systemPrompt = "For the following solution of the problem in the selected language, " +
+                "add brief comments on the correctness of the solution, then the character ';', and finally" +
                 "grade the input on a scale from 0 (completely incorrect) to 100 (completely correct)." +
                 "For example: example input: 'problem: Write a function that takes an array of integers and returns the sum of all even numbers. " +
                 "solution: def sum_evens(arr): return sum(x for x in arr if x % 2 == 0) language: python" +
-                "example output: 100" +
+                "example output: The solution is correct and efficiently uses a generator expression within the sum() function, which is both concise and idiomatic in Python.;100" +
                 "Another example input: 'problem: Write a function that takes an array of integers and returns the sum of all even numbers. " +
                 "solution: def sum_evens(arr): return sum(x for x in arr if x % 2 == 1) language: python" +
-                "example output: 60" +
-                "Please provide a similar output for the input below (just ), and do not include any additional text." +
+                "example output: The solution returns the sum of odd numbers instead, the logic is somehow correct.;60" +
+                "Please provide a similar output for the input below, and do not include any additional text." +
                 "Be lenient with the grading. Don't worry about minor syntax errors OR indentation, but do consider the overall correctness of the solution." +
                 "If the solution is completely incorrect, please provide a grade of 0. If the solution is completely correct, please provide a grade of 100.";
 
