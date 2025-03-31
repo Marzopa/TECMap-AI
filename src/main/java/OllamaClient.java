@@ -76,6 +76,6 @@ public class OllamaClient {
 //        System.out.println("Response:\n" + OllamaResponseParser.parseResponse(dict_problem));
 //        System.out.println("Grade:\n" + solutionRequest(dict_problem, "i dont know it"));
         System.out.println("Grade:\n" + solutionRequest("Write a simple for loop that prints the numbers from 1 to 10.",
-                "for(int i=1; i<11; i++) { System.out.println(i); }", "java"));
+                "for (int i=1; i<11; i++) { System.out.println(i); }", "java"));
     }
 }
