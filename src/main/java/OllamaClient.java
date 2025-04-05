@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
 
 public class OllamaClient {
-    public static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
+    public static Response problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
         String systemPrompt = "For the following topic and difficulty (on a scale of 1 to 5), " +
                 "generate an original coding problem, language agnostic." +
                 "For example: example input: 'arrays 3'" +
@@ -28,14 +28,15 @@ public class OllamaClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        return response.body();
+        String parsedResponse = OllamaResponseParser.parseResponse(response.body());
+        return new Response(parsedResponse, "", 0);
     }
 
-    public static int solutionRequest(String problem, String solution) throws IOException, InterruptedException {
+    public static Response solutionRequest(String problem, String solution) throws IOException, InterruptedException {
         return solutionRequest(problem, solution, "python");
     }
 
-    public static int solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
+    public static Response solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
         String systemPrompt = "For the following solution of the problem in the selected language, " +
                 "add brief comments on the correctness of the solution, then the character ';', and finally" +
                 "grade the input on a scale from 0 (completely incorrect) to 100 (completely correct)." +
@@ -66,17 +67,18 @@ public class OllamaClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        //System.err.println(response.body());
-        String actual_number = OllamaResponseParser.parseResponse(response.body());
-        return Integer.parseInt(actual_number);
+        String parsedResponse = OllamaResponseParser.parseResponse(response.body());
+        String[] parts = parsedResponse.split(";");
+        String feedback = parts[0];
+        int grade = Integer.parseInt(parts[1]);
+        return new Response(parsedResponse, feedback, grade);
     }
 
     public static void main(String[] args) throws Exception {
-
-//        String dict_problem = problemRequest("dictionaries", 3);
-//        System.out.println("Response:\n" + OllamaResponseParser.parseResponse(dict_problem));
-//        System.out.println("Grade:\n" + solutionRequest(dict_problem, "i dont know it"));
-        System.out.println("Grade:\n" + solutionRequest("Write a simple for loop that prints the numbers from 1 to 10.",
-                "for (int i=1; i<11; i++) { System.out.println(i); }", "java"));
+        Response response = solutionRequest("Write a simple for loop that prints the numbers from 1 to 10.",
+                "for (int i=1; i<11; i++) { System.out.println(i); }", "java");
+        System.out.println("Response: " + response.getResponse());
+        System.out.println("Feedback: " + response.getFeedback());
+        System.out.println("Grade: " + response.getGrade());
     }
 }
