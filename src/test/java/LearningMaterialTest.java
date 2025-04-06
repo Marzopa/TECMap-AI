@@ -1,3 +1,4 @@
+import Classroom.AssessmentItem;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -15,6 +16,8 @@ public class LearningMaterialTest {
 
         // Check if the UUID is generated
         assert learningMaterial.getUuid() != null;
+
+        learningMaterial.addAssessmentItem(new AssessmentItem(learningMaterial,"How are you?", 10));
 
         // Save the learning material to a file
         try {
