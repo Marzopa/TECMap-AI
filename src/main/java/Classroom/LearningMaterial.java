@@ -11,26 +11,31 @@ public class LearningMaterial {
     private final String title;
     private final String content;
     private final UUID uuid;
+    private final boolean answerable;
 
-    public LearningMaterial(String title, String content) {
+    public LearningMaterial(String title, String content, boolean answerable) {
         this.title = title;
         this.content = content;
         this.uuid = UUID.randomUUID();
+        this.answerable = answerable;
     }
 
     public LearningMaterial(String title) {
         this.title = title;
         this.content = "";
         this.uuid = UUID.randomUUID();
+        this.answerable = false;
     }
 
     @JsonCreator
     public LearningMaterial(@JsonProperty("title") String title,
                             @JsonProperty("content") String content,
-                            @JsonProperty("uuid") UUID uuid) {
+                            @JsonProperty("uuid") UUID uuid,
+                            @JsonProperty("answerable") boolean answerable) {
         this.title = title;
         this.content = content;
         this.uuid = uuid;
+        this.answerable = answerable;
     }
 
     /**
@@ -54,5 +59,9 @@ public class LearningMaterial {
 
     public String getTitle() {
         return title;
+    }
+
+    public boolean isAnswerable() {
+        return answerable;
     }
 }

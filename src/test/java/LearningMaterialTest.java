@@ -6,7 +6,7 @@ public class LearningMaterialTest {
     @Test
     public void testLearningMaterial() {
         // Create a LearningMaterial object
-        Classroom.LearningMaterial learningMaterial = new Classroom.LearningMaterial("Test Title", "Test Content");
+        Classroom.LearningMaterial learningMaterial = new Classroom.LearningMaterial("Test Title", "Test Content", true);
         Classroom.LearningMaterial learningMaterialEmpty = new Classroom.LearningMaterial("Test Title");
 
         // Check if the title and content are set correctly
