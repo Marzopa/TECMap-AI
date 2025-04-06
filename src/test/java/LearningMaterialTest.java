@@ -7,6 +7,7 @@ public class LearningMaterialTest {
     public void testLearningMaterial() {
         // Create a LearningMaterial object
         Classroom.LearningMaterial learningMaterial = new Classroom.LearningMaterial("Test Title", "Test Content");
+        Classroom.LearningMaterial learningMaterialEmpty = new Classroom.LearningMaterial("Test Title");
 
         // Check if the title and content are set correctly
         assert "Test Title".equals(learningMaterial.getTitle());
@@ -20,6 +21,13 @@ public class LearningMaterialTest {
             String filename = learningMaterial.saveToFile("src/test/resources/");
             System.out.println("Learning material saved to: " + filename);
         } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+        try{
+            learningMaterialEmpty.saveToFile("src/test/resources/");
+        }
+        catch (IOException e){
             System.err.println(e.getMessage());
         }
     }
