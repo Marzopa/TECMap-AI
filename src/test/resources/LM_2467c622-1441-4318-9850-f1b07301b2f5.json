@@ -1,0 +1,10 @@
+{
+  "title" : "Sample Learning Material",
+  "content" : "This is a sample content.",
+  "uuid" : "2467c622-1441-4318-9850-f1b07301b2f5",
+  "answerable" : true,
+  "assessmentItem" : {
+    "question" : "Sample Question?",
+    "maxScore" : 100,
+    "uuid" : "305ba99f-7b4a-4760-ad52-4d06817c0506",
+    "submissions" : [

@@ -1,38 +1,98 @@
 import Classroom.AssessmentItem;
-import org.junit.Test;
+import Classroom.AssessmentRecord;
+import Classroom.LearningMaterial;
+import Utils.Json;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LearningMaterialTest {
-    @Test
-    public void testLearningMaterial() {
-        // Create a LearningMaterial object
-        Classroom.LearningMaterial learningMaterial = new Classroom.LearningMaterial("Test Title", "Test Content", true);
-        Classroom.LearningMaterial learningMaterialEmpty = new Classroom.LearningMaterial("Test Title");
 
-        // Check if the title and content are set correctly
-        assert "Test Title".equals(learningMaterial.getTitle());
-        assert "Test Content".equals(learningMaterial.getContent());
+    private static final String TEST_PATH = "src/test/resources/";
 
-        // Check if the UUID is generated
-        assert learningMaterial.getUuid() != null;
-
-        learningMaterial.addAssessmentItem(new AssessmentItem(learningMaterial,"How are you?", 10));
-
-        // Save the learning material to a file
-        try {
-            String filename = learningMaterial.saveToFile("src/test/resources/");
-            System.out.println("Learning material saved to: " + filename);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-
-        try{
-            learningMaterialEmpty.saveToFile("src/test/resources/");
-        }
-        catch (IOException e){
-            System.err.println(e.getMessage());
-        }
+    @BeforeEach
+    public void setUp() throws IOException {
+        // Ensure the test directory exists
+        Files.createDirectories(Paths.get(TEST_PATH));
     }
 
+    @Test
+    public void testLearningMaterialCreation() {
+        LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
+        assertNotNull(lm);
+        assertEquals("Sample Learning Material", lm.getTitle());
+        assertEquals("This is a sample content.", lm.getContent());
+        assertTrue(lm.isAnswerable());
+    }
+
+    @Test
+    public void testLearningMaterialWithAssessmentItem() {
+        LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
+        AssessmentItem ai = new AssessmentItem(lm, "Sample Question?", 100);
+        lm.setAssessmentItem(ai);
+
+        assertNotNull(lm.getAssessmentItem());
+        assertEquals("Sample Question?", ai.getQuestion());
+        assertEquals(100, ai.getMaxScore());
+    }
+
+    @Test
+    public void testSaveAndLoadLearningMaterial() throws IOException {
+        LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
+        AssessmentItem ai = new AssessmentItem(lm, "Sample Question?", 100);
+        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", "student123", "Good job!", ai);
+        ai.addSubmission(ar);
+        lm.setAssessmentItem(ai);
+
+        // Save to file
+        String filename = lm.saveToFile(TEST_PATH);
+        assertNotNull(filename);
+
+        // Load from file
+        LearningMaterial loadedLm = Json.fromJsonFile(filename, LearningMaterial.class);
+        assertNotNull(loadedLm);
+        assertEquals(lm.getTitle(), loadedLm.getTitle());
+        assertEquals(lm.getContent(), loadedLm.getContent());
+        assertTrue(loadedLm.isAnswerable());
+
+        AssessmentItem loadedAi = loadedLm.getAssessmentItem();
+        assertNotNull(loadedAi);
+        assertEquals(ai.getQuestion(), loadedAi.getQuestion());
+        assertEquals(ai.getMaxScore(), loadedAi.getMaxScore());
+
+        AssessmentRecord loadedAr = loadedAi.getSubmissions().get(0);
+        assertNotNull(loadedAr);
+        assertEquals(ar.score(), loadedAr.score());
+        assertEquals(ar.answer(), loadedAr.answer());
+        assertEquals(ar.studentId(), loadedAr.studentId());
+        assertEquals(ar.feedback(), loadedAr.feedback());
+    }
+
+    @Test
+    public void testLoadFromSampleJson() throws IOException {
+        // Load from sample JSON file
+        LearningMaterial loadedLm = Json.fromJsonFile(TEST_PATH + "LM_123e4567-e89b-12d3-a456-426614174000.json", LearningMaterial.class);
+        assertNotNull(loadedLm);
+        assertEquals("Sample Learning Material", loadedLm.getTitle());
+        assertEquals("This is a sample content.", loadedLm.getContent());
+        assertTrue(loadedLm.isAnswerable());
+
+        AssessmentItem loadedAi = loadedLm.getAssessmentItem();
+        assertNotNull(loadedAi);
+        assertEquals("Sample Question?", loadedAi.getQuestion());
+        assertEquals(100, loadedAi.getMaxScore());
+
+        AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
+        assertNotNull(loadedAr);
+        assertEquals(90, loadedAr.score());
+        assertEquals("Sample Answer", loadedAr.answer());
+        assertEquals("student123", loadedAr.studentId());
+        assertEquals("Good job!", loadedAr.feedback());
+    }
 }
