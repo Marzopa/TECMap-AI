@@ -13,36 +13,31 @@ public class LearningMaterial {
     private final String title;
     private final String content;
     private final UUID uuid;
-    private final boolean answerable;
-    private final List<UUID> assessmentItems;
+    private final AssessmentItem assessmentItem;
 
     public LearningMaterial(String title, String content, boolean answerable) {
         this.title = title;
         this.content = content;
         this.uuid = UUID.randomUUID();
-        this.answerable = answerable;
-        this.assessmentItems = new LinkedList<>();
+        this.assessmentItem = null;
     }
 
     public LearningMaterial(String title) {
         this.title = title;
         this.content = "";
         this.uuid = UUID.randomUUID();
-        this.answerable = false;
-        this.assessmentItems = new LinkedList<>();
+        this.assessmentItem = null;
     }
 
     @JsonCreator
     public LearningMaterial(@JsonProperty("title") String title,
                             @JsonProperty("content") String content,
                             @JsonProperty("uuid") UUID uuid,
-                            @JsonProperty("answerable") boolean answerable,
-                            @JsonProperty("assessmentItems") List<UUID> assessmentItems) {
+                            @JsonProperty("assessmentItems") UUID assessmentItem) {
         this.title = title;
         this.content = content;
         this.uuid = uuid;
-        this.answerable = answerable;
-        this.assessmentItems = assessmentItems;
+        this.assessmentItem = null;
     }
 
     /**
