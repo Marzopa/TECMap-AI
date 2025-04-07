@@ -12,51 +12,41 @@ import java.util.UUID;
 public class AssessmentItem {
     private final LearningMaterial material;
     private final String question;
-    private final int max_score;
+    private final int maxScore;
     private final List<AssessmentRecord> submissions;
     private final UUID uuid;
 
-    public AssessmentItem(LearningMaterial material, String question, int max_score) {
+    public AssessmentItem(LearningMaterial material, String question, int maxScore) {
         this.material = material;
         this.question = question;
-        this.max_score = max_score;
+        this.maxScore = maxScore;
         this.submissions = new LinkedList<>();
         this.uuid = UUID.randomUUID();
     }
 
-    public AssessmentItem(LearningMaterial material, int max_score) {
-        if(material.isAnswerable()) throw new IllegalArgumentException("Answerable materials");
-        this.material = material;
-        this.question = "";
-        this.max_score = max_score;
-        this.submissions = new LinkedList<>();
-        this.uuid = UUID.randomUUID();
+    public AssessmentItem(LearningMaterial material, int maxScore) {
+        this(material, "", maxScore);
     }
 
     @JsonCreator
-    public AssessmentItem(@JsonProperty ("question") String question,
-                          @JsonProperty ("max_score") int max_score,
-                          @JsonProperty ("uuid") UUID uuid,
-                          @JsonProperty ("submissions") List<UUID> submissions,
-                          LearningMaterial learningMaterial,
-                          String path) throws IOException {
-
+    public AssessmentItem(@JsonProperty("question") String question,
+                          @JsonProperty("maxScore") int maxScore,
+                          @JsonProperty("uuid") UUID uuid,
+                          @JsonProperty("submissions") List<AssessmentRecord> submissions,
+                          @JsonProperty("material") LearningMaterial material) {
         this.question = question;
-        this.material = learningMaterial;
-        this.max_score = max_score;
-        this.submissions = new LinkedList<>();
-        for(UUID record : submissions) {
-            this.submissions.add(Json.fromJsonFile(path + "AssessmentRecord_" + record + ".json", AssessmentRecord.class));
-        }
+        this.maxScore = maxScore;
         this.uuid = uuid;
+        this.submissions = submissions != null ? submissions : new LinkedList<>();
+        this.material = material;
     }
 
     public UUID getUuid() {
         return uuid;
     }
 
-    public int getMax_score() {
-        return max_score;
+    public int getMaxScore() {
+        return maxScore;
     }
 
     public String getQuestion() {
@@ -67,8 +57,16 @@ public class AssessmentItem {
         return material;
     }
 
+    public List<AssessmentRecord> getSubmissions() {
+        return submissions;
+    }
+
+    public void addSubmission(AssessmentRecord record) {
+        submissions.add(record);
+    }
+
     public static AssessmentItem loadAssessmentItem(LearningMaterial material, String path, UUID id) throws IOException {
-        String filename = path + "AssessmentItem_" + id + ".json";
+        String filename = path + "AI_" + id + ".json";
         return Json.fromJsonFile(filename, AssessmentItem.class);
     }
 }

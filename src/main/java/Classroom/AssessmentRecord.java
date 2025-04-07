@@ -15,7 +15,7 @@ public record AssessmentRecord(UUID uuid, int score, String answer, String stude
                             @JsonProperty("answer") String answer,
                             @JsonProperty("studentId") String studentId,
                             @JsonProperty("feedback") String feedback,
-                            AssessmentItem assessmentItem) {
+                            @JsonProperty("assessmentItem") AssessmentItem assessmentItem) {
         this.uuid = uuid;
         this.score = score;
         this.answer = answer;
@@ -32,8 +32,8 @@ public record AssessmentRecord(UUID uuid, int score, String answer, String stude
         this(UUID.randomUUID(), score, answer, studentId, feedback, assessmentItem);
     }
 
-    public static AssessmentRecord loadAssessmentRecord(AssessmentItem material, String path, UUID id) throws IOException {
-        String filename = path + "AssessmentRecord_" + id + ".json";
-        return Json.fromJsonFile(filename, AssessmentItem.class);
+    public static AssessmentRecord loadAssessmentRecord(AssessmentItem item, String path, UUID id) throws IOException {
+        String filename = path + "AR_" + id + ".json";
+        return Json.fromJsonFile(filename, AssessmentRecord.class);
     }
 }
