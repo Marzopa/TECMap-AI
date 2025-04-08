@@ -77,8 +77,8 @@ public class OllamaClient {
     public static void main(String[] args) throws Exception {
         Response response = solutionRequest("Write a simple for loop that prints the numbers from 1 to 10.",
                 "for (int i=1; i<11; i++) { System.out.println(i); }", "java");
-        System.out.println("Response: " + response.getResponse());
-        System.out.println("Feedback: " + response.getFeedback());
-        System.out.println("Grade: " + response.getGrade());
+        System.out.println("Response: " + response.response());
+        System.out.println("Feedback: " + response.feedback());
+        System.out.println("Grade: " + response.grade());
     }
 }
