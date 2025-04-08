@@ -1,3 +1,6 @@
+import Classroom.AssessmentItem;
+import Classroom.LearningMaterial;
+
 import java.io.IOException;
 import java.net.http.*;
 import java.net.URI;
@@ -74,11 +77,23 @@ public class OllamaClient {
         return new Response(parsedResponse, feedback, grade);
     }
 
+    public static LearningMaterial createLearningMaterialFromResponse(String topic, int difficulty) throws IOException, InterruptedException {
+        Response response = problemRequest(topic, difficulty);
+
+        String problem = response.response();
+        String question = "Based on the topic: " + topic;
+
+        LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
+        AssessmentItem assessmentItem = new AssessmentItem(learningMaterial, question, 100);
+        learningMaterial.setAssessmentItem(assessmentItem);
+
+        return learningMaterial;
+    }
+
     public static void main(String[] args) throws Exception {
-        Response response = solutionRequest("Write a simple for loop that prints the numbers from 1 to 10.",
-                "for (int i=1; i<11; i++) { System.out.println(i); }", "java");
-        System.out.println("Response: " + response.response());
-        System.out.println("Feedback: " + response.feedback());
-        System.out.println("Grade: " + response.grade());
+        LearningMaterial lm = createLearningMaterialFromResponse("arrays", 3);
+        System.out.println("Learning Material Title: " + lm.getTitle());
+        System.out.println("Learning Material Content: " + lm.getContent());
+        System.out.println("Assessment Item Question: " + lm.getAssessmentItem().getQuestion());
     }
 }
