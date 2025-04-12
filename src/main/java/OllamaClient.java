@@ -84,7 +84,7 @@ public class OllamaClient {
         String question = "Based on the topic: " + topic;
 
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
-        AssessmentItem assessmentItem = new AssessmentItem(learningMaterial, question, 100);
+        AssessmentItem assessmentItem = new AssessmentItem(question, 100);
         learningMaterial.setAssessmentItem(assessmentItem);
 
         return learningMaterial;

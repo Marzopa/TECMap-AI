@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +33,7 @@ public class LearningMaterialTest {
     @Test
     public void testLearningMaterialWithAssessmentItem() {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem(lm, "Sample Question?", 100);
+        AssessmentItem ai = new AssessmentItem("Sample Question?", 100);
         lm.setAssessmentItem(ai);
 
         assertNotNull(lm.getAssessmentItem());
@@ -45,8 +44,8 @@ public class LearningMaterialTest {
     @Test
     public void testSaveAndLoadLearningMaterial() throws IOException {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem(lm, "Sample Question?", 100);
-        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", "student123", "Good job!", ai);
+        AssessmentItem ai = new AssessmentItem("Sample Question?", 100);
+        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", "student123", "Good job!");
         ai.addSubmission(ar);
         lm.setAssessmentItem(ai);
 
@@ -66,7 +65,7 @@ public class LearningMaterialTest {
         assertEquals(ai.getQuestion(), loadedAi.getQuestion());
         assertEquals(ai.getMaxScore(), loadedAi.getMaxScore());
 
-        AssessmentRecord loadedAr = loadedAi.getSubmissions().get(0);
+        AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
         assertEquals(ar.score(), loadedAr.score());
         assertEquals(ar.answer(), loadedAr.answer());

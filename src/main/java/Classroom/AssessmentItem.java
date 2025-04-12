@@ -10,35 +10,31 @@ import java.util.List;
 import java.util.UUID;
 
 public class AssessmentItem {
-    private final LearningMaterial material;
     private final String question;
     private final int maxScore;
     private final List<AssessmentRecord> submissions;
     private final UUID uuid;
 
-    public AssessmentItem(LearningMaterial material, String question, int maxScore) {
-        this.material = material;
+    public AssessmentItem(String question, int maxScore) {
         this.question = question;
         this.maxScore = maxScore;
         this.submissions = new LinkedList<>();
         this.uuid = UUID.randomUUID();
     }
 
-    public AssessmentItem(LearningMaterial material, int maxScore) {
-        this(material, "", maxScore);
+    public AssessmentItem(int maxScore) {
+        this("", maxScore);
     }
 
     @JsonCreator
     public AssessmentItem(@JsonProperty("question") String question,
                           @JsonProperty("maxScore") int maxScore,
                           @JsonProperty("uuid") UUID uuid,
-                          @JsonProperty("submissions") List<AssessmentRecord> submissions,
-                          @JsonProperty("material") LearningMaterial material) {
+                          @JsonProperty("submissions") List<AssessmentRecord> submissions) {
         this.question = question;
         this.maxScore = maxScore;
         this.uuid = uuid;
         this.submissions = submissions != null ? submissions : new LinkedList<>();
-        this.material = material;
     }
 
     public UUID getUuid() {
@@ -53,10 +49,6 @@ public class AssessmentItem {
         return question;
     }
 
-    public LearningMaterial getMaterial() {
-        return material;
-    }
-
     public List<AssessmentRecord> getSubmissions() {
         return submissions;
     }
@@ -65,7 +57,7 @@ public class AssessmentItem {
         submissions.add(record);
     }
 
-    public static AssessmentItem loadAssessmentItem(LearningMaterial material, String path, UUID id) throws IOException {
+    public static AssessmentItem loadAssessmentItem(String path, UUID id) throws IOException {
         String filename = path + "AI_" + id + ".json";
         return Json.fromJsonFile(filename, AssessmentItem.class);
     }
