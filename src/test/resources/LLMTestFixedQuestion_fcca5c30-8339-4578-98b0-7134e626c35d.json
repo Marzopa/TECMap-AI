@@ -1,0 +1,18 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Make a loop that prints numbers from 1 to 10",
+  "uuid" : "fcca5c30-8339-4578-98b0-7134e626c35d",
+  "answerable" : true,
+  "assessmentItem" : {
+    "question" : "Write a loop that prints numbers from 1 to 10",
+    "maxScore" : 100,
+    "uuid" : "9e1a8cd0-33a2-49ee-9bff-a1317101f71a",
+    "submissions" : [ {
+      "uuid" : "306c2661-9d51-40fc-962e-de26dd32510f",
+      "score" : 90,
+      "studentId" : "oscar123",
+      "feedback" : "The solution is partially correct. The loop condition should be incremented (i++) so the loop will print all numbers from 1 to 10, not just stop at 10.",
+      "answer" : "for(int i=1; i<=10) System.out.println(i);"
+    } ]
+  }
+}
