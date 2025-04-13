@@ -51,7 +51,8 @@ public class OllamaClient {
                 "example output: The solution returns the sum of odd numbers instead, the logic is somehow correct.;60" +
                 "Please provide a similar output for the input below, and do not include any additional text." +
                 "Be lenient with the grading. Don't worry about minor syntax errors OR indentation, but do consider the overall correctness of the solution." +
-                "If the solution is completely incorrect, please provide a grade of 0. If the solution is completely correct, please provide a grade of 100.";
+                "If the solution is completely incorrect, please provide a grade of 0. If the solution is completely correct, please provide a grade of 100." +
+                "Never provide suggested solutions or corrections, just the feedback and the grade.";
 
         String json = String.format("""
         {
@@ -73,7 +74,9 @@ public class OllamaClient {
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
         String[] parts = parsedResponse.split(";");
         String feedback = parts[0];
-        int grade = Integer.parseInt(parts[1]);
+        System.err.println(feedback);
+        System.err.println(parts[1]);
+        int grade = Integer.parseInt(parts[1].trim());
         return new Response(parsedResponse, feedback, grade);
     }
 
