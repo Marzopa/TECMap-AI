@@ -1,0 +1,18 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Find the key with the maximum value in a given dictionary.",
+  "uuid" : "37a095fd-ba36-4372-8304-1509eb50b7df",
+  "answerable" : true,
+  "assessmentItem" : {
+    "question" : "Based on the topic: Dictionaries",
+    "maxScore" : 100,
+    "uuid" : "84aa5782-dd6f-4cd9-8644-391ff964117e",
+    "submissions" : [ {
+      "uuid" : "539c2ace-869b-4a46-95a9-db3cc7379c66",
+      "score" : 0,
+      "studentId" : "studentId",
+      "feedback" : "The solution is completely incorrect and does not attempt to solve the problem",
+      "answer" : "screw everyone"
+    } ]
+  }
+}

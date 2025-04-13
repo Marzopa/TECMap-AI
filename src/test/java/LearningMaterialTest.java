@@ -68,7 +68,7 @@ public class LearningMaterialTest {
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
         assertEquals(ar.score(), loadedAr.score());
-        assertEquals(ar.answer(), loadedAr.answer());
+        assertEquals(ar.studentAnswer(), loadedAr.studentAnswer());
         assertEquals(ar.studentId(), loadedAr.studentId());
         assertEquals(ar.feedback(), loadedAr.feedback());
     }
@@ -90,14 +90,14 @@ public class LearningMaterialTest {
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
         assertEquals(90, loadedAr.score());
-        assertEquals("Sample Answer", loadedAr.answer());
+        assertEquals("Sample Answer", loadedAr.studentAnswer());
         assertEquals("student123", loadedAr.studentId());
         assertEquals("Good job!", loadedAr.feedback());
 
         AssessmentRecord loadedAr2 = loadedAi.getSubmissions().get(1);
         assertNotNull(loadedAr2);
         assertEquals(85, loadedAr2.score());
-        assertEquals("Another Sample Answer", loadedAr2.answer());
+        assertEquals("Another Sample Answer", loadedAr2.studentAnswer());
         assertEquals("student456", loadedAr2.studentId());
         assertEquals("Well done!", loadedAr2.feedback());
 

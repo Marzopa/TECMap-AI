@@ -80,7 +80,7 @@ public class OllamaClient {
     public static LearningMaterial createLearningMaterialFromResponse(String topic, int difficulty) throws IOException, InterruptedException {
         Response response = problemRequest(topic, difficulty);
 
-        String problem = response.response();
+        String problem = response.parsedLLMAnswer();
         String question = "Based on the topic: " + topic;
 
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);

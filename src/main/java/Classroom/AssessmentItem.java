@@ -75,7 +75,7 @@ public class AssessmentItem {
             AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
             submissions.add(record);
         } else {
-            throw new IllegalArgumentException("Student ID and answer cannot be null.");
+            throw new IllegalArgumentException("Student ID and studentAnswer cannot be null.");
         }
 
     }

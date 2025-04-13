@@ -1,2 +1,2 @@
-public record Response(String response, String feedback, int grade) {
+public record Response(String parsedLLMAnswer, String feedback, int grade) {
 }

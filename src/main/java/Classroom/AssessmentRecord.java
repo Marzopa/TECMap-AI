@@ -7,17 +7,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
 import java.util.UUID;
 
-public record AssessmentRecord(UUID uuid, int score, String answer, String studentId, String feedback) {
+public record AssessmentRecord(UUID uuid, int score, String studentAnswer, String studentId, String feedback) {
 
     @JsonCreator
     public AssessmentRecord(@JsonProperty("uuid") UUID uuid,
                             @JsonProperty("score") int score,
-                            @JsonProperty("answer") String answer,
+                            @JsonProperty("studentAnswer") String studentAnswer,
                             @JsonProperty("studentId") String studentId,
                             @JsonProperty("feedback") String feedback) {
         this.uuid = uuid;
         this.score = score;
-        this.answer = answer;
+        this.studentAnswer = studentAnswer;
         this.studentId = studentId;
         this.feedback = feedback;
     }
@@ -41,7 +41,7 @@ public record AssessmentRecord(UUID uuid, int score, String answer, String stude
         return score;
     }
     public String getAnswer() {
-        return answer;
+        return studentAnswer;
     }
     public String getStudentId() {
         return studentId;

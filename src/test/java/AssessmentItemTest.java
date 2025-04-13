@@ -26,7 +26,7 @@ public class AssessmentItemTest {
         lm.setAssessmentItem(ai);
         Assertions.assertNotNull(ai);
         ai.submitSolution(90, "Sample Answer", "oscar123", "Good job!");
-        ai.submitSolution(new AssessmentRecord(50, "Trash answer", "geeker456", "You're trash!"));
+        ai.submitSolution(new AssessmentRecord(50, "Trash studentAnswer", "geeker456", "You're trash!"));
         Json.toJsonFile("src/test/resources/LM_" + lm.getUuid() +".json", lm);
     }
 }
