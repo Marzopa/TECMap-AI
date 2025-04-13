@@ -61,4 +61,22 @@ public class AssessmentItem {
         String filename = path + "AI_" + id + ".json";
         return Json.fromJsonFile(filename, AssessmentItem.class);
     }
+
+    public void submitSolution(AssessmentRecord record) {
+        if (record != null) {
+            submissions.add(record);
+        } else {
+            throw new IllegalArgumentException("Cannot add null submission.");
+        }
+    }
+
+    public void submitSolution(int score, String answer, String studentId, String feedback) {
+        if (studentId != null && answer != null) {
+            AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
+            submissions.add(record);
+        } else {
+            throw new IllegalArgumentException("Student ID and answer cannot be null.");
+        }
+
+    }
 }
