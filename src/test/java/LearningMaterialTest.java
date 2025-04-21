@@ -33,18 +33,17 @@ public class LearningMaterialTest {
     @Test
     public void testLearningMaterialWithAssessmentItem() {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem("Sample Question?", 100);
+        AssessmentItem ai = new AssessmentItem(100);
         lm.setAssessmentItem(ai);
 
         assertNotNull(lm.getAssessmentItem());
-        assertEquals("Sample Question?", ai.getQuestion());
         assertEquals(100, ai.getMaxScore());
     }
 
     @Test
     public void testSaveAndLoadLearningMaterial() throws IOException {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem("Sample Question?", 100);
+        AssessmentItem ai = new AssessmentItem(100);
         AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", "student123", "Good job!");
         ai.addSubmission(ar);
         lm.setAssessmentItem(ai);
@@ -62,13 +61,12 @@ public class LearningMaterialTest {
 
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
-        assertEquals(ai.getQuestion(), loadedAi.getQuestion());
         assertEquals(ai.getMaxScore(), loadedAi.getMaxScore());
 
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
         assertEquals(ar.score(), loadedAr.score());
-        assertEquals(ar.studentAnswer(), loadedAr.studentAnswer());
+        assertEquals(ar.studentAnswer(), loadedAr.getAnswer());
         assertEquals(ar.studentId(), loadedAr.studentId());
         assertEquals(ar.feedback(), loadedAr.feedback());
     }
@@ -84,7 +82,6 @@ public class LearningMaterialTest {
 
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
-        assertEquals("Sample Question?", loadedAi.getQuestion());
         assertEquals(100, loadedAi.getMaxScore());
 
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();

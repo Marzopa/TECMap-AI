@@ -1,6 +1,7 @@
 package Classroom;
 
 import Utils.Json;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,7 +13,7 @@ public record AssessmentRecord(UUID uuid, int score, String studentAnswer, Strin
     @JsonCreator
     public AssessmentRecord(@JsonProperty("uuid") UUID uuid,
                             @JsonProperty("score") int score,
-                            @JsonProperty("studentAnswer") String studentAnswer,
+                            @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
                             @JsonProperty("studentId") String studentId,
                             @JsonProperty("feedback") String feedback) {
         this.uuid = uuid;

@@ -19,7 +19,7 @@ public class LLMTest {
     @Test
     public void testSubmitResponse() throws IOException, InterruptedException {
         LearningMaterial learningMaterial = new LearningMaterial("Dictionaries", "Make a loop that prints numbers from 1 to 10", true);
-        learningMaterial.setAssessmentItem(new AssessmentItem("Write a loop that prints numbers from 1 to 10", 100));
+        learningMaterial.setAssessmentItem(new AssessmentItem(100));
         Response response = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10) System.out.println(i);", "java");
         AssessmentRecord assessmentRecord = new AssessmentRecord(response.grade(), "for(int i=1; i<=10) System.out.println(i);", "tweaky256", response.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);

@@ -13,9 +13,8 @@ import static org.junit.Assert.assertEquals;
 public class AssessmentItemTest {
     @Test
     public void testAssessmentItemCreation() {
-        AssessmentItem ai = new AssessmentItem("Sample Question?", 100);
+        AssessmentItem ai = new AssessmentItem(100);
         Assertions.assertNotNull(ai);
-        assertEquals("Sample Question?", ai.getQuestion());
         Assertions.assertEquals(100, ai.getMaxScore());
     }
 
