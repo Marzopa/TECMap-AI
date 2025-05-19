@@ -20,8 +20,12 @@ public class ClassroomController {
     // A map that holds student credentials loaded from a JSON file.
     private static final Map<String, StudentCredential> credentials = loadCredentials();
 
+    public static Map<String, StudentCredential> getCredentials() {
+        return credentials;
+    }
+
     // A map that holds the currently assigned problem for each student.
-    private static final Map<String, LearningMaterial> currentAssignments = new ConcurrentHashMap<>();
+    public static final Map<String, LearningMaterial> currentAssignments = new ConcurrentHashMap<>();
 
     // Load credentials from the file at startup.
     private static Map<String, StudentCredential> loadCredentials() {
@@ -107,6 +111,6 @@ public class ClassroomController {
     public record SubmissionResponse(String feedback, int grade) {
     }
 
-    private record StudentCredential(String username, String password) {
+    public record StudentCredential(String username, String password) {
     }
 }
