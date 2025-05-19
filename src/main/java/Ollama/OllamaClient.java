@@ -1,3 +1,5 @@
+package Ollama;
+
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 

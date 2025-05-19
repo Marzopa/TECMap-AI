@@ -1,6 +1,8 @@
 import Classroom.AssessmentItem;
 import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;
+import Ollama.OllamaClient;
+import Ollama.Response;
 import Utils.Json;
 import org.junit.jupiter.api.Test;
 

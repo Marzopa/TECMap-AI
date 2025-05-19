@@ -1,3 +1,5 @@
+package Ollama;
+
 public class OllamaResponseParser {
     public static String parseResponse(String input) {
         StringBuilder finalResponse = new StringBuilder();
