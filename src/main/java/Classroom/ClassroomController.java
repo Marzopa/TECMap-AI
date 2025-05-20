@@ -3,6 +3,8 @@ package Classroom;
 import Ollama.OllamaClient;
 import Ollama.Response;
 import Utils.Json;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
@@ -28,29 +30,34 @@ public class ClassroomController {
     public static final Map<String, LearningMaterial> currentAssignments = new ConcurrentHashMap<>();
 
     // Load credentials from the file at startup.
+//    private static Map<String, StudentCredential> loadCredentials() {
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            JsonNode root = mapper.readTree(new File("src/test/resources/ControllerCredentials.json"));
+//            JsonNode studentNodes = root.get("students");
+//            Map<String, StudentCredential> credentialMap = new ConcurrentHashMap<>();
+//            studentNodes.fields().forEachRemaining(entry -> {
+//                JsonNode node = entry.getValue();
+//                credentialMap.put(entry.getKey(), new StudentCredential(
+//                        node.get("username").asText(),
+//                        node.get("password").asText()));
+//            });
+//            return credentialMap;
+//        } catch (IOException e) {
+//            System.err.println("Error loading credentials from file: " + e.getMessage());
+//            return Collections.emptyMap();
+//        }
+//    }
+
     private static Map<String, StudentCredential> loadCredentials() {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            JsonNode root = mapper.readTree(new File("src/test/resources/ControllerCredentials.json"));
-            JsonNode studentNodes = root.get("students");
-            Map<String, StudentCredential> credentialMap = new ConcurrentHashMap<>();
-            studentNodes.fields().forEachRemaining(entry -> {
-                JsonNode node = entry.getValue();
-                credentialMap.put(entry.getKey(), new StudentCredential(
-                        node.get("username").asText(),
-                        node.get("password").asText()));
-            });
-            return credentialMap;
+            return Json.fromJsonFile("src/test/resources/ControllerCredentials.json",
+                    new com.fasterxml.jackson.core.type.TypeReference<Map<String, StudentCredential>>() {});
         } catch (IOException e) {
             System.err.println("Error loading credentials from file: " + e.getMessage());
             return Collections.emptyMap();
         }
     }
-
-//    private static Map<String, StudentCredential> loadCredentials() throws IOException {
-//        Map Objects = Json.fromJsonFile("src/test/resources/ControllerCredentials.json", Map.class);
-//        return Map.of();
-//    }
 
     // Authenticate the student using the provided id and password.
     private boolean authenticate(String studentId, String password) {
@@ -105,12 +112,13 @@ public class ClassroomController {
     }
 
     // Data transfer object for returning a problem.
-        public record ProblemResponse(String title, String problem) {
+    public record ProblemResponse(String title, String problem) {
     }
 
     public record SubmissionResponse(String feedback, int grade) {
     }
 
-    public record StudentCredential(String username, String password) {
+    public record StudentCredential(@JsonProperty("username") String username, @JsonProperty("password") String password) {
+
     }
 }

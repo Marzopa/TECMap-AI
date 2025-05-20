@@ -22,6 +22,11 @@ class ClassroomControllerTest {
     }
 
     @Test
+    void printCredentialsTest(){
+        System.out.println(ClassroomController.getCredentials());
+    }
+
+    @Test
     void testGetProblem_ValidCredentials() throws IOException, InterruptedException {
         // Mock the static method in OllamaClient
         try (MockedStatic<OllamaClient> ollamaMock = Mockito.mockStatic(OllamaClient.class)) {

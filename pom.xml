@@ -10,7 +10,7 @@
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jackson-2-version>2.9.4</jackson-2-version>
+        <jackson-2-version>2.15.4</jackson-2-version>
     </properties>
 
     <dependencies>

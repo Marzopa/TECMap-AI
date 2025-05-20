@@ -27,4 +27,10 @@ public class Json {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return  mapper.readValue(new File(filename), classToBeCreated);
     }
+
+    public static <T> T fromJsonFile(String filename, com.fasterxml.jackson.core.type.TypeReference<T> typeReference) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return mapper.readValue(new File(filename), typeReference);
+    }
 }
