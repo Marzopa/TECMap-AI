@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Classroom Portal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+<main>
 <h1>Get a Problem</h1>
 <label for="studentId"></label><input id="studentId" placeholder="Student ID" />
 <label for="password"></label><input id="password" placeholder="Password" type="password" />
@@ -16,6 +19,7 @@
 <textarea id="solution" placeholder="Your answer here..."></textarea>
 <button onclick="submitSolution()">Submit</button>
 <pre id="feedbackBox"></pre>
+</main>
 
 <script src="app.js"></script>
 </body>

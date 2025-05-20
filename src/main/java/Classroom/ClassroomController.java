@@ -68,7 +68,11 @@ public class ClassroomController {
     @GetMapping("/problem")
     public ProblemResponse getProblem(@RequestParam String studentId, @RequestParam String password)
             throws IOException, InterruptedException {
+        System.out.println("Getting problem");
         if (!authenticate(studentId, password)) {
+            System.err.println("Invalid credentials for student ID: " + studentId);
+            System.err.println("Invalid credentials for password: " + password);
+            System.out.println(credentials);
             throw new IllegalArgumentException("Student credentials are not valid.");
         }
 
