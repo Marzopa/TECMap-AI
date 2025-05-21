@@ -10,19 +10,19 @@ import java.io.IOException;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record AssessmentRecord(String uuid, int score, String studentAnswer, String studentId, String feedback) {
+public record AssessmentRecord(String uuid, int score,
+                               @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
+                               String studentId, String feedback) {
 
     @JsonCreator
-    public AssessmentRecord(@JsonProperty("uuid") String uuid,
-                            @JsonProperty("score") int score,
-                            @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
-                            @JsonProperty("studentId") String studentId,
-                            @JsonProperty("feedback") String feedback) {
-        this.uuid = uuid;
-        this.score = score;
-        this.studentAnswer = studentAnswer;
-        this.studentId = studentId;
-        this.feedback = feedback;
+    public AssessmentRecord(
+            @JsonProperty("uuid") String uuid,
+            @JsonProperty("score") int score,
+            @JsonProperty(value = "studentAnswer", required = false) String studentAnswer,
+            @JsonProperty(value = "answer", required = false) String answer,
+            @JsonProperty("studentId") String studentId,
+            @JsonProperty("feedback") String feedback) {
+        this(uuid, score, studentAnswer != null ? studentAnswer : answer, studentId, feedback);
     }
 
     public AssessmentRecord(int score,
@@ -40,17 +40,20 @@ public record AssessmentRecord(String uuid, int score, String studentAnswer, Str
     public String getUuid() {
         return uuid;
     }
+
     public int getScore() {
         return score;
     }
+
     public String getAnswer() {
         return studentAnswer;
     }
+
     public String getStudentId() {
         return studentId;
     }
+
     public String getFeedback() {
         return feedback;
     }
-
 }

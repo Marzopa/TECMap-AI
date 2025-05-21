@@ -12,7 +12,7 @@ public class Json {
 
     public static String toJsonString(Object objectToSerialize) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        //mapper.enable(SerializationFeature.INDENT_OUTPUT);
         return mapper.writeValueAsString( objectToSerialize);
     }
 

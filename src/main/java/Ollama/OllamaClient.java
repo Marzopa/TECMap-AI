@@ -36,8 +36,12 @@ public class OllamaClient {
     }
 
     public static GradingResponse solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
-
-        String content = "problem: " + problem + " solution: " + solution + " language: " + language;
+        // Escape quotes in the solution string
+        String escapedSolution = solution.replace("\"", "\\\"");
+        String content = String.format("problem: %s solution: %s language: %s",
+                problem.replace("\"", "\\\""),
+                escapedSolution,
+                language);
 
         String json = """
         {
@@ -60,16 +64,19 @@ public class OllamaClient {
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
-        System.out.println("Grader service response status: " + response.statusCode());
-        System.out.println("Grader service response body: " + response.body());
+        if (response.statusCode() != 200) {
+            throw new IOException("Grader service error: " + response.body());
+        }
 
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
-        String[] parts = parsedResponse.split(";");
-        String feedback = parts[0];
-        System.err.println(feedback);
-        System.err.println(parts[1]);
-        int grade = Integer.parseInt(parts[1].trim());
-        return new GradingResponse(feedback, grade);
+        if (parsedResponse.contains(";")) {
+            String[] parts = parsedResponse.split(";");
+            String feedback = parts[0];
+            int grade = Integer.parseInt(parts[1].trim());
+            return new GradingResponse(feedback, grade);
+        } else {
+            throw new IOException("Invalid response format from grader service");
+        }
     }
 
     public static LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
