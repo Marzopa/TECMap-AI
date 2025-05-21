@@ -74,9 +74,9 @@ public class OllamaClient {
         // Add response validation and cleaning
         try {
             // Split response and trim any whitespace
-            String[] parts = parsedResponse.trim().split(";");
+            String[] parts = parsedResponse.trim().split("~~~");
             if (parts.length != 2) {
-                throw new IOException("Invalid response format: expected 'feedback;grade'");
+                throw new IOException("Invalid response format: expected 'feedback ~~~ grade'");
             }
 
             String feedback = parts[0].trim();
