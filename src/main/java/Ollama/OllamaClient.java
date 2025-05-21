@@ -69,6 +69,7 @@ public class OllamaClient {
         }
 
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
+        parsedResponse = parsedResponse.split("\n")[0]; // Keep only the first line
         System.out.println("Parsed response: " + parsedResponse);
 
         // Add response validation and cleaning
@@ -91,6 +92,7 @@ public class OllamaClient {
             throw new IOException("Error processing grader response: " + e.getMessage());
         }
     }
+
 
     public static LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty);
