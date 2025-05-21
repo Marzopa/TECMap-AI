@@ -1,3 +1,6 @@
+import org.junit.jupiter.api.Test;
+
+import Ollama.*;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -5,15 +8,11 @@ import java.net.http.HttpResponse;
 
 public class AIControllerTest {
 
-    public static void main(String[] args) throws Exception {
-        testGetProblem();
-        testSubmitSolution();
-    }
-
     // This method performs a GET request to /ai/problem and prints its status and body.
-    public static void testGetProblem() throws Exception {
+    @Test
+    public void testGetProblem() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
+        String url = "http://localhost:8080/ai/problem?topic=hashmaps&difficulty=5";
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -26,7 +25,8 @@ public class AIControllerTest {
     }
 
     // This method performs a POST request to /ai/submit and prints its status and body.
-    public static void testSubmitSolution() throws Exception {
+    @Test
+    public void testSubmitSolution() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         String url = "http://localhost:8080/ai/submit";
 

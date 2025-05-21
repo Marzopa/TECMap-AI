@@ -10,20 +10,15 @@ import java.net.http.HttpResponse.BodyHandlers;
 
 public class OllamaClient {
     private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
-        String systemPrompt = "For the following topic and difficulty (on a scale of 1 to 5), " +
-                "generate an original coding problem, language agnostic." +
-                "For example: example input: 'arrays 3'" +
-                "example output: 'Write a function that takes an array of integers and returns the sum of all even numbers.'" +
-                "Please provide a similar output for the input below, and do not include any additional text.";
 
         String json = String.format("""
         {
-        "model": "llama3.1:8b",
+        "model": "cs-problemGenerator",
             "messages": [
-                { "role": "user", "content": "%s %s %d"}
+                { "role": "user", "content": "%s %d"}
             ]
         }
-        """, systemPrompt, topic, difficulty);
+        """, topic, difficulty);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
