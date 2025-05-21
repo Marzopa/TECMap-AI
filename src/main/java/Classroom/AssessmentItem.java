@@ -2,6 +2,7 @@ package Classroom;
 
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.IOException;
@@ -9,27 +10,28 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AssessmentItem {
     private final int maxScore;
     private final List<AssessmentRecord> submissions;
-    private final UUID uuid;
+    private final String uuid;
 
     public AssessmentItem(int maxScore) {
         this.maxScore = maxScore;
         this.submissions = new LinkedList<>();
-        this.uuid = UUID.randomUUID();
+        this.uuid = UUID.randomUUID().toString();
     }
 
     @JsonCreator
     public AssessmentItem(@JsonProperty("maxScore") int maxScore,
-                          @JsonProperty("uuid") UUID uuid,
+                          @JsonProperty("uuid") String uuid,
                           @JsonProperty("submissions") List<AssessmentRecord> submissions) {
         this.maxScore = maxScore;
         this.uuid = uuid;
         this.submissions = submissions != null ? submissions : new LinkedList<>();
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 

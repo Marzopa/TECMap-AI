@@ -3,15 +3,17 @@ package Classroom;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.IOException;
 import java.util.UUID;
 
-public record AssessmentRecord(UUID uuid, int score, String studentAnswer, String studentId, String feedback) {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record AssessmentRecord(String uuid, int score, String studentAnswer, String studentId, String feedback) {
 
     @JsonCreator
-    public AssessmentRecord(@JsonProperty("uuid") UUID uuid,
+    public AssessmentRecord(@JsonProperty("uuid") String uuid,
                             @JsonProperty("score") int score,
                             @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
                             @JsonProperty("studentId") String studentId,
@@ -27,7 +29,7 @@ public record AssessmentRecord(UUID uuid, int score, String studentAnswer, Strin
                             String answer,
                             String studentId,
                             String feedback) {
-        this(UUID.randomUUID(), score, answer, studentId, feedback);
+        this(UUID.randomUUID().toString(), score, answer, studentId, feedback);
     }
 
     public static AssessmentRecord loadAssessmentRecord(String path, UUID id) throws IOException {
@@ -35,7 +37,7 @@ public record AssessmentRecord(UUID uuid, int score, String studentAnswer, Strin
         return Json.fromJsonFile(filename, AssessmentRecord.class);
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
     public int getScore() {

@@ -1,23 +1,25 @@
 package Classroom;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import Utils.Json;
 
 import java.io.IOException;
 import java.util.UUID;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LearningMaterial {
     private final String title;
     private final String content;
-    private final UUID uuid;
+    private final String uuid;
     private final boolean answerable;
     private AssessmentItem assessmentItem;
 
     public LearningMaterial(String title, String content, boolean answerable) {
         this.title = title;
         this.content = content;
-        this.uuid = UUID.randomUUID();
+        this.uuid = UUID.randomUUID().toString();
         this.answerable = answerable;
         this.assessmentItem = null;
     }
@@ -29,7 +31,7 @@ public class LearningMaterial {
     @JsonCreator
     public LearningMaterial(@JsonProperty("title") String title,
                             @JsonProperty("content") String content,
-                            @JsonProperty("uuid") UUID uuid,
+                            @JsonProperty("uuid") String uuid,
                             @JsonProperty("answerable") boolean answerable,
                             @JsonProperty("assessmentItem") AssessmentItem assessmentItem) {
         this.title = title;
@@ -53,7 +55,7 @@ public class LearningMaterial {
         }
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 

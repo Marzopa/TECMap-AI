@@ -3,8 +3,10 @@ package API;
 
 import Classroom.LearningMaterial;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SubmissionRequest {
     private final LearningMaterial learningMaterial;
     private final String solution;
