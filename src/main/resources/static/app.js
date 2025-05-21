@@ -2,7 +2,7 @@ async function getProblem() {
     const studentId = document.getElementById("studentId").value;
     const password = document.getElementById("password").value;
 
-    const res = await fetch(`/classroom/problem?studentId=${studentId}&password=${password}`);
+    const res = await fetch(`/ai/problem?studentId=${studentId}&password=${password}`);
     if (!res.ok) return alert("Invalid credentials or error.");
 
     const data = await res.json();
@@ -16,7 +16,7 @@ async function submitSolution() {
 
     const form = new URLSearchParams({ studentId, password, solution });
 
-    const res = await fetch(`/classroom/submit`, {
+    const res = await fetch(`/ai/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: form
