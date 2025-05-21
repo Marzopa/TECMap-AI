@@ -59,7 +59,7 @@ public class AIControllerTest {
         jsonPayload = String.format("""
         {
             "learningMaterial": %s,
-            "solution": "for(int i=1; i<=10; i++) System.out.println(i);",
+            "solution": "for(int i=1; i<=10; i++){System.out.println(i);}",
             "language": "java",
             "studentId": "12345"
         }
