@@ -69,13 +69,26 @@ public class OllamaClient {
         }
 
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
-        if (parsedResponse.contains(";")) {
-            String[] parts = parsedResponse.split(";");
-            String feedback = parts[0];
-            int grade = Integer.parseInt(parts[1].trim());
+        System.out.println("Parsed response: " + parsedResponse);
+
+        // Add response validation and cleaning
+        try {
+            // Split response and trim any whitespace
+            String[] parts = parsedResponse.trim().split(";");
+            if (parts.length != 2) {
+                throw new IOException("Invalid response format: expected 'feedback;grade'");
+            }
+
+            String feedback = parts[0].trim();
+            // Clean the grade string and parse
+            String gradeStr = parts[1].trim().replaceAll("[^0-9-]", "");
+            int grade = Integer.parseInt(gradeStr);
+
             return new GradingResponse(feedback, grade);
-        } else {
-            throw new IOException("Invalid response format from grader service");
+        } catch (NumberFormatException e) {
+            throw new IOException("Invalid grade format in response: " + parsedResponse);
+        } catch (Exception e) {
+            throw new IOException("Error processing grader response: " + e.getMessage());
         }
     }
 

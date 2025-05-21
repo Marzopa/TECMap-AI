@@ -51,7 +51,27 @@ public class AIControllerTest {
                 .build();
 
         HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
         System.out.println("POST Response status: " + postResponse.statusCode());
-        System.out.println("POST Response body: " + postResponse.body());
+        System.err.println("POST Response body 1: " + postResponse.body());
+
+
+        jsonPayload = String.format("""
+        {
+            "learningMaterial": %s,
+            "solution": "for(int i=1; i<=10; i++) System.out.println(i);",
+            "language": "java",
+            "studentId": "12345"
+        }
+        """, learningMaterialJson);
+
+        postRequest = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .build();
+
+        postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        System.err.println("POST Response body 2: " + postResponse.body());
     }
 }
