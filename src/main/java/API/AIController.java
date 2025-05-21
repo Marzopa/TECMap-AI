@@ -1,5 +1,6 @@
 package API;
 
+import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,7 @@ public class AIController {
     }
 
     /**
-     * The method does NOT update submissions in LearningMaterial
-     * Eventually should be made private, other method in this same class should call database
+     * The method DOES update submissions in LearningMaterial from studentId in SubmissionRequest
      * @param submission The submission request containing the LearningMaterial, solution, and language.
      * @return a GradingResponse object containing the feedback and score.
      * */
@@ -30,9 +30,18 @@ public class AIController {
     public GradingResponse submitSolution(@RequestBody SubmissionRequest submission)
             throws IOException, InterruptedException {
 
-        return OllamaClient.solutionRequest(submission.getProblem(),
+        GradingResponse gradingResponse =  OllamaClient.solutionRequest(submission.getProblem(),
                 submission.getSolution(),
                 submission.getLanguage());
+
+        // Update the LearningMaterial's assessment item with the new submission
+        AssessmentItem problem = submission.getLearningMaterial().getAssessmentItem();
+        problem.submitSolution(gradingResponse.grade(),
+                submission.getSolution(),
+                submission.getStudentId(),
+                gradingResponse.feedback());
+
+        return gradingResponse;
     }
 
 }
