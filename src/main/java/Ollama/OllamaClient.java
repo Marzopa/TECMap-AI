@@ -37,14 +37,19 @@ public class OllamaClient {
 
     public static GradingResponse solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
 
-        String json = String.format("""
+        String content = "problem: " + problem + " solution: " + solution + " language: " + language;
+
+        String json = """
         {
-        "model": "cs-grader",
-            "messages": [
-                { "role": "user", "content": problem: %s solution: %s language: %s"}
-            ]
+          "model": "cs-grader",
+          "messages": [
+            { "role": "user", "content": "%s" }
+          ]
         }
-        """, problem, solution, language);
+        """.formatted(content);
+
+        System.out.println("Sending grader request with payload:");
+        System.out.println(json);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -54,6 +59,10 @@ public class OllamaClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+        System.out.println("Grader service response status: " + response.statusCode());
+        System.out.println("Grader service response body: " + response.body());
+
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
         String[] parts = parsedResponse.split(";");
         String feedback = parts[0];
