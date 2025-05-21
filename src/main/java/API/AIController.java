@@ -22,7 +22,8 @@ public class AIController {
     }
 
     /**
-     * The method DOES update submissions in LearningMaterial from studentId in SubmissionRequest
+     * The method SHOULD update submissions in LearningMaterial from studentId in SubmissionRequest
+     * TODO: once database is set up, this should receive the uuid of the LearningMaterial to update it in there
      * @param submission The submission request containing the LearningMaterial, solution, and language.
      * @return a GradingResponse object containing the feedback and score.
      * */

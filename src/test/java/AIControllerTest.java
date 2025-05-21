@@ -32,8 +32,11 @@ public class AIControllerTest {
         HttpClient client = HttpClient.newHttpClient();
         String url = "http://localhost:8080/ai/submit";
 
-        String learningMaterialJson = Json.toJsonString(Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class));
+        LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
+        String learningMaterialJson = Json.toJsonString(learningMaterialObject);
         System.out.println("Learning Material: " + learningMaterialJson);
+
+        System.err.println("Number of submissions before: " + learningMaterialObject.getAssessmentItem().getSubmissions().size());
 
         String jsonPayload = String.format("""
         {
@@ -55,6 +58,7 @@ public class AIControllerTest {
         System.out.println("POST Response status: " + postResponse.statusCode());
         System.err.println("POST Response body 1: " + postResponse.body());
 
+        System.err.println("Number of submissions after: " + learningMaterialObject.getAssessmentItem().getSubmissions().size());
 
         jsonPayload = String.format("""
         {
@@ -73,5 +77,6 @@ public class AIControllerTest {
 
         postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
         System.err.println("POST Response body 2: " + postResponse.body());
+        System.err.println("Number of submissions after after: " + learningMaterialObject.getAssessmentItem().getSubmissions().size());
     }
 }
