@@ -34,4 +34,4 @@ Evaluate the input below using this **exact format**. Only reply with one line, 
 
 PARAMETER temperature 0.2
 PARAMETER top_p 0.95
-PARAMETER num_predict 200
+PARAMETER num_predict 300

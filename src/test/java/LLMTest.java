@@ -66,9 +66,28 @@ public class LLMTest {
         String code = "for(int i=1; i<=10; i++) System.out.println(i);";
         for(int i = 0; i<10; i++) {
             GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
-            System.err.println(gradingResponse.grade());
-            System.out.println(gradingResponse.detectedLanguage());
-            System.out.println(gradingResponse.feedback());
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+        System.err.println("##################################################");
+        code = "for(i in range(10)): print(i)";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+        System.err.println("##################################################");
+        code = "i dont know bro";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
         }
     }
 }
