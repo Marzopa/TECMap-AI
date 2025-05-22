@@ -59,4 +59,16 @@ public class LLMTest {
             System.out.println("Generated Learning Material " + i + ":a\t" +  learningMaterial.getContent());
         }
     }
+
+    @Test
+    public void testGradingResponse() throws IOException, InterruptedException {
+        String problem = "Make a loop that prints numbers from 1 to 10";
+        String code = "for(int i=1; i<=10; i++) System.out.println(i);";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println(gradingResponse.grade());
+            System.out.println(gradingResponse.detectedLanguage());
+            System.out.println(gradingResponse.feedback());
+        }
+    }
 }
