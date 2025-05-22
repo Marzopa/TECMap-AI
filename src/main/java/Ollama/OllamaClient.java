@@ -32,6 +32,11 @@ public class OllamaClient {
     }
 
     public static String checkSyntax(String solution) throws IOException, InterruptedException {
+        System.err.println("Checking syntax...");
+
+        solution = solution.replace("\\", "\\\\")
+                .replace("\"", "\\\"");
+
         String json = String.format("""
         {
         "model": "cs-syntaxChecker",
@@ -49,23 +54,22 @@ public class OllamaClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        return OllamaResponseParser.parseResponse(response.body());
+        String parsedResponse = OllamaResponseParser.parseResponse(response.body());
+        System.out.println("Unparsed response for syntax: " + response.body());
+        return parsedResponse;
     }
 
     public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
-        return solutionRequest(problem, solution, "python");
-    }
-
-    public static GradingResponse solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
         // Escape quotes in the solution string
-        String syntaxCheck = checkSyntax(solution);
-        if (syntaxCheck.equals("not code")) return new GradingResponse("Not code", 0);
+        String detectedLanguage = checkSyntax(solution).toLowerCase().trim();
+        if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", 0, null);
+
 
         String escapedSolution = solution.replace("\"", "\\\"");
         String content = String.format("problem: %s solution: %s language: %s",
                 problem.replace("\"", "\\\""),
                 escapedSolution,
-                language);
+                detectedLanguage.replace("\"", "\\\""));
 
         String json = """
         {
@@ -106,10 +110,10 @@ public class OllamaClient {
 
             String feedback = parts[0].trim();
             // Clean the grade string and parse
-            String gradeStr = parts[1].trim().replaceAll("[^0-9-]", "");
+            String gradeStr = parts[1].trim().replaceAll("[^0-9]", "");
             int grade = Integer.parseInt(gradeStr);
 
-            return new GradingResponse(feedback, grade);
+            return new GradingResponse(feedback, grade, detectedLanguage);
         } catch (NumberFormatException e) {
             throw new IOException("Invalid grade format in response: " + parsedResponse);
         } catch (Exception e) {

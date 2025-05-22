@@ -32,8 +32,7 @@ public class AIController {
             throws IOException, InterruptedException {
 
         GradingResponse gradingResponse =  OllamaClient.solutionRequest(submission.getProblem(),
-                submission.getSolution(),
-                submission.getLanguage());
+                submission.getSolution());
 
         // Update the LearningMaterial's assessment item with the new submission
         AssessmentItem problem = submission.getLearningMaterial().getAssessmentItem();
