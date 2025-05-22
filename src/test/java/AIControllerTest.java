@@ -1,8 +1,11 @@
 import Classroom.LearningMaterial;
 import Utils.Json;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import Ollama.*;
+
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -76,5 +79,23 @@ public class AIControllerTest {
         postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
         System.err.println("POST Response body 2: " + postResponse.body());
         System.err.println("Number of submissions after after: " + learningMaterialObject.getAssessmentItem().getSubmissions().size());
+    }
+
+    @Test
+    public void testSolveProblem() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "http://localhost:8080/ai/solve";
+
+        LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
+        String learningMaterialJson = Json.toJsonString(learningMaterialObject);
+
+        HttpRequest postRequest = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(learningMaterialJson))
+                .build();
+
+        HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        System.err.println("POST Response body: " + postResponse.body());
     }
 }

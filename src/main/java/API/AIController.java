@@ -15,9 +15,7 @@ public class AIController {
     @GetMapping("/problem")
     public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
             throws IOException, InterruptedException {
-
         System.out.println("Getting problem");
-
         return OllamaClient.generateLearningMaterialProblem(topic, difficulty);
     }
 
@@ -45,9 +43,9 @@ public class AIController {
     }
 
     @PostMapping("/solve")
-    public String solveProblem(@RequestBody AssessmentItem assessmentItem)
+    public String solveProblem(@RequestBody LearningMaterial learningMaterial)
             throws IOException, InterruptedException {
-        return null;
+        return OllamaClient.problemSolverHelper(learningMaterial);
     }
 
 }

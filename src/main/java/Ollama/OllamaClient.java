@@ -38,7 +38,7 @@ public class OllamaClient {
         """, model, content);
     }
 
-    public static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
+    private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
         String json = OllamaJsonBuilder("cs-problemGenerator", topic + " " + difficulty);
         System.out.println("Sending problem request with payload:" + json);
         return OllamaRequest(json);
@@ -96,6 +96,16 @@ public class OllamaClient {
         AssessmentItem assessmentItem = new AssessmentItem(100);
         learningMaterial.setAssessmentItem(assessmentItem);
         return learningMaterial;
+    }
+
+    /**
+     * This method is used to solve a problem using the problemSolver model.
+     * It takes a LearningMaterial object as input and returns the solution as a string.
+     * TODO: this method should be hooked up to database to retrieve student concepts
+     */
+    public static String problemSolverHelper(LearningMaterial learningMaterial) throws IOException, InterruptedException {
+        String content = "problem: " + learningMaterial.getContent();
+        return OllamaRequest(OllamaJsonBuilder("cs-problemSolver", content));
     }
 
     public static void main(String[] args) throws Exception {
