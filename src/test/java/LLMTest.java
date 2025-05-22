@@ -49,4 +49,14 @@ public class LLMTest {
         System.err.println(result3);
         assertEquals("python", result3.toLowerCase());
     }
+
+    @Test
+    public void generateProblems() throws IOException, InterruptedException {
+        String topic = "Dictionaries";
+        for(int i = 0; i<5; i++) {
+            int difficulty = 3;
+            LearningMaterial learningMaterial = OllamaClient.generateLearningMaterialProblem(topic, difficulty);
+            System.out.println("Generated Learning Material " + i + ":a\t" +  learningMaterial.getContent());
+        }
+    }
 }

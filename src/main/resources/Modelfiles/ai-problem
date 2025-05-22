@@ -14,3 +14,5 @@ example output:
 
 Please provide a similar output for the input below, and do not include any additional text.
 """
+
+PARAMETER temperature 1.3

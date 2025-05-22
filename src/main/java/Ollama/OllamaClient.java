@@ -40,7 +40,6 @@ public class OllamaClient {
 
     public static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
         String json = OllamaJsonBuilder("cs-problemGenerator", topic + " " + difficulty);
-        System.out.println("Sending problem request with payload:" + json);
         return OllamaRequest(json);
     }
 
