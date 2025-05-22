@@ -40,20 +40,19 @@ public class OllamaClient {
 
     private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
         String json = OllamaJsonBuilder("cs-problemGenerator", topic + " " + difficulty);
-        System.out.println("Sending problem request with payload:" + json);
         return OllamaRequest(json);
     }
 
     public static String checkSyntax(String solution) throws IOException, InterruptedException {
-        System.err.println("Checking syntax...");
+        //System.err.println("Checking syntax...");
 
         solution = solution.replace("\\", "\\\\")
                 .replace("\"", "\\\"");
 
-        System.out.println("Solution sent: " + solution);
+        //System.out.println("Solution sent: " + solution);
         String json = OllamaJsonBuilder("cs-syntaxChecker", solution);
         String parsedResponse = OllamaRequest(json);
-        System.out.println("Parsed response for syntax: " + parsedResponse);
+        //System.out.println("Parsed response for syntax: " + parsedResponse);
         return parsedResponse;
     }
 
@@ -64,16 +63,16 @@ public class OllamaClient {
 
         String escapedSolution = solution.replace("\"", "\\\"");
 
-        String json = OllamaJsonBuilder("cs-grader",
+        String json = OllamaJsonBuilder("cs-problemGrader",
                 String.format("problem: %s solution: %s language: %s",
                 problem.replace("\"", "\\\""),
                 escapedSolution, detectedLanguage));
 
-        System.out.println("Sending grader request with payload:");
-        System.out.println(json);
+        //System.out.println("Sending grader request with payload:");
+        //System.out.println(json);
 
         String parsedResponse = OllamaRequest(json).split("\n")[0]; // Keep only the first line
-        System.out.println("Parsed response: " + parsedResponse);
+        //System.out.println("Parsed response: " + parsedResponse);
 
         try {
             String[] parts = parsedResponse.trim().split("~~~");

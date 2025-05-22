@@ -31,3 +31,7 @@ Returns sum of odd numbers, logic is almost correct. ~~~ 60
 
 Evaluate the input below using this **exact format**. Only reply with one line, like the examples above. Do not include any explanation.
 """
+
+PARAMETER temperature 0.2
+PARAMETER top_p 0.95
+PARAMETER num_predict 300

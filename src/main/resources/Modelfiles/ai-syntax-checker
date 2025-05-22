@@ -18,5 +18,8 @@ Output: java
 Now classify:
 Input: <user submission here>
 Output:
-
 """
+
+PARAMETER temperature 0.0
+PARAMETER top_p 1.0
+PARAMETER num_predict 20

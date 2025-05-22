@@ -49,4 +49,45 @@ public class LLMTest {
         System.err.println(result3);
         assertEquals("python", result3.toLowerCase());
     }
+
+    @Test
+    public void generateProblems() throws IOException, InterruptedException {
+        String topic = "Dictionaries";
+        for(int i = 0; i<5; i++) {
+            int difficulty = 3;
+            LearningMaterial learningMaterial = OllamaClient.generateLearningMaterialProblem(topic, difficulty);
+            System.out.println("Generated Learning Material " + i + ":a\t" +  learningMaterial.getContent());
+        }
+    }
+
+    @Test
+    public void testGradingResponse() throws IOException, InterruptedException {
+        String problem = "Make a loop that prints numbers from 1 to 10";
+        String code = "for(int i=1; i<=10; i++) System.out.println(i);";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+        System.err.println("##################################################");
+        code = "for(i in range(10)): print(i)";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+        System.err.println("##################################################");
+        code = "i dont know bro";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+    }
 }
