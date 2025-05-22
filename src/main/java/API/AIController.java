@@ -45,4 +45,10 @@ public class AIController {
         return gradingResponse;
     }
 
+    @PostMapping("/solve")
+    public String solveProblem(@RequestBody AssessmentItem assessmentItem)
+            throws IOException, InterruptedException {
+        return null;
+    }
+
 }
