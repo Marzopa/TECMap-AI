@@ -42,11 +42,19 @@ public class AIController {
         return gradingResponse;
     }
 
+    /**
+     * This method is used to solve a problem using the Ollama API.
+     * @param learningMaterial The learning material object containing the problem to be solved.
+     * @param studentId The integer ID of the student attempting to solve the problem.
+     * @param language The programming language to be used for solving the problem.
+     * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
+     */
     @PostMapping("/solve")
     public String solveProblem(@RequestBody LearningMaterial learningMaterial,
-                               @RequestParam int studentId)
+                               @RequestParam int studentId,
+                               @RequestParam(required = false, defaultValue = "java") String language)
             throws IOException, InterruptedException {
-        if(learningMaterial.getAssessmentItem().hasStudentSubmitted(studentId)) return OllamaClient.problemSolverHelper(learningMaterial);
+        if(learningMaterial.getAssessmentItem().hasStudentSubmitted(studentId)) return OllamaClient.problemSolverHelper(learningMaterial, language);
         else return "You need to attempt the problem first.";
     }
 

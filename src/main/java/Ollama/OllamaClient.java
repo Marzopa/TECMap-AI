@@ -100,10 +100,10 @@ public class OllamaClient {
     /**
      * This method is used to solve a problem using the problemSolver model.
      * It takes a LearningMaterial object as input and returns the solution as a string.
-     * TODO: this method should be hooked up to database to retrieve student concepts
+     * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
      */
-    public static String problemSolverHelper(LearningMaterial learningMaterial) throws IOException, InterruptedException {
-        String content = "problem: " + learningMaterial.getContent();
+    public static String problemSolverHelper(LearningMaterial learningMaterial, String language) throws IOException, InterruptedException {
+        String content = "problem: " + learningMaterial.getContent() + "language: " + language;
         return OllamaRequest(OllamaJsonBuilder("cs-problemSolver", content));
     }
 

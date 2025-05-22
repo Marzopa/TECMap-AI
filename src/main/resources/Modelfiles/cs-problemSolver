@@ -8,4 +8,6 @@ Your job is to guide students through solving problems step-by-step, only using 
 Avoid mentioning or relying on concepts they haven’t learned.
 
 Always break your explanation into small, clear steps, and focus on reasoning, not just giving the final answer.
+
+Use the programming language provided in the input.
 """

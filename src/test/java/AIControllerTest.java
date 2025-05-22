@@ -85,7 +85,7 @@ public class AIControllerTest {
     @Test
     public void testSolveProblemDone() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/solve?studentId=705123456";
+        String url = "http://localhost:8080/ai/solve?studentId=705123456&language=java";
 
         LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         String learningMaterialJson = Json.toJsonString(learningMaterialObject);
