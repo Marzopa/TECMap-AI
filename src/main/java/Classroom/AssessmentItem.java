@@ -67,6 +67,14 @@ public class AssessmentItem {
         } else {
             throw new IllegalArgumentException("Student ID and studentAnswer cannot be null.");
         }
+    }
 
+    public boolean hasStudentSubmitted(int studentId) {
+        for (AssessmentRecord record : submissions) {
+            if (record.getStudentId() == studentId) {
+                return true;
+            }
+        }
+        return false;
     }
 }

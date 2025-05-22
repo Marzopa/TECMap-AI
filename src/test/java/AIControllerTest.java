@@ -1,6 +1,7 @@
 import Classroom.LearningMaterial;
 import Utils.Json;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import Ollama.*;
@@ -82,9 +83,9 @@ public class AIControllerTest {
     }
 
     @Test
-    public void testSolveProblem() throws IOException, InterruptedException {
+    public void testSolveProblemDone() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/solve";
+        String url = "http://localhost:8080/ai/solve?studentId=705123456";
 
         LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         String learningMaterialJson = Json.toJsonString(learningMaterialObject);
@@ -97,5 +98,24 @@ public class AIControllerTest {
 
         HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
         System.err.println("POST Response body: " + postResponse.body());
+    }
+
+    @Test
+    public void testSolveProblemNotDone() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "http://localhost:8080/ai/solve?studentId=999999999";
+
+        LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
+        String learningMaterialJson = Json.toJsonString(learningMaterialObject);
+
+        HttpRequest postRequest = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(learningMaterialJson))
+                .build();
+
+        HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        System.err.println("POST Response body: " + postResponse.body());
+        Assertions.assertEquals("You need to attempt the problem first.", postResponse.body());
     }
 }

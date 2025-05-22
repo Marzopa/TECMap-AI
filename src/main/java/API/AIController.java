@@ -43,9 +43,11 @@ public class AIController {
     }
 
     @PostMapping("/solve")
-    public String solveProblem(@RequestBody LearningMaterial learningMaterial)
+    public String solveProblem(@RequestBody LearningMaterial learningMaterial,
+                               @RequestParam int studentId)
             throws IOException, InterruptedException {
-        return OllamaClient.problemSolverHelper(learningMaterial);
+        if(learningMaterial.getAssessmentItem().hasStudentSubmitted(studentId)) return OllamaClient.problemSolverHelper(learningMaterial);
+        else return "You need to attempt the problem first.";
     }
 
 }
