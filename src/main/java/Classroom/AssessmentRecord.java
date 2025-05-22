@@ -12,7 +12,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record AssessmentRecord(String uuid, int score,
                                @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
-                               String studentId, String feedback) {
+                               int studentId, String feedback) {
 
     @JsonCreator
     public AssessmentRecord(
@@ -20,14 +20,14 @@ public record AssessmentRecord(String uuid, int score,
             @JsonProperty("score") int score,
             @JsonProperty(value = "studentAnswer", required = false) String studentAnswer,
             @JsonProperty(value = "answer", required = false) String answer,
-            @JsonProperty("studentId") String studentId,
+            @JsonProperty("studentId") int studentId,
             @JsonProperty("feedback") String feedback) {
         this(uuid, score, studentAnswer != null ? studentAnswer : answer, studentId, feedback);
     }
 
     public AssessmentRecord(int score,
                             String answer,
-                            String studentId,
+                            int studentId,
                             String feedback) {
         this(UUID.randomUUID().toString(), score, answer, studentId, feedback);
     }
@@ -49,7 +49,7 @@ public record AssessmentRecord(String uuid, int score,
         return studentAnswer;
     }
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 

@@ -60,8 +60,8 @@ public class AssessmentItem {
         }
     }
 
-    public void submitSolution(int score, String answer, String studentId, String feedback) {
-        if (studentId != null && answer != null) {
+    public void submitSolution(int score, String answer, int studentId, String feedback) {
+        if (answer != null) {
             AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
             submissions.add(record);
         } else {

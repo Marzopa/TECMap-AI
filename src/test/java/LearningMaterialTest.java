@@ -44,7 +44,7 @@ public class LearningMaterialTest {
     public void testSaveAndLoadLearningMaterial() throws IOException {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
         AssessmentItem ai = new AssessmentItem(100);
-        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", "student123", "Good job!");
+        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", 705123456, "Good job!");
         ai.addSubmission(ar);
         lm.setAssessmentItem(ai);
 

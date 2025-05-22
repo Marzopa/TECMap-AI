@@ -11,13 +11,13 @@ public class SubmissionRequest {
     private final LearningMaterial learningMaterial;
     private final String solution;
     private final String language;
-    private final String studentId;
+    private final int studentId;
 
     @JsonCreator
     public SubmissionRequest(@JsonProperty("learningMaterial") LearningMaterial learningMaterial,
                              @JsonProperty("solution") String solution,
                              @JsonProperty("language") String language,
-                             @JsonProperty("studentId") String studentId) {
+                             @JsonProperty("studentId") int studentId) {
         this.learningMaterial = learningMaterial;
         this.solution = solution;
         this.language = language;
@@ -40,7 +40,7 @@ public class SubmissionRequest {
         return language;
     }
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 }
