@@ -1,0 +1,25 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Make a loop that prints numbers from 1 to 10",
+  "uuid" : "b1f2ee9f-aacf-44a6-bd27-83b8cb868ad7",
+  "answerable" : true,
+  "assessmentItem" : {
+    "maxScore" : 100,
+    "uuid" : "563746bb-2bbf-4fe1-8554-5a9f8258a927",
+    "submissions" : [ {
+      "studentAnswer" : "for(int i=1; i<=10) System.out.println(i);",
+      "uuid" : "17da6925-fd23-42cd-ac1c-e80a2af4db17",
+      "score" : 95,
+      "answer" : "for(int i=1; i<=10) System.out.println(i);",
+      "studentId" : 705256789,
+      "feedback" : "Correct and efficient use of for loop in Java."
+    }, {
+      "studentAnswer" : "for(int i=1; i<=10; i++) System.out.println(i);",
+      "uuid" : "d08f228b-e589-4bdf-87ad-9117e17dd91c",
+      "score" : 85,
+      "answer" : "for(int i=1; i<=10; i++) System.out.println(i);",
+      "studentId" : 705123456,
+      "feedback" : "Correct use of for loop in Java."
+    } ]
+  }
+}

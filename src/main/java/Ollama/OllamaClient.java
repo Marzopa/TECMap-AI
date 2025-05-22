@@ -9,83 +9,79 @@ import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
 
 public class OllamaClient {
-    private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
 
-        String json = String.format("""
-        {
-        "model": "cs-problemGenerator",
-            "messages": [
-                { "role": "user", "content": "%s %d"}
-            ]
-        }
-        """, topic, difficulty);
+    private static final HttpClient client = HttpClient.newHttpClient();
 
-        HttpClient client = HttpClient.newHttpClient();
+    private static String OllamaRequest(String json) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:11434/api/chat"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .build();
-
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+        if (response.statusCode() != 200) {
+            throw new IOException("Ollama service error: " + response.body());
+        }
+
         return OllamaResponseParser.parseResponse(response.body());
     }
 
-    public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
-        return solutionRequest(problem, solution, "python");
+    private static String OllamaJsonBuilder(String model, String content) {
+        return String.format("""
+        {
+            "model": "%s",
+            "messages": [
+                { "role": "user", "content": "%s"}
+            ]
+        }
+        """, model, content);
     }
 
-    public static GradingResponse solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
-        // Escape quotes in the solution string
-        String escapedSolution = solution.replace("\"", "\\\"");
-        String content = String.format("problem: %s solution: %s language: %s",
-                problem.replace("\"", "\\\""),
-                escapedSolution,
-                language);
+    public static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
+        String json = OllamaJsonBuilder("cs-problemGenerator", topic + " " + difficulty);
+        System.out.println("Sending problem request with payload:" + json);
+        return OllamaRequest(json);
+    }
 
-        String json = """
-        {
-          "model": "cs-grader",
-          "messages": [
-            { "role": "user", "content": "%s" }
-          ]
-        }
-        """.formatted(content);
+    public static String checkSyntax(String solution) throws IOException, InterruptedException {
+        System.err.println("Checking syntax...");
+
+        solution = solution.replace("\\", "\\\\")
+                .replace("\"", "\\\"");
+
+        System.out.println("Solution sent: " + solution);
+        String json = OllamaJsonBuilder("cs-syntaxChecker", solution);
+        String parsedResponse = OllamaRequest(json);
+        System.out.println("Parsed response for syntax: " + parsedResponse);
+        return parsedResponse;
+    }
+
+    public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
+        String detectedLanguage = checkSyntax(solution).toLowerCase().trim();
+
+        if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", 0, null);
+
+        String escapedSolution = solution.replace("\"", "\\\"");
+
+        String json = OllamaJsonBuilder("cs-grader",
+                String.format("problem: %s solution: %s language: %s",
+                problem.replace("\"", "\\\""),
+                escapedSolution, detectedLanguage));
 
         System.out.println("Sending grader request with payload:");
         System.out.println(json);
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:11434/api/chat"))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(json))
-                .build();
-
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-
-        if (response.statusCode() != 200) {
-            throw new IOException("Grader service error: " + response.body());
-        }
-
-        String parsedResponse = OllamaResponseParser.parseResponse(response.body());
-        parsedResponse = parsedResponse.split("\n")[0]; // Keep only the first line
+        String parsedResponse = OllamaRequest(json).split("\n")[0]; // Keep only the first line
         System.out.println("Parsed response: " + parsedResponse);
 
-        // Add response validation and cleaning
         try {
-            // Split response and trim any whitespace
             String[] parts = parsedResponse.trim().split("~~~");
-            if (parts.length != 2) {
-                throw new IOException("Invalid response format: expected 'feedback ~~~ grade'");
-            }
-
+            if (parts.length != 2) throw new IOException("Invalid response format: expected 'feedback ~~~ grade'");
             String feedback = parts[0].trim();
-            // Clean the grade string and parse
-            String gradeStr = parts[1].trim().replaceAll("[^0-9-]", "");
+            String gradeStr = parts[1].trim().replaceAll("[^0-9]", "");
             int grade = Integer.parseInt(gradeStr);
-
-            return new GradingResponse(feedback, grade);
+            return new GradingResponse(feedback, grade, detectedLanguage);
         } catch (NumberFormatException e) {
             throw new IOException("Invalid grade format in response: " + parsedResponse);
         } catch (Exception e) {
@@ -99,7 +95,6 @@ public class OllamaClient {
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem(100);
         learningMaterial.setAssessmentItem(assessmentItem);
-
         return learningMaterial;
     }
 

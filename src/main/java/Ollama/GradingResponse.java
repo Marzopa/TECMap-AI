@@ -1,4 +1,4 @@
 package Ollama;
 
-public record GradingResponse(String feedback, int grade) {
+public record GradingResponse(String feedback, int grade, String detectedLanguage) {
 }

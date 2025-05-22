@@ -10,17 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SubmissionRequest {
     private final LearningMaterial learningMaterial;
     private final String solution;
-    private final String language;
     private final int studentId;
 
     @JsonCreator
     public SubmissionRequest(@JsonProperty("learningMaterial") LearningMaterial learningMaterial,
                              @JsonProperty("solution") String solution,
-                             @JsonProperty("language") String language,
                              @JsonProperty("studentId") int studentId) {
         this.learningMaterial = learningMaterial;
         this.solution = solution;
-        this.language = language;
         this.studentId = studentId;
     }
 
@@ -34,10 +31,6 @@ public class SubmissionRequest {
 
     public String getSolution() {
         return solution;
-    }
-
-    public String getLanguage() {
-        return language;
     }
 
     public int getStudentId() {

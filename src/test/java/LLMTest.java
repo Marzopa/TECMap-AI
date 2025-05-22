@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LLMTest {
     @Test
     public void testLLM() throws IOException, InterruptedException {
@@ -22,13 +24,29 @@ public class LLMTest {
     public void testSubmitResponse() throws IOException, InterruptedException {
         LearningMaterial learningMaterial = new LearningMaterial("Dictionaries", "Make a loop that prints numbers from 1 to 10", true);
         learningMaterial.setAssessmentItem(new AssessmentItem(100));
-        GradingResponse gradingResponse = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10) System.out.println(i);", "java");
+        GradingResponse gradingResponse = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10) System.out.println(i);");
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "for(int i=1; i<=10) System.out.println(i);", 705256789, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
 
-        GradingResponse gradingResponse2 = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10; i++) System.out.println(i);", "java");
+        GradingResponse gradingResponse2 = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10; i++) System.out.println(i);");
         AssessmentRecord assessmentRecord2 = new AssessmentRecord(gradingResponse2.grade(), "for(int i=1; i<=10; i++) System.out.println(i);", 705123456, gradingResponse2.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord2);
         Json.toJsonFile("src/test/resources/LLMTestFixedQuestion_" + learningMaterial.getUuid() +".json", learningMaterial);
+    }
+
+    @Test
+    public void testSyntaxChecker() throws IOException, InterruptedException {
+        String code = "for(int i=1; i<=10; i++) System.out.println(i);";
+        String result = OllamaClient.checkSyntax(code);
+        System.err.println(result);
+        assertEquals("java", result.toLowerCase());
+        String code2 = "i hate everyone";
+        String result2 = OllamaClient.checkSyntax(code2);
+        System.err.println(result2);
+        assertEquals("not code", result2.toLowerCase());
+        String code3 = "for(i in range(10)): print(i)";
+        String result3 = OllamaClient.checkSyntax(code3);
+        System.err.println(result3);
+        assertEquals("python", result3.toLowerCase());
     }
 }
