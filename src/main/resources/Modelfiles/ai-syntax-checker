@@ -1,0 +1,22 @@
+FROM qwen2.5-coder:0.5b
+
+SYSTEM """
+Instruction: Determine if this is code. If yes, give the language. If no, say "not code".
+
+Example 1:
+Input: def hello(): print("hi")
+Output: python
+
+Example 2:
+Input: hi professor this is my answer
+Output: not code
+
+Example 3:
+Input: public class Test {}
+Output: java
+
+Now classify:
+Input: <user submission here>
+Output:
+
+"""

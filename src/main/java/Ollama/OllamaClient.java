@@ -31,12 +31,36 @@ public class OllamaClient {
         return OllamaResponseParser.parseResponse(response.body());
     }
 
+    public static String checkSyntax(String solution) throws IOException, InterruptedException {
+        String json = String.format("""
+        {
+        "model": "cs-syntaxChecker",
+            "messages": [
+                { "role": "user", "content": "%s"}
+            ]
+        }
+        """, solution);
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:11434/api/chat"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .build();
+
+        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+        return OllamaResponseParser.parseResponse(response.body());
+    }
+
     public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
         return solutionRequest(problem, solution, "python");
     }
 
     public static GradingResponse solutionRequest(String problem, String solution, String language) throws IOException, InterruptedException {
         // Escape quotes in the solution string
+        String syntaxCheck = checkSyntax(solution);
+        if (syntaxCheck.equals("not code")) return new GradingResponse("Not code", 0);
+
         String escapedSolution = solution.replace("\"", "\\\"");
         String content = String.format("problem: %s solution: %s language: %s",
                 problem.replace("\"", "\\\""),
