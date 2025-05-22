@@ -12,14 +12,14 @@
         "uuid": "423e4567-e89b-12d3-a456-426614174002",
         "score": 90,
         "answer": "Sample Answer",
-        "studentId": "student123",
+        "studentId": 705123456,
         "feedback": "Good job!"
       },
       {
         "uuid": "e23e4567-e89b-12d3-a456-426614174003",
         "score": 85,
         "answer": "Another Sample Answer",
-        "studentId": "student456",
+        "studentId": 705456789,
         "feedback": "Well done!"
       }
     ]

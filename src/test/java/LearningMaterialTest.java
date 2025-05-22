@@ -88,14 +88,14 @@ public class LearningMaterialTest {
         assertNotNull(loadedAr);
         assertEquals(90, loadedAr.score());
         assertEquals("Sample Answer", loadedAr.studentAnswer());
-        assertEquals("student123", loadedAr.studentId());
+        assertEquals(705123456, loadedAr.studentId());
         assertEquals("Good job!", loadedAr.feedback());
 
         AssessmentRecord loadedAr2 = loadedAi.getSubmissions().get(1);
         assertNotNull(loadedAr2);
         assertEquals(85, loadedAr2.score());
         assertEquals("Another Sample Answer", loadedAr2.studentAnswer());
-        assertEquals("student456", loadedAr2.studentId());
+        assertEquals(705456789, loadedAr2.studentId());
         assertEquals("Well done!", loadedAr2.feedback());
 
         LearningMaterial loadedLm2 = Json.fromJsonFile(TEST_PATH + "LM_2467c622-1441-4318-9850-f1b07301b2f5.json", LearningMaterial.class);

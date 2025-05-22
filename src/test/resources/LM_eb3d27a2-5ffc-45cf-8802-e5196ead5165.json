@@ -1,0 +1,18 @@
+{
+  "title" : "Sample Learning Material",
+  "content" : "This is a sample content.",
+  "uuid" : "eb3d27a2-5ffc-45cf-8802-e5196ead5165",
+  "answerable" : true,
+  "assessmentItem" : {
+    "maxScore" : 100,
+    "uuid" : "d3eec91c-5774-4da3-bb46-dd04eedfa5fe",
+    "submissions" : [ {
+      "studentAnswer" : "Sample Answer",
+      "uuid" : "4e8cedb0-9fc3-466f-8b4c-e51f690508bd",
+      "score" : 90,
+      "answer" : "Sample Answer",
+      "studentId" : 705123456,
+      "feedback" : "Good job!"
+    } ]
+  }
+}
