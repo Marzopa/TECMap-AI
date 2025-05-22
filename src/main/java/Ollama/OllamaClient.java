@@ -37,6 +37,8 @@ public class OllamaClient {
         solution = solution.replace("\\", "\\\\")
                 .replace("\"", "\\\"");
 
+        System.out.println("Solution sent: " + solution);
+
         String json = String.format("""
         {
         "model": "cs-syntaxChecker",
@@ -55,7 +57,7 @@ public class OllamaClient {
 
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String parsedResponse = OllamaResponseParser.parseResponse(response.body());
-        System.out.println("Unparsed response for syntax: " + response.body());
+        System.out.println("Parsed response for syntax: " + parsedResponse);
         return parsedResponse;
     }
 
