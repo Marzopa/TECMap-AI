@@ -11,7 +11,7 @@ function App() {
     const [gradeResult, setGradeResult] = useState(null);
     const [loadingGrade, setLoadingGrade] = useState(false);
     const [language, setLanguage] = useState('java');
-    const [solveResult, setSolveResult] = useState(null);
+    const [solveResult, setSolveResult] = useState('');
     const [loadingSolve, setLoadingSolve] = useState(false);
 
     const handleGenerate = async () => {
@@ -37,7 +37,7 @@ function App() {
             const payload = {
                 learningMaterial: problem,
                 solution: gradeInput,
-                studentId: studentId
+                studentId
             };
             const res = await fetch('http://localhost:8080/ai/submit', {
                 method: 'POST',
@@ -54,11 +54,18 @@ function App() {
     };
 
     const handleSolveAid = async () => {
+        if (!problem) {
+            setSolveResult('Generate a problem first.');
+            return;
+        }
+        if (!studentId) {
+            setSolveResult('Enter your Student ID above.');
+            return;
+        }
+
         setLoadingSolve(true);
-        setSolveResult(null);
+        setSolveResult('');
         try {
-            // POST the full LearningMaterial in the body,
-            // and studentId + language as query params
             const res = await fetch(
                 `http://localhost:8080/ai/solve?studentId=${studentId}&language=${language}`,
                 {
@@ -68,9 +75,10 @@ function App() {
                 }
             );
             if (!res.ok) throw new Error(`Status ${res.status}`);
-            setSolveResult(await res.json());
+            const text = await res.text();
+            setSolveResult(text);
         } catch (err) {
-            setSolveResult({ error: err.message });
+            setSolveResult(`Error: ${err.message}`);
         } finally {
             setLoadingSolve(false);
         }
@@ -170,6 +178,7 @@ function App() {
                         <strong>Result:</strong>
                         <pre>{gradeResult ? JSON.stringify(gradeResult, null, 2) : 'No result yet.'}</pre>
                     </div>
+
                 </>
             )}
 
@@ -198,22 +207,20 @@ function App() {
                             <option value="java">Java</option>
                             <option value="python">Python</option>
                             <option value="cpp">C++</option>
-                            {/* add any languages you support */}
                         </select>
                     </label>
                     <br /><br />
 
                     <button onClick={handleSolveAid} disabled={loadingSolve}>
-                        {loadingSolve ? 'Asking model...' : 'Help Me Solve It'}
+                        {loadingSolve ? 'Asking model…' : 'Help Me Solve It'}
                     </button>
 
-                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap' }}>
+                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', background: '#f4f4f4', padding: '1rem', borderRadius: '4px' }}>
                         <strong>Hint / Partial Solution:</strong>
-                        <pre>{solveResult || 'No hint yet.'}</pre>
+                        <p>{solveResult || 'No hint yet.'}</p>
                     </div>
                 </>
             )}
-
         </div>
     );
 }
