@@ -54,6 +54,7 @@ function App() {
     };
 
     const handleSolveAid = async () => {
+        console.log('Submitting to /ai/solve...');
         if (!problem) {
             setSolveResult('Generate a problem first.');
             return;
@@ -217,7 +218,7 @@ function App() {
 
                     <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', background: '#f4f4f4', padding: '1rem', borderRadius: '4px' }}>
                         <strong>Hint / Partial Solution:</strong>
-                        <p>{solveResult || 'No hint yet.'}</p>
+                        <pre>{solveResult ? String(solveResult) : 'No hint yet.'}</pre>
                     </div>
                 </>
             )}
