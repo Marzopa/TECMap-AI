@@ -10,7 +10,7 @@ function App() {
     const [gradeInput, setGradeInput] = useState('');
     const [gradeResult, setGradeResult] = useState(null);
     const [loadingGrade, setLoadingGrade] = useState(false);
-    const [solveInput, setSolveInput] = useState('');
+    const [language, setLanguage] = useState('java');
     const [solveResult, setSolveResult] = useState(null);
     const [loadingSolve, setLoadingSolve] = useState(false);
 
@@ -57,11 +57,16 @@ function App() {
         setLoadingSolve(true);
         setSolveResult(null);
         try {
-            const res = await fetch('http://localhost:8080/ai/solve-aid', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ problem: solveInput })
-            });
+            // POST the full LearningMaterial in the body,
+            // and studentId + language as query params
+            const res = await fetch(
+                `http://localhost:8080/ai/solve?studentId=${studentId}&language=${language}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(problem)
+                }
+            );
             if (!res.ok) throw new Error(`Status ${res.status}`);
             setSolveResult(await res.json());
         } catch (err) {
@@ -171,23 +176,44 @@ function App() {
             {activeTab === 'solve' && (
                 <>
                     <h1>TECMap Solver Aider</h1>
-                    <textarea
-                        rows={10}
-                        cols={60}
-                        value={solveInput}
-                        onChange={(e) => setSolveInput(e.target.value)}
-                        placeholder="Paste your problem here..."
-                    />
-                    <br />
+
+                    <label>
+                        Student ID:
+                        <input
+                            type="number"
+                            value={studentId}
+                            onChange={e => setStudentId(Number(e.target.value))}
+                            style={{ marginLeft: '1rem', width: '5rem' }}
+                        />
+                    </label>
+                    <br /><br />
+
+                    <label>
+                        Language:
+                        <select
+                            value={language}
+                            onChange={e => setLanguage(e.target.value)}
+                            style={{ marginLeft: '1rem' }}
+                        >
+                            <option value="java">Java</option>
+                            <option value="python">Python</option>
+                            <option value="cpp">C++</option>
+                            {/* add any languages you support */}
+                        </select>
+                    </label>
+                    <br /><br />
+
                     <button onClick={handleSolveAid} disabled={loadingSolve}>
                         {loadingSolve ? 'Asking model...' : 'Help Me Solve It'}
                     </button>
+
                     <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap' }}>
-                        <strong>Hint:</strong>
-                        <pre>{solveResult ? JSON.stringify(solveResult, null, 2) : 'No result yet.'}</pre>
+                        <strong>Hint / Partial Solution:</strong>
+                        <pre>{solveResult || 'No hint yet.'}</pre>
                     </div>
                 </>
             )}
+
         </div>
     );
 }
