@@ -16,11 +16,11 @@ public class OllamaClient {
     private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
 
 
-    private static String OllamaRequest(String json) throws IOException, InterruptedException {
+    private static String OllamaRequest(String model, String content) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:11434/api/chat"))
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .POST(HttpRequest.BodyPublishers.ofString(OllamaJsonBuilder(model, content)))
                 .build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
@@ -43,8 +43,7 @@ public class OllamaClient {
     }
 
     private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
-        String json = OllamaJsonBuilder("cs-problemGenerator", topic + " " + difficulty);
-        return OllamaRequest(json);
+        return OllamaRequest("cs-problemGenerator", topic + " " + difficulty);
     }
 
     public static String checkSyntax(String solution) throws IOException, InterruptedException {
@@ -54,8 +53,7 @@ public class OllamaClient {
                 .replace("\"", "\\\"");
 
         log.info("Solution sent: {}", solution);
-        String json = OllamaJsonBuilder("cs-syntaxChecker", solution);
-        String parsedResponse = OllamaRequest(json);
+        String parsedResponse = OllamaRequest("cs-syntaxChecker", solution);
         log.info("Parsed response for syntax: {}", parsedResponse);
         return parsedResponse;
     }
@@ -67,14 +65,13 @@ public class OllamaClient {
 
         String escapedSolution = solution.replace("\"", "\\\"");
 
-        String json = OllamaJsonBuilder("cs-problemGrader",
-                String.format("problem: %s solution: %s language: %s",
+        String content = String.format("problem: %s solution: %s language: %s",
                 problem.replace("\"", "\\\""),
-                escapedSolution, detectedLanguage));
+                escapedSolution, detectedLanguage);
 
-        log.info("Sending grader request with payload: {}", json);
+        log.info("Sending grader request with content: {}", content);
 
-        String parsedResponse = OllamaRequest(json).split("\n")[0]; // Keep only the first line
+        String parsedResponse = OllamaRequest("cs-problemGrader", content).split("\n")[0]; // Keep only the first line
         log.info("Parsed response: {}", parsedResponse);
 
         try {
@@ -107,7 +104,7 @@ public class OllamaClient {
      */
     public static String problemSolverHelper(LearningMaterial learningMaterial, String language) throws IOException, InterruptedException {
         String content = "problem: " + learningMaterial.getContent() + "language: " + language;
-        return OllamaRequest(OllamaJsonBuilder("cs-problemSolver", content));
+        return OllamaRequest("cs-problemSolver", content);
     }
 
     public static void main(String[] args) throws Exception {
