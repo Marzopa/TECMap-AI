@@ -1,10 +1,7 @@
 import Classroom.LearningMaterial;
 import Utils.Json;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import Ollama.*;
 
 import java.io.IOException;
 import java.net.URI;
