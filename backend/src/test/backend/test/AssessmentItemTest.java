@@ -26,12 +26,12 @@ public class AssessmentItemTest {
         Assertions.assertNotNull(ai);
         ai.submitSolution(90, "Sample Answer", 705123456, "Good job!");
         ai.submitSolution(new AssessmentRecord(50, "Trash studentAnswer", 705456789, "You're trash!"));
-        Json.toJsonFile("src/test/resources/LM_" + lm.getUuid() +".json", lm);
+        Json.toJsonFile("backend/src/test/resources/LM_" + lm.getUuid() +".json", lm);
     }
 
     @Test
     public void testSubissions() throws IOException {
-        LearningMaterial lm = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
+        LearningMaterial lm = Json.fromJsonFile("backend/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         AssessmentItem ai = lm.getAssessmentItem();
         Assertions.assertEquals(2, ai.getSubmissions().size());
         Assertions.assertEquals(100, ai.getMaxScore());

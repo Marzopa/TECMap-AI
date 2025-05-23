@@ -19,7 +19,7 @@ public class LLMTest {
         GradingResponse gradingResponse = OllamaClient.solutionRequest(learningMaterial.getContent(), "screw everyone");
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "screw everyone", 705999999, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
-        Json.toJsonFile("src/test/resources/LLMTest_" + learningMaterial.getUuid() +".json", learningMaterial);
+        Json.toJsonFile("backend/src/test/resources/LLMTest_" + learningMaterial.getUuid() +".json", learningMaterial);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class LLMTest {
         GradingResponse gradingResponse2 = OllamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10; i++) System.out.println(i);");
         AssessmentRecord assessmentRecord2 = new AssessmentRecord(gradingResponse2.grade(), "for(int i=1; i<=10; i++) System.out.println(i);", 705123456, gradingResponse2.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord2);
-        Json.toJsonFile("src/test/resources/LLMTestFixedQuestion_" + learningMaterial.getUuid() +".json", learningMaterial);
+        Json.toJsonFile("backend/src/test/resources/LLMTestFixedQuestion_" + learningMaterial.getUuid() +".json", learningMaterial);
     }
 
     @Test
