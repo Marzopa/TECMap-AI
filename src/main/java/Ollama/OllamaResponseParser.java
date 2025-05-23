@@ -11,7 +11,7 @@ public class OllamaResponseParser {
             startIndex += 11;
             int endIndex = line.indexOf("\"", startIndex);
             if (endIndex == -1) continue;
-            finalResponse.append(line.substring(startIndex, endIndex));
+            finalResponse.append(line, startIndex, endIndex);
         }
         return finalResponse.toString();
     }

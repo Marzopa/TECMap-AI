@@ -18,8 +18,8 @@ public record AssessmentRecord(String uuid, int score,
     public AssessmentRecord(
             @JsonProperty("uuid") String uuid,
             @JsonProperty("score") int score,
-            @JsonProperty(value = "studentAnswer", required = false) String studentAnswer,
-            @JsonProperty(value = "answer", required = false) String answer,
+            @JsonProperty(value = "studentAnswer") String studentAnswer,
+            @JsonProperty(value = "answer") String answer,
             @JsonProperty("studentId") int studentId,
             @JsonProperty("feedback") String feedback) {
         this(uuid, score, studentAnswer != null ? studentAnswer : answer, studentId, feedback);

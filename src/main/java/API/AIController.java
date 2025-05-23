@@ -33,13 +33,13 @@ public class AIController {
             throws IOException, InterruptedException {
 
         GradingResponse gradingResponse =  OllamaClient.solutionRequest(submission.getProblem(),
-                submission.getSolution());
+                submission.solution());
 
         // Update the LearningMaterial's assessment item with the new submission
-        AssessmentItem problem = submission.getLearningMaterial().getAssessmentItem();
+        AssessmentItem problem = submission.learningMaterial().getAssessmentItem();
         problem.submitSolution(gradingResponse.grade(),
-                submission.getSolution(),
-                submission.getStudentId(),
+                submission.solution(),
+                submission.studentId(),
                 gradingResponse.feedback());
 
         return gradingResponse;

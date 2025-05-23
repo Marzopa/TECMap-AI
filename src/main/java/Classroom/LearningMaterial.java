@@ -24,10 +24,6 @@ public class LearningMaterial {
         this.assessmentItem = null;
     }
 
-    public LearningMaterial(String title) {
-        this(title, "", false);
-    }
-
     @JsonCreator
     public LearningMaterial(@JsonProperty("title") String title,
                             @JsonProperty("content") String content,

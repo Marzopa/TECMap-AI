@@ -21,16 +21,10 @@ public class Json {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.writeValue(new File(filename), objectToSerialize);
     }
-    // Just checking github works
+    // Just checking GitHub works
     public static <T> T fromJsonFile(String filename, Class<? extends T> classToBeCreated) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return  mapper.readValue(new File(filename), classToBeCreated);
-    }
-
-    public static <T> T fromJsonFile(String filename, com.fasterxml.jackson.core.type.TypeReference<T> typeReference) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return mapper.readValue(new File(filename), typeReference);
     }
 }

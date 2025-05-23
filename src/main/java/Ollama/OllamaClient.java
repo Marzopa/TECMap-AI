@@ -2,17 +2,18 @@ package Ollama;
 
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.http.*;
 import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.util.logging.Logger;
 
 public class OllamaClient {
 
     private static final HttpClient client = HttpClient.newHttpClient();
-    private static final Logger log = Logger.getLogger(OllamaClient.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
 
 
     private static String OllamaRequest(String json) throws IOException, InterruptedException {
@@ -52,10 +53,10 @@ public class OllamaClient {
         solution = solution.replace("\\", "\\\\")
                 .replace("\"", "\\\"");
 
-        log.info("Solution sent: " + solution);
+        log.info("Solution sent: {}", solution);
         String json = OllamaJsonBuilder("cs-syntaxChecker", solution);
         String parsedResponse = OllamaRequest(json);
-        log.info("Parsed response for syntax: " + parsedResponse);
+        log.info("Parsed response for syntax: {}", parsedResponse);
         return parsedResponse;
     }
 
@@ -75,7 +76,7 @@ public class OllamaClient {
         log.info(json);
 
         String parsedResponse = OllamaRequest(json).split("\n")[0]; // Keep only the first line
-        log.info("Parsed response: " + parsedResponse);
+        log.info("Parsed response: {}", parsedResponse);
 
         try {
             String[] parts = parsedResponse.trim().split("~~~");
