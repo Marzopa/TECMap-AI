@@ -14,19 +14,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex) {
-        // Log the exception details
-        logger.error("Exception details:", ex);
-        logger.error("Exception type: {}", ex.getClass().getName());
-        logger.error("Exception message: {}", ex.getMessage());
-        logger.error("Stack trace:");
-        for (StackTraceElement element : ex.getStackTrace()) {
-            logger.error("    at {}.{}({}:{})",
-                    element.getClassName(),
-                    element.getMethodName(),
-                    element.getFileName(),
-                    element.getLineNumber());
-        }
-
+        logger.error("Unhandled exception:", ex);
         return new ResponseEntity<>("Error: " + ex.getLocalizedMessage(),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }

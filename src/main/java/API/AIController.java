@@ -6,16 +6,19 @@ import Ollama.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 
 @RestController
 @RequestMapping("/ai")
 public class AIController {
 
+    private static final Logger log = Logger.getLogger(AIController.class.getName());
+
     @GetMapping("/problem")
     public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
             throws IOException, InterruptedException {
-        System.out.println("Getting problem");
+        log.info("Getting problem");
         return OllamaClient.generateLearningMaterialProblem(topic, difficulty);
     }
 
