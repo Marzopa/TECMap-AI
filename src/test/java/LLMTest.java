@@ -90,4 +90,17 @@ public class LLMTest {
             System.err.println("\t" + gradingResponse.feedback());
         }
     }
+
+    @Test
+    public void testGradingResponse2() throws IOException, InterruptedException {
+        String problem = "Make a loop that prints numbers from 1 to 10";
+        String code = "System.out.println(5);";
+        for(int i = 0; i<10; i++) {
+            GradingResponse gradingResponse = OllamaClient.solutionRequest(problem, code);
+            System.err.println("Number " + i + ":");
+            System.err.println("\t" + gradingResponse.grade());
+            System.err.println("\t" + gradingResponse.detectedLanguage());
+            System.err.println("\t" + gradingResponse.feedback());
+        }
+    }
 }
