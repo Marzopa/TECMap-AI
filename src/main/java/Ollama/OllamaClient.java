@@ -81,7 +81,7 @@ public class OllamaClient {
             String[] parts = parsedResponse.trim().split("~~~");
             if (parts.length != 2) throw new IOException("Invalid response format: expected 'feedback ~~~ grade'");
             String feedback = parts[0].trim();
-            String gradeStr = parts[1].replaceAll("[^0-9]", "").trim();
+            String gradeStr = parts[1].trim().replaceAll("\\D.*", "");
             int grade = Integer.parseInt(gradeStr);
             return new GradingResponse(feedback, grade, detectedLanguage);
         } catch (NumberFormatException e) {
