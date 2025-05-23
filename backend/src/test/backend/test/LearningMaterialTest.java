@@ -1,3 +1,5 @@
+package backend.test;
+
 import Classroom.AssessmentItem;
 import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;
@@ -13,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LearningMaterialTest {
 
-    private static final String TEST_PATH = "src/test/resources/";
+    private static final String TEST_PATH = "backend/src/test/resources/";
 
     @BeforeEach
     public void setUp() throws IOException {

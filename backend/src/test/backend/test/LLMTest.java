@@ -1,3 +1,5 @@
+package backend.test;
+
 import Classroom.AssessmentItem;
 import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;

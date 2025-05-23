@@ -1,3 +1,5 @@
+package backend.test;
+
 import Classroom.LearningMaterial;
 import Utils.Json;
 import org.junit.jupiter.api.Assertions;
