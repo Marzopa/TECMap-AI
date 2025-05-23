@@ -22,7 +22,7 @@ function App() {
     };
 
     return (
-        <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+        <div style={{ padding: '2rem', fontFamily: 'system-ui', marginLeft: 'auto', marginRight: 'auto' }}>
             <h1>TECMap Problem Generator</h1>
 
             <label>
@@ -55,10 +55,21 @@ function App() {
                 {loading ? 'Generating...' : 'Generate Problem'}
             </button>
 
-            <div style={{ marginTop: '2rem' }}>
-                <h3>Generated Problem:</h3>
-                <pre>{problem ? JSON.stringify(problem, null, 2) : 'No problem yet.'}</pre>
+            <div style={{
+                marginTop: '1rem',
+                padding: '1rem',
+                backgroundColor: '#3a2497',
+                border: '1px solid #ccc',
+                borderRadius: '6px',
+                whiteSpace: 'pre-wrap',
+                fontFamily: 'monospace',
+                maxWidth: '600px',
+                width: '100%',
+                color: '#fff'
+            }}>
+                {problem?.content || 'No problem yet.'}
             </div>
+
         </div>
     );
 }
