@@ -15,7 +15,12 @@ public class OllamaClient {
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
 
-
+    /**
+     * This method is used to send a request to the Ollama API. Returns the parsed response.
+     * @param model the model to use for the request, e.g., "cs-problemGenerator", "cs-syntaxChecker", etc.
+     * @param content the content to send in the request, typically a problem description or solution
+     * @return the parsed response from the Ollama API
+     */
     private static String OllamaRequest(String model, String content) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:11434/api/chat"))
@@ -24,9 +29,7 @@ public class OllamaClient {
                 .build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
-        if (response.statusCode() != 200) {
-            throw new IOException("Ollama service error: " + response.body());
-        }
+        if (response.statusCode() != 200) throw new IOException("Ollama service error: " + response.body());
 
         return OllamaResponseParser.parseResponse(response.body());
     }
@@ -64,28 +67,21 @@ public class OllamaClient {
         if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", 0, null);
 
         String escapedSolution = solution.replace("\"", "\\\"");
-
-        String content = String.format("problem: %s solution: %s language: %s",
+        String feedbackContent = String.format("problem: %s ~~~ solution: %s ~~~ language: %s",
                 problem.replace("\"", "\\\""),
                 escapedSolution, detectedLanguage);
+        log.info("Sending feedback request with content: {}", feedbackContent);
+        String feedback = OllamaRequest("cs-feedbackGenerator", feedbackContent);
+        log.info("Parsed feedback: {}", feedback);
 
-        log.info("Sending grader request with content: {}", content);
+        String gradeContent = String.format("problem: %s ~~~ solution: %s ~~~ feedback: %s",
+                problem.replace("\"", "\\\""),
+                escapedSolution, feedback);
+        String gradeStr = OllamaRequest("cs-problemGrader", gradeContent).trim();
+        int grade = Integer.parseInt(gradeStr);
 
-        String parsedResponse = OllamaRequest("cs-problemGrader", content).split("\n")[0]; // Keep only the first line
-        log.info("Parsed response: {}", parsedResponse);
+        return new GradingResponse(feedback, grade, detectedLanguage);
 
-        try {
-            String[] parts = parsedResponse.trim().split("~~~");
-            if (parts.length != 2) throw new IOException("Invalid response format: expected 'feedback ~~~ grade'");
-            String feedback = parts[0].trim();
-            String gradeStr = parts[1].trim().replaceAll("\\D.*", "");
-            int grade = Integer.parseInt(gradeStr);
-            return new GradingResponse(feedback, grade, detectedLanguage);
-        } catch (NumberFormatException e) {
-            throw new IOException("Invalid grade format in response: " + parsedResponse);
-        } catch (Exception e) {
-            throw new IOException("Error processing grader response: " + e.getMessage());
-        }
     }
 
 
