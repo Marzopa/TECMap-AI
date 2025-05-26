@@ -66,15 +66,17 @@ function App() {
 
         setLoadingSolve(true);
         setSolveResult('');
+        const payload = {
+            learningMaterial: problem,
+            language: language,
+            studentId: studentId
+        };
         try {
-            const res = await fetch(
-                `http://localhost:8080/ai/solve?studentId=${studentId}&language=${language}`,
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(problem)
-                }
-            );
+            const res = await fetch('http://localhost:8080/ai/solve', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
             if (!res.ok) throw new Error(`Status ${res.status}`);
             const text = await res.text();
             setSolveResult(text);
@@ -84,7 +86,6 @@ function App() {
             setLoadingSolve(false);
         }
     };
-
     return (
         <div style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui' }}>
             <div style={{ marginBottom: '2rem' }}>
@@ -216,7 +217,7 @@ function App() {
                         {loadingSolve ? 'Asking model…' : 'Help Me Solve It'}
                     </button>
 
-                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', background: '#f4f4f4', padding: '1rem', borderRadius: '4px' }}>
+                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', background: '#3a2497', padding: '1rem', borderRadius: '4px' }}>
                         <strong>Hint / Partial Solution:</strong>
                         <pre>{solveResult ? String(solveResult) : 'No hint yet.'}</pre>
                     </div>

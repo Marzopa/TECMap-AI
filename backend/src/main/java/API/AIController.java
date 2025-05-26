@@ -25,7 +25,7 @@ public class AIController {
     /**
      * The method SHOULD update submissions in LearningMaterial from studentId in SubmissionRequest
      * TODO: once database is set up, this should receive the uuid of the LearningMaterial to update it in there
-     * @param submission The submission request containing the LearningMaterial, solution, and language.
+     * @param submission The submission request containing the LearningMaterial, solution, and studentId.
      * @return a GradingResponse object containing the feedback and score.
      * */
     @PostMapping("/submit")
@@ -47,17 +47,15 @@ public class AIController {
 
     /**
      * This method is used to solve a problem using the Ollama API.
-     * @param learningMaterial The learning material object containing the problem to be solved.
-     * @param studentId The integer ID of the student attempting to solve the problem.
-     * @param language The programming language to be used for solving the problem.
+     * @param request The request request containing the LearningMaterial, studentId, and language.
      * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
      */
     @PostMapping("/solve")
-    public String solveProblem(@RequestBody LearningMaterial learningMaterial,
-                               @RequestParam int studentId,
-                               @RequestParam(required = false, defaultValue = "java") String language)
+    public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
-        if(learningMaterial.getAssessmentItem().hasStudentSubmitted(studentId)) return OllamaClient.problemSolverHelper(learningMaterial, language);
+        log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
+        if(request.learningMaterial().getAssessmentItem().hasStudentSubmitted(request.studentId()))
+            return OllamaClient.problemSolverHelper(request.learningMaterial(), request.language());
         else return "You need to attempt the problem first.";
     }
 
