@@ -217,9 +217,23 @@ function App() {
                         {loadingSolve ? 'Asking model…' : 'Help Me Solve It'}
                     </button>
 
-                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap', background: '#3a2497', padding: '1rem', borderRadius: '4px' }}>
+                    <div
+                        style={{
+                            marginTop: '1rem',
+                            whiteSpace: 'pre-wrap',
+                            background: '#3a2497',
+                            padding: '1rem',
+                            borderRadius: '4px',
+                            fontFamily: 'monospace',
+                            color: '#fff',
+                            maxWidth: '600px',
+                            width: '100%'
+                        }}
+                    >
                         <strong>Hint / Partial Solution:</strong>
-                        <pre>{solveResult ? String(solveResult) : 'No hint yet.'}</pre>
+                        <div>
+                            {solveResult ? String(solveResult) : 'No hint yet.'}
+                        </div>
                     </div>
                 </>
             )}

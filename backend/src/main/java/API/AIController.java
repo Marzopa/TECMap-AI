@@ -54,9 +54,9 @@ public class AIController {
     public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
         log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
-        if(request.learningMaterial().getAssessmentItem().hasStudentSubmitted(request.studentId()))
+        //if(request.learningMaterial().getAssessmentItem().hasStudentSubmitted(request.studentId()))
             return OllamaClient.problemSolverHelper(request.learningMaterial(), request.language());
-        else return "You need to attempt the problem first.";
+        //else return "You need to attempt the problem first.";
     }
 
 }
