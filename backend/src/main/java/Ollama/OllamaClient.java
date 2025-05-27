@@ -88,7 +88,7 @@ public class OllamaClient {
     public static LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
-        AssessmentItem assessmentItem = new AssessmentItem(100);
+        AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
         return learningMaterial;
     }

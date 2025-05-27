@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LearningMaterialTest {
 
-    private static final String TEST_PATH = "backend/src/test/resources/";
+    private static final String TEST_PATH = "src/test/resources/";
 
     @BeforeEach
     public void setUp() throws IOException {
@@ -36,17 +36,16 @@ public class LearningMaterialTest {
     @Test
     public void testLearningMaterialWithAssessmentItem() {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem(100);
+        AssessmentItem ai = new AssessmentItem();
         lm.setAssessmentItem(ai);
 
         assertNotNull(lm.getAssessmentItem());
-        assertEquals(100, ai.getMaxScore());
     }
 
     @Test
     public void testSaveAndLoadLearningMaterial() throws IOException {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
-        AssessmentItem ai = new AssessmentItem(100);
+        AssessmentItem ai = new AssessmentItem();
         AssessmentRecord ar = new AssessmentRecord(GradingStatus.CORRECT, "Sample Answer", 705123456, "Good job!");
         ai.addSubmission(ar);
         lm.setAssessmentItem(ai);
@@ -64,7 +63,6 @@ public class LearningMaterialTest {
 
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
-        assertEquals(ai.getMaxScore(), loadedAi.getMaxScore());
 
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
@@ -85,18 +83,17 @@ public class LearningMaterialTest {
 
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
-        assertEquals(100, loadedAi.getMaxScore());
 
         AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
         assertNotNull(loadedAr);
-        assertEquals(90, loadedAr.score());
+        assertEquals(GradingStatus.CORRECT, loadedAr.score());
         assertEquals("Sample Answer", loadedAr.studentAnswer());
         assertEquals(705123456, loadedAr.studentId());
         assertEquals("Good job!", loadedAr.feedback());
 
         AssessmentRecord loadedAr2 = loadedAi.getSubmissions().get(1);
         assertNotNull(loadedAr2);
-        assertEquals(85, loadedAr2.score());
+        assertEquals(GradingStatus.PARTIALLY_CORRECT, loadedAr2.score());
         assertEquals("Another Sample Answer", loadedAr2.studentAnswer());
         assertEquals(705456789, loadedAr2.studentId());
         assertEquals("Well done!", loadedAr2.feedback());
