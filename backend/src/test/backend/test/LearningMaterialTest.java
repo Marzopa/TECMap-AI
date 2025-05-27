@@ -3,6 +3,7 @@ package backend.test;
 import Classroom.AssessmentItem;
 import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;
+import Ollama.GradingStatus;
 import Utils.Json;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,7 +47,7 @@ public class LearningMaterialTest {
     public void testSaveAndLoadLearningMaterial() throws IOException {
         LearningMaterial lm = new LearningMaterial("Sample Learning Material", "This is a sample content.", true);
         AssessmentItem ai = new AssessmentItem(100);
-        AssessmentRecord ar = new AssessmentRecord(90, "Sample Answer", 705123456, "Good job!");
+        AssessmentRecord ar = new AssessmentRecord(GradingStatus.CORRECT, "Sample Answer", 705123456, "Good job!");
         ai.addSubmission(ar);
         lm.setAssessmentItem(ai);
 

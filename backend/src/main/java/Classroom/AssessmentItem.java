@@ -1,5 +1,6 @@
 package Classroom;
 
+import Ollama.GradingStatus;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,31 +13,23 @@ import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AssessmentItem {
-    private final int maxScore;
     private final List<AssessmentRecord> submissions;
     private final String uuid;
 
-    public AssessmentItem(int maxScore) {
-        this.maxScore = maxScore;
+    public AssessmentItem() {
         this.submissions = new LinkedList<>();
         this.uuid = UUID.randomUUID().toString();
     }
 
     @JsonCreator
-    public AssessmentItem(@JsonProperty("maxScore") int maxScore,
-                          @JsonProperty("uuid") String uuid,
+    public AssessmentItem(@JsonProperty("uuid") String uuid,
                           @JsonProperty("submissions") List<AssessmentRecord> submissions) {
-        this.maxScore = maxScore;
         this.uuid = uuid;
         this.submissions = submissions != null ? submissions : new LinkedList<>();
     }
 
     public String getUuid() {
         return uuid;
-    }
-
-    public int getMaxScore() {
-        return maxScore;
     }
 
     public List<AssessmentRecord> getSubmissions() {
@@ -60,7 +53,7 @@ public class AssessmentItem {
         }
     }
 
-    public void submitSolution(int score, String answer, int studentId, String feedback) {
+    public void submitSolution(GradingStatus score, String answer, int studentId, String feedback) {
         if (answer != null) {
             AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
             submissions.add(record);

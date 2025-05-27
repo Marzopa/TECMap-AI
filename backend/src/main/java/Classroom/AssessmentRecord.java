@@ -1,5 +1,6 @@
 package Classroom;
 
+import Ollama.GradingResponse;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -9,15 +10,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
 import java.util.UUID;
 
+import Ollama.GradingStatus;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record AssessmentRecord(String uuid, int score,
+public record AssessmentRecord(String uuid, GradingStatus score,
                                @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
                                int studentId, String feedback) {
 
     @JsonCreator
     public AssessmentRecord(
             @JsonProperty("uuid") String uuid,
-            @JsonProperty("score") int score,
+            @JsonProperty("score") GradingStatus score,
             @JsonProperty(value = "studentAnswer") String studentAnswer,
             @JsonProperty(value = "answer") String answer,
             @JsonProperty("studentId") int studentId,
@@ -25,7 +28,7 @@ public record AssessmentRecord(String uuid, int score,
         this(uuid, score, studentAnswer != null ? studentAnswer : answer, studentId, feedback);
     }
 
-    public AssessmentRecord(int score,
+    public AssessmentRecord(GradingStatus score,
                             String answer,
                             int studentId,
                             String feedback) {
@@ -41,7 +44,7 @@ public record AssessmentRecord(String uuid, int score,
         return uuid;
     }
 
-    public int getScore() {
+    public GradingStatus getScore() {
         return score;
     }
 

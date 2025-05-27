@@ -64,7 +64,7 @@ public class OllamaClient {
     public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
         String detectedLanguage = checkSyntax(solution).toLowerCase().trim();
 
-        if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", 0, null);
+        if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", GradingStatus.NOT_CODE, null);
 
         String escapedSolution = solution.replace("\"", "\\\"");
         String feedbackContent = String.format("problem: %s ~~~ solution: %s ~~~ language: %s",
@@ -78,7 +78,7 @@ public class OllamaClient {
                 problem.replace("\"", "\\\""),
                 escapedSolution, feedback);
         String gradeStr = OllamaRequest("cs-problemGrader", gradeContent).trim();
-        int grade = Integer.parseInt(gradeStr);
+        GradingStatus grade =  GradingStatus.valueOf(gradeStr);
 
         return new GradingResponse(feedback, grade, detectedLanguage);
 
