@@ -4,13 +4,20 @@ import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import Repo.LearningMaterialRepo;
 
 import java.io.IOException;
 import java.net.http.*;
 import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
 
+@Service
 public class OllamaClient {
+
+    @Autowired
+    private LearningMaterialRepo learningMaterialRepo;
 
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
@@ -49,7 +56,7 @@ public class OllamaClient {
         return OllamaRequest("cs-problemGenerator", topic + " " + difficulty);
     }
 
-    public static String checkSyntax(String solution) throws IOException, InterruptedException {
+    public String checkSyntax(String solution) throws IOException, InterruptedException {
         log.info("Checking syntax...");
 
         solution = solution.replace("\\", "\\\\")
@@ -61,7 +68,7 @@ public class OllamaClient {
         return parsedResponse;
     }
 
-    public static GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
+    public GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
         String detectedLanguage = checkSyntax(solution).toLowerCase().trim();
 
         if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", GradingStatus.NOT_CODE, null);
@@ -85,7 +92,7 @@ public class OllamaClient {
     }
 
 
-    public static LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
+    public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
@@ -98,14 +105,9 @@ public class OllamaClient {
      * It takes a LearningMaterial object as input and returns the solution as a string.
      * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
      */
-    public static String problemSolverHelper(LearningMaterial learningMaterial, String language) throws IOException, InterruptedException {
+    public String problemSolverHelper(LearningMaterial learningMaterial, String language) throws IOException, InterruptedException {
         String content = "problem: " + learningMaterial.getContent() + "language: " + language;
         return OllamaRequest("cs-problemSolver", content);
     }
 
-    public static void main(String[] args) throws Exception {
-        LearningMaterial lm = generateLearningMaterialProblem("arrays", 3);
-        System.out.println("Learning Material Title: " + lm.getTitle());
-        System.out.println("Learning Material Content: " + lm.getContent());
-    }
 }

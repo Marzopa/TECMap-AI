@@ -5,6 +5,8 @@ import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -12,8 +14,10 @@ import java.util.List;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class AssessmentItem {
     private final List<AssessmentRecord> submissions;
+    @Id
     private final String uuid;
 
     public AssessmentItem() {

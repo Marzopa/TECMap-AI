@@ -4,17 +4,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import Utils.Json;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.io.IOException;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class LearningMaterial {
     private final String title;
     private final String content;
+    @Id
     private final String uuid;
     private final boolean answerable;
     private AssessmentItem assessmentItem;
+
+    protected LearningMaterial() {
+        this.title = null;
+        this.content = null;
+        this.uuid = null;
+        this.answerable = false;
+        this.assessmentItem = null;
+    }
 
     public LearningMaterial(String title, String content, boolean answerable) {
         this.title = title;
