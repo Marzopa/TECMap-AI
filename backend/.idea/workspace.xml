@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="fixed test path in a test" />
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="h2 console now visible from springboot">
+      <change afterPath="$PROJECT_DIR$/src/main/java/repo/LearningMaterialRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/LearningMaterialRepository.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +66,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
@@ -134,7 +143,7 @@
       <workItem from="1748464078711" duration="66000" />
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
-      <workItem from="1748465800383" duration="690000" />
+      <workItem from="1748465800383" duration="1906000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -176,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748466029840</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="h2 console now visible from springboot">
+      <option name="closed" value="true" />
+      <created>1748466705996</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748466705996</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +204,7 @@
     <MESSAGE value="springboot runs great" />
     <MESSAGE value="ridiculous fix" />
     <MESSAGE value="fixed test path in a test" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed test path in a test" />
+    <MESSAGE value="h2 console now visible from springboot" />
+    <option name="LAST_COMMIT_MESSAGE" value="h2 console now visible from springboot" />
   </component>
 </project>
