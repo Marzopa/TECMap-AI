@@ -35,7 +35,7 @@ public class AIControllerTest {
         HttpClient client = HttpClient.newHttpClient();
         String url = "http://localhost:8080/ai/submit";
 
-        LearningMaterial learningMaterialObject = Json.fromJsonFile("backend/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
+        LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         String learningMaterialJson = Json.toJsonString(learningMaterialObject);
         System.out.println("Learning Material: " + learningMaterialJson);
 
