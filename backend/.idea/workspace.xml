@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="ridiculous fix" />
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="fixed test path in a test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,29 +38,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AIControllerTest.testGetProblem.executor": "Run",
+    "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "Maven.AI-microservice [clean].executor": "Run",
+    "Maven.AI-microservice [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.MicroserviceApp.executor": "Run",
+    "git-widget-placeholder": "ai-database",
+    "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testSubmitSolution">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -108,8 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
       </list>
     </recent_temporary>
@@ -132,6 +134,7 @@
       <workItem from="1748464078711" duration="66000" />
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
+      <workItem from="1748465800383" duration="690000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -157,7 +160,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748465689439</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ridiculous fix">
+      <option name="closed" value="true" />
+      <created>1748465823690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748465823690</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed test path in a test">
+      <option name="closed" value="true" />
+      <created>1748466029840</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748466029840</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +186,7 @@
     <MESSAGE value="mightve fixed backend intellij issues" />
     <MESSAGE value="springboot runs great" />
     <MESSAGE value="ridiculous fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="ridiculous fix" />
+    <MESSAGE value="fixed test path in a test" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed test path in a test" />
   </component>
 </project>
