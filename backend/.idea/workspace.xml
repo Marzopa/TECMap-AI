@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="working through saving learningmaterials, all three nested classes appear on h2-console">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +178,7 @@
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
-      <workItem from="1748528086402" duration="4891000" />
+      <workItem from="1748528086402" duration="5977000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -269,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748531078923</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="working through saving learningmaterials, all three nested classes appear on h2-console">
+      <option name="closed" value="true" />
+      <created>1748535854273</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748535854273</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +306,7 @@
     <MESSAGE value="springboot seems to work, need to add database functionality" />
     <MESSAGE value="springboot seems to work, need to add database functionality, also columns seem to be missing" />
     <MESSAGE value="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up" />
+    <MESSAGE value="working through saving learningmaterials, all three nested classes appear on h2-console" />
+    <option name="LAST_COMMIT_MESSAGE" value="working through saving learningmaterials, all three nested classes appear on h2-console" />
   </component>
 </project>
