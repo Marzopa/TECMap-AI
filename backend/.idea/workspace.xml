@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="database, everything works, might do disk database next">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="disk database, fixed lingering tests, now time to check whether database solving id detection works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +53,7 @@
     "JUnit.AIControllerTest.testDatabaseConnection.executor": "Run",
     "JUnit.AIControllerTest.testGetProblem.executor": "Run",
     "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
+    "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
     "JUnit.LLMTest.testSubmitResponse.executor": "Run",
     "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
@@ -87,7 +86,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testSolveProblemNotDone">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testDatabaseConnection">
     <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -167,10 +166,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testSolveProblemNotDone" />
         <item itemvalue="JUnit.AIControllerTest.testSolveProblemDone" />
-        <item itemvalue="Spring Boot.MicroserviceApp" />
-        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
       </list>
     </recent_temporary>
@@ -194,7 +193,7 @@
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
-      <workItem from="1748528086402" duration="13333000" />
+      <workItem from="1748528086402" duration="13925000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -332,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748543402668</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="disk database, fixed lingering tests, now time to check whether database solving id detection works">
+      <option name="closed" value="true" />
+      <created>1748545638369</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748545638370</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,6 +375,7 @@
     <MESSAGE value="need to setup proper tests for database" />
     <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
     <MESSAGE value="database, everything works, might do disk database next" />
-    <option name="LAST_COMMIT_MESSAGE" value="database, everything works, might do disk database next" />
+    <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
+    <option name="LAST_COMMIT_MESSAGE" value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
   </component>
 </project>

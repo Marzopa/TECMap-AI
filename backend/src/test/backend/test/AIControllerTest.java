@@ -213,9 +213,45 @@ public class AIControllerTest {
                 .POST(HttpRequest.BodyPublishers.ofString(jsonPayload3))
                 .build();
 
-        HttpResponse<String> postResponse3 = client.send(postRequest1, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> postResponse3 = client.send(postRequest3, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("POST Response status for first problem (1): " + postResponse3.statusCode());
-        System.out.println("POST Response body for first problem (1): " + postResponse3.body());
+        System.out.println("POST Response status for second problem (1): " + postResponse3.statusCode());
+        System.out.println("POST Response body for second problem (1): " + postResponse3.body());
+
+        /* SOLVING ID DETECTION IN DB */
+        // Has solved
+        String jsonPayload4 = String.format("""
+        {
+            "learningMaterial": %s,
+            "language": "java",
+            "studentId": 705123456
+        }
+        """, response2.body());
+        HttpRequest postRequest4 = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/ai/solve"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload4))
+                .build();
+        HttpResponse<String> postResponse4 = client.send(postRequest4, HttpResponse.BodyHandlers.ofString());
+        System.out.println("POST Response status for checking attempt (did): " + postResponse4.statusCode());
+        System.out.println("POST Response body for checking attempt (did): " + postResponse4.body());
+
+        // Hasn't solved
+        String jsonPayload5 = String.format("""
+        {
+            "learningMaterial": %s,
+            "language": "java",
+            "studentId": 632
+        }
+        """, response2.body());
+        HttpRequest postRequest5 = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/ai/solve"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload5))
+                .build();
+        HttpResponse<String> postResponse5 = client.send(postRequest5, HttpResponse.BodyHandlers.ofString());
+        System.out.println("POST Response status for checking attempt (didn't): " + postResponse5.statusCode());
+        System.out.println("POST Response body for checking attempt (didn't): " + postResponse5.body());
+
     }
 }
