@@ -5,8 +5,7 @@ import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -16,7 +15,10 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class AssessmentItem {
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "assessment_item_uuid")  // creates the foreign key in AssessmentRecord
     private final List<AssessmentRecord> submissions;
+
     @Id
     private final String uuid;
 

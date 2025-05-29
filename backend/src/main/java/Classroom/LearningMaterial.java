@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import Utils.Json;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -18,6 +17,8 @@ public class LearningMaterial {
     @Id
     private final String uuid;
     private final boolean answerable;
+    @OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "assessment_item_uuid", referencedColumnName = "uuid")
     private AssessmentItem assessmentItem;
 
     protected LearningMaterial() {

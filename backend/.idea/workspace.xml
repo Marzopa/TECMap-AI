@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="about to change ollamaclient into a @service">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="springboot does not run right now, need to deal with LearningMaterial Jpa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repo/LearningMaterialRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,31 +42,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AIControllerTest.testGetProblem.executor": "Run",
-    "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
-    "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
-    "Maven.AI-microservice [clean].executor": "Run",
-    "Maven.AI-microservice [compile].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "ai-database",
-    "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSubmitSolution.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testSyntaxChecker.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ai-database&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
@@ -170,7 +164,8 @@
       <workItem from="1748464078711" duration="66000" />
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
-      <workItem from="1748465800383" duration="4804000" />
+      <workItem from="1748465800383" duration="5065000" />
+      <workItem from="1748528086402" duration="1328000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -228,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748470147307</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="springboot does not run right now, need to deal with LearningMaterial Jpa">
+      <option name="closed" value="true" />
+      <created>1748472889500</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748472889500</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +244,7 @@
     <MESSAGE value="fixed test path in a test" />
     <MESSAGE value="h2 console now visible from springboot" />
     <MESSAGE value="about to change ollamaclient into a @service" />
-    <option name="LAST_COMMIT_MESSAGE" value="about to change ollamaclient into a @service" />
+    <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
+    <option name="LAST_COMMIT_MESSAGE" value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
   </component>
 </project>
