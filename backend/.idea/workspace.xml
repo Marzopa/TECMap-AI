@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="forgot to add in last commit">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added approved field to database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -171,8 +168,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest" />
@@ -376,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748550621099</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added approved field to database">
+      <option name="closed" value="true" />
+      <created>1748551723658</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748551723658</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,6 +430,7 @@
     <MESSAGE value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
     <MESSAGE value="added topic detection for problem, although grader doesn't seem to care if they used it or not" />
     <MESSAGE value="forgot to add in last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="forgot to add in last commit" />
+    <MESSAGE value="added approved field to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="added approved field to database" />
   </component>
 </project>
