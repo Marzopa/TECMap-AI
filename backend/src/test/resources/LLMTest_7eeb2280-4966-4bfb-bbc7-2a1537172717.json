@@ -1,0 +1,17 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Given two dictionaries with string keys and integer values, write a function to merge them into one dictionary. If there are overlapping keys, sum their values.",
+  "uuid" : "7eeb2280-4966-4bfb-bbc7-2a1537172717",
+  "answerable" : true,
+  "assessmentItem" : {
+    "uuid" : "300e4854-b08d-47e7-aba5-597d859f5042",
+    "submissions" : [ {
+      "studentAnswer" : "screw everyone",
+      "uuid" : "0b82510f-2f87-4a2f-9cc0-8f52fc0a1def",
+      "score" : "NOT_CODE",
+      "answer" : "screw everyone",
+      "studentId" : 705999999,
+      "feedback" : "Not code"
+    } ]
+  }
+}

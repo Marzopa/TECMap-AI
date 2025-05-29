@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="before updating assessment record to be included in database">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="springboot seems to work, need to add database functionality, also columns seem to be missing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentRecord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +36,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2xjv0zHQNyRvNJpt7eoCD8uwxK7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,6 +49,7 @@
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
     "JUnit.LLMTest.testSubmitResponse.executor": "Run",
     "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
+    "JUnit.test in AI-microservice.executor": "Run",
     "Maven.AI-microservice [clean].executor": "Run",
     "Maven.AI-microservice [compile].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -76,7 +78,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -88,22 +90,6 @@
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
       <option name="METHOD_NAME" value="testGetProblem" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AIControllerTest.testSubmitSolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSubmitSolution" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,6 +127,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test in AI-microservice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
@@ -156,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="JUnit.test in AI-microservice" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest.testSyntaxChecker" />
-        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +177,7 @@
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
-      <workItem from="1748528086402" duration="2051000" />
+      <workItem from="1748528086402" duration="2831000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -257,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748529592232</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="springboot seems to work, need to add database functionality, also columns seem to be missing">
+      <option name="closed" value="true" />
+      <created>1748530268968</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748530268968</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +275,8 @@
     <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
     <MESSAGE value="before updating assessment record" />
     <MESSAGE value="before updating assessment record to be included in database" />
-    <option name="LAST_COMMIT_MESSAGE" value="before updating assessment record to be included in database" />
+    <MESSAGE value="springboot seems to work, need to add database functionality" />
+    <MESSAGE value="springboot seems to work, need to add database functionality, also columns seem to be missing" />
+    <option name="LAST_COMMIT_MESSAGE" value="springboot seems to work, need to add database functionality, also columns seem to be missing" />
   </component>
 </project>
