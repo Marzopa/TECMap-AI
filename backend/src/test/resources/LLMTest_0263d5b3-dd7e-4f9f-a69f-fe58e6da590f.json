@@ -1,0 +1,17 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Given two dictionaries with integer keys and values, write a function that finds the common keys between them and returns their corresponding values as a new dictionary.",
+  "uuid" : "0263d5b3-dd7e-4f9f-a69f-fe58e6da590f",
+  "answerable" : true,
+  "assessmentItem" : {
+    "uuid" : "6dd1f204-f0b5-48b9-a466-8b17e840bae2",
+    "submissions" : [ {
+      "studentAnswer" : "screw everyone",
+      "uuid" : "61ec6efd-9305-48e8-bb2c-0fa690361211",
+      "score" : "NOT_CODE",
+      "answer" : "screw everyone",
+      "studentId" : 705999999,
+      "feedback" : "Not code"
+    } ]
+  }
+}

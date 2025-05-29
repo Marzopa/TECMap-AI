@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added test, but now it doesnt allow for solving even when student did attempt">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,8 @@
     "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
     "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "JUnit.LLMTest.executor": "Run",
+    "JUnit.LLMTest.testLLM.executor": "Run",
     "JUnit.LLMTest.testSubmitResponse.executor": "Run",
     "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
     "JUnit.test in AI-microservice.executor": "Run",
@@ -86,7 +87,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
+  <component name="RunManager" selected="JUnit.LLMTest">
     <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -103,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LLMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -112,14 +113,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testGetProblem" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AIControllerTest.testSolveProblemDone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LLMTest.testLLM" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -128,14 +128,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSolveProblemDone" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="METHOD_NAME" value="testLLM" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AIControllerTest.testSolveProblemNotDone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LLMTest.testSubmitResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -144,33 +144,28 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSolveProblemNotDone" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="METHOD_NAME" value="testSubmitResponse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="test in AI-microservice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="API.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.LLMTest" />
+        <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
+        <item itemvalue="JUnit.LLMTest.testLLM" />
         <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
-        <item itemvalue="JUnit.AIControllerTest.testSolveProblemNotDone" />
-        <item itemvalue="JUnit.AIControllerTest.testSolveProblemDone" />
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="JUnit.test in AI-microservice" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +188,7 @@
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
-      <workItem from="1748528086402" duration="14722000" />
+      <workItem from="1748528086402" duration="16343000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -347,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748546245600</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test">
+      <option name="closed" value="true" />
+      <created>1748546892581</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748546892581</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +388,7 @@
     <MESSAGE value="database, everything works, might do disk database next" />
     <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
     <MESSAGE value="added test, but now it doesnt allow for solving even when student did attempt" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test, but now it doesnt allow for solving even when student did attempt" />
+    <MESSAGE value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
   </component>
 </project>
