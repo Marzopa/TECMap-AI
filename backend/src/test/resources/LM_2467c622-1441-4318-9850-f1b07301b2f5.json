@@ -3,5 +3,6 @@
   "content" : "This is a sample content.",
   "uuid" : "2467c622-1441-4318-9850-f1b07301b2f5",
   "answerable" : false,
+  "approved" : false,
   "assessmentItem" : null
 }

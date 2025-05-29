@@ -3,6 +3,7 @@
   "content": "This is a sample content.",
   "uuid": "123e4567-e89b-12d3-a456-426614174000",
   "answerable": true,
+  "approved" : false,
   "assessmentItem": {
     "question": "Sample Question?",
     "uuid": "523e4567-e89b-12d3-a456-426614174001",

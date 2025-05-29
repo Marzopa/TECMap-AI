@@ -3,6 +3,7 @@
   "content" : "Make a loop that prints numbers from 1 to 10",
   "uuid" : "32cd931e-784d-4ab8-be4a-c2cb6121d032",
   "answerable" : true,
+  "approved" : true,
   "assessmentItem" : {
     "question" : "Write a loop that prints numbers from 1 to 10",
     "uuid" : "46cf395d-b1a7-4235-8f8d-86b4b75f9e97",
