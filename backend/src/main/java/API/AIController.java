@@ -44,7 +44,7 @@ public class AIController {
             throws IOException, InterruptedException {
 
         GradingResponse gradingResponse = ollamaClient.solutionRequest(submission.getProblem(),
-                submission.solution());
+                submission.solution(), submission.learningMaterial().getTitle());
 
         // Update the LearningMaterial's assessment item with the new submission
         AssessmentItem problem = submission.learningMaterial().getAssessmentItem();

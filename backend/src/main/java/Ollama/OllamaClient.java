@@ -65,15 +65,15 @@ public class OllamaClient {
         return parsedResponse;
     }
 
-    public GradingResponse solutionRequest(String problem, String solution) throws IOException, InterruptedException {
+    public GradingResponse solutionRequest(String problem, String solution, String topic) throws IOException, InterruptedException {
         String detectedLanguage = checkSyntax(solution).toLowerCase().trim();
 
         if (detectedLanguage.equals("not code")) return new GradingResponse("Not code", GradingStatus.NOT_CODE, null);
 
         String escapedSolution = solution.replace("\"", "\\\"");
-        String feedbackContent = String.format("problem: %s ~~~ solution: %s ~~~ language: %s",
+        String feedbackContent = String.format("problem: %s ~~~ solution: %s ~~~ language: %s ~~~ topic: %s",
                 problem.replace("\"", "\\\""),
-                escapedSolution, detectedLanguage);
+                escapedSolution, detectedLanguage, topic);
         log.info("Sending feedback request with content: {}", feedbackContent);
         String feedback = OllamaRequest("cs-feedbackGenerator", feedbackContent);
         log.info("Parsed feedback: {}", feedback);

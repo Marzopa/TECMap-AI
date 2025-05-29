@@ -4,8 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="Merge branch 'master' into submit-solution&#10;&#10;# Conflicts:&#10;#&#9;backend/.idea/compiler.xml&#10;#&#9;backend/.idea/encodings.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/GradingStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/GradingStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-feedbackGenerator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-feedbackGenerator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGrader.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGrader.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_123dac5f-d312-48c1-a561-645ede95ee50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_539ff935-87d3-409a-98d1-fa3757cfa098.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_7356082b-a596-40d0-b637-a7b08daa7df4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_af211693-bbd4-4ef2-94ae-3113bd766a95.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_b1f2ee9f-aacf-44a6-bd27-83b8cb868ad7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_fcca5c30-8339-4578-98b0-7134e626c35d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest_0263d5b3-dd7e-4f9f-a69f-fe58e6da590f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest_7eeb2280-4966-4bfb-bbc7-2a1537172717.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest_8285d893-bb06-4c19-a394-719443787e5b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_00f0aee3-2b33-46e7-a934-3150a409eb8b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_015375c0-9771-4ded-80b6-ace77d589511.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_11cebe8d-b069-4657-b872-da4006c35a7f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_19223a14-dff8-40cb-9649-b4fc76cedfb6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_1c349240-1ec2-448f-ab5c-af9563abd164.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_209f271a-e374-43ed-8cb0-36123cf738c9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_3bec147a-f2e5-4dca-9780-e6e31c67649a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_425ca293-50c5-43cf-a5f4-04473f7e6e57.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_53252cd9-2d58-48d7-80e9-f149fdcf723c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_5f2d8d33-3265-4df2-b3c9-88b973a55c18.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_630d6eaf-9483-4ce7-8c2a-7c7583ef7c08.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_74b78a68-4d5b-4fb2-97f6-48467dacba41.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_76815503-868f-47bd-9117-6f692623bda1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_9278bc54-5d76-43b6-8147-9099e4b04251.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_a485b7f6-f018-4794-b42b-160c1dbb04ca.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_cd66f108-7ff9-4296-a318-818c63d8ad74.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_d4d227da-cc1a-4de9-abe6-efeb83fe5787.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_eb3d27a2-5ffc-45cf-8802-e5196ead5165.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +102,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "ai-database",
+    "git-widget-placeholder": "submit-solution",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -87,7 +120,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LLMTest">
+  <component name="RunManager" selected="JUnit.LLMTest.testSubmitResponse">
     <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -161,8 +194,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
+        <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
         <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
         <item itemvalue="JUnit.test in AI-microservice" />

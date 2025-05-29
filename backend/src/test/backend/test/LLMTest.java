@@ -23,7 +23,7 @@ public class LLMTest {
     @Test
     public void testLLM() throws IOException, InterruptedException {
         LearningMaterial learningMaterial = ollamaClient.generateLearningMaterialProblem("Dictionaries", 1);
-        GradingResponse gradingResponse = ollamaClient.solutionRequest(learningMaterial.getContent(), "screw everyone");
+        GradingResponse gradingResponse = ollamaClient.solutionRequest(learningMaterial.getContent(), "screw everyone", "Dictionaries");
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "screw everyone", 705999999, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
         Json.toJsonFile("src/test/resources/LLMTest_" + learningMaterial.getUuid() +".json", learningMaterial);
@@ -33,11 +33,11 @@ public class LLMTest {
     public void testSubmitResponse() throws IOException, InterruptedException {
         LearningMaterial learningMaterial = new LearningMaterial("Dictionaries", "Make a loop that prints numbers from 1 to 10", true);
         learningMaterial.setAssessmentItem(new AssessmentItem());
-        GradingResponse gradingResponse = ollamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10) System.out.println(i);");
+        GradingResponse gradingResponse = ollamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10) System.out.println(i);", "Dictionaries");
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "for(int i=1; i<=10) System.out.println(i);", 705256789, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
 
-        GradingResponse gradingResponse2 = ollamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10; i++) System.out.println(i);");
+        GradingResponse gradingResponse2 = ollamaClient.solutionRequest(learningMaterial.getContent(), "for(int i=1; i<=10; i++) System.out.println(i);", "Dictionaries");
         AssessmentRecord assessmentRecord2 = new AssessmentRecord(gradingResponse2.grade(), "for(int i=1; i<=10; i++) System.out.println(i);", 705123456, gradingResponse2.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord2);
         Json.toJsonFile("src/test/resources/LLMTestFixedQuestion_" + learningMaterial.getUuid() +".json", learningMaterial);
@@ -74,7 +74,7 @@ public class LLMTest {
         String problem = "Make a loop that prints numbers from 1 to 10";
         String code = "for(int i=1; i<=10; i++) System.out.println(i);";
         for(int i = 0; i<10; i++) {
-            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code);
+            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code, "Loops");
             System.err.println("Number " + i + ":");
             System.err.println("\t" + gradingResponse.grade());
             System.err.println("\t" + gradingResponse.detectedLanguage());
@@ -83,7 +83,7 @@ public class LLMTest {
         System.err.println("##################################################");
         code = "for(i in range(10)): print(i)";
         for(int i = 0; i<10; i++) {
-            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code);
+            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code, "Loops");
             System.err.println("Number " + i + ":");
             System.err.println("\t" + gradingResponse.grade());
             System.err.println("\t" + gradingResponse.detectedLanguage());
@@ -92,7 +92,7 @@ public class LLMTest {
         System.err.println("##################################################");
         code = "i dont know bro";
         for(int i = 0; i<10; i++) {
-            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code);
+            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code, "Loops");
             System.err.println("Number " + i + ":");
             System.err.println("\t" + gradingResponse.grade());
             System.err.println("\t" + gradingResponse.detectedLanguage());
@@ -101,7 +101,7 @@ public class LLMTest {
         System.err.println("##################################################");
         code = "System.out.println(5);";
         for(int i = 0; i<10; i++) {
-            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code);
+            GradingResponse gradingResponse = ollamaClient.solutionRequest(problem, code, "Loops");
             System.err.println("Number " + i + ":");
             System.err.println("\t" + gradingResponse.grade());
             System.err.println("\t" + gradingResponse.detectedLanguage());
