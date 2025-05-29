@@ -4,6 +4,7 @@ import Classroom.LearningMaterial;
 import Utils.Json;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.URI;
@@ -144,16 +145,16 @@ public class AIControllerTest {
                 .GET()
                 .build();
 
-        HttpResponse<String> response1 = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Response 1: " + response1.body());
-        LearningMaterial learningMaterial1CLEAN = Json.fromJsonString(response1.body(), LearningMaterial.class);
+        HttpResponse<String> hashmapLM = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println("Response 1: " + hashmapLM.body());
+        LearningMaterial learningMaterial1CLEAN = Json.fromJsonString(hashmapLM.body(), LearningMaterial.class);
 
         url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
         request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
                 .build();
-        HttpResponse<String> response2 = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> arraysLM = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         /* SUBMIT SOLUTIONS FOR EACH*/
         String jsonPayload1 = String.format("""
@@ -162,7 +163,7 @@ public class AIControllerTest {
             "solution": "System.out.println(5);",
             "studentId": 705456789
         }
-        """, response1.body());
+        """, hashmapLM.body());
 
         HttpRequest postRequest1 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/submit"))
@@ -182,7 +183,7 @@ public class AIControllerTest {
             "solution": "for(int i=1; i<=10; i++){System.out.println(i);}",
             "studentId": 705123456
         }
-        """, response2.body());
+        """, arraysLM.body());
         HttpRequest postRequest2 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/submit"))
                 .header("Content-Type", "application/json")
@@ -205,7 +206,7 @@ public class AIControllerTest {
             "solution": "gerbinni",
             "studentId": 999999999
         }
-        """, response2.body());
+        """, hashmapLM.body());
 
         HttpRequest postRequest3 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/submit"))
@@ -226,7 +227,7 @@ public class AIControllerTest {
             "language": "java",
             "studentId": 705123456
         }
-        """, response2.body());
+        """, arraysLM.body());
         HttpRequest postRequest4 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/solve"))
                 .header("Content-Type", "application/json")
@@ -243,7 +244,7 @@ public class AIControllerTest {
             "language": "java",
             "studentId": 632
         }
-        """, response2.body());
+        """, arraysLM.body());
         HttpRequest postRequest5 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/solve"))
                 .header("Content-Type", "application/json")
