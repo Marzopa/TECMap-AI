@@ -29,7 +29,9 @@ public class AIController {
     public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
             throws IOException, InterruptedException {
         log.info("Getting problem");
-        return ollamaClient.generateLearningMaterialProblem(topic, difficulty);
+        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(topic, difficulty);
+        learningMaterialRepo.save(generatedMaterial);
+        return generatedMaterial;
     }
 
     /**
@@ -51,6 +53,9 @@ public class AIController {
                 submission.solution(),
                 submission.studentId(),
                 gradingResponse.feedback());
+
+        // Update the LearningMaterial in the database with the new submission
+        learningMaterialRepo.save(submission.learningMaterial());
 
         return gradingResponse;
     }

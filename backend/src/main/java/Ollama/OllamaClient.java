@@ -16,9 +16,6 @@ import java.net.http.HttpResponse.BodyHandlers;
 @Service
 public class OllamaClient {
 
-    @Autowired
-    private LearningMaterialRepo learningMaterialRepo;
-
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
 
@@ -86,7 +83,6 @@ public class OllamaClient {
                 escapedSolution, feedback);
         String gradeStr = OllamaRequest("cs-problemGrader", gradeContent).trim();
         GradingStatus grade =  GradingStatus.valueOf(gradeStr);
-
         return new GradingResponse(feedback, grade, detectedLanguage);
 
     }
@@ -97,7 +93,6 @@ public class OllamaClient {
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
-        learningMaterialRepo.save(learningMaterial);
         return learningMaterial;
     }
 
