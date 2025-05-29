@@ -5,6 +5,9 @@ import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.*;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -12,8 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class AssessmentItem {
+    @Lob
+    @Column(name = "submissions_json", columnDefinition = "TEXT")
+    @Convert(converter = AssessmentRecordListConverter.class)
     private final List<AssessmentRecord> submissions;
+
+    @Id
     private final String uuid;
 
     public AssessmentItem() {
@@ -69,5 +78,34 @@ public class AssessmentItem {
             }
         }
         return false;
+    }
+
+    @Converter
+    public static class AssessmentRecordListConverter
+            implements AttributeConverter<List<AssessmentRecord>, String> {
+
+        private static final ObjectMapper MAPPER = new ObjectMapper();
+
+        @Override
+        public String convertToDatabaseColumn(List<AssessmentRecord> attribute) {
+            try {
+                return attribute == null ? "[]" : MAPPER.writeValueAsString(attribute);
+            } catch (Exception e) {
+                throw new IllegalStateException("Failed to convert submissions to JSON", e);
+            }
+        }
+
+        @Override
+        public List<AssessmentRecord> convertToEntityAttribute(String dbData) {
+            try {
+                if (dbData == null || dbData.isBlank()) {
+                    return new LinkedList<>();
+                }
+                return MAPPER.readValue(dbData,
+                        new TypeReference<List<AssessmentRecord>>() {});
+            } catch (Exception e) {
+                throw new IllegalStateException("Failed to read submissions from JSON", e);
+            }
+        }
     }
 }

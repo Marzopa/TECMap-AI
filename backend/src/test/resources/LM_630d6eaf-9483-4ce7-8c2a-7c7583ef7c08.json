@@ -1,0 +1,24 @@
+{
+  "title" : "Sample Learning Material",
+  "content" : "This is a sample content.",
+  "uuid" : "630d6eaf-9483-4ce7-8c2a-7c7583ef7c08",
+  "answerable" : true,
+  "assessmentItem" : {
+    "uuid" : "a8c8bd75-7bb0-4b2c-ae2c-59975d2f5bd7",
+    "submissions" : [ {
+      "studentAnswer" : "Sample Answer",
+      "uuid" : "dce2af72-e01c-40ce-ab55-bd9813f76b9d",
+      "score" : "CORRECT",
+      "answer" : "Sample Answer",
+      "studentId" : 705123456,
+      "feedback" : "Good job!"
+    }, {
+      "studentAnswer" : "Trash studentAnswer",
+      "uuid" : "c36a2562-1869-428d-a42f-48203cda6596",
+      "score" : "INCORRECT",
+      "answer" : "Trash studentAnswer",
+      "studentId" : 705456789,
+      "feedback" : "You're trash!"
+    } ]
+  }
+}

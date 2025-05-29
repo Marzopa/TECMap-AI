@@ -64,7 +64,7 @@ public class LearningMaterialTest {
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
 
-        AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
+        AssessmentRecord loadedAr = loadedAi.getSubmissions().get(0);
         assertNotNull(loadedAr);
         assertEquals(ar.score(), loadedAr.score());
         assertEquals(ar.studentAnswer(), loadedAr.getAnswer());
@@ -84,7 +84,7 @@ public class LearningMaterialTest {
         AssessmentItem loadedAi = loadedLm.getAssessmentItem();
         assertNotNull(loadedAi);
 
-        AssessmentRecord loadedAr = loadedAi.getSubmissions().getFirst();
+        AssessmentRecord loadedAr = loadedAi.getSubmissions().get(0);
         assertNotNull(loadedAr);
         assertEquals(GradingStatus.CORRECT, loadedAr.score());
         assertEquals("Sample Answer", loadedAr.studentAnswer());

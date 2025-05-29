@@ -27,4 +27,10 @@ public class Json {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return  mapper.readValue(new File(filename), classToBeCreated);
     }
+
+    public static <T> T fromJsonString(String jsonString, Class<? extends T> classToBeCreated) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return mapper.readValue(jsonString, classToBeCreated);
+    }
 }

@@ -1,0 +1,17 @@
+{
+  "title" : "Dictionaries",
+  "content" : "Implement a function that takes a dictionary where keys are words and values are their frequencies. The function should return a new dictionary with the same keys but with frequencies reduced by one. If a word's frequency becomes zero, it should be removed from the new dictionary.",
+  "uuid" : "8285d893-bb06-4c19-a394-719443787e5b",
+  "answerable" : true,
+  "assessmentItem" : {
+    "uuid" : "09bcceef-9230-461a-9abf-53735072a68a",
+    "submissions" : [ {
+      "studentAnswer" : "screw everyone",
+      "uuid" : "744b1b28-8d9e-4752-aa67-db2304765e8c",
+      "score" : "NOT_CODE",
+      "answer" : "screw everyone",
+      "studentId" : 705999999,
+      "feedback" : "Not code"
+    } ]
+  }
+}

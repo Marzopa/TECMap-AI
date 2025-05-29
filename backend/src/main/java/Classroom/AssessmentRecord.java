@@ -11,11 +11,30 @@ import java.io.IOException;
 import java.util.UUID;
 
 import Ollama.GradingStatus;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record AssessmentRecord(String uuid, GradingStatus score,
-                               @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
-                               int studentId, String feedback) {
+@Embeddable
+public record AssessmentRecord(@Column(name = "uuid")
+                               String uuid,
+
+                               @Enumerated(EnumType.STRING)
+                               @Column(name = "score")
+                               GradingStatus score,
+
+                               @JsonProperty("studentAnswer")
+                               @JsonAlias("answer")
+                               @Column(name = "student_answer")
+                               String studentAnswer,
+
+                               @Column(name = "student_id")
+                               int studentId,
+
+                               @Column(name = "feedback")
+                               String feedback){
 
     @JsonCreator
     public AssessmentRecord(
