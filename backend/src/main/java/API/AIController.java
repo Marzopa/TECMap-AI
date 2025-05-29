@@ -36,7 +36,6 @@ public class AIController {
 
     /**
      * The method SHOULD update submissions in LearningMaterial from studentId in SubmissionRequest
-     * TODO: once database is set up, this should receive the uuid of the LearningMaterial to update it in there
      * @param submission The submission request containing the LearningMaterial, solution, and studentId.
      * @return a GradingResponse object containing the feedback and score.
      * */
@@ -54,8 +53,9 @@ public class AIController {
                 submission.studentId(),
                 gradingResponse.feedback());
 
-        // Update the LearningMaterial in the database with the new submission
-        learningMaterialRepo.save(submission.learningMaterial());
+        // Update the LearningMaterial in the database with the new submission, only if it was already in the database
+        if (learningMaterialRepo.existsById(submission.learningMaterial().getUuid()))
+            learningMaterialRepo.save(submission.learningMaterial());
 
         return gradingResponse;
     }

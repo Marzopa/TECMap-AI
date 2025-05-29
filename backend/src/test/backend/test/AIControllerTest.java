@@ -117,4 +117,23 @@ public class AIControllerTest {
         System.err.println("POST Response body: " + postResponse.body());
         Assertions.assertEquals("You need to attempt the problem first.", postResponse.body());
     }
+
+    @Test
+    public void testDatabaseConnection() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "http://localhost:8080/ai/problem?topic=hashmaps&difficulty=5";
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+        HttpResponse<String> response1 = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
+        request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        HttpResponse<String> response2 = client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
 }
