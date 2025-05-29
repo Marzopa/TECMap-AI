@@ -129,7 +129,7 @@ public class AIControllerTest {
                 .build();
 
         HttpResponse<String> response1 = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+        System.out.println("Response 1: " + response1.body());
         LearningMaterial learningMaterial1CLEAN = Json.fromJsonString(response1.body(), LearningMaterial.class);
 
         url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
@@ -166,7 +166,7 @@ public class AIControllerTest {
             "solution": "for(int i=1; i<=10; i++){System.out.println(i);}",
             "studentId": 705123456
         }
-        """, response1.body());
+        """, response2.body());
         HttpRequest postRequest2 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/submit"))
                 .header("Content-Type", "application/json")
@@ -194,7 +194,7 @@ public class AIControllerTest {
         HttpRequest postRequest3 = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/ai/submit"))
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload1))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload3))
                 .build();
 
         HttpResponse<String> postResponse3 = client.send(postRequest1, HttpResponse.BodyHandlers.ofString());

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="need to setup proper tests for database">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="assessment record is flipped, tests only add one response to problem">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Json.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +35,9 @@
     &quot;accountId&quot;: &quot;acc4dba6-4494-467a-b4c8-24ad37810a08&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -181,7 +184,7 @@
       <workItem from="1748464160267" duration="1323000" />
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
-      <workItem from="1748528086402" duration="9299000" />
+      <workItem from="1748528086402" duration="11331000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -303,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748538514316</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="assessment record is flipped, tests only add one response to problem">
+      <option name="closed" value="true" />
+      <created>1748540351890</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748540351890</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +348,7 @@
     <MESSAGE value="learningmaterials work in db, deet to add all fields to assessmentitem and record" />
     <MESSAGE value="made changes to record solution" />
     <MESSAGE value="need to setup proper tests for database" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to setup proper tests for database" />
+    <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="assessment record is flipped, tests only add one response to problem" />
   </component>
 </project>
