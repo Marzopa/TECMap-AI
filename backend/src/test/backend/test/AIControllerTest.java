@@ -84,15 +84,23 @@ public class AIControllerTest {
     @Test
     public void testSolveProblemDone() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/solve?studentId=705123456&language=java";
+        String url = "http://localhost:8080/ai/solve";
 
         LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         String learningMaterialJson = Json.toJsonString(learningMaterialObject);
 
+        String jsonPayload = String.format("""
+        {
+            "learningMaterial": %s,
+            "language": "java",
+            "studentId": 705123456
+        }
+        """, learningMaterialJson);
+
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(learningMaterialJson))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
                 .build();
 
         HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
@@ -102,15 +110,23 @@ public class AIControllerTest {
     @Test
     public void testSolveProblemNotDone() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/solve?studentId=999999999";
+        String url = "http://localhost:8080/ai/solve";
 
         LearningMaterial learningMaterialObject = Json.fromJsonFile("src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json", LearningMaterial.class);
         String learningMaterialJson = Json.toJsonString(learningMaterialObject);
 
+        String jsonPayload = String.format("""
+        {
+            "learningMaterial": %s,
+            "language": "java",
+            "studentId": 123
+        }
+        """, learningMaterialJson);
+
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(learningMaterialJson))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
                 .build();
 
         HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
