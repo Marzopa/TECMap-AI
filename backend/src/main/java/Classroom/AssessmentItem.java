@@ -15,8 +15,11 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class AssessmentItem {
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "assessment_item_uuid")  // creates the foreign key in AssessmentRecord
+    @ElementCollection
+    @CollectionTable(
+            name = "assessment_record",
+            joinColumns = @JoinColumn(name = "assessment_item_uuid")
+    )
     private final List<AssessmentRecord> submissions;
 
     @Id
