@@ -97,6 +97,7 @@ public class OllamaClient {
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
+        learningMaterialRepo.save(learningMaterial);
         return learningMaterial;
     }
 
