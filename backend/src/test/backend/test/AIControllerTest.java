@@ -120,6 +120,7 @@ public class AIControllerTest {
 
     @Test
     public void testDatabaseConnection() throws IOException, InterruptedException {
+        /* GENERATE TWO PROBLEMS */
         HttpClient client = HttpClient.newHttpClient();
         String url = "http://localhost:8080/ai/problem?topic=hashmaps&difficulty=5";
         HttpRequest request = HttpRequest.newBuilder()
@@ -129,11 +130,76 @@ public class AIControllerTest {
 
         HttpResponse<String> response1 = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        LearningMaterial learningMaterial1CLEAN = Json.fromJsonString(response1.body(), LearningMaterial.class);
+
         url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
         request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
                 .build();
         HttpResponse<String> response2 = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        /* SUBMIT SOLUTIONS FOR EACH*/
+        String jsonPayload1 = String.format("""
+        {
+            "learningMaterial": %s,
+            "solution": "System.out.println(5);",
+            "studentId": 705456789
+        }
+        """, response1.body());
+
+        HttpRequest postRequest1 = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/ai/submit"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload1))
+                .build();
+
+        HttpResponse<String> postResponse1 = client.send(postRequest1, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("POST Response status for first problem (1): " + postResponse1.statusCode());
+        System.out.println("POST Response body for first problem (1): " + postResponse1.body());
+
+        // Second submission
+        String jsonPayload2 = String.format("""
+        {
+            "learningMaterial": %s,
+            "solution": "for(int i=1; i<=10; i++){System.out.println(i);}",
+            "studentId": 705123456
+        }
+        """, response1.body());
+        HttpRequest postRequest2 = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/ai/submit"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload2))
+                .build();
+        HttpResponse<String> postResponse2 = client.send(postRequest2, HttpResponse.BodyHandlers.ofString());
+        System.out.println("POST Response status for first problem (2): " + postResponse2.statusCode());
+        System.out.println("POST Response body for first problem (2): " + postResponse2.body());
+
+        Assertions.assertNotEquals(learningMaterial1CLEAN, Json.fromJsonString(postResponse1.body(), LearningMaterial.class),
+                "The learning material should not be equal to the one returned by the POST request, as it should have been updated with the submission.");
+
+        Assertions.assertNotEquals(learningMaterial1CLEAN, Json.fromJsonString(postResponse2.body(), LearningMaterial.class),
+                "The learning material should not be equal to the one returned by the second POST request, as it should have been updated with the submission.");
+
+        // Second problem
+        String jsonPayload3 = String.format("""
+        {
+            "learningMaterial": %s,
+            "solution": "gerbinni",
+            "studentId": 999999999
+        }
+        """, response2.body());
+
+        HttpRequest postRequest3 = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/ai/submit"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload1))
+                .build();
+
+        HttpResponse<String> postResponse3 = client.send(postRequest1, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("POST Response status for first problem (1): " + postResponse3.statusCode());
+        System.out.println("POST Response body for first problem (1): " + postResponse3.body());
     }
 }
