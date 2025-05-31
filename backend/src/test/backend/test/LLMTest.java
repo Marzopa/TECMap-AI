@@ -22,7 +22,7 @@ public class LLMTest {
 
     @Test
     public void testLLM() throws IOException, InterruptedException {
-        LearningMaterial learningMaterial = ollamaClient.generateLearningMaterialProblem("Dictionaries", 1);
+        LearningMaterial learningMaterial = ollamaClient.generateLearningMaterialProblem("Dictionaries", 1, new String[]{}, new String[]{});
         GradingResponse gradingResponse = ollamaClient.solutionRequest(learningMaterial.getContent(), "screw everyone", "Dictionaries");
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "screw everyone", 705999999, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
@@ -64,7 +64,7 @@ public class LLMTest {
         String topic = "Dictionaries";
         for(int i = 0; i<5; i++) {
             int difficulty = 3;
-            LearningMaterial learningMaterial = ollamaClient.generateLearningMaterialProblem(topic, difficulty);
+            LearningMaterial learningMaterial = ollamaClient.generateLearningMaterialProblem(topic, difficulty, new String[]{}, new String[]{});
             System.out.println("Generated Learning Material " + i + ":a\t" +  learningMaterial.getContent());
         }
     }

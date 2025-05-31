@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="intellij files">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="started with additional and excluded topics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -187,8 +187,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest" />
@@ -408,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748708038818</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="started with additional and excluded topics">
+      <option name="closed" value="true" />
+      <created>1748711000205</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748711000205</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mightve fixed backend intellij issues" />
     <MESSAGE value="springboot runs great" />
     <MESSAGE value="ridiculous fix" />
     <MESSAGE value="fixed test path in a test" />
@@ -459,6 +466,7 @@
     <MESSAGE value="forgot to add in last commit" />
     <MESSAGE value="added approved field to database" />
     <MESSAGE value="intellij files" />
-    <option name="LAST_COMMIT_MESSAGE" value="intellij files" />
+    <MESSAGE value="started with additional and excluded topics" />
+    <option name="LAST_COMMIT_MESSAGE" value="started with additional and excluded topics" />
   </component>
 </project>

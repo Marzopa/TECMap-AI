@@ -18,16 +18,28 @@ public class AIControllerTest {
     @Test
     public void testGetProblem() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/problem?topic=hashmaps&difficulty=5";
-        HttpRequest request = HttpRequest.newBuilder()
+        String url = "http://localhost:8080/ai/problem";
+
+        String jsonPayload = String.format("""
+        {
+            "topic": "%s",
+            "difficulty": %d,
+            "additionalTopics": ["recursion","arrays","sorting"],
+            "excludedTopics": ["caching","concurrency"]
+        }
+        """, "hashmaps", 5);
+
+        HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create(url))
-                .GET()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("GET /ai/problem response:");
-        System.out.println("Status: " + response.statusCode());
-        System.out.println("Body: " + response.body());
+        HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("POST /ai/problem response:");
+        System.out.println("Status: " + postResponse.statusCode());
+        System.out.println("Body: " + postResponse.body());
     }
 
     // This method performs a POST request to /ai/submit and prints its status and body.
