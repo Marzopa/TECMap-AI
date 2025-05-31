@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.http.*;
 import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
 
 @Service
 public class OllamaClient {
@@ -91,12 +92,19 @@ public class OllamaClient {
 
     }
 
+    public String[] scanTopics(String problem) throws IOException, InterruptedException {
+        String response = OllamaRequest("cs-topicScanner", problem);
+        log.info("Parsed topics response: {}", response);
+        String[] responseParts = response.replace("\n", "").split("~~~");
+        return responseParts[responseParts.length-1].split(",");
+    }
 
     public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty, additionalTopics, excludedTopics);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
+        learningMaterial.setTags(List.of(scanTopics(learningMaterial.getContent())));
         return learningMaterial;
     }
 

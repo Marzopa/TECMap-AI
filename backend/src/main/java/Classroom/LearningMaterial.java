@@ -1,12 +1,15 @@
 package Classroom;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import Utils.Json;
 import jakarta.persistence.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,6 +26,12 @@ public class LearningMaterial {
     @JoinColumn(name = "assessment_item_uuid", referencedColumnName = "uuid")
     private AssessmentItem assessmentItem;
 
+    @ElementCollection
+    @CollectionTable(name = "learning_material_tags", joinColumns = @JoinColumn(name = "learning_material_uuid"))
+    @Column(name = "tag")
+    @JsonIgnore
+    private List<String> tags = new ArrayList<>();
+
     protected LearningMaterial() {
         this.title = null;
         this.content = null;
@@ -30,6 +39,7 @@ public class LearningMaterial {
         this.answerable = false;
         this.assessmentItem = null;
         this.approved = false;
+        this.tags = new ArrayList<>();
     }
 
     public LearningMaterial(String title, String content, boolean answerable) {
@@ -39,6 +49,7 @@ public class LearningMaterial {
         this.answerable = answerable;
         this.assessmentItem = null;
         this.approved = false;
+        this.tags = new ArrayList<>();
     }
 
     @JsonCreator
@@ -54,6 +65,7 @@ public class LearningMaterial {
         this.answerable = answerable;
         this.assessmentItem = assessmentItem;
         this.approved = approved;
+        this.tags = new ArrayList<>();
     }
 
     public String saveToFile(String path) throws IOException {
@@ -96,5 +108,13 @@ public class LearningMaterial {
 
     public void approve() {
         this.approved = true;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

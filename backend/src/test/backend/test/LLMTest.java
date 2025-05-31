@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,6 +28,9 @@ public class LLMTest {
         AssessmentRecord assessmentRecord = new AssessmentRecord(gradingResponse.grade(), "screw everyone", 705999999, gradingResponse.feedback());
         learningMaterial.getAssessmentItem().submitSolution(assessmentRecord);
         Json.toJsonFile("src/test/resources/LLMTest_" + learningMaterial.getUuid() +".json", learningMaterial);
+        System.out.println("Generated Learning Material: " + learningMaterial.getContent());
+        System.out.println("Grading Response: " + gradingResponse.grade());
+        System.out.println("Detected Topics: " + Arrays.toString(ollamaClient.scanTopics(learningMaterial.getContent())));
     }
 
     @Test
