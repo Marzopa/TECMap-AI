@@ -16,6 +16,7 @@ import java.util.UUID;
 @Entity
 public class LearningMaterial {
     private final String title;
+    @Column(length = 1000)
     private final String content;
     @Id
     private final String uuid;

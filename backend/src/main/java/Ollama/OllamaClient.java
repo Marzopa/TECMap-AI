@@ -92,19 +92,31 @@ public class OllamaClient {
 
     }
 
-    public String[] scanTopics(String problem) throws IOException, InterruptedException {
-        String response = OllamaRequest("cs-topicScanner", problem);
+    public String[] scanTopics(String problem, String solution) throws IOException, InterruptedException {
+        String response = OllamaRequest("cs-topicScanner", String.format("problem: %s ~~~ solution: %s", problem, solution));
         log.info("Parsed topics response: {}", response);
-        String[] responseParts = response.replace("\n", "").split("~~~");
-        return responseParts[responseParts.length-1].split(",");
+        return response.replace("\n", "").split(",");
     }
 
+    /**
+     * This method generates a LearningMaterial object with a problem based on the given topic and difficulty.
+     * It uses the problemRequest method to get the problem content and then creates a LearningMaterial object.
+     * The tags for the database are created by first solving the problem and then scanning the topics in that solution.
+     * The solution is generated using the problemSolverHelper method.
+     * @param topic            The topic for which the problem is generated.
+     * @param difficulty       The difficulty level of the problem.
+     * @param additionalTopics Additional topics to consider when generating the problem.
+     * @param excludedTopics   Topics to exclude from the problem generation.
+     * @return A LearningMaterial object containing the generated problem and its solution.
+     * TODO: this method currently solves the problem in Java, but it should be hooked up to the database to retrieve the desired language for the classroom.
+     */
     public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty, additionalTopics, excludedTopics);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
-        learningMaterial.setTags(List.of(scanTopics(learningMaterial.getContent())));
+        String solution = problemSolverHelper(learningMaterial, "java");
+        learningMaterial.setTags(List.of(scanTopics(learningMaterial.getContent(), solution)));
         return learningMaterial;
     }
 

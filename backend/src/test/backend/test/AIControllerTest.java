@@ -20,14 +20,16 @@ public class AIControllerTest {
         HttpClient client = HttpClient.newHttpClient();
         String url = "http://localhost:8080/ai/problem";
 
-        String jsonPayload = String.format("""
+        String jsonPayload = """
         {
-            "topic": "%s",
-            "difficulty": %d,
-            "additionalTopics": ["recursion","arrays","sorting"],
-            "excludedTopics": ["caching","concurrency"]
+            "topic": "hashmaps",
+            "difficulty": 5,
+            "additionalTopics": ["recursion", "arrays", "sorting"],
+            "excludedTopics": ["caching", "concurrency"]
         }
-        """, "hashmaps", 5);
+        """;
+
+        System.out.println(">>>> SENDING TO OLLAMA: " + jsonPayload);
 
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create(url))

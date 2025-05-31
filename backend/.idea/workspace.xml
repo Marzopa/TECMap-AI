@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="new problem generation works">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="started tagging system, but currently doesnt work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -425,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748711798477</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="started tagging system, but currently doesnt work">
+      <option name="closed" value="true" />
+      <created>1748715046454</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748715046454</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +462,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ridiculous fix" />
     <MESSAGE value="fixed test path in a test" />
     <MESSAGE value="h2 console now visible from springboot" />
     <MESSAGE value="about to change ollamaclient into a @service" />
@@ -476,6 +486,7 @@
     <MESSAGE value="intellij files" />
     <MESSAGE value="started with additional and excluded topics" />
     <MESSAGE value="new problem generation works" />
-    <option name="LAST_COMMIT_MESSAGE" value="new problem generation works" />
+    <MESSAGE value="started tagging system, but currently doesnt work" />
+    <option name="LAST_COMMIT_MESSAGE" value="started tagging system, but currently doesnt work" />
   </component>
 </project>

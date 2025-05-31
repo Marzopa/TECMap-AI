@@ -30,7 +30,7 @@ public class LLMTest {
         Json.toJsonFile("src/test/resources/LLMTest_" + learningMaterial.getUuid() +".json", learningMaterial);
         System.out.println("Generated Learning Material: " + learningMaterial.getContent());
         System.out.println("Grading Response: " + gradingResponse.grade());
-        System.out.println("Detected Topics: " + Arrays.toString(ollamaClient.scanTopics(learningMaterial.getContent())));
+        System.out.println("Detected Topics: " + Arrays.toString(ollamaClient.scanTopics(learningMaterial.getContent(), ollamaClient.problemSolverHelper(learningMaterial, "java"))));
     }
 
     @Test
