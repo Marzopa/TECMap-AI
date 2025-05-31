@@ -25,11 +25,12 @@ public class AIController {
         this.ollamaClient = ollamaClient;
     }
 
-    @GetMapping("/problem")
-    public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
+    @PostMapping("/problem")
+    public LearningMaterial getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
-        log.info("Getting problem");
-        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(topic, difficulty);
+        log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
+        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(problemRequest.topic(), problemRequest.difficulty(),
+                problemRequest.additionalTopics(), problemRequest.excludedTopics());
         learningMaterialRepo.save(generatedMaterial);
         return generatedMaterial;
     }

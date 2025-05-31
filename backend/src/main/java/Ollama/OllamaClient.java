@@ -49,8 +49,12 @@ public class OllamaClient {
         """, model, content);
     }
 
-    private static String problemRequest(String topic, int difficulty) throws IOException, InterruptedException {
-        return OllamaRequest("cs-problemGenerator", topic + " " + difficulty);
+    private static String problemRequest(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
+        return OllamaRequest("cs-problemGenerator",
+                String.format("topic: %s ~~~ difficulty: %d ~~~ additionalTopics: %s ~~~ excludedTopics: %s",
+                        topic, difficulty,
+                        String.join(", ", additionalTopics),
+                        String.join(", ", excludedTopics)));
     }
 
     public String checkSyntax(String solution) throws IOException, InterruptedException {
@@ -88,8 +92,8 @@ public class OllamaClient {
     }
 
 
-    public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty) throws IOException, InterruptedException {
-        String problem = problemRequest(topic, difficulty);
+    public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
+        String problem = problemRequest(topic, difficulty, additionalTopics, excludedTopics);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
