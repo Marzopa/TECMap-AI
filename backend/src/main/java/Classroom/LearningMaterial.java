@@ -4,17 +4,33 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import Utils.Json;
+import jakarta.persistence.*;
 
 import java.io.IOException;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class LearningMaterial {
     private final String title;
     private final String content;
+    @Id
     private final String uuid;
     private final boolean answerable;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean approved;
+    @OneToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "assessment_item_uuid", referencedColumnName = "uuid")
     private AssessmentItem assessmentItem;
+
+    protected LearningMaterial() {
+        this.title = null;
+        this.content = null;
+        this.uuid = null;
+        this.answerable = false;
+        this.assessmentItem = null;
+        this.approved = false;
+    }
 
     public LearningMaterial(String title, String content, boolean answerable) {
         this.title = title;
@@ -22,6 +38,7 @@ public class LearningMaterial {
         this.uuid = UUID.randomUUID().toString();
         this.answerable = answerable;
         this.assessmentItem = null;
+        this.approved = false;
     }
 
     @JsonCreator
@@ -29,12 +46,14 @@ public class LearningMaterial {
                             @JsonProperty("content") String content,
                             @JsonProperty("uuid") String uuid,
                             @JsonProperty("answerable") boolean answerable,
-                            @JsonProperty("assessmentItem") AssessmentItem assessmentItem) {
+                            @JsonProperty("assessmentItem") AssessmentItem assessmentItem,
+                            @JsonProperty("approved") boolean approved) {
         this.title = title;
         this.content = content;
         this.uuid = uuid;
         this.answerable = answerable;
         this.assessmentItem = assessmentItem;
+        this.approved = approved;
     }
 
     public String saveToFile(String path) throws IOException {
@@ -69,5 +88,13 @@ public class LearningMaterial {
 
     public AssessmentItem getAssessmentItem() {
         return assessmentItem;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void approve() {
+        this.approved = true;
     }
 }

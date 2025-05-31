@@ -3,6 +3,8 @@ package API;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
+import Repo.LearningMaterialRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,27 +15,36 @@ import java.util.logging.Logger;
 @RequestMapping("/ai")
 public class AIController {
 
+    private final OllamaClient ollamaClient;
     private static final Logger log = Logger.getLogger(AIController.class.getName());
+
+    @Autowired
+    private LearningMaterialRepo learningMaterialRepo;
+
+    public AIController(OllamaClient ollamaClient) {
+        this.ollamaClient = ollamaClient;
+    }
 
     @GetMapping("/problem")
     public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
             throws IOException, InterruptedException {
         log.info("Getting problem");
-        return OllamaClient.generateLearningMaterialProblem(topic, difficulty);
+        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(topic, difficulty);
+        learningMaterialRepo.save(generatedMaterial);
+        return generatedMaterial;
     }
 
     /**
      * The method SHOULD update submissions in LearningMaterial from studentId in SubmissionRequest
-     * TODO: once database is set up, this should receive the uuid of the LearningMaterial to update it in there
-     * @param submission The submission request containing the LearningMaterial, solution, and language.
+     * @param submission The submission request containing the LearningMaterial, solution, and studentId.
      * @return a GradingResponse object containing the feedback and score.
      * */
     @PostMapping("/submit")
     public GradingResponse submitSolution(@RequestBody SubmissionRequest submission)
             throws IOException, InterruptedException {
 
-        GradingResponse gradingResponse =  OllamaClient.solutionRequest(submission.getProblem(),
-                submission.solution());
+        GradingResponse gradingResponse = ollamaClient.solutionRequest(submission.getProblem(),
+                submission.solution(), submission.learningMaterial().getTitle());
 
         // Update the LearningMaterial's assessment item with the new submission
         AssessmentItem problem = submission.learningMaterial().getAssessmentItem();
@@ -42,22 +53,26 @@ public class AIController {
                 submission.studentId(),
                 gradingResponse.feedback());
 
+        // Update the LearningMaterial in the database with the new submission, only if it was already in the database
+        if (learningMaterialRepo.existsById(submission.learningMaterial().getUuid()))
+            learningMaterialRepo.save(submission.learningMaterial());
+
         return gradingResponse;
     }
 
     /**
      * This method is used to solve a problem using the Ollama API.
-     * @param learningMaterial The learning material object containing the problem to be solved.
-     * @param studentId The integer ID of the student attempting to solve the problem.
-     * @param language The programming language to be used for solving the problem.
-     * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
+     * @param request The request request containing the LearningMaterial, studentId, and language.
+     * TODO: this method should be hooked up to database to retrieve student concepts AND default desired language
      */
     @PostMapping("/solve")
-    public String solveProblem(@RequestBody LearningMaterial learningMaterial,
-                               @RequestParam int studentId,
-                               @RequestParam(required = false, defaultValue = "java") String language)
+    public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
-        if(learningMaterial.getAssessmentItem().hasStudentSubmitted(studentId)) return OllamaClient.problemSolverHelper(learningMaterial, language);
+        log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
+        // If in database, check there
+        // If not, check the LearningMaterial object in the request
+        if(learningMaterialRepo.findById(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
+            return ollamaClient.problemSolverHelper(request.learningMaterial(), request.language());
         else return "You need to attempt the problem first.";
     }
 

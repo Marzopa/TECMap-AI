@@ -1,9 +1,13 @@
 package Classroom;
 
+import Ollama.GradingStatus;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.*;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -11,32 +15,30 @@ import java.util.List;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class AssessmentItem {
-    private final int maxScore;
+    @Lob
+    @Column(name = "submissions_json", columnDefinition = "TEXT")
+    @Convert(converter = AssessmentRecordListConverter.class)
     private final List<AssessmentRecord> submissions;
+
+    @Id
     private final String uuid;
 
-    public AssessmentItem(int maxScore) {
-        this.maxScore = maxScore;
+    public AssessmentItem() {
         this.submissions = new LinkedList<>();
         this.uuid = UUID.randomUUID().toString();
     }
 
     @JsonCreator
-    public AssessmentItem(@JsonProperty("maxScore") int maxScore,
-                          @JsonProperty("uuid") String uuid,
+    public AssessmentItem(@JsonProperty("uuid") String uuid,
                           @JsonProperty("submissions") List<AssessmentRecord> submissions) {
-        this.maxScore = maxScore;
         this.uuid = uuid;
         this.submissions = submissions != null ? submissions : new LinkedList<>();
     }
 
     public String getUuid() {
         return uuid;
-    }
-
-    public int getMaxScore() {
-        return maxScore;
     }
 
     public List<AssessmentRecord> getSubmissions() {
@@ -60,7 +62,7 @@ public class AssessmentItem {
         }
     }
 
-    public void submitSolution(int score, String answer, int studentId, String feedback) {
+    public void submitSolution(GradingStatus score, String answer, int studentId, String feedback) {
         if (answer != null) {
             AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
             submissions.add(record);
@@ -76,5 +78,34 @@ public class AssessmentItem {
             }
         }
         return false;
+    }
+
+    @Converter
+    public static class AssessmentRecordListConverter
+            implements AttributeConverter<List<AssessmentRecord>, String> {
+
+        private static final ObjectMapper MAPPER = new ObjectMapper();
+
+        @Override
+        public String convertToDatabaseColumn(List<AssessmentRecord> attribute) {
+            try {
+                return attribute == null ? "[]" : MAPPER.writeValueAsString(attribute);
+            } catch (Exception e) {
+                throw new IllegalStateException("Failed to convert submissions to JSON", e);
+            }
+        }
+
+        @Override
+        public List<AssessmentRecord> convertToEntityAttribute(String dbData) {
+            try {
+                if (dbData == null || dbData.isBlank()) {
+                    return new LinkedList<>();
+                }
+                return MAPPER.readValue(dbData,
+                        new TypeReference<List<AssessmentRecord>>() {});
+            } catch (Exception e) {
+                throw new IllegalStateException("Failed to read submissions from JSON", e);
+            }
+        }
     }
 }

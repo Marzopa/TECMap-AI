@@ -3,19 +3,19 @@
   "content" : "Make a loop that prints numbers from 1 to 10",
   "uuid" : "32cd931e-784d-4ab8-be4a-c2cb6121d032",
   "answerable" : true,
+  "approved" : true,
   "assessmentItem" : {
     "question" : "Write a loop that prints numbers from 1 to 10",
-    "maxScore" : 100,
     "uuid" : "46cf395d-b1a7-4235-8f8d-86b4b75f9e97",
     "submissions" : [ {
       "uuid" : "82da0fce-a48f-48b8-b7da-9df24b59ac37",
-      "score" : 90,
+      "score" : "CORRECT",
       "studentId" : 705256987,
       "feedback" : "The solution is almost correct but contains an off-by-one error in the condition of the while loop. It should be \\i \\u003c= 10\\ instead of just \\i \\u003c= 10\\ The condition as it stands now will cause an infinite loop.\\n \\n",
       "answer" : "for(int i=1; i<=10) System.out.println(i);"
     }, {
       "uuid" : "f87b4c87-a3ac-4af7-a623-e51e6dff7096",
-      "score" : 95,
+      "score" : "CORRECT",
       "studentId" : 705123456,
       "feedback" : "The solution is correct and efficiently uses a basic for loop to iterate over the range of numbers, printing each one to the console. ",
       "answer" : "for(int i=1; i<=10; i++) System.out.println(i);"
