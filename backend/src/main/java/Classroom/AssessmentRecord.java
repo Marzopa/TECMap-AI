@@ -1,5 +1,6 @@
 package Classroom;
 
+import Ollama.GradingResponse;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -9,15 +10,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.IOException;
 import java.util.UUID;
 
+import Ollama.GradingStatus;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record AssessmentRecord(String uuid, int score,
-                               @JsonProperty("studentAnswer") @JsonAlias("answer") String studentAnswer,
-                               int studentId, String feedback) {
+@Embeddable
+public record AssessmentRecord(@Column(name = "uuid")
+                               String uuid,
+
+                               @Enumerated(EnumType.STRING)
+                               @Column(name = "score")
+                               GradingStatus score,
+
+                               @JsonProperty("studentAnswer")
+                               @JsonAlias("answer")
+                               @Column(name = "student_answer")
+                               String studentAnswer,
+
+                               @Column(name = "student_id")
+                               int studentId,
+
+                               @Column(name = "feedback")
+                               String feedback){
 
     @JsonCreator
     public AssessmentRecord(
             @JsonProperty("uuid") String uuid,
-            @JsonProperty("score") int score,
+            @JsonProperty("score") GradingStatus score,
             @JsonProperty(value = "studentAnswer") String studentAnswer,
             @JsonProperty(value = "answer") String answer,
             @JsonProperty("studentId") int studentId,
@@ -25,7 +47,7 @@ public record AssessmentRecord(String uuid, int score,
         this(uuid, score, studentAnswer != null ? studentAnswer : answer, studentId, feedback);
     }
 
-    public AssessmentRecord(int score,
+    public AssessmentRecord(GradingStatus score,
                             String answer,
                             int studentId,
                             String feedback) {
@@ -41,7 +63,7 @@ public record AssessmentRecord(String uuid, int score,
         return uuid;
     }
 
-    public int getScore() {
+    public GradingStatus getScore() {
         return score;
     }
 

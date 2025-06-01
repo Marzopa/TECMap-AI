@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/src/test/runs" userTempatePath="" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="submit-solution" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Marzopa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Marzopa/TECMap-AI.git&quot;,
+    &quot;accountId&quot;: &quot;acc4dba6-4494-467a-b4c8-24ad37810a08&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2xjv0zHQNyRvNJpt7eoCD8uwxK7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AIControllerTest.testDatabaseConnection.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSolveProblemDone.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSolveProblemNotDone.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSubmitSolution.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testLLM.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testSubmitResponse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testSyntaxChecker.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in AI-microservice.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;generate-problem&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testGetProblem" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIControllerTest.testSubmitSolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testSubmitSolution" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LLMTest.testLLM" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="METHOD_NAME" value="testLLM" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LLMTest.testSubmitResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="METHOD_NAME" value="testSubmitResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="API.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.LLMTest.testLLM" />
+        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
+        <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="" />
+      <created>1748464077469</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748464077469</updated>
+      <workItem from="1748464078711" duration="66000" />
+      <workItem from="1748464160267" duration="1323000" />
+      <workItem from="1748465508221" duration="288000" />
+      <workItem from="1748465800383" duration="5065000" />
+      <workItem from="1748528086402" duration="16343000" />
+      <workItem from="1748742287582" duration="3566000" />
+      <workItem from="1748787032811" duration="1105000" />
+    </task>
+    <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
+      <option name="closed" value="true" />
+      <created>1748465031573</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748465031573</updated>
+    </task>
+    <task id="LOCAL-00002" summary="springboot runs great">
+      <option name="closed" value="true" />
+      <created>1748465477452</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748465477452</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ridiculous fix">
+      <option name="closed" value="true" />
+      <created>1748465689439</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748465689439</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ridiculous fix">
+      <option name="closed" value="true" />
+      <created>1748465823690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748465823690</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed test path in a test">
+      <option name="closed" value="true" />
+      <created>1748466029840</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748466029840</updated>
+    </task>
+    <task id="LOCAL-00006" summary="h2 console now visible from springboot">
+      <option name="closed" value="true" />
+      <created>1748466705996</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748466705996</updated>
+    </task>
+    <task id="LOCAL-00007" summary="about to change ollamaclient into a @service">
+      <option name="closed" value="true" />
+      <created>1748470147307</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748470147307</updated>
+    </task>
+    <task id="LOCAL-00008" summary="springboot does not run right now, need to deal with LearningMaterial Jpa">
+      <option name="closed" value="true" />
+      <created>1748472889500</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748472889500</updated>
+    </task>
+    <task id="LOCAL-00009" summary="before updating assessment record to be included in database">
+      <option name="closed" value="true" />
+      <created>1748529592232</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748529592232</updated>
+    </task>
+    <task id="LOCAL-00010" summary="springboot seems to work, need to add database functionality, also columns seem to be missing">
+      <option name="closed" value="true" />
+      <created>1748530268968</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748530268968</updated>
+    </task>
+    <task id="LOCAL-00011" summary="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up">
+      <option name="closed" value="true" />
+      <created>1748531078923</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748531078923</updated>
+    </task>
+    <task id="LOCAL-00012" summary="working through saving learningmaterials, all three nested classes appear on h2-console">
+      <option name="closed" value="true" />
+      <created>1748535854273</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748535854273</updated>
+    </task>
+    <task id="LOCAL-00013" summary="learningmaterials work in db, deet to add all fields to assessmentitem and record">
+      <option name="closed" value="true" />
+      <created>1748537122145</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748537122145</updated>
+    </task>
+    <task id="LOCAL-00014" summary="made changes to record solution">
+      <option name="closed" value="true" />
+      <created>1748537790780</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748537790780</updated>
+    </task>
+    <task id="LOCAL-00015" summary="need to setup proper tests for database">
+      <option name="closed" value="true" />
+      <created>1748538514316</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748538514316</updated>
+    </task>
+    <task id="LOCAL-00016" summary="assessment record is flipped, tests only add one response to problem">
+      <option name="closed" value="true" />
+      <created>1748540351890</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748540351890</updated>
+    </task>
+    <task id="LOCAL-00017" summary="database, everything works, might do disk database next">
+      <option name="closed" value="true" />
+      <created>1748543402668</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748543402668</updated>
+    </task>
+    <task id="LOCAL-00018" summary="disk database, fixed lingering tests, now time to check whether database solving id detection works">
+      <option name="closed" value="true" />
+      <created>1748545638369</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748545638370</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added test, but now it doesnt allow for solving even when student did attempt">
+      <option name="closed" value="true" />
+      <created>1748546245600</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748546245600</updated>
+    </task>
+    <task id="LOCAL-00020" summary="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test">
+      <option name="closed" value="true" />
+      <created>1748546892581</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748546892581</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added topic detection for problem, although grader doesn't seem to care if they used it or not">
+      <option name="closed" value="true" />
+      <created>1748550547021</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1748550547021</updated>
+    </task>
+    <task id="LOCAL-00022" summary="forgot to add in last commit">
+      <option name="closed" value="true" />
+      <created>1748550621099</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748550621099</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added approved field to database">
+      <option name="closed" value="true" />
+      <created>1748551723658</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748551723658</updated>
+    </task>
+    <task id="LOCAL-00024" summary="intellij files">
+      <option name="closed" value="true" />
+      <created>1748708038818</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748708038818</updated>
+    </task>
+    <task id="LOCAL-00025" summary="started with additional and excluded topics">
+      <option name="closed" value="true" />
+      <created>1748711000205</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748711000205</updated>
+    </task>
+    <task id="LOCAL-00026" summary="new problem generation works">
+      <option name="closed" value="true" />
+      <created>1748711798477</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1748711798477</updated>
+    </task>
+    <task id="LOCAL-00027" summary="started tagging system, but currently doesnt work">
+      <option name="closed" value="true" />
+      <created>1748715046454</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748715046454</updated>
+    </task>
+    <task id="LOCAL-00028" summary="still doesnt work, either payload or some json isnt getting to ollama">
+      <option name="closed" value="true" />
+      <created>1748720582845</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748720582846</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added a log, about to use object serializer for unescaped characters">
+      <option name="closed" value="true" />
+      <created>1748743326080</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748743326080</updated>
+    </task>
+    <task id="LOCAL-00030" summary="it works but is absurdly slow (7 minutes). also tags not in database">
+      <option name="closed" value="true" />
+      <created>1748744119985</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1748744119985</updated>
+    </task>
+    <task id="LOCAL-00031" summary="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction">
+      <option name="closed" value="true" />
+      <created>1748745871999</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1748745871999</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="77" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="77" />
+                  <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="77" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="before updating assessment record" />
+    <MESSAGE value="before updating assessment record to be included in database" />
+    <MESSAGE value="springboot seems to work, need to add database functionality" />
+    <MESSAGE value="springboot seems to work, need to add database functionality, also columns seem to be missing" />
+    <MESSAGE value="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up" />
+    <MESSAGE value="working through saving learningmaterials, all three nested classes appear on h2-console" />
+    <MESSAGE value="learningmaterials work in db, deet to add all fields to assessmentitem and record" />
+    <MESSAGE value="made changes to record solution" />
+    <MESSAGE value="need to setup proper tests for database" />
+    <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
+    <MESSAGE value="database, everything works, might do disk database next" />
+    <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
+    <MESSAGE value="added test, but now it doesnt allow for solving even when student did attempt" />
+    <MESSAGE value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
+    <MESSAGE value="added topic detection for problem, although grader doesn't seem to care if they used it or not" />
+    <MESSAGE value="forgot to add in last commit" />
+    <MESSAGE value="added approved field to database" />
+    <MESSAGE value="intellij files" />
+    <MESSAGE value="started with additional and excluded topics" />
+    <MESSAGE value="new problem generation works" />
+    <MESSAGE value="started tagging system, but currently doesnt work" />
+    <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
+    <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
+    <MESSAGE value="it works but is absurdly slow (7 minutes). also tags not in database" />
+    <MESSAGE value="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction" />
+  </component>
+</project>

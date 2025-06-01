@@ -3,6 +3,8 @@ package API;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
+import Repo.LearningMaterialRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -13,18 +15,28 @@ import java.util.logging.Logger;
 @RequestMapping("/ai")
 public class AIController {
 
+    private final OllamaClient ollamaClient;
     private static final Logger log = Logger.getLogger(AIController.class.getName());
 
-    @GetMapping("/problem")
-    public LearningMaterial getProblem(@RequestParam String topic, @RequestParam int difficulty)
+    @Autowired
+    private LearningMaterialRepo learningMaterialRepo;
+
+    public AIController(OllamaClient ollamaClient) {
+        this.ollamaClient = ollamaClient;
+    }
+
+    @PostMapping("/problem")
+    public LearningMaterial getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
-        log.info("Getting problem");
-        return OllamaClient.generateLearningMaterialProblem(topic, difficulty);
+        log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
+        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(problemRequest.topic(), problemRequest.difficulty(),
+                problemRequest.additionalTopics(), problemRequest.excludedTopics());
+        learningMaterialRepo.save(generatedMaterial);
+        return generatedMaterial;
     }
 
     /**
      * The method SHOULD update submissions in LearningMaterial from studentId in SubmissionRequest
-     * TODO: once database is set up, this should receive the uuid of the LearningMaterial to update it in there
      * @param submission The submission request containing the LearningMaterial, solution, and studentId.
      * @return a GradingResponse object containing the feedback and score.
      * */
@@ -32,8 +44,8 @@ public class AIController {
     public GradingResponse submitSolution(@RequestBody SubmissionRequest submission)
             throws IOException, InterruptedException {
 
-        GradingResponse gradingResponse =  OllamaClient.solutionRequest(submission.getProblem(),
-                submission.solution());
+        GradingResponse gradingResponse = ollamaClient.solutionRequest(submission.getProblem(),
+                submission.solution(), submission.learningMaterial().getTitle());
 
         // Update the LearningMaterial's assessment item with the new submission
         AssessmentItem problem = submission.learningMaterial().getAssessmentItem();
@@ -41,6 +53,10 @@ public class AIController {
                 submission.solution(),
                 submission.studentId(),
                 gradingResponse.feedback());
+
+        // Update the LearningMaterial in the database with the new submission, only if it was already in the database
+        if (learningMaterialRepo.existsById(submission.learningMaterial().getUuid()))
+            learningMaterialRepo.save(submission.learningMaterial());
 
         return gradingResponse;
     }
@@ -54,9 +70,11 @@ public class AIController {
     public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
         log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
-        //if(request.learningMaterial().getAssessmentItem().hasStudentSubmitted(request.studentId()))
-            return OllamaClient.problemSolverHelper(request.learningMaterial(), request.language());
-        //else return "You need to attempt the problem first.";
+        // If in database, check there
+        // If not, check the LearningMaterial object in the request
+        if(learningMaterialRepo.findById(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
+            return ollamaClient.problemSolverHelper(request.learningMaterial(), request.language());
+        else return "You need to attempt the problem first.";
     }
 
 }

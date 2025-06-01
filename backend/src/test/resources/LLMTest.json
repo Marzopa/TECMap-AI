@@ -3,6 +3,7 @@
   "content" : "Find the key with the maximum value in a given dictionary.",
   "uuid" : "37a095fd-ba36-4372-8304-1509eb50b7df",
   "answerable" : true,
+  "approved" : true,
   "assessmentItem" : {
     "question" : "Based on the topic: Dictionaries",
     "maxScore" : 100,
