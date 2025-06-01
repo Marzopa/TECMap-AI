@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="started tagging system, but currently doesnt work">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="still doesnt work, either payload or some json isnt getting to ollama">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/LLMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,38 +56,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AIControllerTest.testDatabaseConnection.executor": "Run",
-    "JUnit.AIControllerTest.testGetProblem.executor": "Run",
-    "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
-    "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
-    "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
-    "JUnit.LLMTest.executor": "Run",
-    "JUnit.LLMTest.testLLM.executor": "Run",
-    "JUnit.LLMTest.testSubmitResponse.executor": "Run",
-    "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
-    "JUnit.test in AI-microservice.executor": "Run",
-    "Maven.AI-microservice [clean].executor": "Run",
-    "Maven.AI-microservice [compile].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "generate-problem",
-    "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AIControllerTest.testDatabaseConnection.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSolveProblemDone.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSolveProblemNotDone.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AIControllerTest.testSubmitSolution.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testLLM.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testSubmitResponse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LLMTest.testSyntaxChecker.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in AI-microservice.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;generate-problem&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
@@ -100,7 +96,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -165,17 +161,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="AI-microservice" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="AI-microservice" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
@@ -191,8 +176,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
@@ -219,6 +204,7 @@
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
       <workItem from="1748528086402" duration="16343000" />
+      <workItem from="1748742287582" duration="751000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -436,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748715046454</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="still doesnt work, either payload or some json isnt getting to ollama">
+      <option name="closed" value="true" />
+      <created>1748720582845</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748720582846</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed test path in a test" />
     <MESSAGE value="h2 console now visible from springboot" />
     <MESSAGE value="about to change ollamaclient into a @service" />
     <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
@@ -487,6 +480,7 @@
     <MESSAGE value="started with additional and excluded topics" />
     <MESSAGE value="new problem generation works" />
     <MESSAGE value="started tagging system, but currently doesnt work" />
-    <option name="LAST_COMMIT_MESSAGE" value="started tagging system, but currently doesnt work" />
+    <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
+    <option name="LAST_COMMIT_MESSAGE" value="still doesnt work, either payload or some json isnt getting to ollama" />
   </component>
 </project>

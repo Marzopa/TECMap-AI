@@ -112,6 +112,7 @@ public class OllamaClient {
      */
     public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
         String problem = problemRequest(topic, difficulty, additionalTopics, excludedTopics);
+        log.info("Generated problem: {}", problem);
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
