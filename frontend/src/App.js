@@ -18,9 +18,17 @@ function App() {
         setLoadingProblem(true);
         setProblem(null);
         try {
-            const res = await fetch(
-                `http://localhost:8080/ai/problem?topic=${topic}&difficulty=${difficulty}`
-            );
+            const payload = {
+                topic: topic,
+                difficulty: difficulty,
+                additionalTopics: [],
+                excludedTopics: []
+            };
+            const res = await fetch('http://localhost:8080/ai/problem', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
             if (!res.ok) throw new Error(`Status ${res.status}`);
             setProblem(await res.json());
         } catch (err) {
