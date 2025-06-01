@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added a log, about to use object serializer for unescaped characters">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it works but is absurdly slow (7 minutes). also tags not in database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +204,7 @@
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
       <workItem from="1748528086402" duration="16343000" />
-      <workItem from="1748742287582" duration="1735000" />
+      <workItem from="1748742287582" duration="3250000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -437,7 +438,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748743326080</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="it works but is absurdly slow (7 minutes). also tags not in database">
+      <option name="closed" value="true" />
+      <created>1748744119985</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1748744119985</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +472,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="about to change ollamaclient into a @service" />
     <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
     <MESSAGE value="before updating assessment record" />
     <MESSAGE value="before updating assessment record to be included in database" />
@@ -488,6 +496,7 @@
     <MESSAGE value="started tagging system, but currently doesnt work" />
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
     <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a log, about to use object serializer for unescaped characters" />
+    <MESSAGE value="it works but is absurdly slow (7 minutes). also tags not in database" />
+    <option name="LAST_COMMIT_MESSAGE" value="it works but is absurdly slow (7 minutes). also tags not in database" />
   </component>
 </project>

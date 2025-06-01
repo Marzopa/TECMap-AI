@@ -126,7 +126,8 @@ public class OllamaClient {
         LearningMaterial learningMaterial = new LearningMaterial(topic, problem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
-        String solution = problemSolverHelper(learningMaterial, "java");
+        String solution = problemSolverHelper(learningMaterial, "java", true);
+        log.info("Generated solution: {}", solution);
         learningMaterial.setTags(List.of(scanTopics(learningMaterial.getContent(), solution)));
         return learningMaterial;
     }
@@ -137,7 +138,12 @@ public class OllamaClient {
      * TODO: this method should be hooked up to database to retrieve student concepts AND desired language
      */
     public String problemSolverHelper(LearningMaterial learningMaterial, String language) throws IOException, InterruptedException {
+        return problemSolverHelper(learningMaterial, language, false);
+    }
+
+    private String problemSolverHelper(LearningMaterial learningMaterial, String language, boolean small) throws IOException, InterruptedException {
         String content = "problem: " + learningMaterial.getContent() + "language: " + language;
+        if (small) return OllamaRequest("cs-smallProblemSolver", content);
         return OllamaRequest("cs-problemSolver", content);
     }
 

@@ -1,4 +1,4 @@
-FROM mistral:instruct
+FROM stable-code:3b
 
 SYSTEM """
 You are a topic labeling assistant.
@@ -27,5 +27,4 @@ Now do the same for the input below:
 """
 
 PARAMETER temperature 0.15
-PARAMETER top_p        0.9
-PARAMETER num_predict  128
+PARAMETER num_predict 64
