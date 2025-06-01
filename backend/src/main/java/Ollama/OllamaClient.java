@@ -128,7 +128,9 @@ public class OllamaClient {
         learningMaterial.setAssessmentItem(assessmentItem);
         String solution = problemSolverHelper(learningMaterial, "java", true);
         log.info("Generated solution: {}", solution);
-        learningMaterial.setTags(List.of(scanTopics(learningMaterial.getContent(), solution)));
+        List<String> scanTopics = List.of(scanTopics(learningMaterial.getContent(), solution));
+        log.info("Scanned topics: {}", scanTopics);
+        learningMaterial.setTags(scanTopics);
         return learningMaterial;
     }
 

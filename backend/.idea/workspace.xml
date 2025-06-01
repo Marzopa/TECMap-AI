@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it works but is absurdly slow (7 minutes). also tags not in database">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-topicScanner.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +204,8 @@
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
       <workItem from="1748528086402" duration="16343000" />
-      <workItem from="1748742287582" duration="3250000" />
+      <workItem from="1748742287582" duration="3566000" />
+      <workItem from="1748787032811" duration="1105000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -446,7 +447,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748744119985</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction">
+      <option name="closed" value="true" />
+      <created>1748745871999</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1748745871999</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +481,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
     <MESSAGE value="before updating assessment record" />
     <MESSAGE value="before updating assessment record to be included in database" />
     <MESSAGE value="springboot seems to work, need to add database functionality" />
@@ -497,6 +505,7 @@
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
     <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
     <MESSAGE value="it works but is absurdly slow (7 minutes). also tags not in database" />
-    <option name="LAST_COMMIT_MESSAGE" value="it works but is absurdly slow (7 minutes). also tags not in database" />
+    <MESSAGE value="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction" />
   </component>
 </project>
