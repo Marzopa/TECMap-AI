@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="still doesnt work, either payload or some json isnt getting to ollama">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added a log, about to use object serializer for unescaped characters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-problemGenerator.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +95,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -176,8 +175,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
@@ -204,7 +203,7 @@
       <workItem from="1748465508221" duration="288000" />
       <workItem from="1748465800383" duration="5065000" />
       <workItem from="1748528086402" duration="16343000" />
-      <workItem from="1748742287582" duration="751000" />
+      <workItem from="1748742287582" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -430,7 +429,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748720582846</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added a log, about to use object serializer for unescaped characters">
+      <option name="closed" value="true" />
+      <created>1748743326080</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748743326080</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,7 +463,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="h2 console now visible from springboot" />
     <MESSAGE value="about to change ollamaclient into a @service" />
     <MESSAGE value="springboot does not run right now, need to deal with LearningMaterial Jpa" />
     <MESSAGE value="before updating assessment record" />
@@ -481,6 +487,7 @@
     <MESSAGE value="new problem generation works" />
     <MESSAGE value="started tagging system, but currently doesnt work" />
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
-    <option name="LAST_COMMIT_MESSAGE" value="still doesnt work, either payload or some json isnt getting to ollama" />
+    <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a log, about to use object serializer for unescaped characters" />
   </component>
 </project>

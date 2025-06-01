@@ -2,6 +2,10 @@ package Ollama;
 
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,8 @@ public class OllamaClient {
 
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Logger log = LoggerFactory.getLogger(OllamaClient.class);
+    private static final ObjectMapper mapper = new ObjectMapper();
+
 
     /**
      * This method is used to send a request to the Ollama API. Returns the parsed response.
@@ -40,15 +46,19 @@ public class OllamaClient {
     }
 
     private static String OllamaJsonBuilder(String model, String content) {
-        return String.format("""
-        {
-            "model": "%s",
-            "messages": [
-                { "role": "user", "content": "%s"}
-            ]
+        ObjectNode root = mapper.createObjectNode();
+        root.put("model", model);
+        ArrayNode messages = root.putArray("messages");
+        ObjectNode message = messages.addObject();
+        message.put("role", "user");
+        message.put("content", content);
+        try {
+            return mapper.writeValueAsString(root);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
-        """, model, content);
     }
+
 
     private static String problemRequest(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
         return OllamaRequest("cs-problemGenerator",
