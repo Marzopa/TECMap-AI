@@ -13,6 +13,9 @@ function App() {
     const [language, setLanguage] = useState('java');
     const [solveResult, setSolveResult] = useState('');
     const [loadingSolve, setLoadingSolve] = useState(false);
+    const [additionalTopicsInput, setAdditionalTopicsInput] = useState('');
+    const [excludedTopicsInput, setExcludedTopicsInput] = useState('');
+
 
     const handleGenerate = async () => {
         setLoadingProblem(true);
@@ -21,9 +24,10 @@ function App() {
             const payload = {
                 topic: topic,
                 difficulty: difficulty,
-                additionalTopics: [],
-                excludedTopics: []
+                additionalTopics: additionalTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
+                excludedTopics: excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean)
             };
+
             const res = await fetch('http://localhost:8080/ai/problem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -138,6 +142,32 @@ function App() {
                         />
                     </label>
                     <br /><br />
+
+
+
+                    <label>
+                        Additional Topics (comma-separated):
+                        <input
+                            type="text"
+                            value={additionalTopicsInput}
+                            onChange={(e) => setAdditionalTopicsInput(e.target.value)}
+                            style={{ marginLeft: '1rem', width: '60%' }}
+                        />
+                    </label>
+                    <br /><br />
+                    <label>
+                        Excluded Topics (comma-separated):
+                        <input
+                            type="text"
+                            value={excludedTopicsInput}
+                            onChange={(e) => setExcludedTopicsInput(e.target.value)}
+                            style={{ marginLeft: '1rem', width: '60%' }}
+                        />
+                    </label>
+                    <br /><br />
+
+
+
                     <button onClick={handleGenerate} disabled={loadingProblem}>
                         {loadingProblem ? 'Generating...' : 'Generate Problem'}
                     </button>
