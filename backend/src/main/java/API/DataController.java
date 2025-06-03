@@ -16,6 +16,9 @@ public class DataController {
     @Autowired
     private LearningMaterialTagRepo tagRepo;
 
+    public record MatchingLM(LearningMaterial learningMaterial, int matchingTopics) {
+    }
+
     /**
      * This method retrieves an unsolved matching problem from the database.
      * It checks for a LearningMaterial that is answerable, has an assessment item and excludes those with excluded topics.
@@ -26,17 +29,31 @@ public class DataController {
      */
     public LearningMaterial unsolvedMatchingProblem(ProblemRequest request){
         List<LearningMaterial> approvedMaterials = learningMaterialRepo.findByApproved(true);
-        Set<String> additionalTopics = Set.of(request.additionalTopics());
 
-        List<Object[]> tagData = tagRepo.findAllMaterialTags();
+        List<MatchingLM> sortedMaterials = new LinkedList<>();
 
-        Map<String, List<String>> tagMap = new HashMap<>();
-        for (Object[] row : tagData) {
-            String uuid = (String) row[0];
-            String tag = (String) row[1];
-            tagMap.computeIfAbsent(uuid, k -> new ArrayList<>()).add(tag);
+        for(LearningMaterial material: approvedMaterials){
+            if (material.isAnswerable() && material.getAssessmentItem() != null) {
+                String[] materialTopics = tagRepo.findTagsByLearningMaterialUuid(material.getUuid()).toArray(new String[0]);
+                int matchingTopics = countIntersection(materialTopics, request.additionalTopics());
+                // Exclude materials that have topics in the excludedTopics list
+                boolean hasExcludedTopics = Arrays.stream(request.excludedTopics())
+                        .anyMatch(excludedTopic -> Arrays.asList(materialTopics).contains(excludedTopic));
+                if (!hasExcludedTopics) sortedMaterials.add(new MatchingLM(material, matchingTopics));
+            }
         }
 
-        return approvedMaterials.isEmpty() ? null : approvedMaterials.get(0);
+        sortedMaterials.sort(Comparator.comparingInt(MatchingLM::matchingTopics).reversed());
+
+        if (!sortedMaterials.isEmpty()) return sortedMaterials.get(0).learningMaterial();
+
+        return null;
+    }
+
+    public static int countIntersection(String[] a, String[] b) {
+        Set<String> setA = new HashSet<>(List.of(a));
+        Set<String> setB = new HashSet<>(List.of(b));
+        setA.retainAll(setB); // modifies setA to contain only elements also in setB
+        return setA.size();
     }
 }
