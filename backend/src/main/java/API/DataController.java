@@ -2,15 +2,19 @@ package API;
 
 import Classroom.LearningMaterial;
 import Repo.LearningMaterialRepo;
+import Repo.LearningMaterialTagRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DataController {
     @Autowired
     private LearningMaterialRepo learningMaterialRepo;
+
+    @Autowired
+    private LearningMaterialTagRepo tagRepo;
 
     /**
      * This method retrieves an unsolved matching problem from the database.
@@ -22,7 +26,17 @@ public class DataController {
      */
     public LearningMaterial unsolvedMatchingProblem(ProblemRequest request){
         List<LearningMaterial> approvedMaterials = learningMaterialRepo.findByApproved(true);
-        approvedMaterials.sort();
-        return null;
+        Set<String> additionalTopics = Set.of(request.additionalTopics());
+
+        List<Object[]> tagData = tagRepo.findAllMaterialTags();
+
+        Map<String, List<String>> tagMap = new HashMap<>();
+        for (Object[] row : tagData) {
+            String uuid = (String) row[0];
+            String tag = (String) row[1];
+            tagMap.computeIfAbsent(uuid, k -> new ArrayList<>()).add(tag);
+        }
+
+        return approvedMaterials.isEmpty() ? null : approvedMaterials.get(0);
     }
 }
