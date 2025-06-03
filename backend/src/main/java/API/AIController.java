@@ -33,7 +33,7 @@ public class AIController {
         log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
         LearningMaterial existingProblem = dataController.unsolvedMatchingProblem(problemRequest);
         if (existingProblem != null) {
-            log.info("Found unsolved matching problem in database: " + existingProblem.getTitle());
+            log.info("Found unsolved matching problem in database: " + existingProblem.getUuid());
             return existingProblem;
         }
         LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(problemRequest.topic(), problemRequest.difficulty(),
