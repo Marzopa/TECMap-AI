@@ -5,9 +5,11 @@ import Classroom.LearningMaterial;
 import Ollama.*;
 import Repo.LearningMaterialRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -27,19 +29,45 @@ public class AIController {
         this.dataController = dataController;
     }
 
+    public record LearningMaterialDto(
+            String uuid,
+            String title,
+            String content,
+            boolean answerable,
+            boolean approved
+    ) {}
+
     @PostMapping("/problem")
-    public LearningMaterial getProblem(@RequestBody ProblemRequest problemRequest)
+    public ResponseEntity<LearningMaterialDto> getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
         log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
         LearningMaterial existingProblem = dataController.unsolvedMatchingProblem(problemRequest);
         if (existingProblem != null) {
             log.info("Found unsolved matching problem in database: " + existingProblem.getUuid());
-            return existingProblem;
+            LearningMaterialDto dto = new LearningMaterialDto(
+                    existingProblem.getUuid(),
+                    existingProblem.getTitle(),
+                    existingProblem.getContent(),
+                    existingProblem.isAnswerable(),
+                    existingProblem.isApproved()
+            );
+            return ResponseEntity.ok(dto);
         }
-        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(problemRequest.topic(), problemRequest.difficulty(),
-                problemRequest.additionalTopics(), problemRequest.excludedTopics());
+        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(
+                problemRequest.topic(),
+                problemRequest.difficulty(),
+                problemRequest.additionalTopics(),
+                problemRequest.excludedTopics()
+        );
         learningMaterialRepo.save(generatedMaterial);
-        return generatedMaterial;
+        LearningMaterialDto dto = new LearningMaterialDto(
+                generatedMaterial.getUuid(),
+                generatedMaterial.getTitle(),
+                generatedMaterial.getContent(),
+                generatedMaterial.isAnswerable(),
+                generatedMaterial.isApproved()
+        );
+        return ResponseEntity.ok(dto);
     }
 
     /**

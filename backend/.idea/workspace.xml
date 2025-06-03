@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="need to change return type for problem endpoint, make it so nothing else is affected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +105,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataControllerTest.unsolvedMatchingProblemTest">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -185,9 +185,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
-        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
       </list>
@@ -513,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748970707624</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="need to change return type for problem endpoint, make it so nothing else is affected">
+      <option name="closed" value="true" />
+      <created>1748971247352</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1748971247352</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +558,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="learningmaterials work in db, deet to add all fields to assessmentitem and record" />
     <MESSAGE value="made changes to record solution" />
     <MESSAGE value="need to setup proper tests for database" />
     <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
@@ -575,6 +582,7 @@
     <MESSAGE value="it should work, but no checks to whether student has solved or not" />
     <MESSAGE value="making a learningmaterialtag object" />
     <MESSAGE value="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called" />
-    <option name="LAST_COMMIT_MESSAGE" value="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called" />
+    <MESSAGE value="need to change return type for problem endpoint, make it so nothing else is affected" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to change return type for problem endpoint, make it so nothing else is affected" />
   </component>
 </project>

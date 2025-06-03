@@ -1,5 +1,7 @@
 package backend.test;
 
+import Classroom.LearningMaterial;
+import Utils.Json;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -33,9 +35,10 @@ public class DataControllerTest {
                 .build();
 
         HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
-
         System.out.println("POST /ai/problem response:");
         System.out.println("Status: " + postResponse.statusCode());
         System.out.println("Body: " + postResponse.body());
+        LearningMaterial glorbo = Json.fromJsonString(postResponse.body(), LearningMaterial.class);
+        System.out.println("Glorbo item: " + glorbo.getAssessmentItem());
     }
 }
