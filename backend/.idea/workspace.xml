@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="seems to work, assessment item with new gto learningmaterial is null however">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="only need to check that unsolved works now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
@@ -185,8 +185,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
-        <item itemvalue="JUnit.LearningMaterialTest" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.LearningMaterialTest" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
       </list>
@@ -528,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748972138028</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="only need to check that unsolved works now">
+      <option name="closed" value="true" />
+      <created>1748973006734</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1748973006734</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="need to setup proper tests for database" />
     <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
     <MESSAGE value="database, everything works, might do disk database next" />
     <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
@@ -590,6 +597,7 @@
     <MESSAGE value="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called" />
     <MESSAGE value="need to change return type for problem endpoint, make it so nothing else is affected" />
     <MESSAGE value="seems to work, assessment item with new gto learningmaterial is null however" />
-    <option name="LAST_COMMIT_MESSAGE" value="seems to work, assessment item with new gto learningmaterial is null however" />
+    <MESSAGE value="only need to check that unsolved works now" />
+    <option name="LAST_COMMIT_MESSAGE" value="only need to check that unsolved works now" />
   </component>
 </project>
