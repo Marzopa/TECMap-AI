@@ -5,16 +5,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record ProblemRequest(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) {
+public record ProblemRequest(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics, Integer studentId) {
     @JsonCreator
     public ProblemRequest(@JsonProperty("topic") String topic,
                           @JsonProperty("difficulty") int difficulty,
                           @JsonProperty("additionalTopics") String[] additionalTopics,
-                          @JsonProperty("excludedTopics") String[] excludedTopics) {
+                          @JsonProperty("excludedTopics") String[] excludedTopics,
+                          @JsonProperty("studentId") Integer studentId) {
         this.topic = topic;
         this.difficulty = difficulty;
         this.additionalTopics = additionalTopics;
         this.excludedTopics = excludedTopics;
+        this.studentId = studentId != null ? studentId : 0;
     }
 
     public String getTopic() {

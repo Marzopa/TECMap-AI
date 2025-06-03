@@ -4,6 +4,8 @@ import Classroom.LearningMaterial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * LearningMaterialRepo is a repository interface for managing LearningMaterial entities.
  * It extends JpaRepository to provide CRUD operations and custom query methods.
@@ -14,4 +16,5 @@ public interface LearningMaterialRepo extends JpaRepository<LearningMaterial, St
 //    List<LearningMaterial> findByStudentId(String studentId);
 //    List<LearningMaterial> findByDayNumber(int dayNumber);
 //    List<LearningMaterial> findByCourseId(String courseId);
+    List<LearningMaterial> findByApproved(boolean approved);
 }

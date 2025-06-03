@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="frontend mostly works now, but:&#10;- problems generated through there dont have tags&#10;- missing additional and excluded topics in frontend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/ProblemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/ProblemRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +19,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="submit-solution" />
+        <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -78,7 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "gui",
+    "git-widget-placeholder": "generate-problem",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -102,7 +103,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -151,6 +152,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LLMTest.testSubmitResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="METHOD_NAME" value="testSubmitResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
@@ -164,23 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/../frontend/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
+        <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
       </list>
     </recent_temporary>
   </component>
@@ -481,6 +488,17 @@
                   <entry key="Table.Default.Author.ColumnIdWidth" value="77" />
                   <entry key="Table.Default.Date.ColumnIdWidth" value="77" />
                   <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="77" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </State>
