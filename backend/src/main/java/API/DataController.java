@@ -1,8 +1,12 @@
 package API;
 
 import Classroom.LearningMaterial;
+import Classroom.LearningMaterialTag;
+import Ollama.OllamaClient;
 import Repo.LearningMaterialRepo;
 import Repo.LearningMaterialTagRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +20,10 @@ public class DataController {
     @Autowired
     private LearningMaterialTagRepo tagRepo;
 
+    private static final Logger log = LoggerFactory.getLogger(DataController.class);
+
     public record MatchingLM(LearningMaterial learningMaterial, int matchingTopics) {
     }
-
     /**
      * This method retrieves an unsolved matching problem from the database.
      * It checks for a LearningMaterial that is answerable, has an assessment item and excludes those with excluded topics.
@@ -28,27 +33,26 @@ public class DataController {
      * @return a LearningMaterial object representing the unsolved matching problem or null if none exists.
      */
     public LearningMaterial unsolvedMatchingProblem(ProblemRequest request){
+        log.info("Searching for unsolved matching problem for topic: " + request.topic());
         List<LearningMaterial> approvedMaterials = learningMaterialRepo.findByApproved(true);
-
+        log.info("Found " + approvedMaterials.size() + " approved problems");
         List<MatchingLM> sortedMaterials = new LinkedList<>();
 
         for(LearningMaterial material: approvedMaterials){
             if (material.isAnswerable() && material.getAssessmentItem() != null && material.getTitle().equals(request.topic())) {
-                String[] materialTopics = tagRepo.findTagsByLearningMaterialUuid(material.getUuid()).toArray(new String[0]);
+                List<LearningMaterialTag> tagEntities = tagRepo.findByLearningMaterialUuid(material.getUuid());
+                String[] materialTopics = tagEntities.stream().map(LearningMaterialTag::getTag).toArray(String[]::new);
                 int matchingTopics = countIntersection(materialTopics, request.additionalTopics());
                 // Exclude materials that have topics in the excludedTopics list
                 boolean hasExcludedTopics = Arrays.stream(request.excludedTopics())
                         .anyMatch(excludedTopic -> Arrays.asList(materialTopics).contains(excludedTopic));
-                boolean hasSubmittedSolutions = material.getAssessmentItem().hasStudentSubmitted(request.studentId());
-                if (!hasExcludedTopics) sortedMaterials.add(new MatchingLM(material, matchingTopics));
+                boolean hasSubmittedSolution = material.getAssessmentItem().hasStudentSubmitted(request.studentId());
+                if (!hasExcludedTopics && !hasSubmittedSolution) sortedMaterials.add(new MatchingLM(material, matchingTopics));
             }
         }
 
         sortedMaterials.sort(Comparator.comparingInt(MatchingLM::matchingTopics).reversed());
-
-        if (!sortedMaterials.isEmpty()) return sortedMaterials.get(0).learningMaterial();
-
-        return null;
+        return sortedMaterials.isEmpty() ? null : sortedMaterials.get(0).learningMaterial();
     }
 
     public static int countIntersection(String[] a, String[] b) {

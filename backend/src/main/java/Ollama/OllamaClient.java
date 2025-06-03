@@ -105,7 +105,7 @@ public class OllamaClient {
     public String[] scanTopics(String problem, String solution) throws IOException, InterruptedException {
         String response = OllamaRequest("cs-topicScanner", String.format("problem: %s ~~~ solution: %s", problem, solution));
         log.info("Parsed topics response: {}", response);
-        return response.replace("\n", "").split(",");
+        return response.replace("\n", "").split(", ");
     }
 
     /**

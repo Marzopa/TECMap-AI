@@ -1,19 +1,19 @@
 package Repo;
 
+import Classroom.LearningMaterialTag;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 @Repository
-public interface LearningMaterialTagRepo {
+public interface LearningMaterialTagRepo extends JpaRepository<LearningMaterialTag, Long> {
     /**
      * Retrieves all learning material tags from the database.
      * Each tag is represented as an array of objects containing the learning material UUID and the tag.
      *
      * @return a list of object arrays, where each array contains the learning material UUID and its associated tag.
      */
-    @Query(value = "SELECT TAG FROM LEARNING_MATERIAL_TAGS WHERE LEARNING_MATERIAL_UUID = :uuid", nativeQuery = true)
-    List<String> findTagsByLearningMaterialUuid(@Param("uuid") String uuid);
+    List<LearningMaterialTag> findByLearningMaterialUuid(String learningMaterialUuid);
 }
+

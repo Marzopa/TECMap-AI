@@ -16,19 +16,26 @@ import java.util.logging.Logger;
 public class AIController {
 
     private final OllamaClient ollamaClient;
+    private final DataController dataController;
     private static final Logger log = Logger.getLogger(AIController.class.getName());
 
     @Autowired
     private LearningMaterialRepo learningMaterialRepo;
 
-    public AIController(OllamaClient ollamaClient) {
+    public AIController(OllamaClient ollamaClient, DataController dataController) {
         this.ollamaClient = ollamaClient;
+        this.dataController = dataController;
     }
 
     @PostMapping("/problem")
     public LearningMaterial getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
         log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
+        LearningMaterial existingProblem = dataController.unsolvedMatchingProblem(problemRequest);
+        if (existingProblem != null) {
+            log.info("Found unsolved matching problem in database: " + existingProblem.getTitle());
+            return existingProblem;
+        }
         LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(problemRequest.topic(), problemRequest.difficulty(),
                 problemRequest.additionalTopics(), problemRequest.excludedTopics());
         learningMaterialRepo.save(generatedMaterial);

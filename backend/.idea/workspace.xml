@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it should work, but no checks to whether student has solved or not">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="making a learningmaterialtag object">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,6 +68,7 @@
     "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
     "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
     "JUnit.LLMTest.executor": "Run",
     "JUnit.LLMTest.testLLM.executor": "Run",
     "JUnit.LLMTest.testSubmitResponse.executor": "Run",
@@ -105,7 +108,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
+  <component name="RunManager" selected="JUnit.DataControllerTest.unsolvedMatchingProblemTest">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -122,7 +125,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AIControllerTest.testSubmitSolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataControllerTest.unsolvedMatchingProblemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -131,8 +134,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSubmitSolution" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
+      <option name="METHOD_NAME" value="unsolvedMatchingProblemTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -185,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
         <item itemvalue="JUnit.LLMTest.testLLM" />
-        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
       </list>
     </recent_temporary>
   </component>
@@ -497,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748967124595</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="making a learningmaterialtag object">
+      <option name="closed" value="true" />
+      <created>1748969072659</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1748969072659</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +545,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up" />
     <MESSAGE value="working through saving learningmaterials, all three nested classes appear on h2-console" />
     <MESSAGE value="learningmaterials work in db, deet to add all fields to assessmentitem and record" />
     <MESSAGE value="made changes to record solution" />
@@ -559,6 +569,7 @@
     <MESSAGE value="trying to outsource data handling to datacontroller" />
     <MESSAGE value="getting problems solved by matching tags DOES NOT work" />
     <MESSAGE value="it should work, but no checks to whether student has solved or not" />
-    <option name="LAST_COMMIT_MESSAGE" value="it should work, but no checks to whether student has solved or not" />
+    <MESSAGE value="making a learningmaterialtag object" />
+    <option name="LAST_COMMIT_MESSAGE" value="making a learningmaterialtag object" />
   </component>
 </project>
