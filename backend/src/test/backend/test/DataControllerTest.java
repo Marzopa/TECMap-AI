@@ -21,7 +21,7 @@ public class DataControllerTest {
             "topic": "hashmaps",
             "difficulty": 5,
             "additionalTopics": ["recursion", "loops", "conditionals", "arrays"],
-            "excludedTopics": ["caching", "concurrency"],
+            "excludedTopics": ["caching", "concurrency", "recursion"],
             "studentId": 705123456
         }
         """;
