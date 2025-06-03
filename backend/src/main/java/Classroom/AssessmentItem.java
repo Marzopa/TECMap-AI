@@ -55,19 +55,20 @@ public class AssessmentItem {
     }
 
     public void submitSolution(AssessmentRecord record) {
-        if (record != null) {
+        if (record != null && record.getStudentId() != 0) {
             submissions.add(record);
-        } else {
-            throw new IllegalArgumentException("Cannot add null submission.");
+        }
+        else {
+            throw new IllegalArgumentException("Cannot add null submission. Student ID cannot be null/zero.");
         }
     }
 
     public void submitSolution(GradingStatus score, String answer, int studentId, String feedback) {
-        if (answer != null) {
+        if (answer != null && studentId != 0) {
             AssessmentRecord record = new AssessmentRecord(score, answer, studentId, feedback);
             submissions.add(record);
         } else {
-            throw new IllegalArgumentException("Student ID and studentAnswer cannot be null.");
+            throw new IllegalArgumentException("Student ID and studentAnswer cannot be null/zero.");
         }
     }
 

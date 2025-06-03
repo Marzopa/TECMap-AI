@@ -33,12 +33,13 @@ public class DataController {
         List<MatchingLM> sortedMaterials = new LinkedList<>();
 
         for(LearningMaterial material: approvedMaterials){
-            if (material.isAnswerable() && material.getAssessmentItem() != null) {
+            if (material.isAnswerable() && material.getAssessmentItem() != null && material.getTitle().equals(request.topic())) {
                 String[] materialTopics = tagRepo.findTagsByLearningMaterialUuid(material.getUuid()).toArray(new String[0]);
                 int matchingTopics = countIntersection(materialTopics, request.additionalTopics());
                 // Exclude materials that have topics in the excludedTopics list
                 boolean hasExcludedTopics = Arrays.stream(request.excludedTopics())
                         .anyMatch(excludedTopic -> Arrays.asList(materialTopics).contains(excludedTopic));
+                boolean hasSubmittedSolutions = material.getAssessmentItem().hasStudentSubmitted(request.studentId());
                 if (!hasExcludedTopics) sortedMaterials.add(new MatchingLM(material, matchingTopics));
             }
         }
@@ -53,7 +54,7 @@ public class DataController {
     public static int countIntersection(String[] a, String[] b) {
         Set<String> setA = new HashSet<>(List.of(a));
         Set<String> setB = new HashSet<>(List.of(b));
-        setA.retainAll(setB); // modifies setA to contain only elements also in setB
+        setA.retainAll(setB);
         return setA.size();
     }
 }

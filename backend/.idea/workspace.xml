@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="getting problems solved by matching tags DOES NOT work">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it should work, but no checks to whether student has solved or not">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/AssessmentItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -489,7 +489,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748964918413</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="it should work, but no checks to whether student has solved or not">
+      <option name="closed" value="true" />
+      <created>1748967124595</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1748967124595</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="springboot seems to work, need to add database functionality, also columns seem to be missing" />
     <MESSAGE value="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up" />
     <MESSAGE value="working through saving learningmaterials, all three nested classes appear on h2-console" />
     <MESSAGE value="learningmaterials work in db, deet to add all fields to assessmentitem and record" />
@@ -551,6 +558,7 @@
     <MESSAGE value="frontend mostly works now, but:&#10;- problems generated through there dont have tags&#10;- missing additional and excluded topics in frontend" />
     <MESSAGE value="trying to outsource data handling to datacontroller" />
     <MESSAGE value="getting problems solved by matching tags DOES NOT work" />
-    <option name="LAST_COMMIT_MESSAGE" value="getting problems solved by matching tags DOES NOT work" />
+    <MESSAGE value="it should work, but no checks to whether student has solved or not" />
+    <option name="LAST_COMMIT_MESSAGE" value="it should work, but no checks to whether student has solved or not" />
   </component>
 </project>
