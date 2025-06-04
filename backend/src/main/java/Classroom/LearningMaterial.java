@@ -30,8 +30,7 @@ public class LearningMaterial {
     @ElementCollection
     @CollectionTable(name = "learning_material_tags", joinColumns = @JoinColumn(name = "learning_material_uuid"))
     @Column(name = "tag")
-    @JsonIgnore
-    private List<String> tags = new ArrayList<>();
+    private List<String> tags;
 
     protected LearningMaterial() {
         this.title = null;
@@ -59,14 +58,15 @@ public class LearningMaterial {
                             @JsonProperty("uuid") String uuid,
                             @JsonProperty("answerable") boolean answerable,
                             @JsonProperty("assessmentItem") AssessmentItem assessmentItem,
-                            @JsonProperty("approved") boolean approved) {
+                            @JsonProperty("approved") boolean approved,
+                            @JsonProperty("tags") List<String> tags) {
         this.title = title;
         this.content = content;
         this.uuid = uuid;
         this.answerable = answerable;
         this.assessmentItem = assessmentItem;
         this.approved = approved;
-        this.tags = new ArrayList<>();
+        this.tags = tags != null ? tags : new ArrayList<>();
     }
 
     public String saveToFile(String path) throws IOException {
@@ -117,5 +117,18 @@ public class LearningMaterial {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "LearningMaterial{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", answerable=" + answerable +
+                ", approved=" + approved +
+                ", assessmentItem=" + assessmentItem +
+                ", tags=" + tags +
+                '}';
     }
 }

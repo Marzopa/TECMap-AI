@@ -29,29 +29,24 @@ public class AIController {
         this.dataController = dataController;
     }
 
-    public record LearningMaterialDto(
-            String uuid,
-            String title,
-            String content,
-            boolean answerable,
-            boolean approved
-    ) {}
-
     @PostMapping("/problem")
-    public ResponseEntity<LearningMaterialDto> getProblem(@RequestBody ProblemRequest problemRequest)
+    public LearningMaterial getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
         log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
         LearningMaterial existingProblem = dataController.unsolvedMatchingProblem(problemRequest);
         if (existingProblem != null) {
             log.info("Found unsolved matching problem in database: " + existingProblem.getUuid());
-            LearningMaterialDto dto = new LearningMaterialDto(
-                    existingProblem.getUuid(),
+            LearningMaterial lmExisting = new LearningMaterial(
                     existingProblem.getTitle(),
                     existingProblem.getContent(),
+                    existingProblem.getUuid(),
                     existingProblem.isAnswerable(),
-                    existingProblem.isApproved()
+                    existingProblem.getAssessmentItem() != null ? existingProblem.getAssessmentItem() : null,
+                    existingProblem.isApproved(),
+                    existingProblem.getTags()
             );
-            return ResponseEntity.ok(dto);
+            log.info("Returning lm" + lmExisting);
+            return lmExisting;
         }
         LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(
                 problemRequest.topic(),
@@ -60,14 +55,17 @@ public class AIController {
                 problemRequest.excludedTopics()
         );
         learningMaterialRepo.save(generatedMaterial);
-        LearningMaterialDto dto = new LearningMaterialDto(
-                generatedMaterial.getUuid(),
+        LearningMaterial lmGenerated = new LearningMaterial(
                 generatedMaterial.getTitle(),
                 generatedMaterial.getContent(),
+                generatedMaterial.getUuid(),
                 generatedMaterial.isAnswerable(),
-                generatedMaterial.isApproved()
+                generatedMaterial.getAssessmentItem(),
+                generatedMaterial.isApproved(),
+                generatedMaterial.getTags()
         );
-        return ResponseEntity.ok(dto);
+        log.info("Generated new problem: " + lmGenerated);
+        return lmGenerated;
     }
 
     /**

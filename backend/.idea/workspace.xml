@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="only need to check that unsolved works now">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="tests don't pass, some higher level error with the dto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +71,8 @@
     "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
     "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "JUnit.AssessmentItemTest.executor": "Run",
+    "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
     "JUnit.LLMTest.executor": "Run",
     "JUnit.LLMTest.testLLM.executor": "Run",
@@ -105,8 +114,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataControllerTest.unsolvedMatchingProblemTest">
-    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
+    <configuration name="AssessmentItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -115,9 +124,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testGetProblem" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AssessmentItemTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,22 +156,6 @@
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
       <option name="METHOD_NAME" value="unsolvedMatchingProblemTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LLMTest.testSubmitResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
-      <option name="METHOD_NAME" value="testSubmitResponse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
+        <item itemvalue="JUnit.DataControllerTest" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AssessmentItemTest" />
         <item itemvalue="JUnit.LearningMaterialTest" />
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
-        <item itemvalue="JUnit.LLMTest.testSubmitResponse" />
+        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
       </list>
     </recent_temporary>
   </component>
@@ -215,6 +222,8 @@
       <workItem from="1748742287582" duration="3566000" />
       <workItem from="1748787032811" duration="1105000" />
       <workItem from="1748959409947" duration="845000" />
+      <workItem from="1748976270954" duration="3098000" />
+      <workItem from="1749045966436" duration="1727000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -536,7 +545,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748973006734</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="tests don't pass, some higher level error with the dto">
+      <option name="closed" value="true" />
+      <created>1748974307093</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1748974307093</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +590,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="assessment record is flipped, tests only add one response to problem" />
     <MESSAGE value="database, everything works, might do disk database next" />
     <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
     <MESSAGE value="added test, but now it doesnt allow for solving even when student did attempt" />
@@ -598,6 +614,7 @@
     <MESSAGE value="need to change return type for problem endpoint, make it so nothing else is affected" />
     <MESSAGE value="seems to work, assessment item with new gto learningmaterial is null however" />
     <MESSAGE value="only need to check that unsolved works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="only need to check that unsolved works now" />
+    <MESSAGE value="tests don't pass, some higher level error with the dto" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests don't pass, some higher level error with the dto" />
   </component>
 </project>

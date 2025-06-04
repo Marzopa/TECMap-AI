@@ -4,6 +4,7 @@
   "uuid" : "37a095fd-ba36-4372-8304-1509eb50b7df",
   "answerable" : true,
   "approved" : true,
+  "tags" : [ "python", "dictionaries", "max value" ],
   "assessmentItem" : {
     "question" : "Based on the topic: Dictionaries",
     "maxScore" : 100,

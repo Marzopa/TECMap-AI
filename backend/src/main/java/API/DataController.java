@@ -2,9 +2,7 @@ package API;
 
 import Classroom.LearningMaterial;
 import Classroom.LearningMaterialTag;
-import Ollama.OllamaClient;
 import Repo.LearningMaterialRepo;
-import Repo.LearningMaterialTagRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ import java.util.*;
 public class DataController {
     @Autowired
     private LearningMaterialRepo learningMaterialRepo;
-
-    @Autowired
-    private LearningMaterialTagRepo tagRepo;
 
     private static final Logger log = LoggerFactory.getLogger(DataController.class);
 
@@ -38,10 +33,9 @@ public class DataController {
         log.info("Found " + approvedMaterials.size() + " approved problems");
         List<MatchingLM> sortedMaterials = new LinkedList<>();
 
-        for(LearningMaterial material: approvedMaterials){
+        for (LearningMaterial material : approvedMaterials) {
             if (material.isAnswerable() && material.getAssessmentItem() != null && material.getTitle().equals(request.topic())) {
-                List<LearningMaterialTag> tagEntities = tagRepo.findByLearningMaterialUuid(material.getUuid());
-                String[] materialTopics = tagEntities.stream().map(LearningMaterialTag::getTag).toArray(String[]::new);
+                String[] materialTopics = material.getTags().toArray(new String[0]);
                 int matchingTopics = countIntersection(materialTopics, request.additionalTopics());
                 // Exclude materials that have topics in the excludedTopics list
                 boolean hasExcludedTopics = Arrays.stream(request.excludedTopics())
