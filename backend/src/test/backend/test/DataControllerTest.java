@@ -67,8 +67,8 @@ public class DataControllerTest {
 
         String jsonPayload = """
                 {
-                "username": "instructor",
-                "password": "instructor123",
+                "username": "oscarJimenez",
+                "password": "password",
                 "problemId": "2bc2a8f5-e17e-40d1-bef6-a70116fa5c3f"
                 }
                 """;

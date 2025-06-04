@@ -118,7 +118,9 @@ public class DataController {
         Optional<LearningMaterial> material = learningMaterialRepo.findById(problemId);
         if (material.isPresent()) {
             LearningMaterial lm = material.get();
+            log.info("Before approve(): " + lm.isApproved());
             lm.approve();
+            log.info("After approve(): " + lm.isApproved());
             learningMaterialRepo.save(lm);
             log.info("Problem with ID {} approved", problemId);
         } else {
