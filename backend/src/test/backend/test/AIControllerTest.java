@@ -152,22 +152,46 @@ public class AIControllerTest {
     public void testDatabaseConnection() throws IOException, InterruptedException {
         /* GENERATE TWO PROBLEMS */
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/problem?topic=hashmaps&difficulty=5";
-        HttpRequest request = HttpRequest.newBuilder()
+        String url = "http://localhost:8080/ai/problem";
+
+        String jsonProblem1 = """
+        {
+            "topic": "hashmaps",
+            "difficulty": 5,
+            "additionalTopics": ["recursion", "loops"],
+            "excludedTopics": ["caching"],
+            "studentId": 123
+        }
+        """;
+
+        HttpRequest request1 = HttpRequest.newBuilder()
                 .uri(URI.create(url))
-                .GET()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonProblem1))
                 .build();
 
-        HttpResponse<String> hashmapLM = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> hashmapLM = client.send(request1, HttpResponse.BodyHandlers.ofString());
         System.out.println("Response 1: " + hashmapLM.body());
         LearningMaterial learningMaterial1CLEAN = Json.fromJsonString(hashmapLM.body(), LearningMaterial.class);
 
-        url = "http://localhost:8080/ai/problem?topic=arrays&difficulty=3";
-        request = HttpRequest.newBuilder()
+        String jsonProblem2 = """
+        {
+            "topic": "arrays",
+            "difficulty": 3,
+            "additionalTopics": ["indexing", "loops"],
+            "excludedTopics": ["concurrency"],
+            "studentId": 456
+        }
+        """;
+
+        HttpRequest request2 = HttpRequest.newBuilder()
                 .uri(URI.create(url))
-                .GET()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonProblem2))
                 .build();
-        HttpResponse<String> arraysLM = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        HttpResponse<String> arraysLM = client.send(request2, HttpResponse.BodyHandlers.ofString());
+        System.out.println("Response 2: " + arraysLM.body());
 
         /* SUBMIT SOLUTIONS FOR EACH*/
         String jsonPayload1 = String.format("""
@@ -266,6 +290,5 @@ public class AIControllerTest {
         HttpResponse<String> postResponse5 = client.send(postRequest5, HttpResponse.BodyHandlers.ofString());
         System.out.println("POST Response status for checking attempt (didn't): " + postResponse5.statusCode());
         System.out.println("POST Response body for checking attempt (didn't): " + postResponse5.body());
-
     }
 }
