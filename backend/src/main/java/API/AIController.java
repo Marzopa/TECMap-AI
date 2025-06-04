@@ -2,7 +2,6 @@ package API;
 
 import API.dto.LearningMaterialDto;
 import Classroom.AssessmentItem;
-import Classroom.Instructor;
 import Classroom.LearningMaterial;
 import Ollama.*;
 import Utils.LearningMaterialMapper;
@@ -91,10 +90,16 @@ public class AIController {
         else return "You need to attempt the problem first.";
     }
 
-    @PostMapping("/login")
-    public boolean login(@RequestBody Instructor instructor) {
-        log.info("Logging in instructor: " + instructor.getUsername());
-        return dataController.matches(instructor.getUsername(), instructor.getPasswordHash());
-    }
+    public record ApproveRequest(String username, String password, String problemId) { }
 
+    @PostMapping("/approve")
+    public void approve(@RequestBody ApproveRequest request) {
+        log.info("Logging in instructor: " + request.username());
+        if(dataController.matches(request.username(), request.password())) {
+            log.info("Instructor " + request.username() + " logged in successfully.");
+            dataController.approveProblem(request.problemId());
+        } else {
+            log.warning("Instructor " + request.username() + " failed to log in.");
+        }
+    }
 }

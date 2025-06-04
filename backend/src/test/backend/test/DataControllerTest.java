@@ -63,9 +63,15 @@ public class DataControllerTest {
     @Test
     public void instructorTest() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        String url = "http://localhost:8080/ai/login";
+        String url = "http://localhost:8080/ai/approve";
 
-        String jsonPayload = Json.toJsonString(new Instructor("oscarJimenez", "password"));
+        String jsonPayload = """
+                {
+                "username": "instructor",
+                "password": "instructor123",
+                "problemId": "2bc2a8f5-e17e-40d1-bef6-a70116fa5c3f"
+                }
+                """;
         System.out.println(">>>> SENDING TO INSTRUCTOR: " + jsonPayload);
 
         HttpRequest postRequest = HttpRequest.newBuilder()

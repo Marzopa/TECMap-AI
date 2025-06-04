@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="trying to add logins but datacontroller wont work in tests unless called from rest api">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="authentication database seems to work, but need to clean up, plus need to add functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
@@ -224,7 +223,7 @@
       <workItem from="1748959409947" duration="845000" />
       <workItem from="1748976270954" duration="3098000" />
       <workItem from="1749045966436" duration="9391000" />
-      <workItem from="1749060086460" duration="1525000" />
+      <workItem from="1749060086460" duration="2729000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -610,13 +609,36 @@
       <option name="project" value="LOCAL" />
       <updated>1749056846027</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="authentication database seems to work, but need to clean up, plus need to add functionality">
+      <option name="closed" value="true" />
+      <created>1749061726760</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1749061726760</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -624,9 +646,9 @@
             <State>
               <option name="COLUMN_ID_WIDTH">
                 <map>
-                  <entry key="Table.Default.Author.ColumnIdWidth" value="77" />
-                  <entry key="Table.Default.Date.ColumnIdWidth" value="77" />
-                  <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="77" />
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="41" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="127" />
+                  <entry key="Table.GitHub.CommitStatus.ColumnIdWidth" value="127" />
                 </map>
               </option>
               <option name="FILTERS">
@@ -647,7 +669,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="intellij files" />
     <MESSAGE value="started with additional and excluded topics" />
     <MESSAGE value="new problem generation works" />
     <MESSAGE value="started tagging system, but currently doesnt work" />
@@ -672,6 +693,7 @@
     <MESSAGE value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
     <MESSAGE value="about to add instructor logins" />
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
+    <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="authentication database seems to work, but need to clean up, plus need to add functionality" />
   </component>
 </project>

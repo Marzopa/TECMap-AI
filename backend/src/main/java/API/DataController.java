@@ -113,4 +113,16 @@ public class DataController {
         }
         return encoder.matches(rawPassword, instructor.getPasswordHash());
     }
+
+    public void approveProblem(String problemId) {
+        Optional<LearningMaterial> material = learningMaterialRepo.findById(problemId);
+        if (material.isPresent()) {
+            LearningMaterial lm = material.get();
+            lm.approve();
+            learningMaterialRepo.save(lm);
+            log.info("Problem with ID {} approved", problemId);
+        } else {
+            log.warn("Problem with ID {} not found", problemId);
+        }
+    }
 }
