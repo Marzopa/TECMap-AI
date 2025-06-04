@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="tests don't pass, some higher level error with the dto">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="still implementing a dto exact copy, now tags are part of learningmaterial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialTagRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LLMTestFixedQuestion_32cd931e-784d-4ab8-be4a-c2cb6121d032.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_123e4567-e89b-12d3-a456-426614174000.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/LM_2467c622-1441-4318-9850-f1b07301b2f5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/ClassroomController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +217,7 @@
       <workItem from="1748787032811" duration="1105000" />
       <workItem from="1748959409947" duration="845000" />
       <workItem from="1748976270954" duration="3098000" />
-      <workItem from="1749045966436" duration="1727000" />
+      <workItem from="1749045966436" duration="2722000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -553,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748974307093</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="still implementing a dto exact copy, now tags are part of learningmaterial">
+      <option name="closed" value="true" />
+      <created>1749048057119</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1749048057119</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="database, everything works, might do disk database next" />
     <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
     <MESSAGE value="added test, but now it doesnt allow for solving even when student did attempt" />
     <MESSAGE value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
@@ -615,6 +616,7 @@
     <MESSAGE value="seems to work, assessment item with new gto learningmaterial is null however" />
     <MESSAGE value="only need to check that unsolved works now" />
     <MESSAGE value="tests don't pass, some higher level error with the dto" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests don't pass, some higher level error with the dto" />
+    <MESSAGE value="still implementing a dto exact copy, now tags are part of learningmaterial" />
+    <option name="LAST_COMMIT_MESSAGE" value="still implementing a dto exact copy, now tags are part of learningmaterial" />
   </component>
 </project>
