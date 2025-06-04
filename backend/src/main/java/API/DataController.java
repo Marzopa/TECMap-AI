@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.*;
 
@@ -15,6 +16,8 @@ public class DataController {
     private LearningMaterialRepo learningMaterialRepo;
 
     private static final Logger log = LoggerFactory.getLogger(DataController.class);
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public record MatchingLM(LearningMaterial learningMaterial, int matchingTopics) {
     }
@@ -85,5 +88,13 @@ public class DataController {
             }
         }
         return max;
+    }
+
+    public static String hash(String rawPassword) {
+        return encoder.encode(rawPassword);
+    }
+
+    public static boolean matches(String rawPassword, String hashedPassword) {
+        return encoder.matches(rawPassword, hashedPassword);
     }
 }

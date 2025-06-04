@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="test was fixed">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/LearningMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repo/LearningMaterialRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -222,7 +220,7 @@
       <workItem from="1748787032811" duration="1105000" />
       <workItem from="1748959409947" duration="845000" />
       <workItem from="1748976270954" duration="3098000" />
-      <workItem from="1749045966436" duration="7380000" />
+      <workItem from="1749045966436" duration="8103000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -584,7 +582,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749053046516</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)">
+      <option name="closed" value="true" />
+      <created>1749055200064</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1749055200064</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +627,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added topic detection for problem, although grader doesn't seem to care if they used it or not" />
     <MESSAGE value="forgot to add in last commit" />
     <MESSAGE value="added approved field to database" />
     <MESSAGE value="intellij files" />
@@ -646,6 +651,7 @@
     <MESSAGE value="all dtos seem to work for LearningMaterial" />
     <MESSAGE value="things seem to work, except a failed test" />
     <MESSAGE value="test was fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="test was fixed" />
+    <MESSAGE value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
+    <option name="LAST_COMMIT_MESSAGE" value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
   </component>
 </project>
