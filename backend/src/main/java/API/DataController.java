@@ -1,6 +1,8 @@
 package API;
 
+import Classroom.Instructor;
 import Classroom.LearningMaterial;
+import Repo.InstructorRepo;
 import Repo.LearningMaterialRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,21 +17,26 @@ public class DataController {
     @Autowired
     private LearningMaterialRepo learningMaterialRepo;
 
+    @Autowired
+    private InstructorRepo instructorRepo;
+
     private static final Logger log = LoggerFactory.getLogger(DataController.class);
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public record MatchingLM(LearningMaterial learningMaterial, int matchingTopics) {
     }
+
     /**
      * This method retrieves an unsolved matching problem from the database.
      * It checks for a LearningMaterial that is answerable, has an assessment item and excludes those with excluded topics.
      * If such a LearningMaterial exists, it returns it; otherwise, it returns null.
      * It prioritizes approved problems, then those that also contain additional topics.
+     *
      * @param request The ProblemRequest object containing the criteria for the matching problem.
      * @return a LearningMaterial object representing the unsolved matching problem or null if none exists.
      */
-    public LearningMaterial unsolvedMatchingProblem(ProblemRequest request){
+    public LearningMaterial unsolvedMatchingProblem(ProblemRequest request) {
         log.info("Searching for unsolved matching problem for topic: " + request.topic());
         List<LearningMaterial> approvedMaterials = learningMaterialRepo.findByApproved(true);
         log.info("Found " + approvedMaterials.size() + " approved problems");
@@ -43,7 +50,8 @@ public class DataController {
                 boolean hasExcludedTopics = Arrays.stream(request.excludedTopics())
                         .anyMatch(excludedTopic -> Arrays.asList(materialTopics).contains(excludedTopic));
                 boolean hasSubmittedSolution = material.getAssessmentItem().hasStudentSubmitted(request.studentId());
-                if (!hasExcludedTopics && !hasSubmittedSolution) sortedMaterials.add(new MatchingLM(material, matchingTopics));
+                if (!hasExcludedTopics && !hasSubmittedSolution)
+                    sortedMaterials.add(new MatchingLM(material, matchingTopics));
             }
         }
 
@@ -60,6 +68,7 @@ public class DataController {
 
     /**
      * This method retrieves a LearningMaterial by its UUID.
+     *
      * @param learningMaterial the LearningMaterial object to save
      * @return whether the LearningMaterial already existed in the database (update) or not (insert).
      */
@@ -90,11 +99,14 @@ public class DataController {
         return max;
     }
 
-    public static String hash(String rawPassword) {
-        return encoder.encode(rawPassword);
+    public Instructor register(String username, String rawPassword) {
+        Instructor instructor = new Instructor(username, encoder.encode(rawPassword));
+        instructorRepo.save(instructor);
+        return instructor;
     }
 
-    public static boolean matches(String rawPassword, String hashedPassword) {
-        return encoder.matches(rawPassword, hashedPassword);
+    public boolean matches(String username, String rawPassword) {
+        Instructor instructor = instructorRepo.findByUsername(username);
+        return encoder.matches(rawPassword, instructor.getPasswordHash());
     }
 }

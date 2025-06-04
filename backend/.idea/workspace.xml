@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="about to add instructor logins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classroom/Instructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +69,7 @@
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
     "JUnit.AssessmentItemTest.executor": "Run",
     "JUnit.DataControllerTest.executor": "Run",
+    "JUnit.DataControllerTest.instructorTest.executor": "Run",
     "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
     "JUnit.LLMTest.executor": "Run",
     "JUnit.LLMTest.testLLM.executor": "Run",
@@ -108,7 +111,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testDatabaseConnection">
+  <component name="RunManager" selected="JUnit.DataControllerTest.instructorTest">
     <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -141,22 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AIControllerTest.testSolveProblemNotDone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSolveProblemNotDone" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AIControllerTest.testSubmitSolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -168,6 +155,22 @@
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
       <option name="METHOD_NAME" value="testSubmitSolution" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataControllerTest.instructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
+      <option name="METHOD_NAME" value="instructorTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
+        <item itemvalue="JUnit.DataControllerTest.instructorTest" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
-        <item itemvalue="JUnit.AIControllerTest.testSolveProblemNotDone" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +223,7 @@
       <workItem from="1748787032811" duration="1105000" />
       <workItem from="1748959409947" duration="845000" />
       <workItem from="1748976270954" duration="3098000" />
-      <workItem from="1749045966436" duration="8103000" />
+      <workItem from="1749045966436" duration="9049000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -590,7 +593,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749055200064</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="about to add instructor logins">
+      <option name="closed" value="true" />
+      <created>1749055894913</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1749055894913</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +638,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="forgot to add in last commit" />
     <MESSAGE value="added approved field to database" />
     <MESSAGE value="intellij files" />
     <MESSAGE value="started with additional and excluded topics" />
@@ -652,6 +662,7 @@
     <MESSAGE value="things seem to work, except a failed test" />
     <MESSAGE value="test was fixed" />
     <MESSAGE value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
-    <option name="LAST_COMMIT_MESSAGE" value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
+    <MESSAGE value="about to add instructor logins" />
+    <option name="LAST_COMMIT_MESSAGE" value="about to add instructor logins" />
   </component>
 </project>

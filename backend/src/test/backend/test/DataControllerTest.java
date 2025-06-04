@@ -1,5 +1,6 @@
 package backend.test;
 
+import API.DataController;
 import API.SolveRequest;
 import API.SubmissionRequest;
 import Classroom.LearningMaterial;
@@ -55,5 +56,11 @@ public class DataControllerTest {
         System.out.println("POST /ai/problem response:");
         System.out.println("Status: " + postResponse.statusCode());
         System.out.println("Body: " + postResponse.body());
+    }
+
+    @Test
+    public void instructorTest(){
+        DataController dc = new DataController();
+        System.out.println(dc.register("oscarJimenez", "password123"));
     }
 }

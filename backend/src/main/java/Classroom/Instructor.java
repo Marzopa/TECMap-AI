@@ -39,4 +39,12 @@ public class Instructor {
     public boolean canApprove() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "username='" + username + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                '}';
+    }
 }

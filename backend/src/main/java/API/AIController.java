@@ -2,6 +2,7 @@ package API;
 
 import API.dto.LearningMaterialDto;
 import Classroom.AssessmentItem;
+import Classroom.Instructor;
 import Classroom.LearningMaterial;
 import Ollama.*;
 import Utils.LearningMaterialMapper;
@@ -88,6 +89,12 @@ public class AIController {
         if(dataController.getLearningMaterial(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
             return ollamaClient.problemSolverHelper(request.learningMaterial(), request.language());
         else return "You need to attempt the problem first.";
+    }
+
+    @PostMapping("/login")
+    public Instructor login(@RequestBody Instructor instructor) {
+        log.info("Logging in instructor: " + instructor.getUsername());
+        return null;
     }
 
 }
