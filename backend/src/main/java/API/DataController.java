@@ -73,4 +73,17 @@ public class DataController {
     public Optional<LearningMaterial> getLearningMaterial(String uuid) {
         return learningMaterialRepo.findById(uuid);
     }
+
+    public int findLatestTitleOccurrence(String title) {
+        List<LearningMaterial> materials = learningMaterialRepo.findByTitleStartingWith(title);
+        int max = 0;
+        for (LearningMaterial material : materials) {
+            String[] parts = material.getTitle().split(" ");
+            if (parts.length > 1 && parts[0].equals(title)) {
+                int occurrence = Integer.parseInt(parts[1]);
+                if (occurrence > max) max = occurrence;
+            }
+        }
+        return max;
+    }
 }

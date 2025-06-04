@@ -15,7 +15,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" }, ignoreUnknown = true)
 @Entity
 public class LearningMaterial {
-    private final String title;
+    private String title;
     @Column(length = 1000)
     private final String content;
     @Id
@@ -117,6 +117,10 @@ public class LearningMaterial {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

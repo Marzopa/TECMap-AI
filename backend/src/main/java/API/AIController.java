@@ -38,6 +38,12 @@ public class AIController {
                 problemRequest.topic(), problemRequest.difficulty(),
                 problemRequest.additionalTopics(), problemRequest.excludedTopics()
         );
+
+        // Set the title of the generated material to the topic
+        int last = dataController.findLatestTitleOccurrence(problemRequest.topic());
+        generatedMaterial.setTitle(problemRequest.topic() + " " + (last + 1));
+        log.info("Generated title: " + generatedMaterial.getTitle());
+
         dataController.save(generatedMaterial);
         return ResponseEntity.ok(LearningMaterialMapper.toDto(generatedMaterial));
     }

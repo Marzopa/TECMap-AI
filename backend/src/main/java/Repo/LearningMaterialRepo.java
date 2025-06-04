@@ -17,4 +17,6 @@ public interface LearningMaterialRepo extends JpaRepository<LearningMaterial, St
 //    List<LearningMaterial> findByDayNumber(int dayNumber);
 //    List<LearningMaterial> findByCourseId(String courseId);
     List<LearningMaterial> findByApproved(boolean approved);
+    List<LearningMaterial> findByTitleStartingWith(String titlePrefix);
+
 }
