@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="authentication database seems to work, but need to clean up, plus need to add functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataControllerTest.instructorTest">
+  <component name="RunManager" selected="JUnit.LLMTest">
     <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -122,38 +119,6 @@
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
       <option name="METHOD_NAME" value="testDatabaseConnection" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testGetProblem" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AIControllerTest.testSubmitSolution" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testSubmitSolution" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -175,6 +140,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LLMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in AI-microservice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MicroserviceApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="API.MicroserviceApp" />
@@ -190,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataControllerTest.instructorTest" />
+        <item itemvalue="JUnit.LLMTest" />
+        <item itemvalue="JUnit.test in AI-microservice" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
+        <item itemvalue="JUnit.DataControllerTest.instructorTest" />
         <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
-        <item itemvalue="JUnit.AIControllerTest.testSubmitSolution" />
       </list>
     </recent_temporary>
   </component>
