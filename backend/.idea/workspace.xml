@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="still implementing a dto exact copy, now tags are part of learningmaterial">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="all dtos seem to work for LearningMaterial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Classroom/ClassroomController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/AIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,8 +109,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
-    <configuration name="AssessmentItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testDatabaseConnection">
+    <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -118,44 +119,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AssessmentItemTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataControllerTest.unsolvedMatchingProblemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
-      <option name="METHOD_NAME" value="unsolvedMatchingProblemTest" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testDatabaseConnection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LearningMaterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -164,8 +135,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.LearningMaterialTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testGetProblem" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIControllerTest.testSolveProblemDone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testSolveProblemDone" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AIControllerTest.testSolveProblemNotDone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testSolveProblemNotDone" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -185,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataControllerTest" />
+        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
+        <item itemvalue="JUnit.AIControllerTest.testSolveProblemNotDone" />
+        <item itemvalue="JUnit.AIControllerTest.testSolveProblemDone" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
-        <item itemvalue="JUnit.AssessmentItemTest" />
-        <item itemvalue="JUnit.LearningMaterialTest" />
-        <item itemvalue="JUnit.DataControllerTest.unsolvedMatchingProblemTest" />
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +221,7 @@
       <workItem from="1748787032811" duration="1105000" />
       <workItem from="1748959409947" duration="845000" />
       <workItem from="1748976270954" duration="3098000" />
-      <workItem from="1749045966436" duration="2722000" />
+      <workItem from="1749045966436" duration="3672000" />
     </task>
     <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
       <option name="closed" value="true" />
@@ -555,7 +559,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749048057119</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="all dtos seem to work for LearningMaterial">
+      <option name="closed" value="true" />
+      <created>1749048843624</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1749048843625</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +604,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="disk database, fixed lingering tests, now time to check whether database solving id detection works" />
     <MESSAGE value="added test, but now it doesnt allow for solving even when student did attempt" />
     <MESSAGE value="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test" />
     <MESSAGE value="added topic detection for problem, although grader doesn't seem to care if they used it or not" />
@@ -617,6 +628,7 @@
     <MESSAGE value="only need to check that unsolved works now" />
     <MESSAGE value="tests don't pass, some higher level error with the dto" />
     <MESSAGE value="still implementing a dto exact copy, now tags are part of learningmaterial" />
-    <option name="LAST_COMMIT_MESSAGE" value="still implementing a dto exact copy, now tags are part of learningmaterial" />
+    <MESSAGE value="all dtos seem to work for LearningMaterial" />
+    <option name="LAST_COMMIT_MESSAGE" value="all dtos seem to work for LearningMaterial" />
   </component>
 </project>

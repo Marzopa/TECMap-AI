@@ -4,9 +4,7 @@ import API.dto.LearningMaterialDto;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
-import Repo.LearningMaterialRepo;
 import Utils.LearningMaterialMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +19,6 @@ public class AIController {
     private final OllamaClient ollamaClient;
     private final DataController dataController;
     private static final Logger log = Logger.getLogger(AIController.class.getName());
-
-    @Autowired
-    private LearningMaterialRepo learningMaterialRepo;
 
     public AIController(OllamaClient ollamaClient, DataController dataController) {
         this.ollamaClient = ollamaClient;
@@ -43,7 +38,7 @@ public class AIController {
                 problemRequest.topic(), problemRequest.difficulty(),
                 problemRequest.additionalTopics(), problemRequest.excludedTopics()
         );
-        learningMaterialRepo.save(generatedMaterial);
+        dataController.save(generatedMaterial);
         return ResponseEntity.ok(LearningMaterialMapper.toDto(generatedMaterial));
     }
 
@@ -67,8 +62,8 @@ public class AIController {
                 gradingResponse.feedback());
 
         // Update the LearningMaterial in the database with the new submission, only if it was already in the database
-        if (learningMaterialRepo.existsById(submission.learningMaterial().getUuid()))
-            learningMaterialRepo.save(submission.learningMaterial());
+        if (dataController.exists(submission.learningMaterial().getUuid()))
+            dataController.save(submission.learningMaterial());
 
         return gradingResponse;
     }
@@ -84,7 +79,7 @@ public class AIController {
         log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
         // If in database, check there
         // If not, check the LearningMaterial object in the request
-        if(learningMaterialRepo.findById(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
+        if(dataController.getLearningMaterial(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
             return ollamaClient.problemSolverHelper(request.learningMaterial(), request.language());
         else return "You need to attempt the problem first.";
     }

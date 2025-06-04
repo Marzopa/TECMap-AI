@@ -1,7 +1,6 @@
 package API;
 
 import Classroom.LearningMaterial;
-import Classroom.LearningMaterialTag;
 import Repo.LearningMaterialRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,5 +53,24 @@ public class DataController {
         Set<String> setB = new HashSet<>(List.of(b));
         setA.retainAll(setB);
         return setA.size();
+    }
+
+    /**
+     * This method retrieves a LearningMaterial by its UUID.
+     * @param learningMaterial the LearningMaterial object to save
+     * @return whether the LearningMaterial already existed in the database (update) or not (insert).
+     */
+    public boolean save(LearningMaterial learningMaterial) {
+        boolean exists = learningMaterialRepo.existsById(learningMaterial.getUuid());
+        learningMaterialRepo.save(learningMaterial);
+        return exists;
+    }
+
+    public boolean exists(String uuid) {
+        return learningMaterialRepo.existsById(uuid);
+    }
+
+    public Optional<LearningMaterial> getLearningMaterial(String uuid) {
+        return learningMaterialRepo.findById(uuid);
     }
 }
