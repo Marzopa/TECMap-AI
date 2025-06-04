@@ -3,9 +3,11 @@ package backend.test;
 import API.DataController;
 import API.SolveRequest;
 import API.SubmissionRequest;
+import Classroom.Instructor;
 import Classroom.LearningMaterial;
 import Utils.Json;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.net.URI;
@@ -59,8 +61,20 @@ public class DataControllerTest {
     }
 
     @Test
-    public void instructorTest(){
-        DataController dc = new DataController();
-        System.out.println(dc.register("oscarJimenez", "password123"));
+    public void instructorTest() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "http://localhost:8080/ai/login";
+
+        String jsonPayload = Json.toJsonString(new Instructor("oscarJimenez", "password"));
+        System.out.println(">>>> SENDING TO INSTRUCTOR: " + jsonPayload);
+
+        HttpRequest postRequest = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
+                .build();
+
+        HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println("POST /api/login response:" + postResponse.body());
     }
 }

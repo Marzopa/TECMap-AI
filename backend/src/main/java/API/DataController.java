@@ -107,6 +107,10 @@ public class DataController {
 
     public boolean matches(String username, String rawPassword) {
         Instructor instructor = instructorRepo.findByUsername(username);
+        if (instructor == null) {
+            log.warn("Instructor with username {} not found", username);
+            return false;
+        }
         return encoder.matches(rawPassword, instructor.getPasswordHash());
     }
 }

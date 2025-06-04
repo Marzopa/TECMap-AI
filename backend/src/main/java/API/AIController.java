@@ -92,9 +92,9 @@ public class AIController {
     }
 
     @PostMapping("/login")
-    public Instructor login(@RequestBody Instructor instructor) {
+    public boolean login(@RequestBody Instructor instructor) {
         log.info("Logging in instructor: " + instructor.getUsername());
-        return null;
+        return dataController.matches(instructor.getUsername(), instructor.getPasswordHash());
     }
 
 }
