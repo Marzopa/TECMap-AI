@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="all tests pass, everything works">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="refactoring, adding docstrings, etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/ProblemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/request/ProblemRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/SolveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/request/SolveRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/SubmissionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/request/SubmissionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,15 +214,7 @@
       <workItem from="1748976270954" duration="3098000" />
       <workItem from="1749045966436" duration="9391000" />
       <workItem from="1749060086460" duration="2729000" />
-      <workItem from="1749133036297" duration="1842000" />
-    </task>
-    <task id="LOCAL-00001" summary="mightve fixed backend intellij issues">
-      <option name="closed" value="true" />
-      <created>1748465031573</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1748465031573</updated>
+      <workItem from="1749133036297" duration="4021000" />
     </task>
     <task id="LOCAL-00002" summary="springboot runs great">
       <option name="closed" value="true" />
@@ -613,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749061726760</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="refactoring, adding docstrings, etc.">
+      <option name="closed" value="true" />
+      <created>1749135598302</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1749135598302</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +660,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="started with additional and excluded topics" />
     <MESSAGE value="new problem generation works" />
     <MESSAGE value="started tagging system, but currently doesnt work" />
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
@@ -690,6 +684,7 @@
     <MESSAGE value="about to add instructor logins" />
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="authentication database seems to work, but need to clean up, plus need to add functionality" />
+    <MESSAGE value="refactoring, adding docstrings, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring, adding docstrings, etc." />
   </component>
 </project>

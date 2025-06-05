@@ -68,8 +68,7 @@ public class DataController {
     }
 
     /**
-     * This method retrieves a LearningMaterial by its UUID.
-     *
+     * This method saves a LearningMaterial to the database.
      * @param learningMaterial the LearningMaterial object to save
      * @return whether the LearningMaterial already existed in the database (update) or not (insert).
      */
@@ -87,6 +86,11 @@ public class DataController {
         return learningMaterialRepo.findById(uuid);
     }
 
+    /**
+     * This method returns the latest occurrence of a title in the LearningMaterial repository.
+     * @param title The prefix of the title to search for.
+     * @return the latest occurrence number of the title, or 0 if no occurrences are found.
+     */
     public int findLatestTitleOccurrence(String title) {
         List<LearningMaterial> materials = learningMaterialRepo.findByTitleStartingWith(title);
         int max = 0;
@@ -100,6 +104,12 @@ public class DataController {
         return max;
     }
 
+    /**
+     * This method registers a new instructor by saving their username and encoded password hash to the database.
+     * @param username The username of the instructor.
+     * @param rawPassword The raw password to be encoded and stored.
+     * @return The newly created Instructor object.
+     */
     public Instructor register(String username, String rawPassword) {
         Instructor instructor = new Instructor(username, encoder.encode(rawPassword));
         instructorRepo.save(instructor);
@@ -121,6 +131,12 @@ public class DataController {
         return encoder.matches(rawPassword, instructor.getPasswordHash());
     }
 
+    /**
+     * This method approves a problem by its ID.
+     * It retrieves the LearningMaterial from the database, approves it, and saves it back.
+     * If the LearningMaterial is not found, it logs a warning.
+     * @param problemId The ID of the problem to approve.
+     */
     public void approveProblem(String problemId) {
         Optional<LearningMaterial> material = learningMaterialRepo.findById(problemId);
         if (material.isPresent()) {
