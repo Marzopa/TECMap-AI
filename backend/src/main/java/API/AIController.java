@@ -1,6 +1,7 @@
 package API;
 
 import API.dto.LearningMaterialDto;
+import API.request.*;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
@@ -25,6 +26,13 @@ public class AIController {
         this.dataController = dataController;
     }
 
+    /**
+     * This method is used to generate a problem based on the topic and difficulty level.
+     * It checks if there is an unsolved matching problem in the database, and if not, it generates a new one.
+     * The generated problem is then saved to the database.
+     * @param problemRequest The request containing the topic, difficulty, additional topics, and excluded topics.
+     * @return A ResponseEntity containing the generated LearningMaterialDto (with same attributes as LearningMaterial).
+     */
     @PostMapping("/problem")
     public ResponseEntity<LearningMaterialDto> getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
@@ -90,8 +98,11 @@ public class AIController {
         else return "You need to attempt the problem first.";
     }
 
-    public record ApproveRequest(String username, String password, String problemId) { }
-
+    /**
+     * This method is used to approve a problem by an instructor.
+     * It checks if the instructor's credentials match, and if so, approves the problem.
+     * @param request The request containing the instructor's "alleged" username, password, and problem ID.
+     */
     @PostMapping("/approve")
     public void approve(@RequestBody ApproveRequest request) {
         log.info("Logging in instructor: " + request.username());

@@ -1,5 +1,6 @@
 package API;
 
+import API.request.ProblemRequest;
 import Classroom.Instructor;
 import Classroom.LearningMaterial;
 import Repo.InstructorRepo;
@@ -105,6 +106,12 @@ public class DataController {
         return instructor;
     }
 
+    /**
+     * This method checks if the provided username and raw password match an existing instructor's credentials.
+     * @param username The username of the instructor.
+     * @param rawPassword The raw password to check against the stored password hash.
+     * @return true if the credentials exist in the database, false otherwise.
+     */
     public boolean matches(String username, String rawPassword) {
         Instructor instructor = instructorRepo.findByUsername(username);
         if (instructor == null) {

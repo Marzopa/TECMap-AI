@@ -1,13 +1,9 @@
 package backend.test;
 
-import API.DataController;
-import API.SolveRequest;
-import API.SubmissionRequest;
-import Classroom.Instructor;
+import API.request.SubmissionRequest;
 import Classroom.LearningMaterial;
 import Utils.Json;
 import org.junit.jupiter.api.Test;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.net.URI;
