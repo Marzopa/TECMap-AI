@@ -1,0 +1,24 @@
+# ─────────────────────────────────────────────────────────────
+# Dockerfile.ollama – Ollama image with your custom models
+# ─────────────────────────────────────────────────────────────
+FROM ollama/ollama:latest
+
+# Copy your Modelfiles into the image
+COPY backend/src/main/resources/Modelfiles /root/Modelfiles
+
+# 1) Start Ollama server in background
+# 2) Wait for it to be up
+# 3) Loop through your Modelfiles and `ollama create`
+# 4) Kill the background server so the image build can finish
+RUN ollama serve & \
+    echo "▶ Waiting for Ollama to start…" && \
+    sleep 8 && \
+    for file in /root/Modelfiles/*.txt; do \
+      model=$(basename "$file" .txt); \
+      echo "▶ Creating model $model from $file"; \
+      ollama create "$model" -f "$file"; \
+    done && \
+    echo "▶ Shutting down build-time Ollama…" && \
+    pkill -f "ollama serve"
+
+# The base image’s ENTRYPOINT ["ollama"] will still kick off `ollama serve`

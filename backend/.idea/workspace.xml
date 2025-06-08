@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="about to make another image just for ollama">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker works, need to find url for new database in h2-console">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
     <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -189,10 +188,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.test in AI-microservice" />
-        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.DataControllerTest.instructorTest" />
       </list>
     </recent_temporary>
@@ -225,15 +224,7 @@
       <workItem from="1749060086460" duration="2729000" />
       <workItem from="1749133036297" duration="4557000" />
       <workItem from="1749391484833" duration="740000" />
-      <workItem from="1749392442155" duration="11188000" />
-    </task>
-    <task id="LOCAL-00008" summary="springboot does not run right now, need to deal with LearningMaterial Jpa">
-      <option name="closed" value="true" />
-      <created>1748472889500</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1748472889500</updated>
+      <workItem from="1749392442155" duration="13216000" />
     </task>
     <task id="LOCAL-00009" summary="before updating assessment record to be included in database">
       <option name="closed" value="true" />
@@ -619,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749402596461</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="docker works, need to find url for new database in h2-console">
+      <option name="closed" value="true" />
+      <created>1749406487777</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1749406487777</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +670,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="frontend mostly works now, but:&#10;- problems generated through there dont have tags&#10;- missing additional and excluded topics in frontend" />
     <MESSAGE value="trying to outsource data handling to datacontroller" />
     <MESSAGE value="getting problems solved by matching tags DOES NOT work" />
     <MESSAGE value="it should work, but no checks to whether student has solved or not" />
@@ -696,6 +694,7 @@
     <MESSAGE value="about to do modelfiles thing" />
     <MESSAGE value="ollama commands not working" />
     <MESSAGE value="about to make another image just for ollama" />
-    <option name="LAST_COMMIT_MESSAGE" value="about to make another image just for ollama" />
+    <MESSAGE value="docker works, need to find url for new database in h2-console" />
+    <option name="LAST_COMMIT_MESSAGE" value="docker works, need to find url for new database in h2-console" />
   </component>
 </project>
