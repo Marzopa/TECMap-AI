@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="refactoring, adding docstrings, etc.">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added more docstrings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +19,7 @@
         <option value="Record" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -43,6 +43,10 @@
     &quot;accountId&quot;: &quot;acc4dba6-4494-467a-b4c8-24ad37810a08&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -57,49 +61,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AIControllerTest.testDatabaseConnection.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSolveProblemDone.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSolveProblemNotDone.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSubmitSolution.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AssessmentItemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.instructorTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testLLM.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testSubmitResponse.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testSyntaxChecker.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LearningMaterialTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test in AI-microservice.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AIControllerTest.testDatabaseConnection.executor": "Run",
+    "JUnit.AIControllerTest.testGetProblem.executor": "Run",
+    "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
+    "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
+    "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "JUnit.AssessmentItemTest.executor": "Run",
+    "JUnit.DataControllerTest.executor": "Run",
+    "JUnit.DataControllerTest.instructorTest.executor": "Run",
+    "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
+    "JUnit.LLMTest.executor": "Run",
+    "JUnit.LLMTest.testLLM.executor": "Run",
+    "JUnit.LLMTest.testSubmitResponse.executor": "Run",
+    "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
+    "JUnit.LearningMaterialTest.executor": "Run",
+    "JUnit.test in AI-microservice.executor": "Run",
+    "Maven.AI-microservice [clean].executor": "Run",
+    "Maven.AI-microservice [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.MicroserviceApp.executor": "Run",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "Docker",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
@@ -214,15 +221,9 @@
       <workItem from="1748976270954" duration="3098000" />
       <workItem from="1749045966436" duration="9391000" />
       <workItem from="1749060086460" duration="2729000" />
-      <workItem from="1749133036297" duration="4021000" />
-    </task>
-    <task id="LOCAL-00002" summary="springboot runs great">
-      <option name="closed" value="true" />
-      <created>1748465477452</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1748465477452</updated>
+      <workItem from="1749133036297" duration="4557000" />
+      <workItem from="1749391484833" duration="740000" />
+      <workItem from="1749392442155" duration="1658000" />
     </task>
     <task id="LOCAL-00003" summary="ridiculous fix">
       <option name="closed" value="true" />
@@ -608,7 +609,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749135598302</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="added more docstrings">
+      <option name="closed" value="true" />
+      <created>1749138489235</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1749138489235</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +669,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new problem generation works" />
     <MESSAGE value="started tagging system, but currently doesnt work" />
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
     <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
@@ -685,6 +693,7 @@
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
     <MESSAGE value="refactoring, adding docstrings, etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring, adding docstrings, etc." />
+    <MESSAGE value="added more docstrings" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more docstrings" />
   </component>
 </project>
