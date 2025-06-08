@@ -33,17 +33,20 @@ public class OllamaClient {
      * @return the parsed response from the Ollama API
      */
     private static String OllamaRequest(String model, String content) throws IOException, InterruptedException {
+        String baseUrl = System.getenv().getOrDefault("OLLAMA_HOST", "http://localhost:11434");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:11434/api/chat"))
+                .uri(URI.create(baseUrl + "/api/chat"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(OllamaJsonBuilder(model, content)))
                 .build();
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        if (response.statusCode() != 200) throw new IOException("Ollama service error: " + response.body());
+        if (response.statusCode() != 200)
+            throw new IOException("Ollama service error: " + response.body());
 
         return OllamaResponseParser.parseResponse(response.body());
     }
+
 
     private static String OllamaJsonBuilder(String model, String content) {
         ObjectNode root = mapper.createObjectNode();

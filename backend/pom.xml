@@ -19,6 +19,25 @@
         <jackson-2-version>2.15.4</jackson-2-version>
     </properties>
 
+    <build>
+        <plugins>
+            <!-- Spring Boot makes an executable jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.3.1</version>   <!-- or the version that matches your deps -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>   <!-- creates the fat JAR -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

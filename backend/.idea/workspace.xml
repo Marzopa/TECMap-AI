@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added more docstrings">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="started dockerfile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +93,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dockerize",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -109,14 +112,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LLMTest">
-    <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -126,7 +130,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testDatabaseConnection" />
+      <option name="METHOD_NAME" value="testGetProblem" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -187,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.test in AI-microservice" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.DataControllerTest.instructorTest" />
-        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -223,15 +227,7 @@
       <workItem from="1749060086460" duration="2729000" />
       <workItem from="1749133036297" duration="4557000" />
       <workItem from="1749391484833" duration="740000" />
-      <workItem from="1749392442155" duration="1658000" />
-    </task>
-    <task id="LOCAL-00003" summary="ridiculous fix">
-      <option name="closed" value="true" />
-      <created>1748465689439</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1748465689439</updated>
+      <workItem from="1749392442155" duration="5484000" />
     </task>
     <task id="LOCAL-00004" summary="ridiculous fix">
       <option name="closed" value="true" />
@@ -617,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749138489235</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="started dockerfile">
+      <option name="closed" value="true" />
+      <created>1749394476058</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1749394476058</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="started tagging system, but currently doesnt work" />
     <MESSAGE value="still doesnt work, either payload or some json isnt getting to ollama" />
     <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
     <MESSAGE value="it works but is absurdly slow (7 minutes). also tags not in database" />
@@ -694,6 +697,7 @@
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
     <MESSAGE value="refactoring, adding docstrings, etc." />
     <MESSAGE value="added more docstrings" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more docstrings" />
+    <MESSAGE value="started dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="started dockerfile" />
   </component>
 </project>

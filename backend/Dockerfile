@@ -1,8 +1,8 @@
-FROM ollama/ollama:latest
-LABEL authors="oscar"
-
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+LABEL author="oscarjimenez"
 WORKDIR /app
-COPY . .
+COPY pom.xml .
+COPY src ./src
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre
