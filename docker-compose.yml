@@ -11,7 +11,7 @@ services:
       - ollama-data:/root/.ollama
       - ./backend/src/main/resources/Modelfiles:/root/Modelfiles
     entrypoint: /bin/sh
-    command: -c "for file in /root/Modelfiles/*.txt; do modelname=$(basename \"$file\" .txt); if ! ollama list | grep -q \"$modelname\"; then echo \"▼ Creating model $modelname from $file...\"; ollama create \"$modelname\" -f \"$file\"; fi; done; exec ollama serve"
+    command: -c "for file in /root/Modelfiles/*.txt; do modelname=$(basename \"$file\" .txt); if ! ollama list | grep -q \"$modelname\"; then echo \"▼ Creating model $modelname from \$file...\"; ollama create \"$modelname\" -f \"$file\"; fi; done && ollama serve"
     restart: unless-stopped
 
   # Spring Boot backend
