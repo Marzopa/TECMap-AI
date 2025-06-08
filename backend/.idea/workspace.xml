@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="everything seems to work (it does not recycle problems for some reason however)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="generate-problem" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -92,7 +90,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "generate-problem",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -673,7 +671,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="trying to outsource data handling to datacontroller" />
     <MESSAGE value="getting problems solved by matching tags DOES NOT work" />
     <MESSAGE value="it should work, but no checks to whether student has solved or not" />
     <MESSAGE value="making a learningmaterialtag object" />
@@ -698,6 +695,7 @@
     <MESSAGE value="ollama commands not working" />
     <MESSAGE value="about to make another image just for ollama" />
     <MESSAGE value="docker works, need to find url for new database in h2-console" />
-    <option name="LAST_COMMIT_MESSAGE" value="docker works, need to find url for new database in h2-console" />
+    <MESSAGE value="everything works perfectly now, docker set up" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything works perfectly now, docker set up" />
   </component>
 </project>
