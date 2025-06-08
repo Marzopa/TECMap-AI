@@ -3,15 +3,14 @@ version: "3.8"
 services:
   # Ollama LLM server
   ollama:
-    image: ollama/ollama:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
     container_name: ollama
     ports:
       - "11434:11434"
     volumes:
       - ollama-data:/root/.ollama
-      - ./backend/src/main/resources/Modelfiles:/root/Modelfiles
-    entrypoint: /bin/sh
-    command: -c "for file in /root/Modelfiles/*.txt; do modelname=$(basename \"$file\" .txt); if ! ollama list | grep -q \"$modelname\"; then echo \"▼ Creating model $modelname from \$file...\"; ollama create \"$modelname\" -f \"$file\"; fi; done && ollama serve"
     restart: unless-stopped
 
   # Spring Boot backend
