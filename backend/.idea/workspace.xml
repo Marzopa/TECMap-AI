@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker works, need to find url for new database in h2-console">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="everything seems to work (it does not recycle problems for some reason however)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +45,10 @@
     &quot;accountId&quot;: &quot;acc4dba6-4494-467a-b4c8-24ad37810a08&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -90,7 +92,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "dockerize",
+    "git-widget-placeholder": "generate-problem",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,8 +118,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceApp">
-    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LLMTest">
+    <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -127,7 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
       <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testGetProblem" />
+      <option name="METHOD_NAME" value="testDatabaseConnection" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,10 +191,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.MicroserviceApp" />
-        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
-        <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.test in AI-microservice" />
+        <item itemvalue="JUnit.LLMTest" />
         <item itemvalue="JUnit.DataControllerTest.instructorTest" />
+        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -225,6 +227,7 @@
       <workItem from="1749133036297" duration="4557000" />
       <workItem from="1749391484833" duration="740000" />
       <workItem from="1749392442155" duration="13216000" />
+      <workItem from="1749408625560" duration="3641000" />
     </task>
     <task id="LOCAL-00009" summary="before updating assessment record to be included in database">
       <option name="closed" value="true" />

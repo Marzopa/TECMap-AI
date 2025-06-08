@@ -44,7 +44,9 @@ public class DataController {
         List<MatchingLM> sortedMaterials = new LinkedList<>();
 
         for (LearningMaterial material : approvedMaterials) {
-            if (material.isAnswerable() && material.getAssessmentItem() != null && material.getTitle().equals(request.topic())) {
+            String[] words = material.getTitle().split(" ");
+            String topic = String.join(" ", Arrays.copyOf(words, words.length - 1));
+            if (material.isAnswerable() && material.getAssessmentItem() != null && topic.equals(request.topic())) {
                 String[] materialTopics = material.getTags().toArray(new String[0]);
                 int matchingTopics = countIntersection(materialTopics, request.additionalTopics());
                 // Exclude materials that have topics in the excludedTopics list
