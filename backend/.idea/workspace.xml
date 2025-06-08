@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker in progress&#10;- no models so far, api calls dont work">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="about to do modelfiles thing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,15 +225,7 @@
       <workItem from="1749060086460" duration="2729000" />
       <workItem from="1749133036297" duration="4557000" />
       <workItem from="1749391484833" duration="740000" />
-      <workItem from="1749392442155" duration="6706000" />
-    </task>
-    <task id="LOCAL-00005" summary="fixed test path in a test">
-      <option name="closed" value="true" />
-      <created>1748466029840</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1748466029840</updated>
+      <workItem from="1749392442155" duration="7772000" />
     </task>
     <task id="LOCAL-00006" summary="h2 console now visible from springboot">
       <option name="closed" value="true" />
@@ -618,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749398241405</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="about to do modelfiles thing">
+      <option name="closed" value="true" />
+      <created>1749401520110</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1749401520110</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +671,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added a log, about to use object serializer for unescaped characters" />
     <MESSAGE value="it works but is absurdly slow (7 minutes). also tags not in database" />
     <MESSAGE value="drastically improved runtime performance, parsed topics are junk and field in learningmaterial seems to still be too short despite correction" />
     <MESSAGE value="frontend mostly works now, but:&#10;- problems generated through there dont have tags&#10;- missing additional and excluded topics in frontend" />
@@ -695,6 +695,7 @@
     <MESSAGE value="added more docstrings" />
     <MESSAGE value="started dockerfile" />
     <MESSAGE value="docker in progress&#10;- no models so far, api calls dont work" />
-    <option name="LAST_COMMIT_MESSAGE" value="docker in progress&#10;- no models so far, api calls dont work" />
+    <MESSAGE value="about to do modelfiles thing" />
+    <option name="LAST_COMMIT_MESSAGE" value="about to do modelfiles thing" />
   </component>
 </project>
