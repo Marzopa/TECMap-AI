@@ -38,15 +38,21 @@ public class BatchLearningMaterialTest {
 
     static List<Scenario> scenarios() {
         return List.of(
-//                new Scenario("Dictionaries", 3, new String[]{}, new String[]{}),
-//                new Scenario("Graphs", 4, new String[]{"BFS"}, new String[]{"DFS"}),
-                new Scenario("Arrays", 2, new String[]{}, new String[]{"Recursion"})
+                new Scenario("arrays", 1, new String[]{}, new String[]{}),
+                new Scenario("graphs", 2, new String[]{"BFS", "recursion"}, new String[]{"DFS"}),
+                new Scenario("hashmaps", 2, new String[]{}, new String[]{"recursion", "dynamic programming"}),
+                new Scenario("linked lists", 2, new String[]{"recursion"}, new String[]{"dynamic programming"}),
+                new Scenario("dynamic programming", 3, new String[]{"recursion"}, new String[]{"graphs"}),
+                new Scenario("binary trees", 2, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
+                new Scenario("sorting algorithms", 4, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
+                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
+                new Scenario("arrays", 5, new String[]{"dynamic programming"}, new String[]{"graphs", "binary trees"})
         );
     }
 
     @Test
     public void generateAllProblems() throws IOException, InterruptedException {
-        int repeatPerScenario = 2;
+        int repeatPerScenario = 5;
         List<GenerationResult> results = new ArrayList<>();
 
         for (Scenario sc : scenarios()) {

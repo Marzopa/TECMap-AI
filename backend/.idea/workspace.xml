@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="done with repository">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="- changed to qwen coder for fast solving&#10;- removed etc. tag&#10;- created batch generator for LearningMaterial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-smallProblemSolver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-smallProblemSolver.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,15 +229,7 @@
       <workItem from="1749392442155" duration="13216000" />
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
-      <workItem from="1749565095202" duration="3019000" />
-    </task>
-    <task id="LOCAL-00010" summary="springboot seems to work, need to add database functionality, also columns seem to be missing">
-      <option name="closed" value="true" />
-      <created>1748530268968</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1748530268968</updated>
+      <workItem from="1749565095202" duration="4140000" />
     </task>
     <task id="LOCAL-00011" summary="tests overall pass, except last one, issue with learning material from db, should be fixed next when db is hooked up">
       <option name="closed" value="true" />
@@ -624,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749413127399</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="- changed to qwen coder for fast solving&#10;- removed etc. tag&#10;- created batch generator for LearningMaterial">
+      <option name="closed" value="true" />
+      <created>1749568233791</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1749568233791</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +675,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="it should work, but no checks to whether student has solved or not" />
     <MESSAGE value="making a learningmaterialtag object" />
     <MESSAGE value="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called" />
     <MESSAGE value="need to change return type for problem endpoint, make it so nothing else is affected" />
@@ -701,6 +699,7 @@
     <MESSAGE value="docker works, need to find url for new database in h2-console" />
     <MESSAGE value="everything works perfectly now, docker set up" />
     <MESSAGE value="done with repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with repository" />
+    <MESSAGE value="- changed to qwen coder for fast solving&#10;- removed etc. tag&#10;- created batch generator for LearningMaterial" />
+    <option name="LAST_COMMIT_MESSAGE" value="- changed to qwen coder for fast solving&#10;- removed etc. tag&#10;- created batch generator for LearningMaterial" />
   </component>
 </project>
