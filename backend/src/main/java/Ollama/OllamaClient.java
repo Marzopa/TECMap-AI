@@ -113,7 +113,10 @@ public class OllamaClient {
     public String[] scanTopics(String requestString) throws IOException, InterruptedException {
         String response = OllamaRequest("cs-topicScanner", requestString);
         log.info("Parsed topics response: {}", response);
-        return response.replace("\n", "").split(", ");
+        String[] scanTopics = response.replace("\n", "").split(", ");
+        if (scanTopics[scanTopics.length - 1].equals("etc.")) scanTopics = java.util.Arrays.copyOf(scanTopics, scanTopics.length - 1);
+        log.info("Scanned topics: {}", (Object) scanTopics);
+        return scanTopics;
     }
 
     /**
@@ -136,33 +139,37 @@ public class OllamaClient {
         learningMaterial.setAssessmentItem(assessmentItem);
         String solution = problemSolverHelper(learningMaterial, "java", true);
         log.info("Generated solution: {}", solution);
-        List<String> scanTopics = new java.util.ArrayList<>(List.of(scanTopics(learningMaterial.getContent(), solution)));
-        if (scanTopics.get(scanTopics.size()-1).toLowerCase().strip().equals("etc.")) scanTopics.remove(scanTopics.size() - 1);
-        log.info("Scanned topics: {}", scanTopics);
+        List<String> scanTopics = List.of(scanTopics(learningMaterial.getContent(), solution));
         learningMaterial.setTags(scanTopics);
         return learningMaterial;
     }
 
     public LearningMaterial generateLearningMaterialCHASE(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
         String seed = OllamaRequest("Generator", "Write a problem about " + topic);
+        log.info("Generated seed problem: {}", seed);
         int depth = 0;
         int currentDifficulty = 0;
         String hider = seed;
         while (depth < difficulty || currentDifficulty >= difficulty){
             String newHider = OllamaRequest("Hider", hider);
+            log.info("Generated hider: {}", newHider);
             String verifier = OllamaRequest("Verifier", newHider);
+            log.info("Verifier response: {}", verifier);
             if (!verifier.contains("TRUE")) continue;
             hider = newHider;
             currentDifficulty = Integer.parseInt(OllamaRequest("Zoner", hider));
+            log.info("Current difficulty: {}", currentDifficulty);
             depth++;
         }
         String finalProblem = OllamaRequest("Extractor", hider);
+        log.info("Final problem extracted: {}", finalProblem);
         List<String> scanTopics = List.of(scanTopics(hider));
+        log.info("Scanned topics: {}", scanTopics);
         LearningMaterial learningMaterial = new LearningMaterial(topic, finalProblem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);
-
-        return null;
+        learningMaterial.setTags(scanTopics);
+        return learningMaterial;
     }
 
     /**

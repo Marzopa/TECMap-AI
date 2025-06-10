@@ -1,4 +1,4 @@
-FROM smollm2:360m
+FROM qwen2.5-coder:0.5b
 
 SYSTEM """
 Rate the difficulty of a computer science quiz question for college students.
