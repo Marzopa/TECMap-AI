@@ -133,7 +133,7 @@ public class OllamaClient {
         String solution = problemSolverHelper(learningMaterial, "java", true);
         log.info("Generated solution: {}", solution);
         List<String> scanTopics = new java.util.ArrayList<>(List.of(scanTopics(learningMaterial.getContent(), solution)));
-        if (scanTopics.getLast().toLowerCase().strip().equals("etc.")) scanTopics.remove(scanTopics.size() - 1);
+        if (scanTopics.get(scanTopics.size()-1).toLowerCase().strip().equals("etc.")) scanTopics.remove(scanTopics.size() - 1);
         log.info("Scanned topics: {}", scanTopics);
         learningMaterial.setTags(scanTopics);
         return learningMaterial;

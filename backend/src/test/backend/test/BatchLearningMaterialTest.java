@@ -39,14 +39,15 @@ public class BatchLearningMaterialTest {
     static List<Scenario> scenarios() {
         return List.of(
                 new Scenario("arrays", 1, new String[]{}, new String[]{}),
-                new Scenario("graphs", 2, new String[]{"BFS", "recursion"}, new String[]{"DFS"}),
-                new Scenario("hashmaps", 2, new String[]{}, new String[]{"recursion", "dynamic programming"}),
-                new Scenario("linked lists", 2, new String[]{"recursion"}, new String[]{"dynamic programming"}),
-                new Scenario("dynamic programming", 3, new String[]{"recursion"}, new String[]{"graphs"}),
-                new Scenario("binary trees", 2, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
-                new Scenario("sorting algorithms", 4, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
-                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs", "dynamic programming"}),
-                new Scenario("arrays", 5, new String[]{"dynamic programming"}, new String[]{"graphs", "binary trees"})
+                new Scenario("strings", 1, new String[]{}, new String[]{"regex"}),
+                new Scenario("linked lists", 2, new String[]{"iteration"}, new String[]{"recursion"}),
+                new Scenario("hash maps", 2, new String[]{}, new String[]{"dynamic programming"}),
+                new Scenario("stacks & queues", 2, new String[]{}, new String[]{"graphs"}),
+                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
+                new Scenario("sorting algorithms", 3, new String[]{"selection sort"}, new String[]{"quick sort"}),
+                new Scenario("graphs", 4, new String[]{"BFS"}, new String[]{"DFS", "dynamic programming"}),
+                new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
+                new Scenario("arrays", 5, new String[]{"two-pointer"}, new String[]{"graphs", "binary trees"})
         );
     }
 
@@ -54,9 +55,12 @@ public class BatchLearningMaterialTest {
     public void generateAllProblems() throws IOException, InterruptedException {
         int repeatPerScenario = 5;
         List<GenerationResult> results = new ArrayList<>();
+        int total = scenarios().size() * repeatPerScenario;
+        int count = 0;
 
         for (Scenario sc : scenarios()) {
             for (int i = 0; i < repeatPerScenario; i++) {
+                System.err.printf("Generating problem %d out of %d \n", count, total);
                 long start = System.nanoTime();
                 LearningMaterial material = ollamaClient.generateLearningMaterialProblem(
                         sc.topic(), sc.difficulty(), sc.additional(), sc.excluded());
@@ -77,10 +81,11 @@ public class BatchLearningMaterialTest {
                 results.add(result);
                 System.out.printf("Done [%s-%d] #%d (%d ms):\n%s\n\n",
                         sc.topic(), sc.difficulty(), i + 1, latencyMs, material.getContent());
+                count++;
             }
         }
 
-        saveResultsToJsonl(results, "src/test/batches/generated-problems.jsonl");
+        saveResultsToJsonl(results, "src/test/batches/first-50.jsonl");
     }
 
     private void saveResultsToJsonl(List<GenerationResult> results, String fileName) throws IOException {
