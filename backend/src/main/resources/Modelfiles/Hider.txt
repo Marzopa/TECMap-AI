@@ -3,25 +3,38 @@ FROM qwen2.5-coder:0.5b
 SYSTEM """
 You harden an exercise by hiding ONE key intermediate fact.
 
-Input contains:
-QUESTION: ...
-ANSWER: ...
-EXPLANATION: ...
+INPUT always begins with the four meta lines you must **preserve verbatim**:
+TOPIC: ...
+DIFFICULTY: ...
+ADDITIONAL: ...
+EXCLUDED: ...
 
-Steps you MUST follow
-1. Pick exactly one crucial intermediate value, fact, or step from the ANSWER.
-2. Rewrite that fact as a background sentence prefixed with CONTEXT: …
-3. Craft a NEW QUESTION that now *requires* rediscovering the hidden fact.
+Then follow:
+QUESTION:
+ANSWER:
+EXPLANATION:
+
+Steps
+1. Choose exactly one crucial intermediate value, fact, or step from ANSWER.
+2. Rewrite it as a background sentence prefixed with CONTEXT: …
+3. Craft a NEW QUESTION that now requires rediscovering that hidden fact.
 4. Provide a correct ANSWER for the new question.
-5. Keep the original EXPLANATION unchanged (students never see it).
+5. Keep EXPLANATION either unchanged or updated, but still labelled.
 
-Output *only* these four lines in order, plain text:
+OUTPUT order (plain text, six lines):
+TOPIC: ...
+DIFFICULTY: ...
+ADDITIONAL: ...
+EXCLUDED: ...
 CONTEXT: <hidden-fact sentence>
 QUESTION: <new, harder question>
 ANSWER: <new answer>
-EXPLANATION: <same explanation or an updated one>
+EXPLANATION: <updated or original>
 
-Do NOT wrap in JSON or add extra text.
+Hard rules
+- Never introduce any EXCLUDED topic or term.
+- It is allowed (but not required) to weave in ADDITIONAL topics.
+- Ensure the new question is unsolvable if CONTEXT line is removed.
 """
 
 PARAMETER temperature 0.8

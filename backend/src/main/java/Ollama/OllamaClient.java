@@ -144,16 +144,25 @@ public class OllamaClient {
         return learningMaterial;
     }
 
+    public String CHASEr(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics){
+         return String.format(
+                "TOPIC: %s%nDIFFICULTY: %d%nADDITIONAL: %s%nEXCLUDED: %s%n",
+                topic, difficulty,
+                String.join(", ", additionalTopics),
+                String.join(", ", excludedTopics));
+    }
+
     public LearningMaterial generateLearningMaterialCHASE(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
-        String seed = OllamaRequest("Generator", "Write a problem about " + topic);
+        String CHASEr = CHASEr(topic, difficulty, additionalTopics, excludedTopics);
+        String seed = OllamaRequest("Generator", CHASEr);
         log.info("Generated seed problem: {}", seed);
         int depth = 0;
         int currentDifficulty = 0;
         String hider = seed;
         while (depth < difficulty && currentDifficulty < difficulty){
-            String newHider = OllamaRequest("Hider", hider);
+            String newHider = OllamaRequest("Hider", CHASEr + "\n" + hider);
             log.info("Generated hider: {}", newHider);
-            String verifier = OllamaRequest("Verifier", newHider);
+            String verifier = OllamaRequest("Verifier", CHASEr + "\n" + newHider);
             log.info("Verifier response: {}", verifier);
             if (!verifier.contains("TRUE")) continue;
             hider = newHider;

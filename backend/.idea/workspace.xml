@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="right now CHASE produces garbage&#10;took two minutes to produce:&#10;Write a program that finds the minimum and maximum element in the list, with explanation that we hide one important intermediate result. Consider how you might implement this by calculating the minimum and maximum values using a mathematical approach.">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="slightly updated system prompts, no included excluded addition yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Generator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Generator.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Hider.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Hider.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Verifier.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Verifier.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Zoner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Zoner.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,15 +243,7 @@
       <workItem from="1749392442155" duration="13216000" />
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
-      <workItem from="1749565095202" duration="13251000" />
-    </task>
-    <task id="LOCAL-00017" summary="database, everything works, might do disk database next">
-      <option name="closed" value="true" />
-      <created>1748543402668</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1748543402668</updated>
+      <workItem from="1749565095202" duration="14617000" />
     </task>
     <task id="LOCAL-00018" summary="disk database, fixed lingering tests, now time to check whether database solving id detection works">
       <option name="closed" value="true" />
@@ -639,7 +629,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749588188143</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="slightly updated system prompts, no included excluded addition yet">
+      <option name="closed" value="true" />
+      <created>1749589283028</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1749589283028</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +689,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="still implementing a dto exact copy, now tags are part of learningmaterial" />
     <MESSAGE value="all dtos seem to work for LearningMaterial" />
     <MESSAGE value="things seem to work, except a failed test" />
     <MESSAGE value="test was fixed" />
@@ -716,6 +713,7 @@
     <MESSAGE value="refactored for functional style, before implementing CHASE" />
     <MESSAGE value="added EXTRACTOR model&#10;- NEED to move etc. label removal to scanTopics method&#10;- add logging" />
     <MESSAGE value="right now CHASE produces garbage&#10;took two minutes to produce:&#10;Write a program that finds the minimum and maximum element in the list, with explanation that we hide one important intermediate result. Consider how you might implement this by calculating the minimum and maximum values using a mathematical approach." />
-    <option name="LAST_COMMIT_MESSAGE" value="right now CHASE produces garbage&#10;took two minutes to produce:&#10;Write a program that finds the minimum and maximum element in the list, with explanation that we hide one important intermediate result. Consider how you might implement this by calculating the minimum and maximum values using a mathematical approach." />
+    <MESSAGE value="slightly updated system prompts, no included excluded addition yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="slightly updated system prompts, no included excluded addition yet" />
   </component>
 </project>
