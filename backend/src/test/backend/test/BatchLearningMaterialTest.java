@@ -99,7 +99,7 @@ public class BatchLearningMaterialTest {
             }
         }
 
-        //saveResultsToJsonl(results, "src/test/batches/50.jsonl");
+        saveResultsToJsonl(results, "src/test/batches/50.jsonl");
     }
 
     private void saveResultsToJsonl(List<GenerationResult> results, String fileName) throws IOException {
