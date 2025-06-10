@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.time.Instant;
 import java.util.*;
+import java.util.function.Function;
 
 @SpringBootTest(classes = API.MicroserviceApp.class)
 public class BatchLearningMaterialTest {
@@ -22,7 +23,7 @@ public class BatchLearningMaterialTest {
 
     private OllamaClient ollamaClient;
 
-    record Scenario(String topic, int difficulty, String[] additional, String[] excluded) {}
+    public record Scenario(String topic, int difficulty, String[] additional, String[] excluded) {}
 
     record GenerationResult(
             String id,
@@ -52,7 +53,7 @@ public class BatchLearningMaterialTest {
     }
 
     @Test
-    public void generateAllProblems() throws IOException, InterruptedException {
+    public void generateAllProblems(Function<Scenario, LearningMaterial> function) throws IOException, InterruptedException {
         int repeatPerScenario = 5;
         List<GenerationResult> results = new ArrayList<>();
         int total = scenarios().size() * repeatPerScenario;

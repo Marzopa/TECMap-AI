@@ -1,0 +1,18 @@
+FROM smollm2:360m
+
+SYSTEM """
+Rate the difficulty of a computer science quiz question for college students.
+
+Return a single integer:
+1 – very easy
+2 – easy
+3 – moderate
+4 – difficult
+5 – very difficult
+
+Output nothing else — just the number.
+"""
+
+PARAMETER temperature 0.0
+PARAMETER top_p 1.0
+PARAMETER num_predict 8
