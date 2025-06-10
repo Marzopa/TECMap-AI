@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added CHASE models, will try to make tests functional style">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added EXTRACTOR model&#10;- NEED to move etc. label removal to scanTopics method&#10;- add logging">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,15 +233,7 @@
       <workItem from="1749392442155" duration="13216000" />
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
-      <workItem from="1749565095202" duration="9210000" />
-    </task>
-    <task id="LOCAL-00014" summary="made changes to record solution">
-      <option name="closed" value="true" />
-      <created>1748537790780</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1748537790780</updated>
+      <workItem from="1749565095202" duration="11206000" />
     </task>
     <task id="LOCAL-00015" summary="need to setup proper tests for database">
       <option name="closed" value="true" />
@@ -625,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749578289987</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="refactored for functional style, before implementing CHASE">
+      <option name="closed" value="true" />
+      <created>1749578684341</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1749578684341</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,8 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="seems to work, assessment item with new gto learningmaterial is null however" />
-    <MESSAGE value="only need to check that unsolved works now" />
     <MESSAGE value="tests don't pass, some higher level error with the dto" />
     <MESSAGE value="still implementing a dto exact copy, now tags are part of learningmaterial" />
     <MESSAGE value="all dtos seem to work for LearningMaterial" />
@@ -702,6 +702,8 @@
     <MESSAGE value="making test scenarios" />
     <MESSAGE value="generated 50 problems with normal method, about to implement chaining" />
     <MESSAGE value="added CHASE models, will try to make tests functional style" />
-    <option name="LAST_COMMIT_MESSAGE" value="added CHASE models, will try to make tests functional style" />
+    <MESSAGE value="refactored for functional style, before implementing CHASE" />
+    <MESSAGE value="added EXTRACTOR model&#10;- NEED to move etc. label removal to scanTopics method&#10;- add logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="added EXTRACTOR model&#10;- NEED to move etc. label removal to scanTopics method&#10;- add logging" />
   </component>
 </project>

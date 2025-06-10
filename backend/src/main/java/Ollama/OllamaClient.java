@@ -107,7 +107,11 @@ public class OllamaClient {
     }
 
     public String[] scanTopics(String problem, String solution) throws IOException, InterruptedException {
-        String response = OllamaRequest("cs-topicScanner", String.format("problem: %s ~~~ solution: %s", problem, solution));
+        return scanTopics(String.format("problem: %s ~~~ solution: %s", problem, solution));
+    }
+
+    public String[] scanTopics(String requestString) throws IOException, InterruptedException {
+        String response = OllamaRequest("cs-topicScanner", requestString);
         log.info("Parsed topics response: {}", response);
         return response.replace("\n", "").split(", ");
     }
@@ -137,6 +141,28 @@ public class OllamaClient {
         log.info("Scanned topics: {}", scanTopics);
         learningMaterial.setTags(scanTopics);
         return learningMaterial;
+    }
+
+    public LearningMaterial generateLearningMaterialCHASE(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics) throws IOException, InterruptedException {
+        String seed = OllamaRequest("Generator", "Write a problem about " + topic);
+        int depth = 0;
+        int currentDifficulty = 0;
+        String hider = seed;
+        while (depth < difficulty || currentDifficulty >= difficulty){
+            String newHider = OllamaRequest("Hider", hider);
+            String verifier = OllamaRequest("Verifier", newHider);
+            if (!verifier.contains("TRUE")) continue;
+            hider = newHider;
+            currentDifficulty = Integer.parseInt(OllamaRequest("Zoner", hider));
+            depth++;
+        }
+        String finalProblem = OllamaRequest("Extractor", hider);
+        List<String> scanTopics = List.of(scanTopics(hider));
+        LearningMaterial learningMaterial = new LearningMaterial(topic, finalProblem, true);
+        AssessmentItem assessmentItem = new AssessmentItem();
+        learningMaterial.setAssessmentItem(assessmentItem);
+
+        return null;
     }
 
     /**
