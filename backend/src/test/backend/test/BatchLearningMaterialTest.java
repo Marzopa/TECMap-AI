@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.time.Instant;
 import java.util.*;
-import java.util.function.Function;
 
 @SpringBootTest(classes = API.MicroserviceApp.class)
 public class BatchLearningMaterialTest {
@@ -23,7 +22,7 @@ public class BatchLearningMaterialTest {
 
     private OllamaClient ollamaClient;
 
-    public record Scenario(String topic, int difficulty, String[] additional, String[] excluded) {}
+    record Scenario(String topic, int difficulty, String[] additional, String[] excluded) {}
 
     record GenerationResult(
             String id,
@@ -52,8 +51,17 @@ public class BatchLearningMaterialTest {
         );
     }
 
+    @FunctionalInterface
+    public interface QuadFunction<A, B, C, D, R> {
+        R apply(A a, B b, C c, D d) throws IOException, InterruptedException;
+    }
+
     @Test
-    public void generateAllProblems(Function<Scenario, LearningMaterial> function) throws IOException, InterruptedException {
+    public void testWithOllamaClient() throws IOException, InterruptedException {
+        generateAllProblems(ollamaClient::generateLearningMaterialProblem);
+    }
+
+    public void generateAllProblems(QuadFunction<String, Integer, String[], String[], LearningMaterial> generator) throws IOException, InterruptedException {
         int repeatPerScenario = 5;
         List<GenerationResult> results = new ArrayList<>();
         int total = scenarios().size() * repeatPerScenario;
@@ -63,7 +71,7 @@ public class BatchLearningMaterialTest {
             for (int i = 0; i < repeatPerScenario; i++) {
                 System.err.printf("Generating problem %d out of %d \n", count, total);
                 long start = System.nanoTime();
-                LearningMaterial material = ollamaClient.generateLearningMaterialProblem(
+                LearningMaterial material = generator.apply(
                         sc.topic(), sc.difficulty(), sc.additional(), sc.excluded());
                 long latencyMs = (System.nanoTime() - start) / 1_000_000;
 

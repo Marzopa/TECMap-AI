@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="generated 50 problems with normal method, about to implement chaining">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="added CHASE models, will try to make tests functional style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
@@ -72,6 +72,7 @@
     "JUnit.AssessmentItemTest.executor": "Run",
     "JUnit.BatchLearningMaterialTest.executor": "Run",
     "JUnit.BatchLearningMaterialTest.generateAllProblems.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.testWithOllamaClient.executor": "Run",
     "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.instructorTest.executor": "Run",
     "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
@@ -120,7 +121,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BatchLearningMaterialTest.generateAllProblems">
+  <component name="RunManager" selected="JUnit.BatchLearningMaterialTest.testWithOllamaClient">
     <configuration name="BatchLearningMaterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
@@ -152,7 +153,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LLMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BatchLearningMaterialTest.testWithOllamaClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -161,9 +162,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <dir value="$PROJECT_DIR$/src/test/backend/test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
+      <option name="METHOD_NAME" value="testWithOllamaClient" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -191,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BatchLearningMaterialTest.testWithOllamaClient" />
         <item itemvalue="JUnit.BatchLearningMaterialTest.generateAllProblems" />
         <item itemvalue="JUnit.BatchLearningMaterialTest" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.test in AI-microservice" />
-        <item itemvalue="JUnit.LLMTest" />
       </list>
     </recent_temporary>
   </component>
@@ -230,15 +231,7 @@
       <workItem from="1749392442155" duration="13216000" />
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
-      <workItem from="1749565095202" duration="8821000" />
-    </task>
-    <task id="LOCAL-00013" summary="learningmaterials work in db, deet to add all fields to assessmentitem and record">
-      <option name="closed" value="true" />
-      <created>1748537122145</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1748537122145</updated>
+      <workItem from="1749565095202" duration="9210000" />
     </task>
     <task id="LOCAL-00014" summary="made changes to record solution">
       <option name="closed" value="true" />
@@ -624,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749572981216</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="added CHASE models, will try to make tests functional style">
+      <option name="closed" value="true" />
+      <created>1749578289987</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1749578289987</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +677,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="need to change return type for problem endpoint, make it so nothing else is affected" />
     <MESSAGE value="seems to work, assessment item with new gto learningmaterial is null however" />
     <MESSAGE value="only need to check that unsolved works now" />
     <MESSAGE value="tests don't pass, some higher level error with the dto" />
@@ -701,6 +701,7 @@
     <MESSAGE value="- changed to qwen coder for fast solving&#10;- removed etc. tag&#10;- created batch generator for LearningMaterial" />
     <MESSAGE value="making test scenarios" />
     <MESSAGE value="generated 50 problems with normal method, about to implement chaining" />
-    <option name="LAST_COMMIT_MESSAGE" value="generated 50 problems with normal method, about to implement chaining" />
+    <MESSAGE value="added CHASE models, will try to make tests functional style" />
+    <option name="LAST_COMMIT_MESSAGE" value="added CHASE models, will try to make tests functional style" />
   </component>
 </project>
