@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="everything seems to work (it does not recycle problems for some reason however)">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="done with repository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-smallProblemSolver.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/cs-smallProblemSolver.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +20,15 @@
       <list>
         <option value="Record" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="generate-problem" />
+        <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -69,6 +71,8 @@
     "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
     "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
     "JUnit.AssessmentItemTest.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.generateAllProblems.executor": "Run",
     "JUnit.DataControllerTest.executor": "Run",
     "JUnit.DataControllerTest.instructorTest.executor": "Run",
     "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
@@ -90,7 +94,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.MicroserviceApp.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "generate-problem",
     "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -116,8 +120,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LLMTest">
-    <configuration name="AIControllerTest.testDatabaseConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BatchLearningMaterialTest">
+    <configuration name="BatchLearningMaterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -126,14 +130,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
-      <option name="METHOD_NAME" value="testDatabaseConnection" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataControllerTest.instructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BatchLearningMaterialTest.generateAllProblems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -142,8 +145,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
-      <option name="METHOD_NAME" value="instructorTest" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
+      <option name="METHOD_NAME" value="generateAllProblems" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BatchLearningMaterialTest" />
+        <item itemvalue="JUnit.BatchLearningMaterialTest.generateAllProblems" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.test in AI-microservice" />
         <item itemvalue="JUnit.LLMTest" />
-        <item itemvalue="JUnit.DataControllerTest.instructorTest" />
-        <item itemvalue="JUnit.AIControllerTest.testDatabaseConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -226,14 +229,8 @@
       <workItem from="1749391484833" duration="740000" />
       <workItem from="1749392442155" duration="13216000" />
       <workItem from="1749408625560" duration="3641000" />
-    </task>
-    <task id="LOCAL-00009" summary="before updating assessment record to be included in database">
-      <option name="closed" value="true" />
-      <created>1748529592232</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1748529592232</updated>
+      <workItem from="1749499107414" duration="2177000" />
+      <workItem from="1749565095202" duration="3019000" />
     </task>
     <task id="LOCAL-00010" summary="springboot seems to work, need to add database functionality, also columns seem to be missing">
       <option name="closed" value="true" />
@@ -619,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749406487777</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="done with repository">
+      <option name="closed" value="true" />
+      <created>1749413127399</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1749413127399</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +676,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="getting problems solved by matching tags DOES NOT work" />
     <MESSAGE value="it should work, but no checks to whether student has solved or not" />
     <MESSAGE value="making a learningmaterialtag object" />
     <MESSAGE value="created object, refactored several things to include that search in AIController, adjusted logging, as of now something breaks after DataController methods are called" />
@@ -696,6 +700,7 @@
     <MESSAGE value="about to make another image just for ollama" />
     <MESSAGE value="docker works, need to find url for new database in h2-console" />
     <MESSAGE value="everything works perfectly now, docker set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything works perfectly now, docker set up" />
+    <MESSAGE value="done with repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with repository" />
   </component>
 </project>

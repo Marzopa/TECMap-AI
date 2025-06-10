@@ -1,4 +1,4 @@
-FROM deepseek-coder:1.3b
+FROM qwen2.5-coder:0.5b
 
 SYSTEM """
 You are a concise and helpful AI tutor.

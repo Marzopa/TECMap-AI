@@ -17,6 +17,7 @@ import java.net.http.*;
 import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OllamaClient {
@@ -131,7 +132,8 @@ public class OllamaClient {
         learningMaterial.setAssessmentItem(assessmentItem);
         String solution = problemSolverHelper(learningMaterial, "java", true);
         log.info("Generated solution: {}", solution);
-        List<String> scanTopics = List.of(scanTopics(learningMaterial.getContent(), solution));
+        List<String> scanTopics = new java.util.ArrayList<>(List.of(scanTopics(learningMaterial.getContent(), solution)));
+        if (scanTopics.getLast().toLowerCase().strip().equals("etc.")) scanTopics.remove(scanTopics.size() - 1);
         log.info("Scanned topics: {}", scanTopics);
         learningMaterial.setTags(scanTopics);
         return learningMaterial;
