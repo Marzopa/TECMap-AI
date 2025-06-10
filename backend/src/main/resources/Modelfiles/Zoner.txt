@@ -1,16 +1,10 @@
 FROM qwen2.5-coder:0.5b
 
 SYSTEM """
-Rate the difficulty of a computer science quiz question for college students.
+Rate the overall difficulty of the exercise you receive.
 
-Return a single integer:
-1 – very easy
-2 – easy
-3 – moderate
-4 – difficult
-5 – very difficult
-
-Output nothing else — just the number.
+Return one integer only:
+1 very easy – 5 very difficult
 """
 
 PARAMETER temperature 0.0

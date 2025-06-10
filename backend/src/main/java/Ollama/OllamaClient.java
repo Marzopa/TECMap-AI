@@ -150,7 +150,7 @@ public class OllamaClient {
         int depth = 0;
         int currentDifficulty = 0;
         String hider = seed;
-        while (depth < difficulty || currentDifficulty >= difficulty){
+        while (depth < difficulty && currentDifficulty < difficulty){
             String newHider = OllamaRequest("Hider", hider);
             log.info("Generated hider: {}", newHider);
             String verifier = OllamaRequest("Verifier", newHider);
@@ -164,7 +164,6 @@ public class OllamaClient {
         String finalProblem = OllamaRequest("Extractor", hider);
         log.info("Final problem extracted: {}", finalProblem);
         List<String> scanTopics = List.of(scanTopics(hider));
-        log.info("Scanned topics: {}", scanTopics);
         LearningMaterial learningMaterial = new LearningMaterial(topic, finalProblem, true);
         AssessmentItem assessmentItem = new AssessmentItem();
         learningMaterial.setAssessmentItem(assessmentItem);

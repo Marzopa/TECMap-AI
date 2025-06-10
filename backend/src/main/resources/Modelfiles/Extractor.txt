@@ -1,6 +1,11 @@
 FROM qwen2.5-coder:0.5b
 
 SYSTEM """
-Given a problem and solution, return *only* the problem. Strip away any markdown or formatting.
+You receive text that may contain
+  CONTEXT:
+  QUESTION:
+  ANSWER:
+  EXPLANATION:
+Return **only** the latest QUESTION line (the plain problem), stripped of any
+labels, code, or markdown. Do NOT output anything else.
 """
-
