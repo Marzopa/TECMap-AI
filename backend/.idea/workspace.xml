@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="as of now, model generates very trivial and small problems in 2 and a half minutes like: Find the first duplicate value or -1 if none exists in the given array.">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Generator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Generator.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Hider.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Hider.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Zoner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Zoner.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,15 +242,7 @@
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
       <workItem from="1749565095202" duration="15154000" />
-      <workItem from="1749651128671" duration="2217000" />
-    </task>
-    <task id="LOCAL-00020" summary="everything, including database in disk seems to work, correctly detects solve attempts in both cases (in db or not) might reformat AIControllerTest to be springboot test">
-      <option name="closed" value="true" />
-      <created>1748546892581</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1748546892581</updated>
+      <workItem from="1749651128671" duration="6061000" />
     </task>
     <task id="LOCAL-00021" summary="added topic detection for problem, although grader doesn't seem to care if they used it or not">
       <option name="closed" value="true" />
@@ -639,7 +628,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749590890206</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50">
+      <option name="closed" value="true" />
+      <created>1749653403484</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1749653403484</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +688,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test was fixed" />
     <MESSAGE value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
     <MESSAGE value="about to add instructor logins" />
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
@@ -716,6 +712,7 @@
     <MESSAGE value="slightly updated system prompts, no included excluded addition yet" />
     <MESSAGE value="right now model generated garbage, not even problems" />
     <MESSAGE value="as of now, model generates very trivial and small problems in 2 and a half minutes like: Find the first duplicate value or -1 if none exists in the given array." />
-    <option name="LAST_COMMIT_MESSAGE" value="as of now, model generates very trivial and small problems in 2 and a half minutes like: Find the first duplicate value or -1 if none exists in the given array." />
+    <MESSAGE value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
+    <option name="LAST_COMMIT_MESSAGE" value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
   </component>
 </project>

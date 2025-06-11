@@ -1,4 +1,4 @@
-FROM qwen2.5-coder:0.5b
+FROM qwen2.5-coder:3b
 
 SYSTEM """
 You receive text that may contain
@@ -7,5 +7,5 @@ You receive text that may contain
   ANSWER:
   EXPLANATION:
 Return **only** the latest QUESTION line (the plain problem), stripped of any
-labels, code, or markdown. Do NOT output anything else, make sure to specifically remove the ANSWER.
+labels, code, or markdown. Do NOT output anything else.
 """

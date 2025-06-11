@@ -38,14 +38,14 @@ public class BatchLearningMaterialTest {
 
     static List<Scenario> scenarios() {
         return List.of(
-//                new Scenario("arrays", 1, new String[]{}, new String[]{}),
-//                new Scenario("strings", 1, new String[]{}, new String[]{"regex"}),
-//                new Scenario("linked lists", 2, new String[]{"iteration"}, new String[]{"recursion"}),
-//                new Scenario("hash maps", 2, new String[]{}, new String[]{"dynamic programming"}),
-//                new Scenario("stacks & queues", 2, new String[]{}, new String[]{"graphs"}),
-//                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
-//                new Scenario("sorting algorithms", 3, new String[]{"selection sort"}, new String[]{"quick sort"}),
-//                new Scenario("graphs", 4, new String[]{"BFS"}, new String[]{"DFS", "dynamic programming"}),
+                new Scenario("arrays", 1, new String[]{}, new String[]{}),
+                new Scenario("strings", 1, new String[]{}, new String[]{"regex"}),
+                new Scenario("linked lists", 2, new String[]{"iteration"}, new String[]{"recursion"}),
+                new Scenario("hash maps", 2, new String[]{}, new String[]{"dynamic programming"}),
+                new Scenario("stacks & queues", 2, new String[]{}, new String[]{"graphs"}),
+                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
+                new Scenario("sorting algorithms", 3, new String[]{"selection sort"}, new String[]{"quick sort"}),
+                new Scenario("graphs", 4, new String[]{"BFS"}, new String[]{"DFS", "dynamic programming"}),
                 new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
                 new Scenario("arrays", 5, new String[]{"two-pointer"}, new String[]{"graphs", "binary trees"})
         );
@@ -63,7 +63,7 @@ public class BatchLearningMaterialTest {
 
     @Test
     public void testWithCHASE() throws IOException, InterruptedException {
-        generateAllProblems(1, ollamaClient::generateLearningMaterialCHASE);
+        generateAllProblems(5, ollamaClient::generateLearningMaterialCHASE);
     }
 
     public void generateAllProblems(int repeatPerScenario,
@@ -71,10 +71,10 @@ public class BatchLearningMaterialTest {
             throws IOException, InterruptedException {
         List<GenerationResult> results = new ArrayList<>();
         int total = scenarios().size() * repeatPerScenario;
-        int count = 0;
+        int count = 1;
 
         for (Scenario sc : scenarios()) {
-            for (int i = 1; i <= repeatPerScenario; i++) {
+            for (int i = 0; i < repeatPerScenario; i++) {
                 System.err.printf("Generating problem %d out of %d... \n", count, total);
                 long start = System.nanoTime();
                 LearningMaterial material = generator.apply(
@@ -98,8 +98,7 @@ public class BatchLearningMaterialTest {
                 count++;
             }
         }
-
-        saveResultsToJsonl(results, "src/test/batches/50.jsonl");
+        saveResultsToJsonl(results, "src/test/batches/50-CHASE-first.jsonl");
     }
 
     private void saveResultsToJsonl(List<GenerationResult> results, String fileName) throws IOException {
