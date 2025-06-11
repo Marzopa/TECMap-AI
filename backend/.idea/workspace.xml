@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="tests failed now but generated 30 problems">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Modelfiles/Extractor.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,15 +242,7 @@
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
       <workItem from="1749565095202" duration="15154000" />
-      <workItem from="1749651128671" duration="6061000" />
-    </task>
-    <task id="LOCAL-00021" summary="added topic detection for problem, although grader doesn't seem to care if they used it or not">
-      <option name="closed" value="true" />
-      <created>1748550547021</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1748550547021</updated>
+      <workItem from="1749651128671" duration="14417000" />
     </task>
     <task id="LOCAL-00022" summary="forgot to add in last commit">
       <option name="closed" value="true" />
@@ -636,7 +628,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749653403484</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="tests failed now but generated 30 problems">
+      <option name="closed" value="true" />
+      <created>1749658700416</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1749658700416</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +688,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="titles now update given maximum title matching before (if maximum/latest was hashmap 22, new one will be hashmap 23)" />
     <MESSAGE value="about to add instructor logins" />
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
@@ -713,6 +712,7 @@
     <MESSAGE value="right now model generated garbage, not even problems" />
     <MESSAGE value="as of now, model generates very trivial and small problems in 2 and a half minutes like: Find the first duplicate value or -1 if none exists in the given array." />
     <MESSAGE value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
-    <option name="LAST_COMMIT_MESSAGE" value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
+    <MESSAGE value="tests failed now but generated 30 problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests failed now but generated 30 problems" />
   </component>
 </project>

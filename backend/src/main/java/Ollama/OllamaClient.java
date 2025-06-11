@@ -166,7 +166,7 @@ public class OllamaClient {
             log.info("Verifier response: {}", verifier);
             if (!verifier.contains("TRUE")) continue;
             hider = newHider;
-            currentDifficulty = Integer.parseInt(OllamaRequest("Zoner", hider));
+            currentDifficulty = Integer.parseInt(OllamaRequest("Zoner", hider).replaceAll("[^0-9]", ""));
             log.info("Current difficulty: {}", currentDifficulty);
             depth++;
         }
