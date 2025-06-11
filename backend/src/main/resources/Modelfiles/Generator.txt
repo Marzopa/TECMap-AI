@@ -1,4 +1,4 @@
-FROM gemma:2b
+FROM qwen2.5-coder:7b
 
 SYSTEM """
 You author *non-trivial* programming-quiz problems for college CS students.

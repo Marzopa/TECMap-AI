@@ -5,6 +5,13 @@ Rate the overall difficulty of the exercise you receive.
 
 Return one integer only:
 1 very easy – 5 very difficult
+
+Difficulty levels (1–5) are defined as:
+1. Beginner – basic, introductory problems (e.g., summing numbers).
+2. Easy – basic control flow or data structure usage.
+3. Medium – standard interview difficulty; algorithmic reasoning expected.
+4. Advanced – requires efficient algorithms or clever design.
+5. Expert – FAANG-level difficulty; includes edge cases and optimization.
 """
 
 PARAMETER temperature 0.0

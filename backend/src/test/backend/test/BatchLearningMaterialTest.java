@@ -46,7 +46,7 @@ public class BatchLearningMaterialTest {
 //                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
 //                new Scenario("sorting algorithms", 3, new String[]{"selection sort"}, new String[]{"quick sort"}),
 //                new Scenario("graphs", 4, new String[]{"BFS"}, new String[]{"DFS", "dynamic programming"}),
-//                new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
+                new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
                 new Scenario("arrays", 5, new String[]{"two-pointer"}, new String[]{"graphs", "binary trees"})
         );
     }
@@ -74,8 +74,8 @@ public class BatchLearningMaterialTest {
         int count = 0;
 
         for (Scenario sc : scenarios()) {
-            for (int i = 0; i < repeatPerScenario; i++) {
-                System.err.printf("Generating problem %d out of %d \n", count, total);
+            for (int i = 1; i <= repeatPerScenario; i++) {
+                System.err.printf("Generating problem %d out of %d... \n", count, total);
                 long start = System.nanoTime();
                 LearningMaterial material = generator.apply(
                         sc.topic(), sc.difficulty(), sc.additional(), sc.excluded());
