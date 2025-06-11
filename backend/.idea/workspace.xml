@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="tests failed now but generated 30 problems">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="last 20 problems generated, everything in place">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/BatchLearningMaterialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,15 +240,7 @@
       <workItem from="1749408625560" duration="3641000" />
       <workItem from="1749499107414" duration="2177000" />
       <workItem from="1749565095202" duration="15154000" />
-      <workItem from="1749651128671" duration="14417000" />
-    </task>
-    <task id="LOCAL-00022" summary="forgot to add in last commit">
-      <option name="closed" value="true" />
-      <created>1748550621099</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1748550621099</updated>
+      <workItem from="1749651128671" duration="14779000" />
     </task>
     <task id="LOCAL-00023" summary="added approved field to database">
       <option name="closed" value="true" />
@@ -636,7 +626,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749658700416</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="last 20 problems generated, everything in place">
+      <option name="closed" value="true" />
+      <created>1749668138762</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1749668138762</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +686,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="about to add instructor logins" />
     <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
     <MESSAGE value="refactoring, adding docstrings, etc." />
@@ -713,6 +710,7 @@
     <MESSAGE value="as of now, model generates very trivial and small problems in 2 and a half minutes like: Find the first duplicate value or -1 if none exists in the given array." />
     <MESSAGE value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
     <MESSAGE value="tests failed now but generated 30 problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests failed now but generated 30 problems" />
+    <MESSAGE value="last 20 problems generated, everything in place" />
+    <option name="LAST_COMMIT_MESSAGE" value="last 20 problems generated, everything in place" />
   </component>
 </project>
