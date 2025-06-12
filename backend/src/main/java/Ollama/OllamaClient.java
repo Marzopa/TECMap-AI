@@ -29,9 +29,9 @@ public class OllamaClient {
 
 
     /**
-     * This method is used to send a request to the Ollama API. Returns the parsed response.
-     * @param model the model to use for the request, e.g., "cs-problemGenerator", "cs-syntaxChecker", etc.
-     * @param content the content to send in the request, typically a problem description or solution
+     * This method is used to send a Request to the Ollama API. Returns the parsed response.
+     * @param model the model to use for the Request, e.g., "cs-problemGenerator", "cs-syntaxChecker", etc.
+     * @param content the content to send in the Request, typically a problem description or solution
      * @return the parsed response from the Ollama API
      */
     private static String OllamaRequest(String model, String content) throws IOException, InterruptedException {
@@ -94,7 +94,7 @@ public class OllamaClient {
         String feedbackContent = String.format("problem: %s ~~~ solution: %s ~~~ language: %s ~~~ topic: %s",
                 problem.replace("\"", "\\\""),
                 escapedSolution, detectedLanguage, topic);
-        log.info("Sending feedback request with content: {}", feedbackContent);
+        log.info("Sending feedback Request with content: {}", feedbackContent);
         String feedback = OllamaRequest("cs-feedbackGenerator", feedbackContent);
         log.info("Parsed feedback: {}", feedback);
 

@@ -1,7 +1,7 @@
 package API;
 
 import API.dto.LearningMaterialDto;
-import API.request.*;
+import API.Request.*;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
@@ -84,7 +84,7 @@ public class AIController {
 
     /**
      * This method is used to solve a problem using the Ollama API.
-     * @param request The request request containing the LearningMaterial, studentId, and language.
+     * @param request The request containing the LearningMaterial, studentId, and language.
      * TODO: this method should be hooked up to database to retrieve student concepts AND default desired language
      */
     @PostMapping("/solve")

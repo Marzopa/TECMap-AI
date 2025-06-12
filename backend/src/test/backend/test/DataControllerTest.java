@@ -1,6 +1,6 @@
 package backend.test;
 
-import API.request.SubmissionRequest;
+import API.Request.SubmissionRequest;
 import Classroom.LearningMaterial;
 import Utils.Json;
 import org.junit.jupiter.api.Test;

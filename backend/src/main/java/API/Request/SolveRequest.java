@@ -1,4 +1,4 @@
-package API.request;
+package API.Request;
 
 import Classroom.LearningMaterial;
 import com.fasterxml.jackson.annotation.JsonCreator;

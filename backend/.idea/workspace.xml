@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker, etc. removal works, removed favicon errors">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/request/ApproveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/Request/ApproveRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/request/ProblemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/Request/ProblemRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/request/SolveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/Request/SolveRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/request/SubmissionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/Request/SubmissionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/test/DataControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="generate-problem" />
+        <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -62,56 +69,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AIControllerTest.testDatabaseConnection.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testGetProblem.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSolveProblemDone.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSolveProblemNotDone.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AIControllerTest.testSubmitSolution.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AssessmentItemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BatchLearningMaterialTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BatchLearningMaterialTest.generateAllProblems.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BatchLearningMaterialTest.testWithCHASE.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BatchLearningMaterialTest.testWithOllamaClient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.instructorTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testLLM.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testSubmitResponse.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LLMTest.testSyntaxChecker.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LearningMaterialTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test in AI-microservice.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.AI-microservice [compile].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;Database connection parameters found&quot;,
-    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dockerize&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Docker&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AIControllerTest.testDatabaseConnection.executor": "Run",
+    "JUnit.AIControllerTest.testGetProblem.executor": "Run",
+    "JUnit.AIControllerTest.testSolveProblemDone.executor": "Run",
+    "JUnit.AIControllerTest.testSolveProblemNotDone.executor": "Run",
+    "JUnit.AIControllerTest.testSubmitSolution.executor": "Run",
+    "JUnit.AssessmentItemTest.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.generateAllProblems.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.testWithCHASE.executor": "Run",
+    "JUnit.BatchLearningMaterialTest.testWithOllamaClient.executor": "Run",
+    "JUnit.DataControllerTest.executor": "Run",
+    "JUnit.DataControllerTest.instructorTest.executor": "Run",
+    "JUnit.DataControllerTest.unsolvedMatchingProblemTest.executor": "Run",
+    "JUnit.LLMTest.executor": "Run",
+    "JUnit.LLMTest.testLLM.executor": "Run",
+    "JUnit.LLMTest.testSubmitResponse.executor": "Run",
+    "JUnit.LLMTest.testSyntaxChecker.executor": "Run",
+    "JUnit.LearningMaterialTest.executor": "Run",
+    "JUnit.test in AI-microservice.executor": "Run",
+    "Maven.AI-microservice [clean].executor": "Run",
+    "Maven.AI-microservice [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.MicroserviceApp.executor": "Run",
+    "git-widget-placeholder": "open-ai",
+    "last_opened_file_path": "C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "Docker",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend" />

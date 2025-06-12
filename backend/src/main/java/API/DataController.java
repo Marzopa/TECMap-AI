@@ -1,6 +1,6 @@
 package API;
 
-import API.request.ProblemRequest;
+import API.Request.ProblemRequest;
 import Classroom.Instructor;
 import Classroom.LearningMaterial;
 import Repo.InstructorRepo;
