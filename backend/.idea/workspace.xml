@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker, etc. removal works">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker, etc. removal works, removed favicon errors">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,9 +114,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\resources\static" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\resources\Modelfiles" />
-      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -241,15 +238,7 @@
       <workItem from="1749651128671" duration="14779000" />
       <workItem from="1749673562169" duration="621000" />
       <workItem from="1749738843326" duration="2229000" />
-      <workItem from="1749741128936" duration="958000" />
-    </task>
-    <task id="LOCAL-00024" summary="intellij files">
-      <option name="closed" value="true" />
-      <created>1748708038818</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1748708038818</updated>
+      <workItem from="1749741128936" duration="1953000" />
     </task>
     <task id="LOCAL-00025" summary="started with additional and excluded topics">
       <option name="closed" value="true" />
@@ -635,7 +624,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749739017982</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="docker, etc. removal works, removed favicon errors">
+      <option name="closed" value="true" />
+      <created>1749742169116</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1749742169117</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,7 +684,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
     <MESSAGE value="refactoring, adding docstrings, etc." />
     <MESSAGE value="added more docstrings" />
     <MESSAGE value="started dockerfile" />
@@ -712,6 +708,7 @@
     <MESSAGE value="tests failed now but generated 30 problems" />
     <MESSAGE value="last 20 problems generated, everything in place" />
     <MESSAGE value="updating branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating branch" />
+    <MESSAGE value="docker, etc. removal works, removed favicon errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="docker, etc. removal works, removed favicon errors" />
   </component>
 </project>
