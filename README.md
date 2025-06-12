@@ -34,10 +34,11 @@ The following command is unsupported, ollama builds with normal builds, only bac
 ```
 docker compose build ollama
 ```
-# UML Diagrams
-
-
 # Database access (h2-console)
 - Driver class: ```org.h2.Driver```
 - DB url: ```jdbc:h2:file:/app/data/testdb```
 - Username: ```sa```
+
+# UML Diagrams
+## Class Diagram
+![image alt](https://github.com/Marzopa/TECMap-AI/blob/331aa4150a1914fc32e74b089791cb755fb65a93/backend/src/main/resources/Diagrams/TECMap-AI%20UML%20Class%20Diagram.png)
