@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.*;
+import java.util.Optional;
 
 @Service
 public class OpenAIClient {
@@ -31,61 +32,96 @@ public class OpenAIClient {
     }
 
     /**
-     * Sends a prompt to the OpenAI chat completions endpoint using the specified model.
-     * @param model e.g., "gpt-4", "gpt-3.5-turbo"
-     * @param content a user message (the prompt)
-     * @param temperature controls randomness in the response (0.0 = deterministic, 1.0 = more random)
-     * @param max_completion_tokens maximum number of tokens in the response
-     * @return the assistant’s reply as plain text
+     * Sends a chat request to the OpenAI API using parameters set in ChatRequest.
+     * It ignores the model if it is not set, and uses the default model GPT_4_1.
      */
-    public static String openAIRequest(Model model, String developer, String content,
-                                       float temperature, int max_completion_tokens, float top_p
-    ) throws IOException, InterruptedException {
+    public String openAIRequest(ChatRequest req) throws IOException, InterruptedException {
         String apiKey = System.getenv("OPENAI_API_KEY");
         if (apiKey == null) throw new IllegalStateException("Missing OPENAI_API_KEY environment variable");
+
+        ObjectNode root = mapper.createObjectNode();
+        root.put("model", req.model.getModelName());
+
+        ArrayNode messages = root.putArray("messages");
+        ObjectNode systemMsg = messages.addObject();
+        systemMsg.put("role", "developer");
+        systemMsg.put("content", req.systemPrompt);
+
+        ObjectNode userMsg = messages.addObject();
+        userMsg.put("role", "user");
+        userMsg.put("content", req.userMessage);
+
+        req.temperature.ifPresent(t -> root.put("temperature", t));
+        req.topP.ifPresent(tp -> root.put("top_p", tp));
+        req.maxTokens.ifPresent(mt -> root.put("max_tokens", mt));
+
+        log.info("Sending OpenAI request: {}", root.toPrettyString());
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.openai.com/v1/chat/completions"))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + apiKey)
-                .POST(HttpRequest.BodyPublishers.ofString(buildRequestJson(model.modelName, developer, content,
-                        temperature, max_completion_tokens, top_p)))
+                .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(root)))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        if (response.statusCode() != 200)
-            throw new IOException("OpenAI service error: " + response.body());
-
+        if (response.statusCode() != 200) throw new IOException("OpenAI service error: " + response.body());
         return parseResponse(response.body());
     }
 
-    private static String buildRequestJson(String model, String developer, String content,
-                                           float temperature, int max_completion_tokens, float top_p) {
-        ObjectNode root = mapper.createObjectNode();
-        root.put("model", model);
-        ArrayNode messages = root.putArray("messages");
-
-        ObjectNode systemMsg = messages.addObject();
-        systemMsg.put("role", "developer");
-        systemMsg.put("content", developer);
-
-        ObjectNode userMsg = messages.addObject();
-        userMsg.put("role", "user");
-        userMsg.put("content", content);
-
-        root.put("temperature", temperature);
-        root.put("max_completion_tokens", max_completion_tokens);
-        root.put("top_p", top_p);
-
-        try {
-            return mapper.writeValueAsString(root);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error serializing OpenAI request", e);
-        }
-    }
-
     private static String parseResponse(String json) throws JsonProcessingException {
+        log.info("Parsing response: {}", json);
         JsonNode root = mapper.readTree(json);
         return root.path("choices").get(0).path("message").path("content").asText();
+    }
+
+    public static class ChatRequest {
+        private Model model = Model.GPT_4_1;
+        private String systemPrompt = "You are a helpful assistant.";
+        private final String userMessage;
+        private Optional<Float> temperature = Optional.empty();
+        private Optional<Float> topP = Optional.empty();
+        private Optional<Integer> maxTokens = Optional.empty();
+
+        public ChatRequest(String userMessage) {
+            this.userMessage = userMessage;
+        }
+
+        public ChatRequest model(Model model) {
+            this.model = model;
+            return this;
+        }
+
+        public ChatRequest systemPrompt(String systemPrompt) {
+            this.systemPrompt = systemPrompt;
+            return this;
+        }
+
+        public ChatRequest temperature(float temperature) {
+            this.temperature = Optional.of(temperature);
+            return this;
+        }
+
+        public ChatRequest topP(float topP) {
+            this.topP = Optional.of(topP);
+            return this;
+        }
+
+        public ChatRequest maxTokens(int maxTokens) {
+            this.maxTokens = Optional.of(maxTokens);
+            return this;
+        }
+
+        @Override
+        public String toString() {
+            return "ChatRequest{" +
+                    "model=" + model +
+                    ", systemPrompt='" + systemPrompt + '\'' +
+                    ", userMessage='" + userMessage + '\'' +
+                    ", temperature=" + temperature +
+                    ", topP=" + topP +
+                    ", maxTokens=" + maxTokens +
+                    '}';
+        }
     }
 }

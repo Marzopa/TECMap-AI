@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"API", "Classroom", "Ollama", "Utils", "Repo"})
+@ComponentScan(basePackages = {"API", "Classroom", "Ollama", "Utils", "Repo", "OpenAI"})
 @EnableJpaRepositories(basePackages = "Repo")
 @EntityScan(basePackages = "Classroom")
 public class MicroserviceApp {
