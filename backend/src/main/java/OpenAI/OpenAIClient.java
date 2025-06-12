@@ -35,7 +35,7 @@ public class OpenAIClient {
      * Sends a chat request to the OpenAI API using parameters set in ChatRequest.
      * It ignores the model if it is not set, and uses the default model GPT_4_1.
      */
-    public String openAIRequest(ChatRequest req) throws IOException, InterruptedException {
+    protected String openAIRequest(ChatRequest req) throws IOException, InterruptedException {
         String apiKey = System.getenv("OPENAI_API_KEY");
         if (apiKey == null) throw new IllegalStateException("Missing OPENAI_API_KEY environment variable");
 
