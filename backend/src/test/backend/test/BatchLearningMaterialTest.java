@@ -71,7 +71,7 @@ public class BatchLearningMaterialTest {
 
     @Test
     public void testWithOpenAI() throws IOException, InterruptedException {
-        generateAllProblems(5, ollamaClient::generateLearningMaterialOpenAI);
+        generateAllProblems(5, openAIClient::generateLearningMaterialProblem);
     }
 
     public void generateAllProblems(int repeatPerScenario,
