@@ -75,6 +75,11 @@ public class OpenAIClient {
         return root.path("choices").get(0).path("message").path("content").asText();
     }
 
+    /**
+     * Represents a chat request to the OpenAI API.
+     * To use this class, create an instance with the user message and optionally set the model, system prompt, temperature, top_p, and max_tokens.
+     * It includes the model, system prompt, user message, and optional parameters like temperature, top_p, and max_tokens.
+     */
     public static class ChatRequest {
         private Model model = Model.GPT_4_1;
         private String systemPrompt = "You are a helpful assistant.";
