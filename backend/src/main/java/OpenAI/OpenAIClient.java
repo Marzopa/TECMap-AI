@@ -83,13 +83,18 @@ public class OpenAIClient {
     public static class ChatRequest {
         private Model model = Model.GPT_4_1;
         private String systemPrompt = "You are a helpful assistant.";
-        private final String userMessage;
+        private String userMessage;
         private Optional<Float> temperature = Optional.empty();
         private Optional<Float> topP = Optional.empty();
         private Optional<Integer> maxTokens = Optional.empty();
 
         public ChatRequest(String userMessage) {
             this.userMessage = userMessage;
+        }
+
+        public ChatRequest userMessage(String userMessage) {
+            this.userMessage = userMessage;
+            return this;
         }
 
         public ChatRequest model(Model model) {

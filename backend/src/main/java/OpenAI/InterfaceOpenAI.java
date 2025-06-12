@@ -6,10 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InterfaceOpenAI {
 
-    private static final String MODEL_DIR = "src/main/resources/Modelfiles/";
+    private static final String MODELFILE_DIR = "src/main/resources/Modelfiles/";
 
     public static final Map<String, OpenAIClient.ChatRequest> MODELS = new HashMap<>();
 
@@ -25,11 +27,12 @@ public class InterfaceOpenAI {
 
     private static void register(String fileName, String key) {
         try {
-            String raw = Files.readString(Path.of(MODEL_DIR + fileName), StandardCharsets.UTF_8);
-            String systemPrompt = extractSystem(raw);
-            Float temperature = extractFloat(raw, "temperature");
-            Float topP = extractFloat(raw, "top_p");
-            Integer maxTok = extractInt(raw, "num_predict");
+            String raw = Files.readString(Path.of(MODELFILE_DIR + fileName), StandardCharsets.UTF_8);
+
+            String systemPrompt = extractSystemPrompt(raw);
+            Float temperature = extractFloatParam(raw, "temperature");
+            Float topP = extractFloatParam(raw, "top_p");
+            Integer maxTok = extractIntParam(raw, "num_predict");
 
             OpenAIClient.ChatRequest req = new OpenAIClient.ChatRequest("")
                     .model(OpenAIClient.Model.GPT_4_1)
@@ -44,30 +47,29 @@ public class InterfaceOpenAI {
         }
     }
 
-    private static String extractSystem(String text) {
-        String start = "SYSTEM \"""";
-        int s = text.indexOf(start);
-        if (s == -1) return "";
-        s += start.length();
-        int e = text.indexOf("\"""", s);
-        return e == -1 ? text.substring(s).trim() : text.substring(s, e).trim();
+    private static String extractSystemPrompt(String text) {
+        String startToken = "SYSTEM \"\"\"";
+        int start = text.indexOf(startToken);
+        if (start == -1) return "";
+        start += startToken.length();
+        int end = text.indexOf("\"\"\"", start);
+        if (end == -1) end = text.length();
+        return text.substring(start, end).trim();
     }
 
-    private static Float extractFloat(String text, String param) {
-        String marker = "PARAMETER " + param + " ";
-        int idx = text.indexOf(marker);
-        if (idx == -1) return null;
-        int end = text.indexOf('\n', idx);
-        String num = (end == -1 ? text.substring(idx + marker.length()) : text.substring(idx + marker.length(), end)).trim();
-        try { return Float.parseFloat(num); } catch (NumberFormatException e) { return null; }
+    private static Float extractFloatParam(String text, String name) {
+        Pattern p = Pattern.compile("PARAMETER\\s+" + name + "\\s+([0-9]*\\.?[0-9]+)");
+        Matcher m = p.matcher(text);
+        return m.find() ? Float.parseFloat(m.group(1)) : null;
     }
 
-    private static Integer extractInt(String text, String param) {
-        String marker = "PARAMETER " + param + " ";
-        int idx = text.indexOf(marker);
-        if (idx == -1) return null;
-        int end = text.indexOf('\n', idx);
-        String num = (end == -1 ? text.substring(idx + marker.length()) : text.substring(idx + marker.length(), end)).trim();
-        try { return Integer.parseInt(num); } catch (NumberFormatException e) { return null; }
+    private static Integer extractIntParam(String text, String name) {
+        Pattern p = Pattern.compile("PARAMETER\\s+" + name + "\\s+([0-9]+)");
+        Matcher m = p.matcher(text);
+        return m.find() ? Integer.parseInt(m.group(1)) : null;
+    }
+
+    private InterfaceOpenAI() {
+
     }
 }
