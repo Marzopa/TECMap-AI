@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.http.*;
 import java.net.URI;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -114,7 +115,8 @@ public class OllamaClient {
         String response = OllamaRequest("cs-topicScanner", requestString);
         log.info("Parsed topics response: {}", response);
         String[] scanTopics = response.replace("\n", "").split(", ");
-        if (scanTopics[scanTopics.length - 1].equals("etc.")) scanTopics = java.util.Arrays.copyOf(scanTopics, scanTopics.length - 1);
+        scanTopics = Arrays.stream(scanTopics).map(String::trim).toArray(String[]::new);
+        if (scanTopics[scanTopics.length - 1].equalsIgnoreCase("etc.")) scanTopics = java.util.Arrays.copyOf(scanTopics, scanTopics.length - 1);
         log.info("Scanned topics: {}", (Object) scanTopics);
         return scanTopics;
     }

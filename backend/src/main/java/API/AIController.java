@@ -36,7 +36,7 @@ public class AIController {
     @PostMapping("/problem")
     public ResponseEntity<LearningMaterialDto> getProblem(@RequestBody ProblemRequest problemRequest)
             throws IOException, InterruptedException {
-        log.info(String.format("Getting problem for %s (%d)", problemRequest.topic(), problemRequest.difficulty()));
+        log.info(String.format("Getting problem for %s (difficulty %d)", problemRequest.topic(), problemRequest.difficulty()));
         LearningMaterial existingProblem = dataController.unsolvedMatchingProblem(problemRequest);
         if (existingProblem != null) {
             log.info("Found unsolved matching problem in database: " + existingProblem.getUuid());
@@ -91,8 +91,7 @@ public class AIController {
     public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
         log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
-        // If in database, check there
-        // If not, check the LearningMaterial object in the request
+        // If in database, check there. If not, check the LearningMaterial object in the request
         if(dataController.getLearningMaterial(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
             return ollamaClient.problemSolverHelper(request.learningMaterial(), request.language());
         else return "You need to attempt the problem first.";

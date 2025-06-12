@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker image outdated by now">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker, etc. removal works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/AIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API/MicroserviceApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ollama/OllamaClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="generate-problem" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -94,7 +98,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;generate-problem&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dockerize&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/oscar/Desktop/Ithaca/Summer Program/AI-microservice/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -113,6 +117,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\resources\static" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\resources\Modelfiles" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend" />
       <recent name="C:\Users\oscar\Desktop\Ithaca\Summer Program\AI-microservice\backend\src\main\java\repo" />
@@ -121,8 +126,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BatchLearningMaterialTest.testWithCHASE">
-    <configuration name="BatchLearningMaterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AIControllerTest.testGetProblem">
+    <configuration name="AIControllerTest.testGetProblem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
       <extension name="coverage">
         <pattern>
@@ -131,56 +136,49 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.AIControllerTest" />
+      <option name="METHOD_NAME" value="testGetProblem" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataControllerTest.instructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.DataControllerTest" />
+      <option name="METHOD_NAME" value="instructorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LLMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AI-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="backend.test" />
+      <option name="MAIN_CLASS_NAME" value="backend.test.LLMTest" />
       <option name="TEST_OBJECT" value="class" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BatchLearningMaterialTest.generateAllProblems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="test in AI-microservice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
-      <option name="METHOD_NAME" value="generateAllProblems" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BatchLearningMaterialTest.testWithCHASE" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
-      <option name="METHOD_NAME" value="testWithCHASE" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BatchLearningMaterialTest.testWithOllamaClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AI-microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="backend.test" />
-      <option name="MAIN_CLASS_NAME" value="backend.test.BatchLearningMaterialTest" />
-      <option name="METHOD_NAME" value="testWithOllamaClient" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/backend/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AIControllerTest.testGetProblem" />
         <item itemvalue="Spring Boot.MicroserviceApp" />
-        <item itemvalue="JUnit.BatchLearningMaterialTest.testWithOllamaClient" />
-        <item itemvalue="JUnit.BatchLearningMaterialTest.testWithCHASE" />
-        <item itemvalue="JUnit.BatchLearningMaterialTest.generateAllProblems" />
-        <item itemvalue="JUnit.BatchLearningMaterialTest" />
+        <item itemvalue="JUnit.test in AI-microservice" />
+        <item itemvalue="JUnit.LLMTest" />
+        <item itemvalue="JUnit.DataControllerTest.instructorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -242,14 +240,8 @@
       <workItem from="1749565095202" duration="15154000" />
       <workItem from="1749651128671" duration="14779000" />
       <workItem from="1749673562169" duration="621000" />
-    </task>
-    <task id="LOCAL-00023" summary="added approved field to database">
-      <option name="closed" value="true" />
-      <created>1748551723658</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1748551723658</updated>
+      <workItem from="1749738843326" duration="2229000" />
+      <workItem from="1749741128936" duration="958000" />
     </task>
     <task id="LOCAL-00024" summary="intellij files">
       <option name="closed" value="true" />
@@ -635,7 +627,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749668138762</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="updating branch">
+      <option name="closed" value="true" />
+      <created>1749739017981</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1749739017982</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,7 +687,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="trying to add logins but datacontroller wont work in tests unless called from rest api" />
     <MESSAGE value="authentication database seems to work, but need to clean up, plus need to add functionality" />
     <MESSAGE value="refactoring, adding docstrings, etc." />
     <MESSAGE value="added more docstrings" />
@@ -712,6 +711,7 @@
     <MESSAGE value="it now generates real problems. extractor sometimes does not work properly, about to run batch of 50" />
     <MESSAGE value="tests failed now but generated 30 problems" />
     <MESSAGE value="last 20 problems generated, everything in place" />
-    <option name="LAST_COMMIT_MESSAGE" value="last 20 problems generated, everything in place" />
+    <MESSAGE value="updating branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating branch" />
   </component>
 </project>
