@@ -5,6 +5,7 @@ import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;
 import Ollama.OllamaClient;
 import Ollama.GradingResponse;
+import OpenAI.InterfaceOpenAI;
 import OpenAI.OpenAIClient;
 import Utils.Json;
 import org.junit.jupiter.api.Test;
@@ -27,10 +28,8 @@ public class LLMTest {
 
     @Test
     public void openAITest() throws IOException, InterruptedException {
-        String response = openAIClient.openAIRequest(new OpenAIClient.
-                ChatRequest("Generate a coding problem about dictionaries in Java")
-                .systemPrompt("You are a helpful AI assistant that generates coding problems. Do not use markdown or any special formatting. Just return the problem text.")
-                .maxTokens(128));
+        OpenAIClient.ChatRequest problemGen= InterfaceOpenAI.MODELS.get("cs-problemGenerator");
+        String response = openAIClient.openAIRequest(problemGen.userMessage("arrays 2"));
         System.out.println("OpenAI Response: " + response);
     }
 
