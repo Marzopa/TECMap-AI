@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="last 20 problems generated, everything in place">
+    <list default="true" id="99aa222a-053c-4649-a1d5-dd3146d88d8d" name="Changes" comment="docker image outdated by now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,11 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BatchLearningMaterialTest.testWithCHASE" />
+        <item itemvalue="Spring Boot.MicroserviceApp" />
         <item itemvalue="JUnit.BatchLearningMaterialTest.testWithOllamaClient" />
+        <item itemvalue="JUnit.BatchLearningMaterialTest.testWithCHASE" />
         <item itemvalue="JUnit.BatchLearningMaterialTest.generateAllProblems" />
         <item itemvalue="JUnit.BatchLearningMaterialTest" />
-        <item itemvalue="Spring Boot.MicroserviceApp" />
       </list>
     </recent_temporary>
   </component>
@@ -241,6 +241,7 @@
       <workItem from="1749499107414" duration="2177000" />
       <workItem from="1749565095202" duration="15154000" />
       <workItem from="1749651128671" duration="14779000" />
+      <workItem from="1749673562169" duration="621000" />
     </task>
     <task id="LOCAL-00023" summary="added approved field to database">
       <option name="closed" value="true" />
