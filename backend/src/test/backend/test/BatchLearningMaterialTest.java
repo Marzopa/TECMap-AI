@@ -106,7 +106,7 @@ public class BatchLearningMaterialTest {
                 count++;
             }
         }
-        saveResultsToJsonl(results, "src/test/batches/50-CHASE-second.jsonl");
+        saveResultsToJsonl(results, "src/test/batches/50-OpenAI.jsonl");
     }
 
     private void saveResultsToJsonl(List<GenerationResult> results, String fileName) throws IOException {
