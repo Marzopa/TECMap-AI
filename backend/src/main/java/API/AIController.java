@@ -1,6 +1,6 @@
 package API;
 
-import API.dto.LearningMaterialDto;
+import API.Dto.LearningMaterialDto;
 import API.Request.*;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;

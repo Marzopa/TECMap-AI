@@ -3,9 +3,9 @@ package Utils;
 import Classroom.AssessmentItem;
 import Classroom.AssessmentRecord;
 import Classroom.LearningMaterial;
-import API.dto.AssessmentItemDto;
-import API.dto.AssessmentRecordDto;
-import API.dto.LearningMaterialDto;
+import API.Dto.AssessmentItemDto;
+import API.Dto.AssessmentRecordDto;
+import API.Dto.LearningMaterialDto;
 
 public class LearningMaterialMapper {
     public static LearningMaterialDto toDto(LearningMaterial entity) {

@@ -1,4 +1,4 @@
-package API.dto;
+package API.Dto;
 
 import Ollama.GradingStatus;
 
