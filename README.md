@@ -34,6 +34,9 @@ The following command is unsupported, ollama builds with normal builds, only bac
 ```
 docker compose build ollama
 ```
+# UML Diagrams
+
+
 # Database access (h2-console)
 - Driver class: ```org.h2.Driver```
 - DB url: ```jdbc:h2:file:/app/data/testdb```
