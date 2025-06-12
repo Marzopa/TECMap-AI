@@ -2,6 +2,7 @@ package backend.test;
 
 import Classroom.LearningMaterial;
 import Ollama.OllamaClient;
+import OpenAI.OpenAIClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -19,8 +20,10 @@ import java.util.*;
 public class BatchLearningMaterialTest {
 
     @Autowired
-
     private OllamaClient ollamaClient;
+
+    @Autowired
+    private OpenAIClient openAIClient;
 
     record Scenario(String topic, int difficulty, String[] additional, String[] excluded) {}
 
@@ -38,12 +41,12 @@ public class BatchLearningMaterialTest {
 
     static List<Scenario> scenarios() {
         return List.of(
-//                new Scenario("arrays", 1, new String[]{}, new String[]{}),
-//                new Scenario("strings", 1, new String[]{}, new String[]{"regex"}),
-//                new Scenario("linked lists", 2, new String[]{"iteration"}, new String[]{"recursion"}),
-//                new Scenario("hash maps", 2, new String[]{}, new String[]{"dynamic programming"}),
-//                new Scenario("stacks & queues", 2, new String[]{}, new String[]{"graphs"}),
-//                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
+                new Scenario("arrays", 1, new String[]{}, new String[]{}),
+                new Scenario("strings", 1, new String[]{}, new String[]{"regex"}),
+                new Scenario("linked lists", 2, new String[]{"iteration"}, new String[]{"recursion"}),
+                new Scenario("hash maps", 2, new String[]{}, new String[]{"dynamic programming"}),
+                new Scenario("stacks & queues", 2, new String[]{}, new String[]{"graphs"}),
+                new Scenario("binary search", 3, new String[]{"recursion"}, new String[]{"graphs"}),
                 new Scenario("sorting algorithms", 3, new String[]{"selection sort"}, new String[]{"quick sort"}),
                 new Scenario("graphs", 4, new String[]{"BFS"}, new String[]{"DFS", "dynamic programming"}),
                 new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
@@ -64,6 +67,11 @@ public class BatchLearningMaterialTest {
     @Test
     public void testWithCHASE() throws IOException, InterruptedException {
         generateAllProblems(5, ollamaClient::generateLearningMaterialCHASE);
+    }
+
+    @Test
+    public void testWithOpenAI() throws IOException, InterruptedException {
+        generateAllProblems(5, ollamaClient::generateLearningMaterialOpenAI);
     }
 
     public void generateAllProblems(int repeatPerScenario,

@@ -28,8 +28,7 @@ public class LLMTest {
 
     @Test
     public void openAITest() throws IOException, InterruptedException {
-        OpenAIClient.ChatRequest problemGen= InterfaceOpenAI.MODELS.get("cs-problemGenerator");
-        String response = openAIClient.openAIRequest(problemGen.userMessage("arrays 2"));
+        String response = openAIClient.openAIRequest("cs-problemGenerator", "arrays 2");
         System.out.println("OpenAI Response: " + response);
     }
 

@@ -1,5 +1,6 @@
 package OpenAI;
 
+import Classroom.LearningMaterial;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,7 +36,7 @@ public class OpenAIClient {
      * Sends a chat request to the OpenAI API using parameters set in ChatRequest.
      * It ignores the model if it is not set, and uses the default model GPT_4_1.
      */
-    public String openAIRequest(ChatRequest req) throws IOException, InterruptedException {
+    protected String openAIRequest(ChatRequest req) throws IOException, InterruptedException {
         String apiKey = System.getenv("OPENAI_API_KEY");
         if (apiKey == null) throw new IllegalStateException("Missing OPENAI_API_KEY environment variable");
 
@@ -73,6 +74,34 @@ public class OpenAIClient {
         log.info("Parsing response: {}", json);
         JsonNode root = mapper.readTree(json);
         return root.path("choices").get(0).path("message").path("content").asText();
+    }
+
+    /**
+     * @param modelfile valid name for the model file, e.g. "cs-problemGenerator.txt"
+     * @param userMessage the message to send to the OpenAI API
+     * @return a string containing only the response from the OpenAI API
+     * @throws IllegalArgumentException if the modelfile is not found in InterfaceOpenAI.MODELS
+     * @throws IOException if there is an error sending the request or parsing the response
+     * @throws InterruptedException if the request is interrupted
+     */
+    public String openAIRequest(String modelfile, String userMessage) throws IllegalArgumentException,
+            IOException, InterruptedException {
+        ChatRequest chatRequest = InterfaceOpenAI.MODELS.get(modelfile);
+        if (chatRequest == null) throw new IllegalArgumentException("Model file not found: " + modelfile);
+        return openAIRequest(chatRequest.userMessage(userMessage));
+    }
+
+    /**
+     * Generates a learning material problem based on the given topic, difficulty, additional topics, and excluded topics.
+     * This method uses the OpenAI API to generate a problem and returns a LearningMaterial object.
+     * @param topic The main topic for the problem.
+     * @param difficulty The difficulty level of the problem.
+     * @param additionalTopics Additional topics to consider in the problem generation.
+     * @param excludedTopics Topics to exclude from the problem generation.
+     * @return A LearningMaterial object containing the generated problem.
+     */
+    public LearningMaterial generateLearningMaterialProblem(String topic, int difficulty, String[] additionalTopics, String[] excludedTopics){
+        return null;
     }
 
     /**
