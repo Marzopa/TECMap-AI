@@ -3,6 +3,7 @@ package Ollama;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -15,6 +16,7 @@ import java.net.http.*;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OllamaClient {
@@ -191,6 +193,33 @@ public class OllamaClient {
         String content = "problem: " + learningMaterial.getContent() + "language: " + language;
         if (small) return OllamaRequest("cs-smallProblemSolver", content);
         return OllamaRequest("cs-problemSolver", content);
+    }
+
+    record ChatRequest(String model,
+                       List<Map<String, Object>> messages,
+                       List<Map<String, Object>> tools,
+                       boolean stream) {}
+
+    public JsonNode chatWithTools(String model,
+                                  List<Map<String, Object>> messages,
+                                  List<Map<String, Object>> tools)
+            throws IOException, InterruptedException {
+
+        ChatRequest payload = new ChatRequest(model, messages, tools, false);
+        String body = mapper.writeValueAsString(payload);
+
+        String base = System.getenv().getOrDefault("OLLAMA_HOST","http://localhost:11434");
+        HttpRequest req = HttpRequest.newBuilder()
+                .uri(URI.create(base + "/api/chat"))
+                .header("Content-Type","application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+
+        HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
+        if (resp.statusCode()!=200)
+            throw new IOException("Ollama error " + resp.statusCode() + ": " + resp.body());
+
+        return mapper.readTree(resp.body());             // caller inspects JSON
     }
 
 }
