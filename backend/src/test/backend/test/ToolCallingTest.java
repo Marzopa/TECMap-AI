@@ -47,10 +47,21 @@ public class ToolCallingTest {
                 )
         );
 
-        /* REQUEST */
+        // SYSTEM prompt to force tool use
         List<Map<String,Object>> messages = new ArrayList<>();
+        messages.add(Map.of("role", "system", "content",
+                "You are a strict grader. Use the run_code tool to test answers."));
+
         messages.add(Map.of("role","user",
-                "content","Write Python that returns x**2. Verify it works on 2 and 3."));
+                "content", String.join("\n",
+                        "TOPIC: simple math",
+                        "DIFFICULTY: 1",
+                        "ADDITIONAL:",
+                        "EXCLUDED:",
+                        "CONTEXT:",
+                        "QUESTION: Write a function that squares an integer.",
+                        "ANSWER:\n```python\ndef square(x):\n    return x * x\n```"
+                )));
 
         JsonNode first = ollamaClient.chatWithTools(MODEL, messages, List.of(runCodeTool));
 
@@ -60,7 +71,6 @@ public class ToolCallingTest {
 
         String arguments = toolCalls.get(0).at("/function/arguments").asText();
 
-        /* Sandbox execution */
         Map<String,Object> fakeResult = Map.of(
                 "allPass", true,
                 "details", List.of(
@@ -68,8 +78,6 @@ public class ToolCallingTest {
                         Map.of("input","3","expected","9","actual","9","ok",true)
                 )
         );
-
-        /* Append tool */
         messages.add(Map.of("role","assistant",
                 "tool_calls", MAPPER.readValue(toolCalls.toString(), List.class)));
         messages.add(Map.of("role","tool",
@@ -77,9 +85,7 @@ public class ToolCallingTest {
                 "content", MAPPER.writeValueAsString(fakeResult)));
         messages.add(Map.of("role","assistant","content",""));
 
-        // Second request
         JsonNode second = ollamaClient.chatWithTools(MODEL, messages, null);
-
         String verdict = second.at("/choices/0/message/content").asText();
         System.out.println("Verifier said: " + verdict);
 
