@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><title>Problem Review</title></head>
+<body>
+<h2>Problem [[${idx}+1]] of [[${total}]]</h2>
+
+<pre>[[${problem.content}]]</pre>
+
+<form th:action="@{'/submit/' + ${idx}}" method="post">
+    <label>Rating (1–5):</label>
+    <select name="rating" required>
+        <option value="">--</option><option>1</option><option>2</option>
+        <option>3</option><option>4</option><option>5</option>
+    </select><br><br>
+
+    <label>Comments:</label><br>
+    <textarea name="comments" rows="4" cols="60"></textarea><br><br>
+
+    <button type="submit">Save and Continue</button>
+</form>
+</body>
+</html>
