@@ -1,17 +1,88 @@
 package test;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import Ollama.OllamaClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.*;
 
 @SpringBootTest(classes = API.MicroserviceApp.class)
 public class ToolCallingTest {
     @Autowired
     private OllamaClient ollamaClient;
 
-    @Test
-    public void testRawToolCalling() throws Exception {
+    static final ObjectMapper MAPPER = new ObjectMapper();
+    static final String MODEL = "Verifier";
 
+    @Test
+    void testRawToolCalling() throws Exception {
+
+        Map<String,Object> runCodeTool = Map.of(
+                "type", "function",
+                "function", Map.of(
+                        "name", "run_code",
+                        "description", "Compile & execute candidate code against tests",
+                        "parameters", Map.of(
+                                "type", "object",
+                                "properties", Map.of(
+                                        "language", Map.of("type","string","enum", List.of("python")),
+                                        "code",     Map.of("type","string"),
+                                        "tests", Map.of(
+                                                "type","array",
+                                                "items", Map.of(
+                                                        "type","object",
+                                                        "properties", Map.of(
+                                                                "input",  Map.of("type","string"),
+                                                                "output", Map.of("type","string")
+                                                        ),
+                                                        "required", List.of("input","output")
+                                                )
+                                        )
+                                ),
+                                "required", List.of("language","code","tests")
+                        )
+                )
+        );
+
+        /* REQUEST */
+        List<Map<String,Object>> messages = new ArrayList<>();
+        messages.add(Map.of("role","user",
+                "content","Write Python that returns x**2. Verify it works on 2 and 3."));
+
+        JsonNode first = ollamaClient.chatWithTools(MODEL, messages, List.of(runCodeTool));
+
+        // model MUST ask to call run_code
+        JsonNode toolCalls = first.at("/choices/0/message/tool_calls");
+        assert toolCalls.isArray() && toolCalls.size() == 1;
+
+        String arguments = toolCalls.get(0).at("/function/arguments").asText();
+
+        /* Sandbox execution */
+        Map<String,Object> fakeResult = Map.of(
+                "allPass", true,
+                "details", List.of(
+                        Map.of("input","2","expected","4","actual","4","ok",true),
+                        Map.of("input","3","expected","9","actual","9","ok",true)
+                )
+        );
+
+        /* Append tool */
+        messages.add(Map.of("role","assistant",
+                "tool_calls", MAPPER.readValue(toolCalls.toString(), List.class)));
+        messages.add(Map.of("role","tool",
+                "name","run_code",
+                "content", MAPPER.writeValueAsString(fakeResult)));
+        messages.add(Map.of("role","assistant","content",""));
+
+        // Second request
+        JsonNode second = ollamaClient.chatWithTools(MODEL, messages, null);
+
+        String verdict = second.at("/choices/0/message/content").asText();
+        System.out.println("Verifier said: " + verdict);
+
+        assert verdict.startsWith("VERIFIED");
     }
 }

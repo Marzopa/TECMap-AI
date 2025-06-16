@@ -207,6 +207,7 @@ public class OllamaClient {
 
         ChatRequest payload = new ChatRequest(model, messages, tools, false);
         String body = mapper.writeValueAsString(payload);
+        log.info("Sending chat request to Ollama: {}", body);
 
         String base = System.getenv().getOrDefault("OLLAMA_HOST","http://localhost:11434");
         HttpRequest req = HttpRequest.newBuilder()
@@ -216,10 +217,11 @@ public class OllamaClient {
                 .build();
 
         HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
+        log.info("Ollama response: {}", resp.body());
         if (resp.statusCode()!=200)
             throw new IOException("Ollama error " + resp.statusCode() + ": " + resp.body());
 
-        return mapper.readTree(resp.body());             // caller inspects JSON
+        return mapper.readTree(resp.body());
     }
 
 }
