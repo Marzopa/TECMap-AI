@@ -60,7 +60,8 @@ public class ReviewController {
             if (!reviewedIds.contains(p.id())) {
                 model.addAttribute("problem", p);
                 model.addAttribute("idx", i);
-                model.addAttribute("total", problems.size());
+                model.addAttribute("graded", reviewedIds.size());
+                model.addAttribute("remaining", problems.size() - reviewedIds.size());
                 return "review";
             }
         }
