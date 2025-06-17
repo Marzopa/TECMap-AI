@@ -64,6 +64,7 @@ public class ReviewController {
                          @RequestParam int clarity,
                          @RequestParam int depth,
                          @RequestParam int difficulty,
+                         @RequestParam int verbosity,
                          @RequestParam String main,
                          @RequestParam String additional,
                          @RequestParam int overall,
@@ -71,7 +72,8 @@ public class ReviewController {
         Problem p = problems.get(idx);
         additional = "\"" + additional + "\"";
         String line = String.join(",",
-                p.id(), p.source(), String.valueOf(clarity), String.valueOf(depth), String.valueOf(difficulty),
+                p.id(), p.source(), String.valueOf(clarity), String.valueOf(depth),
+                String.valueOf(difficulty), String.valueOf(verbosity),
                 main.replace(",", ""), additional, String.valueOf(overall),
                 (comments == null ? "" : comments.replace(",", "").replaceAll("[\\r\\n]+", " ").trim()));
         Files.writeString(reviewFile, line + System.lineSeparator(), StandardOpenOption.APPEND);
