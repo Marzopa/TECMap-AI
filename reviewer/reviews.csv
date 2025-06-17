@@ -1,6 +1,1 @@
 id,source,clarity,depth,difficulty,verbosity,main,additional,overall,comments
-36f0aa7e-bb77-4ac2-a8fe-cb642b64e0bc,50-OpenAI.jsonl,3,3,1,1,lists,"strings, loops",2,this is trash
-10a94109-2de5-4bb7-83b5-69dc411c7ab4,50-qwen7b-qwen05b-qwen05b.jsonl,2,1,2,1,strings,"loops",1,nothing to say
-ce4cb188-5324-4199-a67d-f9a29e09be37,30-CHASE-first.jsonl,3,3,5,2,arrays NOT,"loops, dynamic programming, functions",2,useless garbage
-6384b09f-3045-47d8-bd8d-58fb69e347ca,50-qwen7b-qwen05b-qwen05b.jsonl,3,2,1,3,arrays,"loops",4,
-8d1478ee-bbeb-4771-9897-472569d6a7ca,30-CHASE-first.jsonl,2,2,1,2,stacks,"loops,conditionals",2,

@@ -33,7 +33,7 @@ public class ReviewController {
                     while ((line = br.readLine()) != null) {
                         JsonNode node = om.readTree(line);
                         problems.add(new Problem(
-                                UUID.randomUUID().toString(),
+                                node.path("id").asText(),
                                 node.path("content").asText(),
                                 node.path("topic").asText(),
                                 node.path("difficulty").asInt(0),
