@@ -1,1 +1,3 @@
 id,source,clarity,depth,difficulty,verbosity,main,additional,overall,comments
+36f0aa7e-bb77-4ac2-a8fe-cb642b64e0bc,50-OpenAI.jsonl,3,3,1,1,lists,"strings, loops",2,this is trash
+10a94109-2de5-4bb7-83b5-69dc411c7ab4,50-qwen7b-qwen05b-qwen05b.jsonl,2,1,2,1,strings,"loops",1,nothing to say

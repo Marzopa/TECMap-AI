@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReviewController {
@@ -48,15 +49,23 @@ public class ReviewController {
         if (!Files.exists(reviewFile)) Files.createFile(reviewFile);
     }
 
-    @GetMapping({"/", "/review/{idx}"})
-    public String show(@PathVariable(required = false) Integer idx, Model model) {
-        int i = (idx == null) ? 0 : idx;
-        if (i >= problems.size()) return "done";
-        model.addAttribute("problem", problems.get(i));
-        model.addAttribute("idx", i);
-        model.addAttribute("next", i + 1);
-        model.addAttribute("total", problems.size());
-        return "review";
+    @GetMapping({"/", "/review"})
+    public String show(Model model) throws IOException {
+        Set<String> reviewedIds = Files.lines(reviewFile)
+                .map(line -> line.split(",", 2)[0])
+                .collect(Collectors.toSet());
+
+        for (int i = 0; i < problems.size(); i++) {
+            Problem p = problems.get(i);
+            if (!reviewedIds.contains(p.id())) {
+                model.addAttribute("problem", p);
+                model.addAttribute("idx", i);
+                model.addAttribute("total", problems.size());
+                return "review";
+            }
+        }
+
+        return "done";
     }
 
     @PostMapping("/submit/{idx}")
@@ -77,6 +86,6 @@ public class ReviewController {
                 main.replace(",", ""), additional, String.valueOf(overall),
                 (comments == null ? "" : comments.replace(",", "").replaceAll("[\\r\\n]+", " ").trim()));
         Files.writeString(reviewFile, line + System.lineSeparator(), StandardOpenOption.APPEND);
-        return "redirect:/review/" + (idx + 1);
+        return "redirect:/review";
     }
 }
