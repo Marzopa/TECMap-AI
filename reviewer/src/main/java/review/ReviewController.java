@@ -1,7 +1,9 @@
-package reviewer;
+package review;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,15 @@ public class ReviewController {
     private final List<Problem> problems = new ArrayList<>();
     private final Path dataDir = Paths.get("data");
     private final Path reviewFile = Paths.get("reviews.csv");
+    private static final Logger log = LoggerFactory.getLogger(ReviewController.class);
 
     @PostConstruct
     public void loadProblems() throws IOException {
+        log.info("Loading problems from directory: {}", dataDir);
         ObjectMapper om = new ObjectMapper();
         try (DirectoryStream<Path> files = Files.newDirectoryStream(dataDir, "*.jsonl")) {
             for (Path file : files) {
+                log.info("Loading problems from file {}", file);
                 try (BufferedReader br = Files.newBufferedReader(file)) {
                     String line;
                     while ((line = br.readLine()) != null) {
@@ -33,11 +38,13 @@ public class ReviewController {
                                 node.path("difficulty").asInt(0),
                                 file.getFileName().toString()
                         ));
+                        log.info("Loaded problem: {}", node);
                     }
                 }
             }
         }
         Collections.shuffle(problems);
+        log.info("Total problems loaded: {}", problems.size());
         if (!Files.exists(reviewFile)) Files.createFile(reviewFile);
     }
 

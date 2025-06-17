@@ -3,3 +3,7 @@ server:
 spring:
   thymeleaf:
     cache: false
+logging:
+  level:
+    root: INFO
+    review: INFO
