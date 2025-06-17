@@ -38,7 +38,7 @@ public class ReviewController {
                                 node.path("difficulty").asInt(0),
                                 file.getFileName().toString()
                         ));
-                        log.info("Loaded problem: {}", node);
+                        if (problems.size() % 10 == 0) log.info("{} problems loaded", problems.size());
                     }
                 }
             }
@@ -61,12 +61,19 @@ public class ReviewController {
 
     @PostMapping("/submit/{idx}")
     public String submit(@PathVariable int idx,
-                         @RequestParam int rating,
+                         @RequestParam int clarity,
+                         @RequestParam int depth,
+                         @RequestParam int difficulty,
+                         @RequestParam String main,
+                         @RequestParam String additional,
+                         @RequestParam int overall,
                          @RequestParam(required = false) String comments) throws IOException {
         Problem p = problems.get(idx);
+        additional = "\"" + additional + "\"";
         String line = String.join(",",
-                p.id(), p.source(), String.valueOf(rating),
-                (comments == null ? "" : comments.replaceAll("[\\r\\n]+", " ").trim()));
+                p.id(), p.source(), String.valueOf(clarity), String.valueOf(depth), String.valueOf(difficulty),
+                main.replace(",", ""), additional, String.valueOf(overall),
+                (comments == null ? "" : comments.replace(",", "").replaceAll("[\\r\\n]+", " ").trim()));
         Files.writeString(reviewFile, line + System.lineSeparator(), StandardOpenOption.APPEND);
         return "redirect:/review/" + (idx + 1);
     }

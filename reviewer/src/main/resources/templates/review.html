@@ -6,13 +6,41 @@
 <pre>[[${problem.content}]]</pre>
 
 <form th:action="@{'/submit/' + ${idx}}" method="post">
-    <label>Rating (1–5):</label>
-    <select name="rating" required>
+    <label>Problem clarity</label>
+    <select name="clarity" required=>
+        <option value="">--</option><option>1</option><option>2</option>
+        <option>3</option><option>4</option><option>5</option>
+    </select>
+
+    <label>Problem depth</label>
+    <select name="depth" required>
+        <option value="">--</option><option>1</option><option>2</option>
+        <option>3</option><option>4</option><option>5</option>
+    </select>
+
+    <label>Difficulty</label>
+    <select name="difficulty" required>
+        <option value="">--</option><option>1</option><option>2</option>
+        <option>3</option><option>4</option><option>5</option>
+    </select>
+
+    <br><br>
+
+    <label>Main topic of the problem</label>
+    <input type="text" name="main" placeholder="e.g. arrays" required><br><br>
+
+    <label>Other required topics to solve problem (comma-separated)</label>
+    <input type="text" name="additional" placeholder="e.g. loops, dynamic programming" size="40px"><br><br>
+
+    <br><br>
+
+    <label>Overall rating</label>
+    <select name="overall" required>
         <option value="">--</option><option>1</option><option>2</option>
         <option>3</option><option>4</option><option>5</option>
     </select><br><br>
 
-    <label>Comments:</label><br>
+    <label>Comments</label><br>
     <textarea name="comments" rows="4" cols="60"></textarea><br><br>
 
     <button type="submit">Save and Continue</button>
