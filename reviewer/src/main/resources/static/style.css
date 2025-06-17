@@ -62,3 +62,13 @@ button {
 button:hover {
     background-color: #4E31AA;
 }
+
+.sticky-problem {
+    position: sticky;
+    top: 0;
+    background-color: #e8e8f0;
+    z-index: 1000;
+    padding: 15px;
+    border-left: 5px solid #4E31AA;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

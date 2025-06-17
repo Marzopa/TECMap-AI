@@ -9,7 +9,7 @@
 <body>
 <h2>Problem [[${idx}+1]] of [[${total}]]</h2>
 
-<pre>[[${problem.content}]]</pre>
+<pre class="sticky-problem">[[${problem.content}]]</pre>
 
 <form th:action="@{'/submit/' + ${idx}}" method="post">
     <label>Problem clarity</label>
