@@ -127,7 +127,7 @@ function App() {
                 })
             });
             if (!res.ok) throw new Error(`Status ${res.status}`);
-            setApproveResult({ success: true });
+            setApproveResult(await res.text());
         } catch (err) {
             setApproveResult({ error: err.message });
         } finally {
@@ -332,7 +332,7 @@ function App() {
                     </button>
 
                     <div className="output-box">
-                        {approveResult ? JSON.stringify(approveResult) : 'No result yet.'}
+                        {approveResult ?? 'No result yet.'}
                     </div>
 
                 </>
