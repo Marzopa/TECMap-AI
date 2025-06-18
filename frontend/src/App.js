@@ -35,6 +35,10 @@ function App() {
         save: true
     });
 
+    useEffect(() => {
+        if (problem && problem.uuid) setApproveProblemId(problem.uuid);
+    }, [problem]);
+
     const handleGenerate = async () => {
         setLoadingProblem(true);
         setProblem(null);
@@ -113,7 +117,7 @@ function App() {
         setLoadingApprove(true);
         setApproveResult(null);
         try {
-            const res = await fetch('http://localhost:8080/approve', {
+            const res = await fetch('http://localhost:8080/ai/approve', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -301,6 +305,10 @@ function App() {
                 <>
                     <h1>Approve Problem</h1>
 
+                    <div className="sticky-problem">
+                        {problem?.content || 'No problem yet.'}
+                    </div>
+
                     <label>
                         Username:
                         <input
@@ -319,16 +327,7 @@ function App() {
                         />
                     </label>
 
-                    <label>
-                        Problem ID:
-                        <input
-                            type="text"
-                            value={approveProblemId}
-                            onChange={e => setApproveProblemId(e.target.value)}
-                        />
-                    </label>
-
-                    <button onClick={handleApprove} disabled={loadingApprove}>
+                    <button onClick={handleApprove} disabled={loadingApprove || !approveProblemId}>
                         {loadingApprove ? 'Approving…' : 'Approve'}
                     </button>
 
