@@ -78,7 +78,8 @@ public class AIController {
         generatedMaterial.setTitle(problemRequest.topic() + " " + (last + 1));
         log.info("Generated title: " + generatedMaterial.getTitle());
 
-        dataController.save(generatedMaterial);
+        if (problemRequest.save()) dataController.save(generatedMaterial);
+
         return ResponseEntity.ok(LearningMaterialMapper.toDto(generatedMaterial));
     }
 

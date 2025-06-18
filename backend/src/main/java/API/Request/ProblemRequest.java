@@ -12,7 +12,8 @@ public record ProblemRequest(
         String[] additionalTopics,
         String[] excludedTopics,
         int studentId,
-        Method method
+        Method method,
+        boolean save
 ) {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     public enum Method {
@@ -44,10 +45,11 @@ public record ProblemRequest(
             @JsonProperty("additionalTopics") String[] additionalTopics,
             @JsonProperty("excludedTopics") String[] excludedTopics,
             @JsonProperty("studentId") Integer studentId, // nullable input
-            @JsonProperty("method") Method method
+            @JsonProperty("method") Method method,
+            @JsonProperty(value = "save", defaultValue = "true") boolean save
     ) {
         this(topic, difficulty, additionalTopics, excludedTopics,
                 studentId != null ? studentId : 0,
-                method != null ? method : Method.DEFAULT);
+                method != null ? method : Method.DEFAULT, save);
     }
 }
