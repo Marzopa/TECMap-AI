@@ -39,6 +39,9 @@ docker compose build ollama
 - DB url: ```jdbc:h2:file:/app/data/testdb```
 - Username: ```sa```
 
+# Reviewer
+TODO: Review Docker
+
 # UML Diagrams
 ## Class Diagram
 ![image alt](https://github.com/Marzopa/TECMap-AI/blob/331aa4150a1914fc32e74b089791cb755fb65a93/backend/src/main/resources/Diagrams/TECMap-AI%20UML%20Class%20Diagram.png)
