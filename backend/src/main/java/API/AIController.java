@@ -5,6 +5,7 @@ import API.Request.*;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import Ollama.*;
+import OpenAI.OpenAIClient;
 import Utils.LearningMaterialMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,19 @@ import java.util.logging.Logger;
 public class AIController {
 
     private final OllamaClient ollamaClient;
+    private final OpenAIClient openAIClient;
     private final DataController dataController;
     private static final Logger log = Logger.getLogger(AIController.class.getName());
 
-    public AIController(OllamaClient ollamaClient, DataController dataController) {
+    @FunctionalInterface
+    public interface QuadFunction<A, B, C, D, R> {
+        R apply(A a, B b, C c, D d) throws IOException, InterruptedException;
+    }
+
+    public AIController(OllamaClient ollamaClient, DataController dataController, OpenAIClient openAIClient) {
         this.ollamaClient = ollamaClient;
         this.dataController = dataController;
+        this.openAIClient = openAIClient;
     }
 
     /**
@@ -42,7 +50,25 @@ public class AIController {
             log.info("Found unsolved matching problem in database: " + existingProblem.getUuid());
             return ResponseEntity.ok(LearningMaterialMapper.toDto(existingProblem));
         }
-        LearningMaterial generatedMaterial = ollamaClient.generateLearningMaterialProblem(
+
+        QuadFunction<String, Integer, String[], String[], LearningMaterial> problemGenerator;
+
+        switch(problemRequest.method()){
+            case CHASE -> {
+                log.info("Using Chase method to generate problem.");
+                problemGenerator = ollamaClient::generateLearningMaterialCHASE;
+            }
+            case OPENAI -> {
+                log.info("Using OpenAI method to generate problem.");
+                problemGenerator = openAIClient::generateLearningMaterialProblem;
+            }
+            default -> {
+                log.info("Using default method to generate problem.");
+                problemGenerator = ollamaClient::generateLearningMaterialProblem;
+            }
+        }
+
+        LearningMaterial generatedMaterial = problemGenerator.apply(
                 problemRequest.topic(), problemRequest.difficulty(),
                 problemRequest.additionalTopics(), problemRequest.excludedTopics()
         );

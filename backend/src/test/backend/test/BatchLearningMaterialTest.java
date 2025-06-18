@@ -3,6 +3,7 @@ package backend.test;
 import Classroom.LearningMaterial;
 import Ollama.OllamaClient;
 import OpenAI.OpenAIClient;
+import API.AIController.QuadFunction;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -52,11 +53,6 @@ public class BatchLearningMaterialTest {
                 new Scenario("dynamic programming", 4, new String[]{"memoization"}, new String[]{"graphs"}),
                 new Scenario("arrays", 5, new String[]{"two-pointer"}, new String[]{"graphs", "binary trees"})
         );
-    }
-
-    @FunctionalInterface
-    public interface QuadFunction<A, B, C, D, R> {
-        R apply(A a, B b, C c, D d) throws IOException, InterruptedException;
     }
 
     @Test

@@ -22,9 +22,10 @@ public class AIControllerTest {
         String jsonPayload = """
         {
             "topic": "hashmaps",
-            "difficulty": 5,
-            "additionalTopics": ["recursion", "arrays", "sorting"],
-            "excludedTopics": ["caching", "concurrency"]
+            "difficulty": 1,
+            "additionalTopics": ["recursion", "arrays"],
+            "excludedTopics": ["caching", "concurrency"],
+            "method": "chase"
         }
         """;
 
