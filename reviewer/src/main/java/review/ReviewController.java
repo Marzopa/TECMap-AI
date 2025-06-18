@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class ReviewController {
     private final List<Problem> problems = new ArrayList<>();
     private final Path dataDir = Paths.get("data");
-    private final Path reviewFile = Paths.get("reviews.csv");
+    private final Path reviewFile = Paths.get("reviews/").resolve("reviews.csv");
     private static final Logger log = LoggerFactory.getLogger(ReviewController.class);
 
     @PostConstruct
