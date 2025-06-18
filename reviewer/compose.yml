@@ -1,0 +1,9 @@
+services:
+  reviewer:
+    build: .
+    container_name: reviewer
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./data:/app/data # problem sets
+      - ./reviews:/app/reviews # csv
