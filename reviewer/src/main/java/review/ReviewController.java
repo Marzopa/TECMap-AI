@@ -77,6 +77,7 @@ public class ReviewController {
                          @RequestParam int verbosity,
                          @RequestParam String main,
                          @RequestParam String additional,
+                         @RequestParam(defaultValue = "false") boolean solution,
                          @RequestParam int overall,
                          @RequestParam(required = false) String comments) throws IOException {
         Problem p = problems.get(idx);
@@ -84,7 +85,7 @@ public class ReviewController {
         String line = String.join(",",
                 p.id(), p.source(), String.valueOf(clarity), String.valueOf(depth),
                 String.valueOf(difficulty), String.valueOf(verbosity),
-                main.replace(",", ""), additional, String.valueOf(overall),
+                main.replace(",", ""), additional, String.valueOf(solution), String.valueOf(overall),
                 (comments == null ? "" : comments.replace(",", "").replaceAll("[\\r\\n]+", " ").trim()));
         Files.writeString(reviewFile, line + System.lineSeparator(), StandardOpenOption.APPEND);
         return "redirect:/review";
