@@ -17,6 +17,7 @@ function App() {
     const [additionalTopicsInput, setAdditionalTopicsInput] = useState('');
     const [excludedTopicsInput, setExcludedTopicsInput] = useState('');
     const [method, setMethod] = useState('default');
+    const [save, setSave] = useState(true);
 
     const handleGenerate = async () => {
         setLoadingProblem(true);
@@ -28,6 +29,7 @@ function App() {
                 additionalTopics: additionalTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
                 excludedTopics: excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
                 method: method,
+                save: save,
             };
 
             const res = await fetch('http://localhost:8080/ai/problem', {
@@ -162,6 +164,15 @@ function App() {
                         </select>
                     </label>
 
+                    <label style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
+                        <input
+                            type="checkbox"
+                            checked={save}
+                            onChange={e => setSave(e.target.checked)}
+                            style={{ marginRight: '0.5rem' }}
+                        />
+                        Save this problem to the database
+                    </label>
 
                     <button onClick={handleGenerate} disabled={loadingProblem}>
                         {loadingProblem ? 'Generating…' : 'Generate Problem'}
