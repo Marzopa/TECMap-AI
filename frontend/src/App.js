@@ -197,6 +197,10 @@ function App() {
                 <>
                     <h1>TECMap Grader</h1>
 
+                    <div className="sticky-problem">
+                        {problem?.content || 'No problem yet.'}
+                    </div>
+
                     <label>
                         Student ID:
                         <input
@@ -228,6 +232,10 @@ function App() {
             {activeTab === 'solve' && (
                 <>
                     <h1>TECMap Solver Aider</h1>
+
+                    <div className="sticky-problem">
+                        {problem?.content || 'No problem yet.'}
+                    </div>
 
                     <label>
                         Student ID:
