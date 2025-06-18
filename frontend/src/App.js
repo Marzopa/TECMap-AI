@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import './App.css';
 
+function useForm(initial) {
+    const [values, setValues] = useState(initial);
+    const update = field => e => {
+        const v = e && e.target ? (e.target.type === 'checkbox' ? e.target.checked : e.target.type === 'number' ? Number(e.target.value) : e.target.value) : e;
+        setValues(prev => ({ ...prev, [field]: v }));
+    };
+    return [values, update];
+}
+
 function App() {
     const [activeTab, setActiveTab] = useState('problem');
-    const [topic, setTopic] = useState('recursion');
-    const [difficulty, setDifficulty] = useState(1);
     const [problem, setProblem] = useState(null);
     const [loadingProblem, setLoadingProblem] = useState(false);
     const [studentId, setStudentId] = useState(0);
@@ -14,24 +21,27 @@ function App() {
     const [language, setLanguage] = useState('java');
     const [solveResult, setSolveResult] = useState('');
     const [loadingSolve, setLoadingSolve] = useState(false);
-    const [additionalTopicsInput, setAdditionalTopicsInput] = useState('');
-    const [excludedTopicsInput, setExcludedTopicsInput] = useState('');
-    const [method, setMethod] = useState('default');
-    const [save, setSave] = useState(true);
+    const [form, update] = useForm({
+        topic: 'recursion',
+        difficulty: 1,
+        additionalTopicsInput: '',
+        excludedTopicsInput: '',
+        method: 'default',
+        save: true
+    });
 
     const handleGenerate = async () => {
         setLoadingProblem(true);
         setProblem(null);
         try {
             const payload = {
-                topic: topic,
-                difficulty: difficulty,
-                additionalTopics: additionalTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
-                excludedTopics: excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
-                method: method,
-                save: save,
+                topic: form.topic,
+                difficulty: form.difficulty,
+                additionalTopics: form.additionalTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
+                excludedTopics: form.excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
+                method: form.method,
+                save: form.save,
             };
-
             const res = await fetch('http://localhost:8080/ai/problem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -53,7 +63,7 @@ function App() {
             const res = await fetch('http://localhost:8080/ai/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body   : JSON.stringify({
+                body: JSON.stringify({
                     learningMaterial: problem,
                     solution: gradeInput,
                     studentId
@@ -69,7 +79,6 @@ function App() {
     };
 
     const handleSolveAid = async () => {
-        console.log('Submitting to /ai/solve...');
         if (!problem) {
             setSolveResult('Generate a problem first.');
             return;
@@ -78,14 +87,13 @@ function App() {
             setSolveResult('Enter your Student ID above.');
             return;
         }
-
         setLoadingSolve(true);
         setSolveResult('');
         try {
             const res = await fetch('http://localhost:8080/ai/solve', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body   : JSON.stringify({ learningMaterial: problem, language, studentId })
+                body: JSON.stringify({ learningMaterial: problem, language, studentId })
             });
             if (!res.ok) throw new Error(`Status ${res.status}`);
             setSolveResult(await res.text());
@@ -95,6 +103,7 @@ function App() {
             setLoadingSolve(false);
         }
     };
+
     return (
         <div className="container">
             <div className="tab-buttons">
@@ -114,7 +123,7 @@ function App() {
                     <h1>TECMap Problem Generator</h1>
                     <label>
                         Topic:
-                        <select value={topic} onChange={e => setTopic(e.target.value)}>
+                        <select value={form.topic} onChange={update('topic')}>
                             <option value="arrays">Arrays</option>
                             <option value="recursion">Recursion</option>
                             <option value="linked lists">Linked Lists</option>
@@ -129,8 +138,8 @@ function App() {
                             type="number"
                             min="1"
                             max="5"
-                            value={difficulty}
-                            onChange={e => setDifficulty(Number(e.target.value))}
+                            value={form.difficulty}
+                            onChange={update('difficulty')}
                             className="input-small"
                         />
                     </label>
@@ -139,8 +148,8 @@ function App() {
                         Additional Topics (comma-separated):
                         <input
                             type="text"
-                            value={additionalTopicsInput}
-                            onChange={e => setAdditionalTopicsInput(e.target.value)}
+                            value={form.additionalTopicsInput}
+                            onChange={update('additionalTopicsInput')}
                             className="input-wide"
                         />
                     </label>
@@ -149,15 +158,15 @@ function App() {
                         Excluded Topics (comma-separated):
                         <input
                             type="text"
-                            value={excludedTopicsInput}
-                            onChange={e => setExcludedTopicsInput(e.target.value)}
+                            value={form.excludedTopicsInput}
+                            onChange={update('excludedTopicsInput')}
                             className="input-wide"
                         />
                     </label>
 
                     <label>
                         Method:
-                        <select value={method} onChange={e => setMethod(e.target.value)}>
+                        <select value={form.method} onChange={update('method')}>
                             <option value="default">Default</option>
                             <option value="chase">Chase</option>
                             <option value="openai">OpenAI</option>
@@ -167,8 +176,8 @@ function App() {
                     <label style={{ display: 'flex', alignItems: 'center', marginTop: '1rem' }}>
                         <input
                             type="checkbox"
-                            checked={save}
-                            onChange={e => setSave(e.target.checked)}
+                            checked={form.save}
+                            onChange={update('save')}
                             style={{ marginRight: '0.5rem' }}
                         />
                         Save this problem to the database
