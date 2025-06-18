@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function useForm(initial) {
@@ -21,6 +21,11 @@ function App() {
     const [language, setLanguage] = useState('java');
     const [solveResult, setSolveResult] = useState('');
     const [loadingSolve, setLoadingSolve] = useState(false);
+    const [approveUsername, setApproveUsername] = useState('');
+    const [approvePassword, setApprovePassword] = useState('');
+    const [approveProblemId, setApproveProblemId] = useState('');
+    const [approveResult, setApproveResult] = useState(null);
+    const [loadingApprove, setLoadingApprove] = useState(false);
     const [form, update] = useForm({
         topic: 'recursion',
         difficulty: 1,
@@ -104,6 +109,28 @@ function App() {
         }
     };
 
+    const handleApprove = async () => {
+        setLoadingApprove(true);
+        setApproveResult(null);
+        try {
+            const res = await fetch('http://localhost:8080/approve', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: approveUsername,
+                    password: approvePassword,
+                    problemId: approveProblemId
+                })
+            });
+            if (!res.ok) throw new Error(`Status ${res.status}`);
+            setApproveResult({ success: true });
+        } catch (err) {
+            setApproveResult({ error: err.message });
+        } finally {
+            setLoadingApprove(false);
+        }
+    };
+
     return (
         <div className="container">
             <div className="tab-buttons">
@@ -115,6 +142,9 @@ function App() {
                 </button>
                 <button onClick={() => setActiveTab('solve')} disabled={activeTab === 'solve'}>
                     Solver Aid
+                </button>
+                <button onClick={() => setActiveTab('approve')} disabled={activeTab === 'approve'}>
+                    Approve Problem
                 </button>
             </div>
 
@@ -263,6 +293,47 @@ function App() {
                     <div className="hint-box">
                         <strong>Hint / Partial Solution:</strong>
                         <div>{solveResult || 'No hint yet.'}</div>
+                    </div>
+                </>
+            )}
+
+            {activeTab === 'approve' && (
+                <>
+                    <h1>Approve Problem</h1>
+
+                    <label>
+                        Username:
+                        <input
+                            type="text"
+                            value={approveUsername}
+                            onChange={e => setApproveUsername(e.target.value)}
+                        />
+                    </label>
+
+                    <label>
+                        Password:
+                        <input
+                            type="password"
+                            value={approvePassword}
+                            onChange={e => setApprovePassword(e.target.value)}
+                        />
+                    </label>
+
+                    <label>
+                        Problem ID:
+                        <input
+                            type="text"
+                            value={approveProblemId}
+                            onChange={e => setApproveProblemId(e.target.value)}
+                        />
+                    </label>
+
+                    <button onClick={handleApprove} disabled={loadingApprove}>
+                        {loadingApprove ? 'Approving…' : 'Approve'}
+                    </button>
+
+                    <div className="output-box">
+                        {approveResult ? JSON.stringify(approveResult) : 'No result yet.'}
                     </div>
                 </>
             )}

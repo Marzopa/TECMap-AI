@@ -9,7 +9,7 @@ public record ApproveRequest(String username, String password, String problemId)
     @JsonCreator
     public ApproveRequest(@JsonProperty("username") String username,
                         @JsonProperty("password") String password,
-                        @JsonProperty("studentId") String problemId) {
+                        @JsonProperty("problemId") String problemId) {
         this.username = username;
         this.password = password;
         this.problemId = problemId;

@@ -90,6 +90,7 @@ label > textarea {
 select,
 input[type="text"],
 input[type="number"],
+input[type="password"],
 textarea {
   width: 100%;
   padding: 8px;
@@ -123,6 +124,7 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 }
 .tab-buttons button:first-child { margin-right: 8px; }
 .tab-buttons button:nth-child(2){ margin-right: 8px; }
+.tab-buttons button:nth-child(3){ margin-right: 8px; }
 
 
 .output-box,
