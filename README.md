@@ -40,7 +40,16 @@ docker compose build ollama
 - Username: ```sa```
 
 # Reviewer
-TODO: Review Docker
+Inside of ```reviews/``` run the same commands as for backend.
+```
+docker compose up
+docker compose down
+```
+The problem set files should be added to ```reviewer/data```. The number does not matter.  
+The resulting file will be in ```reviewer/reviews/reviews.csv```. It's important not to directly edit this file, it's already set up to use.  
+This system supports container restarts and page refreshes, but for two or more graders there are two recommended options:
+- For asynchronous editing, one grader does their part and then sends the ```reviews.csv``` file to the next grader, who puts it in the same directory and keeps going from there.
+- Make a master dataset, scramble it, split it, and then process the two files separately (join them later in spreadsheet software).
 
 # UML Diagrams
 ## Class Diagram
