@@ -14,20 +14,30 @@
 <form th:action="@{'/submit/' + ${idx}}" method="post">
     <label>Clarity</label>
     <select name="clarity" required=>
-        <option value="">--</option><option>1</option><option>2</option>
-        <option>3</option><option>4</option><option>5</option>
+        <option value="">--</option>
+        <option value="1">Very straightforward</option>
+        <option value="2">Some might need to reread once or twice</option>
+        <option value="3">Difficult to understand for most in the class</option>
+        <option value="4">Extensive hallucinations by model, incomprehensible</option>
     </select>
 
     <label>Depth</label>
     <select name="depth" required>
-        <option value="">--</option><option>1</option><option>2</option>
-        <option>3</option><option>4</option><option>5</option>
+        <option value="">--</option>
+        <option value="1">Definitional question</option>
+        <option value="2">Some modifications to definitions needed</option>
+        <option value="3">Could aid a student to master the concepts present</option>
+        <option value="4">Very insightful, reveals new connections even for more advanced students</option>
     </select>
 
     <label>Difficulty</label>
     <select name="difficulty" required>
-        <option value="">--</option><option>1</option><option>2</option>
-        <option>3</option><option>4</option><option>5</option>
+        <option value="">--</option>
+        <option value="1">Beginner</option>
+        <option value="2">Easy</option>
+        <option value="3">Medium</option>
+        <option value="4">At knowledge edge of class</option>
+        <option value="5">Likely unsolvable at this level</option>
     </select>
     <br><br>
     <label>Verbosity</label>
@@ -50,12 +60,16 @@
 
     <label>Overall rating</label>
     <select name="overall" required>
-        <option value="">--</option><option>1</option><option>2</option>
-        <option>3</option><option>4</option><option>5</option>
+        <option value="">--</option>
+        <option value="1">Unusable in a class</option>
+        <option value="2">Could be useful with some tweaks</option>
+        <option value="3">Good problem as it stands</option>
+        <option value="4">Excellent problem, no notes</option>
     </select><br><br>
 
     <label>Comments</label>
-    <textarea name="comments" rows="4" cols="60" placeholder="e.g. the problem is incomplete (cuts off)"></textarea><br><br>
+    <textarea name="comments" rows="4" cols="60" placeholder="e.g. the problem is incomplete (cuts off)"></textarea>
+    <br><br>
 
     <button type="submit">Save and Continue</button>
 </form>
