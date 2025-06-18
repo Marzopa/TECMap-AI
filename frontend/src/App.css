@@ -28,11 +28,125 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ---------- Base layout & typography ---------- */
+body {
+  background-color: #F7F7F8;
+  font-family: Arial, sans-serif;
+  color: #3A1078;
+  padding: 40px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui;
+}
+
+/* ---------- Headings & pre-formatted blocks ---------- */
+h1, h2 {
+  color: #4E31AA;
+}
+
+h2 {
+  border-bottom: 2px solid #3795BD;
+  padding-bottom: 10px;
+}
+
+pre {
+  background-color: #e8e8f0;
+  border-left: 5px solid #4E31AA;
+  padding: 15px;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
+}
+
+/* ---------- Forms ---------- */
+form {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+label > input,
+label > select,
+label > textarea {
+  margin-left: 1rem;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #F7F7F8;
+  color: #3A1078;
+}
+
+.input-wide   { width: 60%; }
+.input-small  { width: 5rem; }
+
+
+button {
+  background-color: #3795BD;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover    { background-color: #4E31AA; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+
+.tab-buttons {
+  margin-bottom: 2rem;
+}
+.tab-buttons button:first-child { margin-right: 8px; }
+.tab-buttons button:nth-child(2){ margin-right: 8px; }
+
+
+.output-box,
+.hint-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #3a2497;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  max-width: 600px;
+  width: 100%;
+  color: #ffffff;
+}
+.hint-box { border-radius: 4px; }
+
+
+.sticky-problem {
+  position: sticky;
+  top: 0;
+  background-color: #e8e8f0;
+  z-index: 1000;
+  padding: 15px;
+  border-left: 5px solid #4E31AA;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

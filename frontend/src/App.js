@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 
 function App() {
     const [activeTab, setActiveTab] = useState('problem');
@@ -15,7 +16,6 @@ function App() {
     const [loadingSolve, setLoadingSolve] = useState(false);
     const [additionalTopicsInput, setAdditionalTopicsInput] = useState('');
     const [excludedTopicsInput, setExcludedTopicsInput] = useState('');
-
 
     const handleGenerate = async () => {
         setLoadingProblem(true);
@@ -46,15 +46,14 @@ function App() {
         setLoadingGrade(true);
         setGradeResult(null);
         try {
-            const payload = {
-                learningMaterial: problem,
-                solution: gradeInput,
-                studentId
-            };
             const res = await fetch('http://localhost:8080/ai/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body   : JSON.stringify({
+                    learningMaterial: problem,
+                    solution: gradeInput,
+                    studentId
+                })
             });
             if (!res.ok) throw new Error(`Status ${res.status}`);
             setGradeResult(await res.json());
@@ -78,20 +77,14 @@ function App() {
 
         setLoadingSolve(true);
         setSolveResult('');
-        const payload = {
-            learningMaterial: problem,
-            language: language,
-            studentId: studentId
-        };
         try {
             const res = await fetch('http://localhost:8080/ai/solve', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body   : JSON.stringify({ learningMaterial: problem, language, studentId })
             });
             if (!res.ok) throw new Error(`Status ${res.status}`);
-            const text = await res.text();
-            setSolveResult(text);
+            setSolveResult(await res.text());
         } catch (err) {
             setSolveResult(`Error: ${err.message}`);
         } finally {
@@ -99,8 +92,8 @@ function App() {
         }
     };
     return (
-        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem', fontFamily: 'system-ui' }}>
-            <div style={{ marginBottom: '2rem' }}>
+        <div className="container">
+            <div className="tab-buttons">
                 <button onClick={() => setActiveTab('problem')} disabled={activeTab === 'problem'}>
                     Generate Problem
                 </button>
@@ -117,11 +110,7 @@ function App() {
                     <h1>TECMap Problem Generator</h1>
                     <label>
                         Topic:
-                        <select
-                            value={topic}
-                            onChange={(e) => setTopic(e.target.value)}
-                            style={{ marginLeft: '1rem' }}
-                        >
+                        <select value={topic} onChange={e => setTopic(e.target.value)}>
                             <option value="arrays">Arrays</option>
                             <option value="recursion">Recursion</option>
                             <option value="linked lists">Linked Lists</option>
@@ -129,7 +118,7 @@ function App() {
                             <option value="hash maps">Hash Maps</option>
                         </select>
                     </label>
-                    <br /><br />
+
                     <label>
                         Difficulty:
                         <input
@@ -137,54 +126,36 @@ function App() {
                             min="1"
                             max="5"
                             value={difficulty}
-                            onChange={(e) => setDifficulty(Number(e.target.value))}
-                            style={{ marginLeft: '1rem' }}
+                            onChange={e => setDifficulty(Number(e.target.value))}
+                            className="input-small"
                         />
                     </label>
-                    <br /><br />
-
-
 
                     <label>
                         Additional Topics (comma-separated):
                         <input
                             type="text"
                             value={additionalTopicsInput}
-                            onChange={(e) => setAdditionalTopicsInput(e.target.value)}
-                            style={{ marginLeft: '1rem', width: '60%' }}
+                            onChange={e => setAdditionalTopicsInput(e.target.value)}
+                            className="input-wide"
                         />
                     </label>
-                    <br /><br />
+
                     <label>
                         Excluded Topics (comma-separated):
                         <input
                             type="text"
                             value={excludedTopicsInput}
-                            onChange={(e) => setExcludedTopicsInput(e.target.value)}
-                            style={{ marginLeft: '1rem', width: '60%' }}
+                            onChange={e => setExcludedTopicsInput(e.target.value)}
+                            className="input-wide"
                         />
                     </label>
-                    <br /><br />
-
-
 
                     <button onClick={handleGenerate} disabled={loadingProblem}>
-                        {loadingProblem ? 'Generating...' : 'Generate Problem'}
+                        {loadingProblem ? 'Generating…' : 'Generate Problem'}
                     </button>
-                    <div
-                        style={{
-                            marginTop: '1rem',
-                            padding: '1rem',
-                            backgroundColor: '#3a2497',
-                            border: '1px solid #ccc',
-                            borderRadius: '6px',
-                            whiteSpace: 'pre-wrap',
-                            fontFamily: 'monospace',
-                            maxWidth: '600px',
-                            width: '100%',
-                            color: '#fff'
-                        }}
-                    >
+
+                    <div className="output-box">
                         {problem?.content || 'No problem yet.'}
                     </div>
                 </>
@@ -193,32 +164,32 @@ function App() {
             {activeTab === 'grade' && (
                 <>
                     <h1>TECMap Grader</h1>
+
                     <label>
                         Student ID:
                         <input
                             type="number"
                             value={studentId}
-                            onChange={(e) => setStudentId(Number(e.target.value))}
-                            style={{ marginLeft: '1rem', width: '5rem' }}
+                            onChange={e => setStudentId(Number(e.target.value))}
+                            className="input-small"
                         />
                     </label>
-                    <br /><br />
+
                     <textarea
                         rows={10}
-                        cols={60}
                         value={gradeInput}
-                        onChange={(e) => setGradeInput(e.target.value)}
-                        placeholder="Paste your solution here..."
+                        onChange={e => setGradeInput(e.target.value)}
+                        placeholder="Paste your solution here…"
                     />
-                    <br />
+
                     <button onClick={handleGrade} disabled={loadingGrade}>
-                        {loadingGrade ? 'Grading...' : 'Submit for Grade'}
+                        {loadingGrade ? 'Grading…' : 'Submit for Grade'}
                     </button>
+
                     <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap' }}>
                         <strong>Result:</strong>
                         <pre>{gradeResult ? JSON.stringify(gradeResult, null, 2) : 'No result yet.'}</pre>
                     </div>
-
                 </>
             )}
 
@@ -232,46 +203,26 @@ function App() {
                             type="number"
                             value={studentId}
                             onChange={e => setStudentId(Number(e.target.value))}
-                            style={{ marginLeft: '1rem', width: '5rem' }}
+                            className="input-small"
                         />
                     </label>
-                    <br /><br />
 
                     <label>
                         Language:
-                        <select
-                            value={language}
-                            onChange={e => setLanguage(e.target.value)}
-                            style={{ marginLeft: '1rem' }}
-                        >
+                        <select value={language} onChange={e => setLanguage(e.target.value)}>
                             <option value="java">Java</option>
                             <option value="python">Python</option>
                             <option value="cpp">C++</option>
                         </select>
                     </label>
-                    <br /><br />
 
                     <button onClick={handleSolveAid} disabled={loadingSolve}>
                         {loadingSolve ? 'Asking model…' : 'Help Me Solve It'}
                     </button>
 
-                    <div
-                        style={{
-                            marginTop: '1rem',
-                            whiteSpace: 'pre-wrap',
-                            background: '#3a2497',
-                            padding: '1rem',
-                            borderRadius: '4px',
-                            fontFamily: 'monospace',
-                            color: '#fff',
-                            maxWidth: '600px',
-                            width: '100%'
-                        }}
-                    >
+                    <div className="hint-box">
                         <strong>Hint / Partial Solution:</strong>
-                        <div>
-                            {solveResult ? String(solveResult) : 'No hint yet.'}
-                        </div>
+                        <div>{solveResult || 'No hint yet.'}</div>
                     </div>
                 </>
             )}
