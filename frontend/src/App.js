@@ -16,6 +16,7 @@ function App() {
     const [loadingSolve, setLoadingSolve] = useState(false);
     const [additionalTopicsInput, setAdditionalTopicsInput] = useState('');
     const [excludedTopicsInput, setExcludedTopicsInput] = useState('');
+    const [method, setMethod] = useState('default');
 
     const handleGenerate = async () => {
         setLoadingProblem(true);
@@ -25,7 +26,8 @@ function App() {
                 topic: topic,
                 difficulty: difficulty,
                 additionalTopics: additionalTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
-                excludedTopics: excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean)
+                excludedTopics: excludedTopicsInput.split(',').map(s => s.trim()).filter(Boolean),
+                method: method,
             };
 
             const res = await fetch('http://localhost:8080/ai/problem', {
@@ -150,6 +152,16 @@ function App() {
                             className="input-wide"
                         />
                     </label>
+
+                    <label>
+                        Method:
+                        <select value={method} onChange={e => setMethod(e.target.value)}>
+                            <option value="default">Default</option>
+                            <option value="chase">Chase</option>
+                            <option value="openai">OpenAI</option>
+                        </select>
+                    </label>
+
 
                     <button onClick={handleGenerate} disabled={loadingProblem}>
                         {loadingProblem ? 'Generating…' : 'Generate Problem'}
