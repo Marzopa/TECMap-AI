@@ -334,6 +334,7 @@ function App() {
                     <div className="output-box">
                         {approveResult ? JSON.stringify(approveResult) : 'No result yet.'}
                     </div>
+
                 </>
             )}
         </div>

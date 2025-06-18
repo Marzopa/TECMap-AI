@@ -128,15 +128,18 @@ public class AIController {
      * This method is used to approve a problem by an instructor.
      * It checks if the instructor's credentials match, and if so, approves the problem.
      * @param request The request containing the instructor's "alleged" username, password, and problem ID.
+     * @return A message indicating whether the approval was successful or not.
      */
     @PostMapping("/approve")
-    public void approve(@RequestBody ApproveRequest request) {
+    public String approve(@RequestBody ApproveRequest request) {
         log.info("Logging in instructor: " + request.username());
         if(dataController.matches(request.username(), request.password())) {
             log.info("Instructor " + request.username() + " logged in successfully.");
             dataController.approveProblem(request.problemId());
+            return String.format("Problem %s approved successfully by instructor %s.", request.problemId(), request.username());
         } else {
             log.warning("Instructor " + request.username() + " failed to log in.");
+            return "Instructor login failed. Please check your credentials.";
         }
     }
 }
