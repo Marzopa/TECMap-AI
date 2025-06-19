@@ -1,5 +1,6 @@
 package Ollama;
 
+import API.Dto.GradingResponse;
 import Classroom.AssessmentItem;
 import Classroom.LearningMaterial;
 import com.fasterxml.jackson.core.JsonProcessingException;

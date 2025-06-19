@@ -1,6 +1,5 @@
 package Classroom;
 
-import Ollama.GradingResponse;
 import Utils.Json;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;

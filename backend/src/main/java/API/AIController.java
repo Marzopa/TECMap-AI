@@ -1,5 +1,6 @@
 package API;
 
+import API.Dto.GradingResponse;
 import API.Dto.LearningMaterialDto;
 import API.Request.*;
 import Classroom.AssessmentItem;
@@ -92,8 +93,12 @@ public class AIController {
     public GradingResponse submitSolution(@RequestBody SubmissionRequest submission)
             throws IOException, InterruptedException {
 
+        // Remove trailing numbers from the title to avoid model confusion
+        String title = submission.learningMaterial().getTitle();
+        if (title.matches(".*\\d+$")) title = title.replaceAll("\\d+$", "").trim();
+
         GradingResponse gradingResponse = ollamaClient.solutionRequest(submission.getProblem(),
-                submission.solution(), submission.learningMaterial().getTitle());
+                submission.solution(), title);
 
         // Update the LearningMaterial's assessment item with the new submission
         AssessmentItem problem = submission.learningMaterial().getAssessmentItem();
