@@ -51,7 +51,7 @@ function App() {
                 method: form.method,
                 save: form.save,
             };
-            const res = await fetch('http://localhost:8080/ai/problem', {
+            const res = await fetch('/ai/problem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -69,7 +69,7 @@ function App() {
         setLoadingGrade(true);
         setGradeResult(null);
         try {
-            const res = await fetch('http://localhost:8080/ai/submit', {
+            const res = await fetch('/ai/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -99,7 +99,7 @@ function App() {
         setLoadingSolve(true);
         setSolveResult('');
         try {
-            const res = await fetch('http://localhost:8080/ai/solve', {
+            const res = await fetch('/ai/solve', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ learningMaterial: problem, language, studentId })
@@ -117,7 +117,7 @@ function App() {
         setLoadingApprove(true);
         setApproveResult(null);
         try {
-            const res = await fetch('http://localhost:8080/ai/approve', {
+            const res = await fetch('/ai/approve', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

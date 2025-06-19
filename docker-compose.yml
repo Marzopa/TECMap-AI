@@ -29,5 +29,13 @@ services:
       - OLLAMA_HOST=http://ollama:11434
     restart: unless-stopped
 
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"  
+    depends_on:
+      - backend
+    profiles: ["frontend"] 
+
 volumes:
   ollama-data:
