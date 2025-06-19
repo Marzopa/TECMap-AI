@@ -27,10 +27,13 @@ services:
       - ollama
     environment:
       - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      - h2-data:/app/data
     restart: unless-stopped
 
   frontend:
     build: ./frontend
+    container_name: frontend
     ports:
       - "3000:80"  
     depends_on:
@@ -39,3 +42,4 @@ services:
 
 volumes:
   ollama-data:
+  h2-data:
