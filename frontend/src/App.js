@@ -256,9 +256,25 @@ function App() {
                         {loadingGrade ? 'Grading…' : 'Submit for Grade'}
                     </button>
 
-                    <div style={{ marginTop: '1rem', whiteSpace: 'pre-wrap' }}>
-                        <strong>Result:</strong>
-                        <pre>{gradeResult ? JSON.stringify(gradeResult, null, 2) : 'No result yet.'}</pre>
+                    <div className="output-box">
+                        {gradeResult ? (
+                            gradeResult.error ? (
+                                <p>Error: {gradeResult.error}</p>
+                            ) : (
+                                <>
+                                    <h3>Detected Language</h3>
+                                    <p>{gradeResult.detectedLanguage}</p>
+
+                                    <h3>Feedback</h3>
+                                    <p>{gradeResult.feedback}</p>
+
+                                    <h3>Grade</h3>
+                                    <p>{gradeResult.grade}</p>
+                                </>
+                            )
+                        ) : (
+                            'No result yet.'
+                        )}
                     </div>
                 </>
             )}
