@@ -6,5 +6,6 @@ public enum GradingStatus {
     INCOMPLETE,
     INCORRECT,
     UNUSED_TOPIC,
-    NOT_CODE
+    NOT_CODE,
+    FAILED_TO_GRADE
 }

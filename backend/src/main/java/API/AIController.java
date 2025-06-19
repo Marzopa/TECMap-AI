@@ -40,6 +40,8 @@ public class AIController {
      * It checks if there is an unsolved matching problem in the database, and if not, it generates a new one.
      * The generated problem is then saved to the database.
      * @param problemRequest The request containing the topic, difficulty, additional topics, and excluded topics.
+     *                       It also contains the studentId, which will be used to check if the student
+     *                       has already submitted a solution to one of the available problems.
      * @return A ResponseEntity containing the generated LearningMaterialDto (with same attributes as LearningMaterial).
      */
     @PostMapping("/problem")
@@ -93,6 +95,8 @@ public class AIController {
     public GradingResponse submitSolution(@RequestBody SubmissionRequest submission)
             throws IOException, InterruptedException {
 
+        if (submission.studentId() == null) return new GradingResponse("No student ID provided. Nothing saved to database.", GradingStatus.FAILED_TO_GRADE, "No feedback available.");
+
         // Remove trailing numbers from the title to avoid model confusion
         String title = submission.learningMaterial().getTitle();
         if (title.matches(".*\\d+$")) title = title.replaceAll("\\d+$", "").trim();
@@ -122,6 +126,7 @@ public class AIController {
     @PostMapping("/solve")
     public String solveProblem(@RequestBody SolveRequest request)
             throws IOException, InterruptedException {
+        if (request.studentId() == null) return "No student ID provided. Cannot solve problem.";
         log.info("Solving problem for student ID: " + request.studentId() + " in language: " + request.language());
         // If in database, check there. If not, check the LearningMaterial object in the request
         if(dataController.getLearningMaterial(request.learningMaterial().getUuid()).orElse(request.learningMaterial()).getAssessmentItem().hasStudentSubmitted(request.studentId()))
