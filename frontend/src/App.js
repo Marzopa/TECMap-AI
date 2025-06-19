@@ -331,6 +331,10 @@ function App() {
                         {problem?.content || 'No problem yet.'}
                     </div>
 
+                    <br/>
+
+                    <b>Tags:</b> {problem?.tags?.length ? problem.tags.join(', ') : 'No tags available.'}
+
                     <label>
                         Username:
                         <input

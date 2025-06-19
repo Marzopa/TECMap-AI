@@ -140,8 +140,9 @@ public class AIController {
         log.info("Logging in instructor: " + request.username());
         if(dataController.matches(request.username(), request.password())) {
             log.info("Instructor " + request.username() + " logged in successfully.");
-            dataController.approveProblem(request.problemId());
-            return String.format("Problem %s approved successfully by instructor %s.", request.problemId(), request.username());
+             if (dataController.approveProblem(request.problemId()))
+                 return String.format("Problem %s approved successfully by instructor %s.", request.problemId(), request.username());
+             else return "Problem was not found.";
         } else {
             log.warning("Instructor " + request.username() + " failed to log in.");
             return "Instructor login failed. Please check your credentials.";

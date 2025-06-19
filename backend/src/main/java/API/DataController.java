@@ -138,8 +138,9 @@ public class DataController {
      * It retrieves the LearningMaterial from the database, approves it, and saves it back.
      * If the LearningMaterial is not found, it logs a warning.
      * @param problemId The ID of the problem to approve.
+     * @return true if the problem was successfully approved, false if it was not found.
      */
-    public void approveProblem(String problemId) {
+    public boolean approveProblem(String problemId) {
         Optional<LearningMaterial> material = learningMaterialRepo.findById(problemId);
         if (material.isPresent()) {
             LearningMaterial lm = material.get();
@@ -148,8 +149,10 @@ public class DataController {
             log.info("After approve(): " + lm.isApproved());
             learningMaterialRepo.save(lm);
             log.info("Problem with ID {} approved", problemId);
+            return true;
         } else {
             log.warn("Problem with ID {} not found", problemId);
+            return false;
         }
     }
 }
