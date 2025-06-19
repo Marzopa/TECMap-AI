@@ -12,7 +12,8 @@ The OpenAI key should be added as an environmental variable called ```OPENAI_API
 
 # How to build?
 All builds should be done from the root directory, the one that contains the two (backend, frontend) Maven projects.
-## From scratch / day-to-day starting
+## Just the backend (Ollama + API endpoints)
+### From scratch / day-to-day starting
 ```
 docker compose up -d
 ```
@@ -21,11 +22,11 @@ Now for stop the running container but preserve modules in volume.
 ```
 docker compose down
 ```
-## Only backend changes
+### Only backend changes
 ```
 docker compose build backend
 ```
-## WARNINGS:
+### WARNINGS:
 The following deletes volumes with all models.
 ```
 docker compose down -v
@@ -34,9 +35,15 @@ The following command is unsupported, ollama builds with normal builds, only bac
 ```
 docker compose build ollama
 ```
+## Backend + frontend
+Every other command remains the same, except the building. The following docker profile was created to allow for easy frontend use. This starts all three containers.
+```
+docker compose --profile frontend up -d
+```
+
 # Database access (h2-console)
 - Driver class: ```org.h2.Driver```
-- DB url: ```jdbc:h2:file:/app/data/testdb```
+- DB url: ```jdbc:h2:file:./data/db```
 - Username: ```sa```
 
 # Reviewer
