@@ -99,7 +99,7 @@ public class OllamaClient {
                 escapedSolution, feedback);
         String gradeStr = OllamaRequest("cs-problemGrader", gradeContent).trim();
         GradingStatus grade =  GradingStatus.valueOf(gradeStr);
-        return new GradingResponse(feedback, grade, detectedLanguage);
+        return new GradingResponse(feedback.strip(), grade, detectedLanguage);
 
     }
 
