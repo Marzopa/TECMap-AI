@@ -14,7 +14,7 @@ function App() {
     const [activeTab, setActiveTab] = useState('problem');
     const [problem, setProblem] = useState(null);
     const [loadingProblem, setLoadingProblem] = useState(false);
-    const [studentId, setStudentId] = useState(0);
+    const [studentId, setStudentId] = useState();
     const [gradeInput, setGradeInput] = useState('');
     const [gradeResult, setGradeResult] = useState(null);
     const [loadingGrade, setLoadingGrade] = useState(false);
@@ -239,9 +239,12 @@ function App() {
                         Student ID:
                         <input
                             type="number"
+                            min="100000000"
+                            max="999999999"
+                            required
                             value={studentId}
-                            onChange={e => setStudentId(Number(e.target.value))}
-                            className="input-small"
+                            onChange={e => setStudentId(e.target.value)}
+                            className="input-small no-spin"
                         />
                     </label>
 
@@ -291,9 +294,12 @@ function App() {
                         Student ID:
                         <input
                             type="number"
+                            min="100000000"
+                            max="999999999"
+                            required
                             value={studentId}
-                            onChange={e => setStudentId(Number(e.target.value))}
-                            className="input-small"
+                            onChange={e => setStudentId(e.target.value)}
+                            className="input-small no-spin"
                         />
                     </label>
 
