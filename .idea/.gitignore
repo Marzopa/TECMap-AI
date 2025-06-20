@@ -1,4 +1,5 @@
 # Default ignored files
+.idea/.gitignore
 /shelf/
 /workspace.xml
 # Editor-based HTTP Client requests
