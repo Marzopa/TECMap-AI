@@ -18,6 +18,19 @@ services:
       tail -f /dev/null"
     restart: unless-stopped
 
+  db:
+    image: postgres:16-alpine
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tecmap-ai-db
+      POSTGRES_USER: tecmap_user
+      POSTGRES_PASSWORD: password
+      TZ: America/New_York
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks: [ backend ]
+
   backend:
     build: ./backend
     container_name: backend
@@ -25,11 +38,14 @@ services:
       - "8080:8080"
     depends_on:
       - ollama
+      - db
     environment:
       - OLLAMA_HOST=http://ollama:11434
-    volumes:
-      - h2-data:/app/data
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tecmap-ai-db
+      - SPRING_DATASOURCE_USERNAME=tecmap_user
+      - SPRING_DATASOURCE_PASSWORD=password
     restart: unless-stopped
+    networks: [backend]
 
   frontend:
     build: ./frontend
@@ -38,8 +54,13 @@ services:
       - "3000:80"  
     depends_on:
       - backend
-    profiles: ["frontend"] 
+    profiles: ["frontend"]
+    networks: [backend]
 
 volumes:
   ollama-data:
   h2-data:
+  db-data:
+
+networks:
+  backend:
